@@ -1,0 +1,318 @@
+@font-face {
+    font-family: 'Orbitron';
+    src: url(../assets/fonts/Orbitron/Orbitron-VariableFont_wght.ttf);
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+
+    background-image: url('../assets/images/home/background-home-mobile.jpg');
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat;
+
+    height: 858px;
+    color: white;
+
+    header{
+        
+
+        .iconMenu{
+
+            width: 40px;
+
+            margin-top: 10px;
+            margin-left: 20px;
+
+        }
+
+        .menu{
+       
+            background: linear-gradient(to right,  rgba(46, 46, 46, 0.26), rgba(161, 161, 161, 0.185));
+            width: 270px;
+            height: 60px;
+
+            display: flex;
+            position: absolute;
+            right: 0;
+            top: 0;
+
+            button{
+
+                background: none;
+                border: none;
+
+                color: white;
+                height: 50px;
+
+                margin-left: 10px;
+                font-size: 10px;
+
+                cursor: pointer;
+
+                &:hover{
+
+                    border-bottom: 2px solid;
+
+                }
+
+            }
+
+            ul{
+
+                margin: auto;
+
+                list-style: none;
+                display: flex;
+
+            }
+        }
+    }
+
+    .contenedorHomeSpace{
+
+        margin-top: 50%;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        text-align: center;
+
+        .titleSpace{
+
+            font-size: 15px;
+            color: rgb(177, 177, 177);
+    
+
+        }
+
+        .space{
+
+            font-size: 100px;
+
+            margin-top: 20px;
+            margin-bottom: 20px;
+
+        }
+
+        .textSpace{
+
+            margin: auto;
+
+            font-size: 8px;
+            width: 270px;
+
+            color: rgb(177, 177, 177);
+
+            line-height: 20px;
+
+        }
+
+        .explore{
+
+            margin-top: 140px;
+            
+            width: 180px;
+            height: 180px;
+
+            border-radius: 100%;
+            border: none;
+
+            font-size: 25px;
+
+        }
+
+    }
+}
+
+@media (min-width: 768px) {
+
+    body{
+
+        background-image: url('../assets/images/home/background-home-tablet.jpg');
+        height: 1144px;
+
+        header{
+
+            .iconMenu{
+
+                width: 70px;
+
+                margin-top: 20px;
+                margin-left: 30px;
+
+            }
+
+            .menu{
+        
+                width: 550px;
+                height: 110px;
+
+                button{
+
+                    height: 110px;
+
+                    margin-left: 30px;
+                    font-size: 20px;
+
+                    &:hover{
+
+                        border-bottom: 3px solid;
+
+                    }
+
+                }
+            }
+        }
+
+        .contenedorHomeSpace{
+
+            margin-top: 30%;
+
+            .titleSpace{
+
+                font-size: 25px;
+
+            }
+
+            .space{
+
+                font-size: 150px;
+
+            }
+
+            .textSpace{
+
+                font-size: 12px;
+                width: 400px;
+
+                line-height: 25px;
+
+            }
+
+            .explore{
+
+                margin-top: 120px;
+                
+                width: 280px;
+                height: 280px;
+
+                font-size: 25px;
+
+            }
+
+        }
+
+    }
+}
+
+@media (min-width: 1440px){
+
+    body{
+
+        background-image: url('../assets/images/home/background-home-desktop.jpg');
+        height: 865px;
+
+        header{
+
+            .iconMenu{
+
+                width: 70px;
+
+                margin-top: 80px;
+                margin-left: 60px;
+
+            }
+
+            .menu{
+
+                background: rgba(255, 255, 255, 0.055);
+                backdrop-filter: blur(10px);
+
+                margin-top: 60px;
+
+                text-align: left;
+        
+                width: 1500px;
+                height: 110px;
+
+                button{
+
+                    height: 110px;
+                
+                    margin-left: 120px;
+            
+                    font-size: 25px;
+
+                    &:hover{
+
+                        border-bottom: 3px solid;
+
+                    }
+
+                }
+
+                ul{
+
+                    margin: 0;
+    
+                }
+
+            }
+        }
+
+        .contenedorHomeSpace{
+
+            margin-top: 10%;
+            flex-direction: row;
+            justify-content: space-between;
+            padding-left: 300px;
+            padding-right: 400px;
+        
+            text-align: left;
+
+            .titleSpace{
+
+                margin-top: 50px;
+
+            }
+
+            .space{
+
+                margin-bottom: 50px;
+
+            }
+
+            .textSpace{
+
+                font-size: 12px;
+                width: 450px;
+
+                line-height: 25px;
+
+            }
+
+            .explore{
+
+
+                margin-top: 120px;
+                
+                width: 280px;
+                height: 280px;
+
+                font-size: 25px;
+
+            }
+
+        }
+
+    }
+
+}

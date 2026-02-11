@@ -1,0 +1,193 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body{
+
+    font-family: Arial, sans-serif;
+
+    height: 100vh;
+
+    header{
+
+        background-color: black;
+
+        width: 100%;
+        height: 30%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+
+        h1{
+
+            position: relative;
+            font-size: 40px;
+            color: white;
+            text-shadow:
+                -1px -1px 0 black,
+                1px -1px 0 black,
+                -2px  2px 0 black,
+                2px  2px 0 black;
+            
+        }
+
+        .background{
+
+            width: 100%;
+            height: 30%;
+
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+
+            background-image: url('../assets/images/anatomia-de-rick-y-morty-9241.webp');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.6;
+
+        }
+    }
+
+    .contenedorTarjetas{
+
+        max-width: 1200px;
+
+        margin-top: 50px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        article{
+
+            max-width: 300px;
+
+            width: calc(100% - 80px);
+            margin: 0 40px;
+
+            margin-bottom: 30px;
+
+            background-color: #272B33;
+            box-shadow: 2px 2px 8px black;
+            border-radius: 10px;
+
+            text-align: center;
+            color: white;
+        
+            &:hover{
+
+                transform: scale(1.02);
+
+            }
+
+        }
+
+        .tarjeta img {
+
+            width: 295px;
+            border-top-right-radius: 10px;
+            border-top-left-radius: 10px;
+            border-bottom: 1px solid #ddd;
+
+        }
+
+    }
+
+}
+
+@media (min-width: 768px) {
+
+    body{
+
+    
+        header{
+        
+            h1{
+    
+                font-size: 70px;
+            
+            }
+
+        }
+    
+        .contenedorTarjetas{
+    
+            margin-top: 80px;
+    
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+    
+            .tarjeta img {
+    
+                width: 299px;
+
+            }
+        }
+    }
+}
+
+
+
+
+@media (min-width: 1440px){
+
+    body{
+    
+        header{
+
+            margin-bottom: 80px;
+        
+            h1{
+    
+                font-size: 90px;
+            
+            }
+
+        }
+    
+        .contenedorTarjetas{
+    
+            margin: auto;
+    
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+
+            article{
+
+            
+                max-width: 900px;
+
+                width:500px;
+       
+                font-size: 20px;
+
+            
+                &:hover{
+    
+                    transform: scale(1.02);
+    
+                }
+    
+            }
+    
+            .tarjeta img {
+    
+                width: 500px;
+
+            }
+        }
+    }
+
+}

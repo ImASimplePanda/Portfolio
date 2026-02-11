@@ -1,0 +1,196 @@
+* {
+
+    margin: 0px;
+    padding: 0px;
+
+}
+
+html{
+    height: 100%;
+}
+
+body {
+    background-image: url("../img/orgrimmar.jpeg");
+    background-size: cover;      /* La imagen cubre toda la pantalla */
+    background-repeat: no-repeat; /* No repetir la imagen */
+    background-position: center;  /* Centrar la imagen */
+    width: 100%;
+    height: 100%;
+
+    header {
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #1a1a1a;
+      padding: 15px 30px;
+      color: #A88E3D;
+      box-shadow: 0 0 10px black;
+
+      ul {
+
+        list-style: none;
+        display: flex;
+        gap: 20px;
+        margin: 0;
+        padding: 0;
+        
+        
+        a {
+            
+          text-decoration: none; /*Quita la barra inferior*/
+          color: #A88E3D;
+          font-weight: 500;
+          transition: all 0.3s ease;
+
+          &:hover {
+            color: #fff;
+            transform: scale(1.1);
+          }
+        }
+      }
+    }
+
+    .eleccion{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 200px;
+        padding-left: 400px;
+        padding-right: 400px;
+
+        .div_raza{
+
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            width: 300px;
+
+            h2{
+
+                color: #C2272D;
+
+                text-shadow: 
+                -1px -1px 0 black,
+                1px -1px 0 black,
+                -1px  1px 0 black,
+                1px  1px 0 black;
+            }
+            
+            ul{
+
+                display: flex;
+                flex-direction: column;
+                list-style: none;
+
+                .boton-con-imagen {
+                    position: relative; 
+                    display: inline-block;
+                    
+                    .orco, .tauren, .trol, .nomuerto, .elfo, .goblin{
+                        width: 300px;
+                    }
+                }
+
+                .icono {
+                    display: none; 
+                    position: absolute;
+                    left: 105%; 
+                    top: 50%;
+                    transform: translateY(-50%); 
+                    margin-top: 3px;
+                    margin-left: 10px;
+                    width: 40px; 
+                    height: auto;
+                    transition: opacity 0.2s ease; 
+                }
+
+                /* Mostrar la imagen al pasar el ratón sobre el botón */
+                .boton-con-imagen button:hover + .icono {
+                    display: block;
+                }
+
+                
+                button{
+                
+                    background-color: #1a1a1a;
+                    box-shadow: 0 0 10px black;
+                    color: #C2272D;
+                    height: 40px;
+                    font-size: 17px;
+                    letter-spacing: 2px;
+                    margin-top: 8px;
+                    cursor: pointer;
+
+                    transition: all 0.3s ease;
+
+                    &:hover{
+                        transform: scale(1.1);
+                    }
+
+                    &.orco:hover{
+                        background-color: green;
+                        color: black;
+                    }
+
+                    &.tauren:hover{
+                        background-color: #814826;
+                        color: black;
+                    }
+
+                    &.trol:hover{
+                        background-color: #73BDC4;
+                        color: black;
+                    }
+
+                    &.nomuerto:hover{
+                        background-color: #DFE5D7;
+                        color: black;
+                    }
+
+                    &.elfo:hover{
+                        background-color: #FFDA83;
+                        color: black;
+                    }
+
+                    &.goblin:hover{
+                        background-color: #B3EF6B;
+                        color: black;
+                    }
+
+                }
+            }
+            
+            
+        }
+        
+    }
+    
+    .div_abandonar{
+
+        width: 100%;
+        text-align: center;
+
+        .abandonar{
+            background-color: #1a1a1a;
+            box-shadow: 0 0 10px black;
+            color: #C2272D;
+            height: 40px;
+            width: 200px;
+            font-size: 17px;
+            letter-spacing: 2px;
+            margin-top: 200px;
+    
+            transition: all 0.3s ease;
+    
+            &:hover{
+                transform: scale(1.1);
+            }
+        }
+
+    }
+
+}
+
+
+

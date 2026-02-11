@@ -1,0 +1,196 @@
+* {
+
+    margin: 0px;
+    padding: 0px;
+
+}
+
+html{
+    height: 100%;
+}
+
+body {
+    background-image: url("../img/ventormenta.webp");
+    background-size: cover;      /* La imagen cubre toda la pantalla */
+    background-repeat: no-repeat; /* No repetir la imagen */
+    background-position: center;  /* Centrar la imagen */
+    width: 100%;
+    height: 100%;
+
+    header {
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #1a1a1a;
+      padding: 15px 30px;
+      color: #A88E3D;
+      box-shadow: 0 0 10px black;
+
+      ul {
+
+        list-style: none;
+        display: flex;
+        gap: 20px;
+        margin: 0;
+        padding: 0;
+        
+        a {
+            
+          text-decoration: none; /*Quita la barra inferior*/
+          color: #A88E3D;
+          font-weight: 500;
+          transition: all 0.3s ease;
+
+          &:hover {
+            color: #fff;
+            transform: scale(1.1);
+          }
+        }
+      }
+    }
+
+    .eleccion{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 200px;
+        padding-left: 400px;
+        padding-right: 400px;
+
+        .div_raza{
+
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            width: 300px;
+
+            h2{
+
+                color: #CB9F0B;
+
+                text-shadow: 
+                -1px -1px 0 black,
+                1px -1px 0 black,
+                -1px  1px 0 black,
+                1px  1px 0 black;
+            }
+            
+            ul{
+                display: flex;
+                flex-direction: column;
+                list-style: none;
+
+                .boton-con-imagen {
+                    position: relative; 
+                    display: inline-block;
+                    
+                    .humano, .enano, .draenei, .gnomo, .elfo, .huargen{
+                        width: 300px;
+                    }
+                }
+
+                .icono {
+                    display: none; 
+                    position: absolute;
+                    left: 105%; 
+                    top: 50%;
+                    transform: translateY(-50%); 
+                    margin-top: 3px;
+                    margin-left: 10px;
+                    width: 40px; 
+                    height: auto;
+                    transition: opacity 0.2s ease; 
+                }
+
+                /* Mostrar la imagen al pasar el ratón sobre el botón */
+                .boton-con-imagen button:hover + .icono {
+                    display: block;
+                }
+
+
+
+                button{
+                
+                  background-color: #002C63;
+                  box-shadow: 0 0 10px black;
+                  color: #CB9F0B;
+                  height: 40px;
+                  font-size: 17px;
+                  letter-spacing: 2px;
+                  margin-top: 8px;
+                  cursor: pointer;
+
+                  transition: all 0.3s ease;
+
+                  &:hover{
+                      transform: scale(1.1);
+                  }
+
+                  &.humano:hover{
+                      background-color: #F5DEB3;
+                      color: black;
+                  }
+
+                  &.enano:hover{
+                      background-color: #D2691E;
+                      color: black;
+                  }
+
+                  &.draenei:hover{
+                      background-color: #5F9EA0;
+                      color: black;
+                  }
+
+                  &.huargen:hover{
+                      background-color: #708090;
+                      color: black;
+                  }
+
+                  &.elfo:hover{
+                      background-color: #191970;
+                      color: black;
+                  }
+
+                  &.gnomo:hover{
+                      background-color: #FFD700;
+                      color: black;
+                  }
+
+                }
+            }
+
+
+        }
+
+    }
+  
+    .div_abandonar{
+
+        width: 100%;
+        text-align: center;
+
+        .abandonar{
+            background-color: #002C63;
+            box-shadow: 0 0 10px black;
+            color: #CB9F0B;
+            height: 40px;
+            width: 200px;
+            font-size: 17px;
+            letter-spacing: 2px;
+            margin-top: 200px;
+    
+            transition: all 0.3s ease;
+    
+            &:hover{
+                transform: scale(1.1);
+            }
+        }
+
+    }
+
+
+}
+
+
+
