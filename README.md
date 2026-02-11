@@ -1,23 +1,23 @@
-# 💼 Portfolio - Jeremi
+# Portfolio - Jeremi
 
 Bienvenido a mi portfolio personal.  
 Soy estudiante de Desarrollo de Aplicaciones Web (DAW) y actualmente estoy finalizando el ciclo formativo.
 
 En este repositorio recopilo los proyectos más relevantes que he desarrollado durante mi formación, donde aplico conocimientos de desarrollo frontend, backend y bases de datos.
 
-## 🚀 Sobre mí
+## Sobre mí
 
 Me estoy formando como desarrollador web, con interés en crear aplicaciones funcionales, bien estructuradas y centradas en el usuario.  
 Me gusta aprender nuevas tecnologías y mejorar constantemente mis habilidades técnicas.
 
-## 🛠️ Tecnologías que utilizo
+## Tecnologías que utilizo
 
 - HTML, CSS, JavaScript  
 - Java  
 - MySQL  
 - Git y GitHub  
 
-## 📂 ¿Qué encontrarás aquí?
+## ¿Qué encontrarás aquí?
 
 - Proyectos académicos
 - Aplicaciones web completas
