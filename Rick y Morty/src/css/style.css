@@ -58,6 +58,50 @@ body{
         }
     }
 
-    
+    .contenedorTarjetas{
+
+        max-width: 1200px;
+
+        margin-top: 50px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        article{
+
+            max-width: 300px;
+
+            width: calc(100% - 80px);
+            margin: 0 40px;
+
+            margin-bottom: 30px;
+
+            background-color: #272B33;
+            box-shadow: 2px 2px 8px black;
+            border-radius: 10px;
+
+            text-align: center;
+            color: white;
+        
+            &:hover{
+
+                transform: scale(1.02);
+
+            }
+
+        }
+
+        .tarjeta img {
+
+            width: 295px;
+            border-top-right-radius: 10px;
+            border-top-left-radius: 10px;
+            border-bottom: 1px solid #ddd;
+
+        }
+
+    }
 
 }
