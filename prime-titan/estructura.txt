@@ -1,0 +1,45 @@
+/mi_proyecto/
+│
+├── public/               # Archivos accesibles públicamente (raíz web)
+│   ├── index.php         # Entrada principal de la app
+│   ├── login.php         # Página de login
+│   ├── logout.php
+│   ├── assets/           # CSS, JS, imágenes
+│   │   ├── css/
+│   │   ├── js/
+│   │   └── images/
+│   └── uploads/          # Archivos subidos por usuarios
+│
+├── app/                  # Código fuente (no accesible públicamente)
+│   ├── config/           # Configuraciones globales
+│   │   └── database.php  # Conexión a la base de datos
+│   │
+│   ├── controllers/      # Lógica de controladores
+│   │   ├── AuthController.php
+│   │   └── ProductController.php
+│   │
+│   ├── models/           # Modelos (objetos que representan la BD)
+│   │   ├── User.php
+│   │   └── Product.php
+│   │
+│   ├── views/            # Plantillas / vistas
+│   │   ├── auth/
+│   │   │   └── login.php
+│   │   ├── products/
+│   │   │   └── list.php
+│   │   └── layouts/      # Plantillas comunes (header, footer)
+│   │       ├── header.php
+│   │       └── footer.php
+│   │
+│   └── helpers/          # Funciones reutilizables
+│       ├── session.php   # Funciones de sesión
+│       ├── validation.php # Validaciones de datos
+│       └── utils.php     # Funciones generales
+│
+├── vendor/               # Librerías externas (si usas Composer)
+│
+├── .env                  # Configuración sensible (DB, keys)
+├── composer.json         # Dependencias (si usas Composer)
+└── README.md
+
+

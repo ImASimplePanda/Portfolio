@@ -1,0 +1,542 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden; /* evita scroll horizontal */
+  background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+  background-image: url('../images/movil.png'); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+
+/* Contenedor principal */
+
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; 
+}
+
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
+  padding: 2% 4%;
+  width: 90%;
+  margin: 2% auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  position: relative;
+  z-index: 10;
+
+
+}
+
+/* Menu hamburguesa */
+.menu-btn {
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #111;
+}
+
+.logo-container {
+  flex: 1;
+  text-align: center;
+}
+
+.logo {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+
+
+/* Perfil usuario */
+.profile-container {
+  position: relative;
+  cursor: pointer;
+  
+}
+
+.profile-pic {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+
+.profile-dropdown {
+  display: none;
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  width: 150px;
+  z-index: 20;
+}
+
+.profile-dropdown ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.profile-dropdown ul li {
+  border-bottom: 1px solid #eee;
+}
+
+.profile-dropdown ul li:last-child {
+  border-bottom: none;
+}
+
+.profile-dropdown ul li a {
+  display: block;
+  padding: 8px 10px;
+  font-size: 0.9rem;
+  color: #111;
+}
+
+.profile-dropdown ul li a:hover {
+  background: #f0f0f0;
+}
+
+
+/* Menu lateral */
+
+.side-menu {
+  position: fixed;
+  top: 0;
+  left: -80%;
+  width: 80%;
+  height: 100%;
+  background: #222;
+  padding: 3%;
+  transition: left 0.3s ease;
+  z-index: 1000;
+}
+
+.side-menu.active {
+  left: 0;
+}
+
+.side-menu ul {
+  list-style: none;
+  margin-top: 10%;
+}
+
+.side-menu ul li {
+  margin-bottom: 5%;
+}
+
+.side-menu ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 100%;
+}
+
+.side-menu .close-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 120%;
+  cursor: pointer;
+}
+
+
+
+.overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 900;
+}
+
+.overlay.active {
+  display: block;
+}
+
+
+.content-box {
+  background: #ffffff;  
+  width: 90%;           
+  margin: 2% auto;      
+  padding: 4%;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  flex: 1;              
+  min-height: 60vh;     
+}
+
+/* Buscador */
+.search-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2%;
+}
+
+.search-input {
+  width: 70%;
+  padding: 1% 2%;
+  border: 1px solid #ccc;
+  border-radius: 5px 0 0 5px;
+  font-size: 1em;
+}
+
+.search-btn {
+  padding: 1% 2%;
+  border: 1px solid #ccc;
+  border-left: 0;
+  background-color: #007bff;
+  color: white;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.search-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Productos en grid */
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 15px;
+}
+
+/* Tarjetas de productos */
+.product-card {
+
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+
+  background: #f9f9f9;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  .add-to-cart,
+  .add-to-fav {
+      border: none;          
+      background-color: #f4a460; 
+      color: rgb(0, 0, 0);          
+      margin-top: 5px;
+      width: 100%;
+      padding: 3px;
+      border-radius: 5px;    
+      cursor: pointer;       
+      font-size: 0.9rem;
+      transition: background-color 0.3s; 
+      &:hover{
+        background-color: #d17f3c;
+      }
+  }
+
+}
+
+.cart-toast {
+    position: fixed;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #000;
+    color: #fff;
+    padding: 3% 6%;
+    border-radius: 12px;
+    opacity: 0;
+    transition: 0.3s;
+    font-size: 4vw;
+    z-index: 9999;
+}
+
+.cart-toast.show {
+    opacity: 1;
+}
+
+
+.product-card img {
+  width: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+
+
+.carousel-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    margin: 20px 0;
+    color: white;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.3s ease;
+}
+
+.carousel-item {
+    min-width: 100%;
+    text-align: center;
+    padding: 10px;
+}
+
+.carousel-item img {
+    width: 80%;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+.carousel-name {
+    font-size: 4vw;
+    margin-top: 10px;
+}
+
+.carousel-price {
+    font-size: 4vw;
+    color: #444;
+}
+
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.4);
+    color: white;
+    border: none;
+    padding: 10px 14px;
+    border-radius: 50%;
+    font-size: 6vw;
+    cursor: pointer;
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+
+
+.footer {
+  background: #111;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2% 0;
+  font-size: 90%;
+  margin-top: auto;
+}
+
+
+/* Perfil de usuario */
+
+.profile-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  padding-top: 10px;
+}
+
+.profile-title {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #222;
+}
+
+/* Tarjeta principal */
+.profile-card {
+  background: #ffffff;
+  width: 100%;
+  max-width: 420px;
+  border-radius: 20px;
+  padding: 30px 25px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+}
+
+/* Avatar */
+.profile-avatar-wrapper {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  padding: 5px;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #fff;
+}
+
+
+.profile-username {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #333;
+  margin-top: -10px;
+}
+
+
+.profile-info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+
+.profile-item {
+  background: #fafafa;
+  padding: 15px;
+  border-radius: 14px;
+  text-align: center;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+}
+
+.profile-item .label {
+  font-size: 0.85rem;
+  color: #777;
+  font-weight: bold;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.profile-item .value {
+  font-size: 1.05rem;
+  color: #222;
+  font-weight: 500;
+}
+
+.change-avatar-btn {
+  margin-top: 10px;
+  padding: 8px 14px;
+  background: #ff9a9e;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.change-avatar-btn:hover {
+  background: #ff7b82;
+}
+
+.rating {
+  width: 100%;
+  display: flex;
+  justify-content: center; 
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.rating .star {
+    color: #ccc;
+    transition: 0.2s;
+}
+
+.rating .star.active {
+    color: gold;
+}
+
+.rating .star:hover {
+    transform: scale(1.2);
+}
+
+.rating-info {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+
+
+/* Responsive */
+@media (max-width: 480px) {
+  .profile-card {
+    padding: 20px;
+  }
+
+  .profile-avatar-wrapper {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+
+@media (max-width: 375px) {
+  .header {
+    width: 95%;
+    padding: 3% 4%;
+    border-radius: 10px;
+  }
+
+  .logo {
+    font-size: 1.3rem;
+  }
+
+  .profile-pic {
+    width: 32px;
+    height: 32px;
+  }
+
+  .side-menu {
+    width: 85%;
+    left: -85%;
+  }
+
+  .profile-dropdown {
+    top: 35px;
+    width: 140px;
+  }
+
+  .profile-dropdown ul li a {
+    padding: 7px 10px;
+    font-size: 0.85rem;
+  }
+
+  .content-box {
+    width: 95%;
+    padding: 3%;
+  }
+
+  .products {
+    grid-template-columns: 1fr 1fr; 
+    gap: 10px;
+  }
+}

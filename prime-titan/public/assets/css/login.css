@@ -1,0 +1,140 @@
+/* Contenedor general */
+.page-wrapper {
+    width: 100%;
+    min-height: 100svh;
+    padding: 5% 5% 20% 5%; 
+    display: flex;
+    justify-content: center;   
+    align-items: center;   
+    box-sizing: border-box;
+}
+
+/* Caja blanca */
+.login-container {
+    width: 90%;          
+    max-width: 80%;      
+    background-color: #ffffff;
+    border-radius: 14px;
+    padding: 8%;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+}
+
+.login-title {
+    text-align: center;
+    font-size: 1.6rem;
+    color: #000000;
+    margin-bottom: 2rem;
+}
+
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.login-form label {
+    font-size: 0.9rem;
+    color: #000000;
+    margin-bottom: 0.3rem;
+}
+
+.login-form input {
+    width: 100%;
+    padding: 0.9rem;
+    margin-bottom: 1.2rem;
+    font-size: 1rem;
+    border-radius: 10px;
+    border: none;
+    background-color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.login-form input:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Botón */
+.login-btn {
+    width: 100%;
+    padding: 1rem;
+    background-color: #000000;
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 0.5rem;
+}
+
+.login-btn:active {
+    transform: scale(0.98);
+}
+
+/* Texto registro */
+.register-text {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: #000000;
+}
+
+.register-text a {
+    color: #000000;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+/* Mensaje de error */
+.error-msg {
+    background-color: #ffe5e5;
+    color: #000000;
+    padding: 1rem;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 0.9rem;
+    margin-bottom: 1.2rem;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #111;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+    z-index: 100;
+}
+
+
+
+
+/*Registro*/
+.register-container {
+    width: 90%;
+    max-width: 360px;
+    background-color: #ffffff;
+    border-radius: 14px;
+    padding: 8%;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+}
+
+.register-title {
+    text-align: center;
+    font-size: 1.6rem;
+    color: #000000;
+    margin-bottom: 10%;
+}
+
+.file-input {
+    margin-bottom: 8%;
+    font-size: 0.9rem;
+}

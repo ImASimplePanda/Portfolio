@@ -1,0 +1,115 @@
+/* Contenedor principal */
+.page-wrapper {
+    width: 100%;
+    min-height: 100vh;
+    padding: 4% 5%;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+
+.content-box {
+    width: 95%;
+    max-width: 900px;
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 3%;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    box-sizing: border-box;
+}
+
+
+.admin-title {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 2%;
+}
+
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto; 
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 700px; 
+}
+
+.admin-table th,
+.admin-table td {
+    border: 1px solid #e0e0e0;
+    padding: 12px;
+    text-align: center;
+}
+
+
+.admin-table input[type="text"],
+.admin-table input[type="email"],
+.admin-table input[type="password"],
+.admin-table select {
+    width: 90%;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background: #fafafa;
+    transition: 0.2s;
+}
+
+.admin-table input:focus,
+.admin-table select:focus {
+    border-color: #000;
+    background: #fff;
+}
+
+
+.admin-table button {
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: none;
+    background-color: #000;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.admin-table button:hover {
+    background-color: #333;
+}
+
+
+/* Mensajes */
+.success-msg, .error-msg {
+    padding: 1rem;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.success-msg {
+    background: #e5ffe5;
+}
+
+.error-msg {
+    background: #ffe5e5;
+}
+
+
+@media (max-width: 600px) {
+    .admin-title {
+        font-size: 1.4rem;
+    }
+
+    .admin-table input,
+    .admin-table select {
+        width: 100%;
+    }
+
+    .admin-table button {
+        width: 100%;
+        margin-top: 5px;
+    }
+}
