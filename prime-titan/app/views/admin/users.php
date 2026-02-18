@@ -10,24 +10,41 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
     exit;
 }
 
-// Instancia del modelo
 $userModel = new User($db);
 $error = null;
 $success = null;
+
+// Eliminar usuario
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_user_id'])) {
+
+    $deleteId = intval($_POST['delete_user_id']);
+
+    // Evitar que el admin se elimine a sí mismo
+    if ($deleteId == $_SESSION['user']['id']) {
+        $error = "No puedes eliminar tu propio usuario.";
+    } else {
+        try {
+            $stmt = $db->prepare("DELETE FROM users WHERE id = :id");
+            $stmt->execute([':id' => $deleteId]);
+            $success = "Usuario eliminado correctamente.";
+        } catch (PDOException $e) {
+            $error = "Error al eliminar el usuario.";
+        }
+    }
+}
 
 // Actualizar usuario
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_user_id'])) {
     $id       = intval($_POST['edit_user_id']);
     $username = trim($_POST['username']);
     $email    = trim($_POST['email']);
-    $password = $_POST['password']; // opcional
+    $password = $_POST['password'];
     $role     = $_POST['role'];
 
     if ($username === '' || $email === '' || !in_array($role, ['user','admin'])) {
         $error = "Datos inválidos.";
     } else {
         try {
-            // Si hay contraseña nueva, hashearla
             if (!empty($password)) {
                 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
                 $stmt = $db->prepare("
@@ -67,7 +84,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_user_id'])) {
 $stmt = $db->query("SELECT id, username, email, role FROM users");
 $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-
 $extra_css = '<link rel="stylesheet" href="' . BASE_URL . 'assets/css/users.css">';
 require_once BASE_DIR . '/views/layouts/header.php';
 ?>
@@ -101,16 +117,18 @@ require_once BASE_DIR . '/views/layouts/header.php';
                 <tbody>
                     <?php foreach($users as $u): ?>
                     <tr>
-                        <form method="POST">
-                            <td><?= $u['id'] ?></td>
 
+                        <td><?= $u['id'] ?></td>
+
+                        <!-- Formulario actualizar -->
+                        <form method="POST">
                             <td>
-                                <input type="text" name="username" 
+                                <input type="text" name="username"
                                        value="<?= htmlspecialchars($u['username']) ?>">
                             </td>
 
                             <td>
-                                <input type="email" name="email" 
+                                <input type="email" name="email"
                                        value="<?= htmlspecialchars($u['email']) ?>">
                             </td>
 
@@ -121,12 +139,22 @@ require_once BASE_DIR . '/views/layouts/header.php';
                                 </select>
                             </td>
 
-                            <td>
+                            <td class="actions-cell">
+
                                 <input type="password" name="password" placeholder="Nueva contraseña">
                                 <input type="hidden" name="edit_user_id" value="<?= $u['id'] ?>">
-                                <button type="submit">Actualizar</button>
-                            </td>
+                                <button type="submit" class="update-btn">Actualizar</button>
+
                         </form>
+
+                                <!-- Formulario eliminar-->
+                                <form method="POST" onsubmit="return confirm('¿Seguro que quieres eliminar este usuario?');">
+                                    <input type="hidden" name="delete_user_id" value="<?= $u['id'] ?>">
+                                    <button type="submit" class="delete-btn">Eliminar</button>
+                                </form>
+
+                            </td>
+
                     </tr>
                     <?php endforeach; ?>
                 </tbody>
