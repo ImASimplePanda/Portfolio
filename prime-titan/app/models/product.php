@@ -20,6 +20,13 @@ class Product {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    // Comprobar si existe un producto con ese nombre
+    public function existsByName($name) {
+        $stmt = $this->pdo->prepare("SELECT id FROM products WHERE name = :name LIMIT 1");
+        $stmt->execute([':name' => $name]);
+        return $stmt->fetch(PDO::FETCH_ASSOC) ? true : false;
+    }
+
     // Eliminar un producto
     public function delete($id) {
         $sql = "DELETE FROM products WHERE id = :id";
@@ -43,8 +50,15 @@ class Product {
         return $query->execute();
     }
 
-    // Crear un producto
+    // Crear un producto (con validación de duplicados)
     public function create($name, $price, $image) {
+
+        // Comprobar si ya existe
+        if ($this->existsByName($name)) {
+            return false; 
+        }
+
+        // Insertar si no existe
         $sql = "INSERT INTO products (name, price, image) 
                 VALUES (:name, :price, :image)";
 
@@ -55,6 +69,4 @@ class Product {
 
         return $query->execute();
     }
-
-
 }

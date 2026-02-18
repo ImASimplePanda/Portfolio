@@ -89,16 +89,7 @@
     text-decoration: underline;
 }
 
-/* Mensaje de error */
-.error-msg {
-    background-color: #ffe5e5;
-    color: #000000;
-    padding: 1rem;
-    border-radius: 10px;
-    text-align: center;
-    font-size: 0.9rem;
-    margin-bottom: 1.2rem;
-}
+
 
 .footer {
     position: fixed;
@@ -137,4 +128,33 @@
 .file-input {
     margin-bottom: 8%;
     font-size: 0.9rem;
+}
+
+
+/* Mensaje de error */
+.error-msg {
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 1.2rem;
+    background: #ffdddd;
+    color: #b30000;
+    border-left: 6px solid #b30000;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* Mensaje de éxito */
+.success-msg {
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 1.2rem;
+    background: #ddffdd;
+    color: #0f7a0f;
+    border-left: 6px solid #0f7a0f;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-align: center;
 }

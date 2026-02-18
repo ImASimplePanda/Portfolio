@@ -2,4 +2,3 @@
 - Mejorar gestion de usuarios
 - Si un producto esta en un carrito y se elimina, sigue en el carrito
 - Comprobar que no se puede crear un mismo producto que ya existe
-- Que el admin pueda eliminar usuarios
