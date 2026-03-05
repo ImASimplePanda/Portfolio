@@ -144,3 +144,31 @@
 .admin-form > * {
     margin-bottom: 2%;
 }
+
+/* Mensaje de error */
+.error-msg {
+    width: 92%;
+    margin: 0 auto 4%;
+    padding: 3%;
+    background: #ffdddd;
+    color: #b30000;
+    border-left: 6px solid #b30000;
+    border-radius: 8px;
+    font-size: 4vw;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* Mensaje de éxito */
+.success-msg {
+    width: 92%;
+    margin: 0 auto 4%;
+    padding: 3%;
+    background: #ddffdd;
+    color: #0f7a0f;
+    border-left: 6px solid #0f7a0f;
+    border-radius: 8px;
+    font-size: 4vw;
+    font-weight: 600;
+    text-align: center;
+}

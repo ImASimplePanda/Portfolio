@@ -98,6 +98,24 @@
 }
 
 
+
+.actions-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+}
+
+.delete-btn {
+    background-color: #d60000;
+}
+
+.delete-btn:hover {
+    background-color: #a30000;
+}
+
+
 @media (max-width: 600px) {
     .admin-title {
         font-size: 1.4rem;

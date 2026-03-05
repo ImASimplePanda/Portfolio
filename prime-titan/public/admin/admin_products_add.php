@@ -16,11 +16,14 @@ require_once BASE_DIR . '/views/layouts/header.php';
 
 $productModel = new Product($db);
 
+$error = null;
+$success = null;
+
 // Procesar formulario
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    $name = $_POST['name'];
-    $price = $_POST['price'];
+    $name = trim($_POST['name']);
+    $price = floatval($_POST['price']);
 
     // Procesar imagen
     $imageName = null;
@@ -28,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Si sube una nueva imagen
     if (!empty($_FILES['image_upload']['name'])) {
         $imageName = basename($_FILES['image_upload']['name']);
-        $targetPath = __DIR__ . '/../assets/images/' . $imageName;
+        $targetPath = __DIR__ . '/../../assets/images/' . $imageName;
         move_uploaded_file($_FILES['image_upload']['tmp_name'], $targetPath);
     }
     // Si selecciona una existente
@@ -36,34 +39,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $imageName = $_POST['image_select'];
     }
 
-    // Crear producto
-    $productModel->create($name, $price, $imageName);
-
-    header("Location: " . BASE_URL . "admin/admin_products.php");
-    exit;
+    // Intentar crear producto
+    if (!$productModel->create($name, $price, $imageName)) {
+        // Producto duplicado
+        $error = "Este producto ya existe. Elige otro nombre.";
+    } else {
+        // Producto creado correctamente
+        $success = "Producto creado correctamente.";
+    }
 }
-
-
-
-$imageName = null;
-
-// Si sube una nueva imagen
-if (!empty($_FILES['image_upload']['name'])) {
-    $imageName = basename($_FILES['image_upload']['name']);
-    $targetPath = __DIR__ . '/../../assets/images/' . $imageName;
-    move_uploaded_file($_FILES['image_upload']['tmp_name'], $targetPath);
-}
-// Si no sube, pero selecciona una existente
-else if (!empty($_POST['image_select'])) {
-    $imageName = $_POST['image_select'];
-}
-
-
 ?>
 
 <div class="content-box">
 
     <h2 class="admin-title">Añadir producto</h2>
+
+    <?php if ($error): ?>
+        <p class="error-msg"><?= htmlspecialchars($error) ?></p>
+    <?php endif; ?>
+
+    <?php if ($success): ?>
+        <p class="success-msg"><?= htmlspecialchars($success) ?></p>
+    <?php endif; ?>
 
     <form method="POST" enctype="multipart/form-data" class="admin-form">
 
@@ -93,8 +90,5 @@ else if (!empty($_POST['image_select'])) {
     </form>
 
 </div>
-
-
-
 
 <?php require_once BASE_DIR . '/views/layouts/footer.php'; ?>
