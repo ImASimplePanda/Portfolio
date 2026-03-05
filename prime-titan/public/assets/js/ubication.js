@@ -2,43 +2,42 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const geoBox = document.getElementById("geo-location");
 
-    // Comprobación básica: si el navegador no soporta geolocalización, se muestra un mensaje
     if (!navigator.geolocation) {
         geoBox.textContent = "La geolocalización no está soportada";
         return;
     }
 
-    // Petición de ubicación al navegador y manejo de la respuesta
     navigator.geolocation.getCurrentPosition(
         async (pos) => {
             const lat = pos.coords.latitude;
             const lon = pos.coords.longitude;
 
+            // Crear mapa siempre
+            const map = L.map('map').setView([lat, lon], 13);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: '© OpenStreetMap'
+            }).addTo(map);
+            L.marker([lat, lon]).addTo(map);
+
             try {
-                // Petición a la API de OpenStreetMap para convertir coordenadas en ciudad y país
+                // API estable sin CORS
                 const res = await fetch(
-                    `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`
+                    `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=es`
                 );
                 const data = await res.json();
 
-                // Selección del nombre de la ciudad según lo que devuelva la API
-                const city =
-                    data.address.city ||
-                    data.address.town ||
-                    data.address.village ||
-                    "Ciudad desconocida";
+                const city = data.city || data.locality || "Ciudad desconocida";
+                const country = data.countryName || "";
 
-                const country = data.address.country || "";
-
-                // Mostrar la ubicación en pantalla
                 geoBox.textContent = `${city}, ${country}`;
+
             } catch (e) {
-                // Error al consultar la API
-                geoBox.textContent = "No se pudo obtener la ubicación";
+                geoBox.textContent = `Lat: ${lat.toFixed(4)}, Lon: ${lon.toFixed(4)}`;
             }
         },
+
         () => {
-            // Caso en el que el usuario niega el permiso
             geoBox.textContent = "Permiso denegado";
         }
     );
