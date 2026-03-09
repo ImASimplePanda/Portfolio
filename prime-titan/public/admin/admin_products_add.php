@@ -41,18 +41,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Intentar crear producto
     if (!$productModel->create($name, $price, $imageName)) {
-        // Producto duplicado
-        $error = "Este producto ya existe. Elige otro nombre.";
+        $error = __t('product_exists'); // Producto duplicado
     } else {
-        // Producto creado correctamente
-        $success = "Producto creado correctamente.";
+        $success = __t('product_created'); // Producto creado
     }
 }
 ?>
 
 <div class="content-box">
 
-    <h2 class="admin-title">Añadir producto</h2>
+    <h2 class="admin-title"><?= __t('add_product') ?></h2>
 
     <?php if ($error): ?>
         <p class="error-msg"><?= htmlspecialchars($error) ?></p>
@@ -64,15 +62,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <form method="POST" enctype="multipart/form-data" class="admin-form">
 
-        <label>Nombre del producto</label>
+        <label><?= __t('product_name') ?></label>
         <input type="text" name="name" required>
 
-        <label>Precio (€)</label>
+        <label><?= __t('price') ?> (€)</label>
         <input type="number" step="0.01" name="price" required>
 
-        <label>Seleccionar imagen existente</label>
+        <label><?= __t('select_existing_image') ?></label>
         <select name="image_select" class="image-select">
-            <option value="">-- Ninguna --</option>
+            <option value="">-- <?= __t('none') ?> --</option>
             <?php
             $images = scandir(__DIR__ . '/../../assets/images/');
             foreach ($images as $img) {
@@ -82,10 +80,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ?>
         </select>
 
-        <label>O subir nueva imagen</label>
+        <label><?= __t('upload_new_image') ?></label>
         <input type="file" name="image_upload" accept="image/*">
 
-        <button type="submit" class="btn-save">Guardar</button>
+        <button type="submit" class="btn-save"><?= __t('save') ?></button>
 
     </form>
 

@@ -28,11 +28,14 @@ return [
     // Wishlist
     'wishlist_title' => 'Wishlist',
     'wishlist_empty' => 'Your wishlist is empty',
+    'per_unit' => 'each',
 
     // Products (admin)
     'add_product' => 'Add product',
-    'delete' => 'Delete',
+    'product_management' => 'Product Management',
     'edit' => 'Edit',
+    'delete' => 'Delete',
+
 
     // Edit product
     'product_name' => 'Product name',
@@ -40,6 +43,9 @@ return [
     'current_image' => 'Current image',
     'select_existing_image' => 'Select existing image',
     'upload_new_image' => 'Upload new image',
+    'none' => 'None',
+    'save' => 'Save',
+    'keep_current' => 'Keep current',   
 
     // Alerts
     'confirm_delete_product' => 'Are you sure you want to delete this product?',

@@ -28,18 +28,25 @@ return [
     // Wishlist
     'wishlist_title' => 'Lista de deseados',
     'wishlist_empty' => 'Tu lista está vacía',
+    'per_unit' => 'c/u',
 
     // Productos (admin)
     'add_product' => 'Añadir producto',
     'delete' => 'Eliminar',
     'edit' => 'Editar',
+    'product_management' => 'Gestión de Productos',
+    'confirm_delete_product' => '¿Seguro que quieres eliminar este producto?',
 
+ 
     // Editar producto
     'product_name' => 'Nombre del producto',
     'price' => 'Precio',
     'current_image' => 'Imagen actual',
     'select_existing_image' => 'Seleccionar imagen existente',
     'upload_new_image' => 'Subir nueva imagen',
+    'none' => 'Ninguna',
+    'save' => 'Guardar',
+    'keep_current' => 'Mantener actual',
 
     // Alertas
     'confirm_delete_product' => '¿Seguro que quieres eliminar este producto?',
@@ -73,6 +80,8 @@ return [
     'favorite' => 'Favorito',
     'average_rating' => 'Valoración media',
     'votes' => 'votos',
+
+    
 
 
 ];

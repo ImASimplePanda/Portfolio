@@ -20,7 +20,7 @@ $id = $_GET['id'];
 $product = $productModel->getById($id);
 
 if (!$product) {
-    echo "<p>Producto no encontrado.</p>";
+    echo "<p>" . __t('product_not_found') . "</p>";
     exit;
 }
 
@@ -37,7 +37,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     exit;
 }
 
-
 $imageName = $product['image'];
 
 // Si sube una nueva imagen
@@ -50,29 +49,26 @@ if (!empty($_FILES['image_upload']['name'])) {
 else if (!empty($_POST['image_select'])) {
     $imageName = $_POST['image_select'];
 }
-
-
-
 ?>
 
 <div class="content-box">
 
-    <h2 class="admin-title">Editar producto</h2>
+    <h2 class="admin-title"><?= __t('edit_product') ?></h2>
 
     <form method="POST" enctype="multipart/form-data" class="admin-form">
 
-        <label>Nombre del producto</label>
-        <input type="text" name="name" value="<?php echo $product['name']; ?>" required>
+        <label><?= __t('product_name') ?></label>
+        <input type="text" name="name" value="<?= $product['name']; ?>" required>
 
-        <label>Precio (€)</label>
-        <input type="number" step="0.01" name="price" value="<?php echo $product['price']; ?>" required>
+        <label><?= __t('price') ?> (€)</label>
+        <input type="number" step="0.01" name="price" value="<?= $product['price']; ?>" required>
 
-        <label>Imagen actual</label>
-        <p style="font-size:4vw; color:#555;"><?php echo $product['image']; ?></p>
+        <label><?= __t('current_image') ?></label>
+        <p style="font-size:4vw; color:#555;"><?= $product['image']; ?></p>
 
-        <label>Seleccionar imagen existente</label>
+        <label><?= __t('select_existing_image') ?></label>
         <select name="image_select" class="image-select">
-            <option value="">-- Mantener actual --</option>
+            <option value="">-- <?= __t('keep_current') ?> --</option>
             <?php
             $images = scandir(__DIR__ . '/../../assets/images/');
             foreach ($images as $img) {
@@ -83,14 +79,16 @@ else if (!empty($_POST['image_select'])) {
             ?>
         </select>
 
-        <label>O subir nueva imagen</label>
+        <label><?= __t('upload_new_image') ?></label>
         <input type="file" name="image_upload" accept="image/*">
 
-        <button type="submit" class="btn-save">Guardar cambios</button>
+        <button type="submit" class="btn-save"><?= __t('save_changes') ?></button>
 
     </form>
 
 </div>
+
+<?php require_once BASE_DIR . '/views/layouts/footer.php'; ?>
 
 
 

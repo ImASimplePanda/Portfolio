@@ -47,7 +47,6 @@ if (isset($_GET['action']) && $_GET['action'] === 'remove') {
 if (isset($_GET['action']) && $_GET['action'] === 'add_to_cart') {
     $id = $_GET['id'];
 
-    // Obtener item de wishlist
     $stmt = $db->prepare("
         SELECT w.quantity, p.name, p.price, p.image
         FROM wishlist w
@@ -81,7 +80,6 @@ if (isset($_GET['action']) && $_GET['action'] === 'add_to_cart') {
 
 
 // Obtener wishlist desde db
-
 $stmt = $db->prepare("
     SELECT w.product_id AS id, w.quantity, p.name, p.price, p.image
     FROM wishlist w
@@ -99,45 +97,46 @@ $wishlist = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         <div class="wishlist-box">
 
-            <h2 class="wishlist-title">Lista de deseados</h2>
+            <h2 class="wishlist-title"><?= __t('wishlist_title') ?></h2>
 
             <?php if (empty($wishlist)): ?>
-                <p class="wishlist-empty">Tu lista está vacía</p>
+                <p class="wishlist-empty"><?= __t('wishlist_empty') ?></p>
             <?php else: ?>
 
                 <?php foreach ($wishlist as $item): ?>
                     <div class="wishlist-item">
 
-                        <img src="<?php echo BASE_URL; ?>assets/images/<?php echo $item['image']; ?>" class="wishlist-img">
+                        <img src="<?= BASE_URL ?>assets/images/<?= $item['image']; ?>" class="wishlist-img">
 
                         <div class="wishlist-info">
-                            <p class="wishlist-name"><?php echo $item['name']; ?></p>
+                            <p class="wishlist-name"><?= $item['name']; ?></p>
+
                             <p class="wishlist-price">
-                                <?php echo number_format($item['price'] * $item['quantity'], 2); ?>€
+                                <?= number_format($item['price'] * $item['quantity'], 2); ?>€
                                 <span style="font-size:3.5vw; color:#777;">
-                                    (<?php echo number_format($item['price'], 2); ?>€ c/u)
+                                    (<?= number_format($item['price'], 2); ?>€ <?= __t('per_unit') ?>)
                                 </span>
                             </p>
 
                             <div class="wishlist-qty">
-                                <a href="wishlist.php?action=minus&id=<?php echo $item['id']; ?>" class="qty-btn">-</a>
-                                <span class="qty-number"><?php echo $item['quantity']; ?></span>
-                                <a href="wishlist.php?action=plus&id=<?php echo $item['id']; ?>" class="qty-btn">+</a>
+                                <a href="wishlist.php?action=minus&id=<?= $item['id']; ?>" class="qty-btn">-</a>
+                                <span class="qty-number"><?= $item['quantity']; ?></span>
+                                <a href="wishlist.php?action=plus&id=<?= $item['id']; ?>" class="qty-btn">+</a>
                             </div>
 
                             <button 
                                 class="btn-cart add-from-wishlist"
-                                data-id="<?php echo $item['id']; ?>"
-                                data-name="<?php echo $item['name']; ?>"
-                                data-price="<?php echo $item['price']; ?>"
-                                data-image="<?php echo $item['image']; ?>"
-                                data-quantity="<?php echo $item['quantity']; ?>"
+                                data-id="<?= $item['id']; ?>"
+                                data-name="<?= $item['name']; ?>"
+                                data-price="<?= $item['price']; ?>"
+                                data-image="<?= $item['image']; ?>"
+                                data-quantity="<?= $item['quantity']; ?>"
                             >
-                                Añadir al carrito
+                                <?= __t('add_to_cart') ?>
                             </button>
 
-                            <a href="wishlist.php?action=remove&id=<?php echo $item['id']; ?>" class="btn-remove">
-                                Eliminar
+                            <a href="wishlist.php?action=remove&id=<?= $item['id']; ?>" class="btn-remove">
+                                <?= __t('delete') ?>
                             </a>
                         </div>
 

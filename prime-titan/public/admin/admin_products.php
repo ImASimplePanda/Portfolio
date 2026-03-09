@@ -4,7 +4,6 @@ require_once __DIR__ . '/../../app/config/config.php';
 require_once __DIR__ . '/../../app/config/database.php';
 require_once __DIR__ . '/../../app/models/product.php';
 
-
 // Solo admin
 if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
     header("Location: " . BASE_URL . "index.php");
@@ -24,29 +23,35 @@ $products = $productModel->getAll();
 
 <div class="content-box">
 
-    <h2 class="admin-title">Gestión de Productos</h2>
+    <h2 class="admin-title"><?= __t('product_management') ?></h2>
 
     <!-- Botón añadir -->
-    <a href="<?php echo BASE_URL; ?>admin/admin_products_add.php" class="btn-add">+ Añadir producto</a>
+    <a href="<?= BASE_URL; ?>admin/admin_products_add.php" class="btn-add">
+        + <?= __t('add_product') ?>
+    </a>
 
     <div class="product-list">
         <?php foreach ($products as $p): ?>
             <div class="product-item">
 
-                <img src="<?php echo BASE_URL; ?>assets/images/<?php echo $p['image']; ?>" class="product-img">
+                <img src="<?= BASE_URL; ?>assets/images/<?= $p['image']; ?>" class="product-img">
 
                 <div class="product-info">
-                    <p class="product-name"><?php echo htmlspecialchars($p['name']); ?></p>
-                    <p class="product-price"><?php echo number_format($p['price'], 2); ?>€</p>
+                    <p class="product-name"><?= htmlspecialchars($p['name']); ?></p>
+                    <p class="product-price"><?= number_format($p['price'], 2); ?>€</p>
                 </div>
 
                 <div class="product-actions">
-                    <a href="<?php echo BASE_URL; ?>admin/admin_products_edit.php?id=<?php echo $p['id']; ?>" class="btn-edit">Editar</a>
+                    <a href="<?= BASE_URL; ?>admin/admin_products_edit.php?id=<?= $p['id']; ?>" class="btn-edit">
+                        <?= __t('edit') ?>
+                    </a>
+
                     <a 
-                    href="<?php echo BASE_URL; ?>admin/admin_products_delete.php?id=<?php echo $p['id']; ?>" 
-                    class="btn-delete"
-                    onclick="return confirm('¿Seguro que quieres eliminar este producto?');">Eliminar
-                </a>
+                        href="<?= BASE_URL; ?>admin/admin_products_delete.php?id=<?= $p['id']; ?>" 
+                        class="btn-delete"
+                        onclick="return confirm('<?= __t('confirm_delete_product') ?>');">
+                        <?= __t('delete') ?>
+                    </a>
                 </div>
 
             </div>

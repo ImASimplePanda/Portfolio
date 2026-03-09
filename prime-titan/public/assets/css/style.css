@@ -524,6 +524,7 @@ html, body {
 
 
 
+
 /* ============================
    MODO OSCURO GLOBAL
 ============================ */
@@ -559,6 +560,8 @@ body.dark .side-menu a {
 }
 
 /* Tarjetas de productos */
+body.dark .wishlist-item,
+body.dark .cart-item,
 body.dark .product-card {
     background-color: #2e2d2d;
     border: 1px solid #333;
@@ -589,20 +592,27 @@ body.dark .search-input {
     border: 1px solid #333;
 }
 
-/* Carrusel */
-body.dark .carousel-container {
-    background-color: #1a1a1a;
-}
-
-body.dark .carousel-item {
-    background-color: #222;
-    border: 1px solid #333;
-}
-
-body.dark .carousel-name,
-body.dark .carousel-price {
+body.dark .profile-title {
     color: #fff;
 }
+
+/* Tarjetas */
+body.dark .admin-form,
+body.dark .product-item,
+body.dark .wishlist-box,
+body.dark .profile-item,
+body.dark .profile-card{
+    background-color: #2e2d2d;
+    border: 1px solid #333;
+    color: #fff;
+}
+
+body.dark label{
+    color: #fff;
+}
+
+
+
 
 
 

@@ -17,7 +17,7 @@ $user = $_SESSION['user'];
 
             <div class="profile-card">
 
-                <form action="actions/update_preferences.php" method="POST" style="width:100%; display:flex; flex-direction:column; gap:20px;">
+                <form action="actions/update_preferences.php" method="POST" style="width:100%; display:flex; flex-direction:column; gap:20px;" class="content-preferences">
 
                     <!-- Tema -->
                     <div class="profile-item">
