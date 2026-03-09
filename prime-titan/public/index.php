@@ -10,14 +10,13 @@
             $products = $productModel->getAll();
         ?>
 
-
         <div class="content-box">
 
             <div class="search-container">
                 <input 
                     type="text" 
                     id="searchInput" 
-                    placeholder="Buscar productos..." 
+                    placeholder="<?= __t('search_products') ?>..."
                     class="search-input"
                 >
             </div>
@@ -32,7 +31,7 @@
                         <h3><?= htmlspecialchars($product['name']); ?></h3>
                         <p>$<?= number_format($product['price'], 2); ?></p>
 
-                        <!-- Valoracion -->
+                        <!-- Valoración -->
                         <div class="rating" data-product="<?= $product['id'] ?>">
                             <i class="star" data-value="1">★</i>
                             <i class="star" data-value="2">★</i>
@@ -42,7 +41,7 @@
                         </div>
 
                         <div class="rating-info" id="rating-info-<?= $product['id'] ?>">
-                            Cargando valoración...
+                            <?= __t('loading_rating') ?>
                         </div>
 
                         <div class="product-actions">
@@ -51,11 +50,11 @@
                                 data-name="<?= htmlspecialchars($product['name']) ?>"
                                 data-price="<?= $product['price'] ?>"
                                 data-image="<?= $product['image'] ?>">
-                                🛒 Añadir al carrito
+                                🛒 <?= __t('add_to_cart') ?>
                             </button>
 
                             <button class="add-to-fav" data-id="<?= $product['id'] ?>">
-                                ❤️ Favorito
+                                ❤️ <?= __t('favorite') ?>
                             </button>
                         </div>
 
@@ -64,26 +63,16 @@
             </div>
         </div>
 
+        <script>
+            window.AVERAGE_RATING_LABEL = "<?= __t('average_rating') ?>";
+            window.VOTES_LABEL = "<?= __t('votes') ?>";
+        </script>
 
-        <div class="carousel-container">
-            <div class="carousel-track">
-
-                <?php foreach ($products as $product): ?>
-                <div class="carousel-item">
-                    <img src="<?= BASE_URL ?>assets/images/<?= $product['image'] ?>" alt="">
-                    <p class="carousel-name"><?= $product['name'] ?></p>
-                    <p class="carousel-price"><?= number_format($product['price'], 2) ?>€</p>
-                </div>
-                <?php endforeach; ?>
-
-            </div>
-
-            <button class="carousel-btn prev">‹</button>
-            <button class="carousel-btn next">›</button>
-        </div>
 
         <?php include __DIR__ . '/../app/views/layouts/footer.php'; ?>
     </div> 
 
 </body>
-<script src="<?php echo BASE_URL; ?>assets/js/fav.js"></script>
+
+<script src="<?= BASE_URL ?>assets/js/fav.js"></script>
+

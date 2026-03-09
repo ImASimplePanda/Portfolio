@@ -46,8 +46,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 'email'      => $user['email'],
                 'avatar'     => $user['avatar'] ?: 'default-avatar.png',
                 'created_at' => $user['created_at'],
-                'role'     => $user['role']
+                'role'       => $user['role'],
+                'theme'      => $user['theme'] ?? 'light',
+                'language'   => $user['language'] ?? 'es'
             ];
+
 
             header('Location: index.php');
             exit;

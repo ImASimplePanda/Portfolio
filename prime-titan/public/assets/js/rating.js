@@ -44,5 +44,9 @@ async function loadRating(productId) {
         star.classList.toggle("active", star.dataset.value <= data.average);
     });
 
-    info.textContent = `Valoración media: ${data.average} (${data.count} votos)`;
+    // Texto traducido desde PHP
+    const avgLabel = window.AVERAGE_RATING_LABEL;
+    const votesLabel = window.VOTES_LABEL;
+
+    info.textContent = `${avgLabel}: ${data.average} (${data.count} ${votesLabel})`;
 }

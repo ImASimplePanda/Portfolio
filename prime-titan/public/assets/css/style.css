@@ -503,6 +503,111 @@ html, body {
 
 
 
+.pref-select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+    background: #fff;
+    color: #333;
+    outline: none;
+    transition: 0.2s;
+}
+
+.pref-select:focus {
+    border-color: #ff9a9e;
+    box-shadow: 0 0 5px rgba(255, 154, 158, 0.5);
+}
+
+
+
+
+
+/* ============================
+   MODO OSCURO GLOBAL
+============================ */
+
+body.dark {
+    background-color: #121212;
+    color: #e5e5e5;
+}
+
+body.dark .content-box {
+    background-color: #1c1c1c;
+    color: #e5e5e5;
+    border-color: #333;
+}
+
+/* Header */
+body.dark .header {
+    background-color: #1e1e1e;
+    border-bottom: 1px solid #333;
+}
+
+body.dark .logo {
+    color: #fff;
+}
+
+/* Menú lateral */
+body.dark .side-menu {
+    background-color: #1e1e1e;
+}
+
+body.dark .side-menu a {
+    color: #fff;
+}
+
+/* Tarjetas de productos */
+body.dark .product-card {
+    background-color: #2e2d2d;
+    border: 1px solid #333;
+}
+
+body.dark .product-card h3,
+body.dark .product-card p {
+    color: #fff;
+}
+
+/* Botones */
+body.dark button,
+body.dark .add-to-cart,
+body.dark .add-to-fav {
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #555;
+}
+
+body.dark button:hover {
+    background-color: #444;
+}
+
+/* Buscador */
+body.dark .search-input {
+    background-color: #1e1e1e;
+    color: #fff;
+    border: 1px solid #333;
+}
+
+/* Carrusel */
+body.dark .carousel-container {
+    background-color: #1a1a1a;
+}
+
+body.dark .carousel-item {
+    background-color: #222;
+    border: 1px solid #333;
+}
+
+body.dark .carousel-name,
+body.dark .carousel-price {
+    color: #fff;
+}
+
+
+
+
+
 
 /* Responsive */
 @media (max-width: 480px) {

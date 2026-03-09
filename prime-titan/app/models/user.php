@@ -19,16 +19,16 @@ class User
 
 
     // Obtiene un usuario por ID
-     
     public function findById($id) {
         $stmt = $this->db->prepare(
-            "SELECT id, username, email, avatar, created_at
-             FROM users
-             WHERE id = :id"
+            "SELECT id, username, email, avatar, created_at, theme, language
+            FROM users
+            WHERE id = :id"
         );
         $stmt->execute(['id' => $id]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+
 
     public function updateAvatar($id, $avatar) {
         $query = "UPDATE users SET avatar = :avatar WHERE id = :id";
@@ -37,6 +37,16 @@ class User
         $stmt->bindParam(':id', $id);
         return $stmt->execute();
     }
+
+    public function updatePreferences($id, $theme, $language) {
+        $query = "UPDATE users SET theme = :theme, language = :language WHERE id = :id";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':theme', $theme);
+        $stmt->bindParam(':language', $language);
+        $stmt->bindParam(':id', $id);
+        return $stmt->execute();
+    }
+
 
 
 }

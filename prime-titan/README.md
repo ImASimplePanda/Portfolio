@@ -23,6 +23,10 @@ CREATE TABLE IF NOT EXISTS users (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+ALTER TABLE users 
+ADD COLUMN theme VARCHAR(10) DEFAULT 'light',
+ADD COLUMN language VARCHAR(5) DEFAULT 'es';
+
 -- -------------------------------------------------
 -- TABLA: PRODUCTS
 -- -------------------------------------------------
