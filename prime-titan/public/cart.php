@@ -23,15 +23,15 @@ $userId = $_SESSION['user']['id'];
 
         <div class="cart-wrapper">
 
-            <h2 class="cart-title">Mi carrito</h2>
+            <h2 class="cart-title"><?= __t('my_cart') ?></h2>
 
             <div id="cart-container"></div>
 
             <div class="cart-total">
-                Total: <span id="cart-total-price">0€</span>
+                <?= __t('total') ?>: <span id="cart-total-price">0€</span>
             </div>
 
-            <button id="buy-btn" class="buy-btn">Comprar</button>
+            <button id="buy-btn" class="buy-btn"><?= __t('buy') ?></button>
 
         </div>
 
@@ -40,3 +40,13 @@ $userId = $_SESSION['user']['id'];
     <?php require_once BASE_DIR . '/views/layouts/footer.php'; ?>
 
 </div>
+
+<script>
+    window.CART_ADDED = "<?= __t('cart_added') ?>";
+    window.CART_EMPTY = "<?= __t('cart_empty') ?>";
+    window.CART_QTY = "<?= __t('quantity') ?>";
+    window.CART_REMOVE = "<?= __t('remove') ?>";
+    window.CART_PURCHASE_SUCCESS = "<?= __t('purchase_success') ?>";
+    window.CART_PURCHASE_EMPTY = "<?= __t('purchase_empty') ?>";
+</script>
+

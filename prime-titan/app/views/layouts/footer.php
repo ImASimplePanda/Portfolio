@@ -10,7 +10,6 @@
 <script src="<?php echo BASE_URL; ?>assets/js/fav.js"></script>
 <script src="<?php echo BASE_URL; ?>assets/js/rating.js"></script>
 <script src="<?php echo BASE_URL; ?>assets/js/search.js"></script>
-<script src="<?php echo BASE_URL; ?>assets/js/ubication.js"></script>
 
 </body>
 </html>

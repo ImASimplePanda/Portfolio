@@ -2,11 +2,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
     console.log("cart.js CARGADO");
 
-    // Configuración inicial: se define la clave del carrito según el usuario
+    // Configuración inicial
     const userId = window.USER_ID || "guest";
     const CART_KEY = "cart_" + userId;
 
-    // Funciones base: obtener y guardar el carrito en localStorage
+    // Traducciones desde PHP
+    const TXT_ADDED = window.CART_ADDED;
+    const TXT_EMPTY = window.CART_EMPTY;
+    const TXT_QTY = window.CART_QTY;
+    const TXT_REMOVE = window.CART_REMOVE;
+    const TXT_PURCHASE_SUCCESS = window.CART_PURCHASE_SUCCESS;
+    const TXT_PURCHASE_EMPTY = window.CART_PURCHASE_EMPTY;
+
     function getCart() {
         return JSON.parse(localStorage.getItem(CART_KEY)) || [];
     }
@@ -15,7 +22,6 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem(CART_KEY, JSON.stringify(cart));
     }
 
-    // Lógica para añadir productos al carrito, sumando cantidades si ya existen
     function addToCart(product) {
         let cart = getCart();
         const existing = cart.find(item => item.id === product.id);
@@ -34,10 +40,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         saveCart(cart);
-        showToast("Producto añadido al carrito");
+        showToast(TXT_ADDED);
     }
 
-    // Eventos de los botones normales "añadir al carrito"
     document.querySelectorAll(".add-to-cart").forEach(btn => {
         btn.addEventListener("click", () => {
             const product = {
@@ -52,7 +57,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Añadir al carrito desde la wishlist y eliminarlo de allí
     document.addEventListener("click", (e) => {
         const btn = e.target.closest(".add-from-wishlist");
         if (!btn) return;
@@ -69,7 +73,6 @@ document.addEventListener("DOMContentLoaded", () => {
         window.location.href = `wishlist.php?action=remove&id=${product.id}`;
     });
 
-    // Renderizado del carrito en cart.php: muestra productos, total y botones de eliminar
     function renderCart() {
         const container = document.getElementById("cart-container");
         const totalPriceEl = document.getElementById("cart-total-price");
@@ -79,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const cart = getCart();
 
         if (cart.length === 0) {
-            container.innerHTML = "<p>Tu carrito está vacío.</p>";
+            container.innerHTML = `<p>${TXT_EMPTY}</p>`;
             totalPriceEl.textContent = "0€";
             return;
         }
@@ -96,8 +99,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     <div class="cart-info">
                         <p>${item.name}</p>
                         <p>${item.price}€</p>
-                        <p>Cantidad: ${item.quantity}</p>
-                        <button class="remove-item" data-id="${item.id}">Eliminar</button>
+                        <p>${TXT_QTY}: ${item.quantity}</p>
+                        <button class="remove-item" data-id="${item.id}">${TXT_REMOVE}</button>
                     </div>
                 </div>
             `;
@@ -113,7 +116,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Eliminar un producto del carrito y volver a renderizarlo
     function removeItem(id) {
         let cart = getCart();
         cart = cart.filter(item => item.id !== id);
@@ -121,7 +123,6 @@ document.addEventListener("DOMContentLoaded", () => {
         renderCart();
     }
 
-    // Botón comprar: vacía el carrito y muestra un mensaje
     const buyBtn = document.getElementById("buy-btn");
 
     if (buyBtn) {
@@ -129,17 +130,16 @@ document.addEventListener("DOMContentLoaded", () => {
             let cart = getCart();
 
             if (cart.length === 0) {
-                alert("Tu carrito está vacío.");
+                alert(TXT_PURCHASE_EMPTY);
                 return;
             }
 
             saveCart([]);
             renderCart();
-            alert("¡Compra realizada con éxito!");
+            alert(TXT_PURCHASE_SUCCESS);
         });
     }
 
-    // Toast: mensaje temporal que aparece al añadir productos
     function showToast(msg) {
         const toast = document.createElement("div");
         toast.className = "cart-toast";
@@ -153,6 +153,5 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 2000);
     }
 
-    // Inicialización: si estamos en cart.php, muestra el carrito
     renderCart();
 });

@@ -26,7 +26,7 @@ $user = $_SESSION['user'];
 
             <!-- Botón cambiar foto -->
             <button class="change-avatar-btn" onclick="document.getElementById('avatarInput').click()">
-                Cambiar foto
+                <?= __t('change_photo') ?>
             </button>
 
             <!-- Formulario oculto -->
@@ -43,18 +43,18 @@ $user = $_SESSION['user'];
             <div class="profile-info">
 
                 <div class="profile-item">
-                    <span class="label">Email</span>
+                    <span class="label"><?= __t('email') ?></span>
                     <span class="value"><?= htmlspecialchars($user['email']) ?></span>
                 </div>
 
                 <div class="profile-item">
-                    <span class="label">Miembro desde</span>
+                    <span class="label"><?= __t('member_since') ?></span>
                     <span class="value"><?= date('d/m/Y', strtotime($user['created_at'])) ?></span>
                 </div>
 
                 <div class="profile-item">
-                    <span class="label">Ubicación actual</span>
-                    <span class="value" id="geo-location">Detectando ubicación...</span>
+                    <span class="label"><?= __t('current_location') ?></span>
+                    <span class="value" id="geo-location"><?= __t('detecting_location') ?></span>
                 </div>
 
                 <!-- Mapa -->
@@ -82,5 +82,3 @@ document.getElementById("avatarInput").addEventListener("change", () => {
 
 <!-- Script geolocalización + mapa -->
 <script src="<?= BASE_URL ?>assets/js/ubication.js"></script>
-
-

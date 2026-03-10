@@ -21,9 +21,15 @@ return [
 
     // Cart
     'my_cart' => 'My cart',
-    'your_cart_is_empty' => 'Your cart is empty',
     'total' => 'Total',
     'buy' => 'Buy',
+    'cart_added' => 'Product added to cart',
+    'cart_empty' => 'Your cart is empty',
+    'quantity' => 'Quantity',
+    'remove' => 'Remove',
+    'purchase_success' => 'Purchase completed successfully!',
+    'purchase_empty' => 'Your cart is empty.',
+
 
     // Wishlist
     'wishlist_title' => 'Wishlist',
@@ -80,6 +86,15 @@ return [
     'favorite' => 'Favorite',
     'average_rating' => 'Average rating',
     'votes' => 'votes',
+
+
+    // Profile
+
+    'change_photo' => 'Change photo',
+    'email' => 'Email',
+    'member_since' => 'Member since',
+    'current_location' => 'Current location',
+    'detecting_location' => 'Detecting location...',
 
 
 

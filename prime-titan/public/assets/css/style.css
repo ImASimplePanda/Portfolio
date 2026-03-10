@@ -555,9 +555,9 @@ body.dark .side-menu {
     background-color: #1e1e1e;
 }
 
-body.dark .side-menu a {
-    color: #fff;
-}
+
+
+
 
 /* Tarjetas de productos */
 body.dark .wishlist-item,
@@ -567,16 +567,22 @@ body.dark .product-card {
     border: 1px solid #333;
 }
 
+
+body.dark .side-menu a,
+body.dark .profile-title,
+body.dark .value,
+body.dark .profile-username,
 body.dark .product-card h3,
 body.dark .product-card p {
     color: #fff;
 }
 
 /* Botones */
+
 body.dark button,
 body.dark .add-to-cart,
 body.dark .add-to-fav {
-    background-color: #333;
+
     color: #fff;
     border: 1px solid #555;
 }
@@ -592,9 +598,6 @@ body.dark .search-input {
     border: 1px solid #333;
 }
 
-body.dark .profile-title {
-    color: #fff;
-}
 
 /* Tarjetas */
 body.dark .admin-form,
@@ -607,9 +610,10 @@ body.dark .profile-card{
     color: #fff;
 }
 
-body.dark label{
-    color: #fff;
+body.dark .label{
+    color: #878787;
 }
+
 
 
 
