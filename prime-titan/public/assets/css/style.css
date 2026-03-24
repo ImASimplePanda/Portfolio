@@ -473,32 +473,102 @@ html, body {
 
 
 
+
+/* --- Contenedor Principal --- */
 .rating {
-  width: 100%;
-  display: flex;
-  justify-content: center; 
-  gap: 6px;
-  margin-top: 8px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 8px;
 }
 
+/* --- Estrellas Base (Interactiva) --- */
 .rating .star {
     color: #ccc;
-    transition: 0.2s;
+    font-size: 22px;
+    cursor: pointer;
+    transition: transform 0.2s, color 0.2s;
 }
 
+/* Estrellas que marcan la media actual */
 .rating .star.active {
     color: gold;
 }
 
-.rating .star:hover {
-    transform: scale(1.2);
+/* --- EFECTOS HOVER (Solo si está logueado y NO ha votado) --- */
+/* Solo aplicamos hover si NO tiene 'rating-disabled' y NO tiene 'not-logged' */
+.rating:not(.rating-disabled):not(.not-logged):hover .star {
+    color: gold;
 }
 
-.rating-info {
-    font-size: 14px;
-    color: #555;
-    margin-bottom: 8px;
+.rating:not(.rating-disabled):not(.not-logged) .star:hover {
+    transform: scale(1.25);
 }
+
+/* Apagar las estrellas a la derecha del ratón durante el hover */
+.rating:not(.rating-disabled):not(.not-logged) .star:hover ~ .star {
+    color: #ccc;
+}
+
+/* --- ESTADO: NO LOGUEADO (Invitado) --- */
+.rating.not-logged .star {
+    cursor: default; /* Quita la mano, pone flecha normal */
+    pointer-events: auto; /* Permite el clic para que salte tu alert de JS */
+}
+
+/* Desactivamos transformaciones visuales para invitados */
+.rating.not-logged .star:hover {
+    transform: none !important;
+}
+
+/* --- ESTADO: YA VOTADO (Disabled) --- */
+.rating.rating-disabled {
+    pointer-events: none !important; 
+    cursor: default;
+    opacity: 1; /* Mantener nitidez para ver el nuevo color */
+}
+
+/* Color Gris Azulado para las estrellas que el usuario marcó */
+.rating.rating-disabled .star.active {
+    color: #607d8b !important;
+}
+
+/* Gris muy claro para las estrellas restantes tras votar */
+.rating.rating-disabled .star:not(.active) {
+    color: #e0e0e0 !important;
+}
+
+.rating.rating-disabled .star:hover {
+    transform: none !important;
+}
+
+/* --- INFO INFERIOR (Media con iconos FontAwesome) --- */
+.rating-info {
+    font-size: 0.9em;
+    color: #555;
+    margin-top: 5px;
+    min-height: 20px;
+}
+
+.rating-info i.fa-star,
+.rating-info i.fa-star-half-o {
+    color: gold !important;
+    font-size: 20px;
+}
+
+.rating-info i.fa-star-o {
+    color: #ccc !important;
+    font-size: 20px;
+}
+
+.rating-info i:hover {
+    transform: scale(1.15);
+    transition: 0.2s;
+}
+
+
+
 
 
 

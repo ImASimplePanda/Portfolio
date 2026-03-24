@@ -1,5 +1,6 @@
 <?php
 session_start();
+session_regenerate_id(true); // evita sesiones antiguas
 
 require_once __DIR__ . '/../app/config/config.php';
 require_once __DIR__ . '/../app/config/database.php';

@@ -20,20 +20,25 @@ CREATE TABLE IF NOT EXISTS users (
     password VARCHAR(255) NOT NULL,
     avatar VARCHAR(255) DEFAULT 'default-avatar.png',
     role ENUM('normal','admin') NOT NULL DEFAULT 'normal',
+    theme VARCHAR(10) DEFAULT 'light',
+    language VARCHAR(5) DEFAULT 'es',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-ALTER TABLE users 
-ADD COLUMN theme VARCHAR(10) DEFAULT 'light',
-ADD COLUMN language VARCHAR(5) DEFAULT 'es';
-
 -- -------------------------------------------------
--- TABLA: PRODUCTS
+-- TABLA: PRODUCTS (MULTILENGUAJE)
 -- -------------------------------------------------
 CREATE TABLE IF NOT EXISTS products (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
-    description TEXT,
+
+    -- Español
+    name_es VARCHAR(100) NOT NULL,
+    description_es TEXT,
+
+    -- Inglés
+    name_en VARCHAR(100),
+    description_en TEXT,
+
     price DECIMAL(10,2) NOT NULL,
     stock INT DEFAULT 0,
     image VARCHAR(255) DEFAULT 'default-product.png',
@@ -56,31 +61,81 @@ CREATE TABLE IF NOT EXISTS wishlist (
 -- -------------------------------------------------
 -- TABLA: RATINGS
 -- -------------------------------------------------
-CREATE TABLE IF NOT EXISTS ratings (
+CREATE TABLE IF NOT EXISTS rating (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT NOT NULL,
-    product_id INT NOT NULL,
-    rating TINYINT NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
-    FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE
+    cantidad INT DEFAULT 0,          -- Valoración (1 a 5)
+    idPr INT NOT NULL,               -- ID del producto
+    idUs VARCHAR(50) NOT NULL,       -- Username del usuario
+
+    CONSTRAINT fk_rating_user 
+        FOREIGN KEY (idUs) REFERENCES users(username)
+        ON DELETE CASCADE 
+        ON UPDATE CASCADE,
+
+    CONSTRAINT fk_rating_product 
+        FOREIGN KEY (idPr) REFERENCES products(id)
+        ON DELETE CASCADE 
+        ON UPDATE CASCADE
 );
+ALTER TABLE rating ADD UNIQUE KEY unique_user_product (idUs, idPr);
+
+ALTER TABLE rating DROP FOREIGN KEY fk_rating_user;
+
+ALTER TABLE rating MODIFY idUs INT NOT NULL;
+
+ALTER TABLE rating 
+ADD CONSTRAINT fk_rating_user 
+FOREIGN KEY (idUs) REFERENCES users(id) 
+ON DELETE CASCADE ON UPDATE CASCADE;
+
 
 -- -------------------------------------------------
--- INSERTAR 10 PRODUCTOS DE GIMNASIO
+-- INSERTAR 10 PRODUCTOS MULTILENGUAJE
 -- -------------------------------------------------
-INSERT INTO products (name, description, price, stock, image) VALUES
-('Proteína Whey', 'Proteína de suero para aumentar masa muscular.', 29.99, 50, 'proteina-whey.jpg'),
-('Creatina Monohidrato', 'Suplemento para mejorar fuerza y rendimiento.', 19.99, 40, 'creatina.jpg'),
-('Straps de Levantamiento', 'Straps resistentes para barra y mancuernas.', 9.99, 100, 'creatina.jpg'),
-('Cinturón de Pesas', 'Cinturón de soporte lumbar para levantamiento pesado.', 24.99, 30, 'creatina.jpg'),
-('Guantes de Gimnasio', 'Guantes antideslizantes para entrenamientos seguros.', 14.99, 60, 'creatina.jpg'),
-('Banda Elástica', 'Bandas de resistencia para ejercicios de fuerza.', 12.99, 80, 'creatina.jpg'),
-('Botella de Agua Deportiva', 'Botella de 1L para mantenerse hidratado.', 7.99, 150, 'creatina.jpg'),
-('Rueda de Abdominales', 'Rueda para entrenar abdomen y core.', 15.99, 40, 'creatina.jpg'),
-('Rodilleras de Soporte', 'Rodilleras acolchadas para levantar peso.', 18.99, 50, 'creatina.jpg'),
-('Cuerda para Saltar', 'Cuerda de alta velocidad para cardio.', 8.99, 70, 'creatina.jpg');
+INSERT INTO products (name_es, description_es, name_en, description_en, price, stock, image) VALUES
+('Proteína Whey', 'Proteína de suero para aumentar masa muscular.',
+ 'Whey Protein', 'Whey protein to support muscle growth.',
+ 29.99, 50, 'proteina-whey.jpg'),
 
+('Creatina Monohidrato', 'Suplemento para mejorar fuerza y rendimiento.',
+ 'Creatine Monohydrate', 'Supplement designed to improve strength and performance.',
+ 19.99, 40, 'creatina.jpg'),
+
+('Straps de Levantamiento', 'Straps resistentes para barra y mancuernas.',
+ 'Lifting Straps', 'Durable straps for barbell and dumbbell training.',
+ 9.99, 100, 'creatina.jpg'),
+
+('Cinturón de Pesas', 'Cinturón de soporte lumbar para levantamiento pesado.',
+ 'Weightlifting Belt', 'Lumbar support belt for heavy lifting.',
+ 24.99, 30, 'creatina.jpg'),
+
+('Guantes de Gimnasio', 'Guantes antideslizantes para entrenamientos seguros.',
+ 'Gym Gloves', 'Non-slip gloves for safe and comfortable workouts.',
+ 14.99, 60, 'creatina.jpg'),
+
+('Banda Elástica', 'Bandas de resistencia para ejercicios de fuerza.',
+ 'Resistance Band', 'Resistance bands for strength and mobility exercises.',
+ 12.99, 80, 'creatina.jpg'),
+
+('Botella de Agua Deportiva', 'Botella de 1L para mantenerse hidratado.',
+ 'Sports Water Bottle', '1-liter bottle to stay hydrated during training.',
+ 7.99, 150, 'creatina.jpg'),
+
+('Rueda de Abdominales', 'Rueda para entrenar abdomen y core.',
+ 'Ab Wheel', 'Ab wheel for core and abdominal training.',
+ 15.99, 40, 'creatina.jpg'),
+
+('Rodilleras de Soporte', 'Rodilleras acolchadas para levantar peso.',
+ 'Support Knee Sleeves', 'Padded knee sleeves for weightlifting support.',
+ 18.99, 50, 'creatina.jpg'),
+
+('Cuerda para Saltar', 'Cuerda de alta velocidad para cardio.',
+ 'Jump Rope', 'High-speed rope for cardio training.',
+ 8.99, 70, 'creatina.jpg');
+
+-- -------------------------------------------------
+-- CREAR ADMIN POR DEFECTO
+-- -------------------------------------------------
 INSERT INTO users (username, email, password, role)
 VALUES ('admin', 'admin@example.com', '$2y$10$rfuRV.G2CmJJ.Ph4hJFP3eIB31sR8jqWuZPVU5JCpRMIwrOEufzoa', 'admin');
 

@@ -19,18 +19,29 @@ $productModel = new Product($db);
 $error = null;
 $success = null;
 
+// Función de traducción ES -> EN 
+function translate_es_to_en(string $text): string {
+    
+    return $text; 
+}
+
 // Procesar formulario
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    $name = trim($_POST['name']);
-    $price = floatval($_POST['price']);
+    $name_es        = trim($_POST['name_es']);
+    $description_es = trim($_POST['description_es'] ?? '');
+    $price          = floatval($_POST['price']);
+
+    // Traducciones automáticas
+    $name_en        = translate_es_to_en($name_es);
+    $description_en = $description_es !== '' ? translate_es_to_en($description_es) : '';
 
     // Procesar imagen
     $imageName = null;
 
     // Si sube una nueva imagen
     if (!empty($_FILES['image_upload']['name'])) {
-        $imageName = basename($_FILES['image_upload']['name']);
+        $imageName  = basename($_FILES['image_upload']['name']);
         $targetPath = __DIR__ . '/../../assets/images/' . $imageName;
         move_uploaded_file($_FILES['image_upload']['tmp_name'], $targetPath);
     }
@@ -40,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Intentar crear producto
-    if (!$productModel->create($name, $price, $imageName)) {
+    if (!$productModel->create($name_es, $name_en, $description_es, $description_en, $price, $imageName)) {
         $error = __t('product_exists'); // Producto duplicado
     } else {
         $success = __t('product_created'); // Producto creado
@@ -62,8 +73,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <form method="POST" enctype="multipart/form-data" class="admin-form">
 
-        <label><?= __t('product_name') ?></label>
-        <input type="text" name="name" required>
+        <label><?= __t('product_name') ?> (ES)</label>
+        <input type="text" name="name_es" required>
+
+        <label><?= __t('description') ?> (ES)</label>
+        <textarea name="description_es" rows="4"></textarea>
 
         <label><?= __t('price') ?> (€)</label>
         <input type="number" step="0.01" name="price" required>

@@ -2,3 +2,6 @@
 - Mejorar gestion de usuarios
 - Si un producto esta en un carrito y se elimina, sigue en el carrito
 - Comprobar que no se puede crear un mismo producto que ya existe
+- Al crear un producto, tener que añadir una descripcion (Usando api traducir al ingles y guardar en la base de datos)
+- Fichero login revisar session_regenerate_id(true); // evita sesiones antiguas
+

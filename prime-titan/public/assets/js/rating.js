@@ -1,52 +1,81 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    document.querySelectorAll(".rating").forEach(ratingBox => {
+function updateStars(productId) {
+    fetch(`${BASE_URL}actions/renderStars.php?product_id=${productId}`)
+        .then(res => res.json())
+        .then(data => {
 
-        const productId = ratingBox.dataset.product;
+            // promedio (abajo)
+            document.getElementById("rating-info-" + productId).innerHTML = data.html;
 
-        // Cargar valoración actual
-        loadRating(productId);
+            // estrellas clicables según media
+            paintAverageStars(productId, data.average);
 
-        // Evento click en estrellas
-        ratingBox.querySelectorAll(".star").forEach(star => {
-            star.addEventListener("click", async () => {
-                const value = star.dataset.value;
-                await sendRating(productId, value);
-                await loadRating(productId);
+            // desactivar si ya ha votado
+            const ratingBox = document.querySelector(`.rating[data-product="${productId}"]`);
+            if (data.hasVoted) {
+                ratingBox.classList.add("rating-disabled");
+            } else {
+                ratingBox.classList.remove("rating-disabled");
+            }
+        })
+        .catch(err => console.error("Error en updateStars:", err));
+}
+
+
+    function paintAverageStars(productId, average) {
+        const stars = document.querySelectorAll(`.rating[data-product="${productId}"] .star`);
+
+        stars.forEach(star => {
+            const value = parseInt(star.dataset.value);
+
+            if (value <= average) {
+                star.classList.add("active");
+            } else {
+                star.classList.remove("active");
+            }
+        });
+    }
+
+    document.querySelectorAll('.rating .star').forEach(star => {
+        star.addEventListener('click', function() {
+
+            const rating = parseInt(this.dataset.value);
+            const productId = this.parentElement.dataset.product;
+
+            // NO pintamos nada todavía
+
+            fetch(`${BASE_URL}actions/myVote.php`, {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: `product_id=${productId}&rating=${rating}`
+            })
+            .then(res => res.json())
+            .then(data => {
+
+                if (data.error === "NO_USER") {
+                    alert("Debes iniciar sesión para votar.");
+                    updateStars(productId); // restaurar media real
+                    return;
+                }
+
+                if (data.error === "ALREADY_VOTED") {
+                    alert("Ya has valorado este producto.");
+                    updateStars(productId); // restaurar media real
+                    return;
+                }
+
+                if (data.success) {
+                    // Ahora sí pintamos la media real
+                    updateStars(productId);
+                }
             });
         });
     });
+
+    // Cargar promedio al iniciar
+    document.querySelectorAll(".rating").forEach(r => {
+        updateStars(r.dataset.product);
+    });
+
 });
-
-
-// Enviar valoración al servidor
-async function sendRating(productId, value) {
-    const res = await fetch("actions/rate_product.php", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: `product_id=${productId}&rating=${value}`
-    });
-
-    return await res.text();
-}
-
-
-// Cargar valoración media
-async function loadRating(productId) {
-    const res = await fetch(`actions/get_rating.php?product_id=${productId}`);
-    const data = await res.json();
-
-    const stars = document.querySelector(`.rating[data-product="${productId}"]`).querySelectorAll(".star");
-    const info = document.getElementById(`rating-info-${productId}`);
-
-    // Pintar estrellas activas
-    stars.forEach(star => {
-        star.classList.toggle("active", star.dataset.value <= data.average);
-    });
-
-    // Texto traducido desde PHP
-    const avgLabel = window.AVERAGE_RATING_LABEL;
-    const votesLabel = window.VOTES_LABEL;
-
-    info.textContent = `${avgLabel}: ${data.average} (${data.count} ${votesLabel})`;
-}
