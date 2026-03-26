@@ -258,23 +258,28 @@ html, body {
 
 }
 
+
 .cart-toast {
     position: fixed;
-    bottom: 5%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #000;
-    color: #fff;
-    padding: 3% 6%;
-    border-radius: 12px;
+    bottom: 30px;
+    right: 30px;
+    background: #28a745;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    z-index: 99999;
+    font-weight: bold;
     opacity: 0;
-    transition: 0.3s;
-    font-size: 4vw;
-    z-index: 9999;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
 }
 
 .cart-toast.show {
     opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
 }
 
 
@@ -472,8 +477,6 @@ html, body {
 
 
 
-
-
 /* --- Contenedor Principal --- */
 .rating {
     width: 100%;
@@ -481,90 +484,93 @@ html, body {
     justify-content: center;
     gap: 6px;
     margin-top: 8px;
+    font-family: "FontAwesome"; /* Asegura que los iconos carguen bien */
 }
 
-/* --- Estrellas Base (Interactiva) --- */
+/* --- Estrellas Base --- */
 .rating .star {
-    color: #ccc;
+    color: #ccc; /* Gris por defecto (estrella vacía) */
     font-size: 22px;
     cursor: pointer;
     transition: transform 0.2s, color 0.2s;
+    font-style: normal;
 }
 
-/* Estrellas que marcan la media actual */
-.rating .star.active {
+/* Definición de Iconos mediante Pseudo-elementos */
+.rating .star:before {
+    content: "\f006"; /* Icono fa-star-o (contorno vacío) por defecto */
+}
+
+/* --- ESTADOS DE COLOR (ACTIVA Y MEDIA) --- */
+
+/* Estrella Llena */
+.rating .star.active:before {
+    content: "\f005"; /* fa-star (llena) */
     color: gold;
 }
 
-/* --- EFECTOS HOVER (Solo si está logueado y NO ha votado) --- */
-/* Solo aplicamos hover si NO tiene 'rating-disabled' y NO tiene 'not-logged' */
-.rating:not(.rating-disabled):not(.not-logged):hover .star {
+/* Media Estrella */
+.rating .star.half:before {
+    content: "\f123"; /* fa-star-half-o (media) */
+    color: gold;
+}
+
+/* --- INTERACCIÓN HOVER (Solo usuarios logueados que no han votado) --- */
+.rating:not(.rating-disabled):not(.not-logged):hover .star:before {
+    content: "\f005"; /* Al pasar el ratón sobre el grupo, todas parecen llenas */
     color: gold;
 }
 
 .rating:not(.rating-disabled):not(.not-logged) .star:hover {
-    transform: scale(1.25);
+    transform: scale(1.3);
 }
 
-/* Apagar las estrellas a la derecha del ratón durante el hover */
-.rating:not(.rating-disabled):not(.not-logged) .star:hover ~ .star {
+/* Apagar estrellas a la derecha del puntero para selección precisa */
+.rating:not(.rating-disabled):not(.not-logged) .star:hover ~ .star:before {
+    content: "\f006"; 
     color: #ccc;
 }
 
-/* --- ESTADO: NO LOGUEADO (Invitado) --- */
+/* --- ESTADO: INVITADO (Not Logged) --- */
 .rating.not-logged .star {
-    cursor: default; /* Quita la mano, pone flecha normal */
-    pointer-events: auto; /* Permite el clic para que salte tu alert de JS */
+    cursor: pointer; /* Mantenemos el cursor para que el usuario haga clic y salte el alert */
 }
 
-/* Desactivamos transformaciones visuales para invitados */
 .rating.not-logged .star:hover {
-    transform: none !important;
+    transform: none !important; /* Evitamos animaciones para invitados */
 }
 
 /* --- ESTADO: YA VOTADO (Disabled) --- */
 .rating.rating-disabled {
-    pointer-events: none !important; 
+    pointer-events: none; /* Bloquea cualquier clic */
     cursor: default;
-    opacity: 1; /* Mantener nitidez para ver el nuevo color */
 }
 
-/* Color Gris Azulado para las estrellas que el usuario marcó */
-.rating.rating-disabled .star.active {
+/* Prioridad para el color Azul Grisáceo sobre el dorado */
+.rating.rating-disabled .star.active:before,
+.rating.rating-disabled .star.half:before {
     color: #607d8b !important;
 }
 
-/* Gris muy claro para las estrellas restantes tras votar */
-.rating.rating-disabled .star:not(.active) {
+/* Estrellas que quedaron vacías tras el voto */
+.rating.rating-disabled .star:not(.active):not(.half):before {
     color: #e0e0e0 !important;
 }
 
-.rating.rating-disabled .star:hover {
-    transform: none !important;
-}
-
-/* --- INFO INFERIOR (Media con iconos FontAwesome) --- */
+/* --- INFO INFERIOR (Texto de votos) --- */
 .rating-info {
-    font-size: 0.9em;
-    color: #555;
-    margin-top: 5px;
-    min-height: 20px;
+    font-size: 0.85em;
+    color: #777;
+    margin-top: 4px;
+    text-align: center;
+    font-weight: 500;
 }
 
-.rating-info i.fa-star,
-.rating-info i.fa-star-half-o {
-    color: gold !important;
-    font-size: 20px;
-}
-
-.rating-info i.fa-star-o {
-    color: #ccc !important;
-    font-size: 20px;
-}
-
-.rating-info i:hover {
-    transform: scale(1.15);
-    transition: 0.2s;
+.rating-info span {
+    background: #f9f9f9;
+    padding: 2px 8px;
+    border-radius: 12px;
+    border: 1px solid #eee;
 }
 
 

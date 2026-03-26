@@ -47,6 +47,7 @@ return [
     // Editar producto
     'product_name' => 'Nombre del producto',
     'price' => 'Precio',
+    'description' => 'Descripción',
     'current_image' => 'Imagen actual',
     'select_existing_image' => 'Seleccionar imagen existente',
     'upload_new_image' => 'Subir nueva imagen',
@@ -58,6 +59,10 @@ return [
     'confirm_delete_product' => '¿Seguro que quieres eliminar este producto?',
 
     // Usuarios (admin)
+    'title_users' => 'Gestión de usuarios',
+    'user' => 'Usuario',
+    'admin' => 'Administrador',
+    'confirm_delete_user' => '¿Estás seguro de que quieres eliminar este usuario?',
     'id' => 'ID',
     'username' => 'Usuario',
     'email' => 'Email',
@@ -66,6 +71,10 @@ return [
     'new_password' => 'Nueva contraseña',
     'update' => 'Actualizar',
     'delete_user' => 'Eliminar',
+    'user_deleted' => 'Usuario eliminado correctamente',
+    'user_updated' => 'Usuario actualizado correctamente',
+    'user_delete_error' => 'Error al eliminar el usuario',
+    'user_update_error' => 'Error al actualizar el usuario',
 
     // Login
     'login' => 'Iniciar sesión',

@@ -12,13 +12,19 @@ class Rating {
     public function getAverageRating($productId) {
         $stmt = $this->db->prepare("
             SELECT 
-                AVG(cantidad) AS average,
-                COUNT(*) AS votes
-            FROM rating
+                ROUND(AVG(cantidad), 1) AS average, 
+                COUNT(*) AS votes 
+            FROM rating 
             WHERE idPr = ?
         ");
         $stmt->execute([$productId]);
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        // Si no hay votos, devolvemos 0 explícitamente
+        if (!$result['average']) {
+            return ['average' => 0, 'votes' => 0];
+        }
+        return $result;
     }
 
     // Guardar voto

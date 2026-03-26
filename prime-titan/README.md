@@ -59,34 +59,27 @@ CREATE TABLE IF NOT EXISTS wishlist (
 );
 
 -- -------------------------------------------------
--- TABLA: RATINGS
+-- TABLA: RATING
 -- -------------------------------------------------
+
 CREATE TABLE IF NOT EXISTS rating (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    cantidad INT DEFAULT 0,          -- Valoración (1 a 5)
-    idPr INT NOT NULL,               -- ID del producto
-    idUs VARCHAR(50) NOT NULL,       -- Username del usuario
+    cantidad INT NOT NULL DEFAULT 0,    
+    idPr INT NOT NULL,                  
+    idUs INT NOT NULL,                  
 
-    CONSTRAINT fk_rating_user 
-        FOREIGN KEY (idUs) REFERENCES users(username)
-        ON DELETE CASCADE 
-        ON UPDATE CASCADE,
+    UNIQUE KEY unique_user_product (idUs, idPr),
 
     CONSTRAINT fk_rating_product 
         FOREIGN KEY (idPr) REFERENCES products(id)
         ON DELETE CASCADE 
+        ON UPDATE CASCADE,
+
+    CONSTRAINT fk_rating_user 
+        FOREIGN KEY (idUs) REFERENCES users(id)
+        ON DELETE CASCADE 
         ON UPDATE CASCADE
 );
-ALTER TABLE rating ADD UNIQUE KEY unique_user_product (idUs, idPr);
-
-ALTER TABLE rating DROP FOREIGN KEY fk_rating_user;
-
-ALTER TABLE rating MODIFY idUs INT NOT NULL;
-
-ALTER TABLE rating 
-ADD CONSTRAINT fk_rating_user 
-FOREIGN KEY (idUs) REFERENCES users(id) 
-ON DELETE CASCADE ON UPDATE CASCADE;
 
 
 -- -------------------------------------------------

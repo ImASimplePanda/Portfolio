@@ -4,7 +4,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Configuración inicial
     const userId = window.USER_ID || "guest";
-    const CART_KEY = "cart_" + userId;
+    // Detectamos el idioma del documento (definido en tu header.php)
+    const lang = document.documentElement.lang || 'es';
+    // Creamos una clave única por usuario E idioma para evitar nombres mezclados
+    const CART_KEY = "cart_" + userId + "_" + lang;
 
     // Traducciones desde PHP
     const TXT_ADDED = window.CART_ADDED;
@@ -43,6 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
         showToast(TXT_ADDED);
     }
 
+    // Evento para botones estándar "Add to Cart"
     document.querySelectorAll(".add-to-cart").forEach(btn => {
         btn.addEventListener("click", () => {
             const product = {
@@ -57,19 +61,21 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
+    // Evento para añadir desde la Wishlist (corrige el idioma al pasar)
     document.addEventListener("click", (e) => {
         const btn = e.target.closest(".add-from-wishlist");
         if (!btn) return;
 
         const product = {
             id: btn.dataset.id,
-            name: btn.dataset.name,
+            name: btn.dataset.name, 
             price: parseFloat(btn.dataset.price),
             image: btn.dataset.image,
-            quantity: parseInt(btn.dataset.quantity)
+            quantity: parseInt(btn.dataset.quantity) || 1
         };
 
         addToCart(product);
+        // Redirigir para limpiar el item de la wishlist en la DB
         window.location.href = `wishlist.php?action=remove&id=${product.id}`;
     });
 
@@ -83,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (cart.length === 0) {
             container.innerHTML = `<p>${TXT_EMPTY}</p>`;
-            totalPriceEl.textContent = "0€";
+            totalPriceEl.textContent = "0.00€";
             return;
         }
 
@@ -97,9 +103,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div class="cart-item">
                     <img src="${window.BASE_URL}assets/images/${item.image}" class="cart-img">
                     <div class="cart-info">
-                        <p>${item.name}</p>
-                        <p>${item.price}€</p>
-                        <p>${TXT_QTY}: ${item.quantity}</p>
+                        <p class="cart-item-name"><strong>${item.name}</strong></p>
+                        <p class="cart-item-price">${item.price.toFixed(2)}€</p>
+                        <p class="cart-item-qty">${TXT_QTY}: ${item.quantity}</p>
                         <button class="remove-item" data-id="${item.id}">${TXT_REMOVE}</button>
                     </div>
                 </div>
@@ -109,6 +115,7 @@ document.addEventListener("DOMContentLoaded", () => {
         container.innerHTML = html;
         totalPriceEl.textContent = total.toFixed(2) + "€";
 
+        // Asignar eventos a los botones de borrar recien creados
         document.querySelectorAll(".remove-item").forEach(btn => {
             btn.addEventListener("click", () => {
                 removeItem(btn.dataset.id);
@@ -134,6 +141,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
+            // Simular compra: Limpiar carrito
             saveCart([]);
             renderCart();
             alert(TXT_PURCHASE_SUCCESS);
@@ -141,17 +149,24 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function showToast(msg) {
+        // Eliminar toast anterior si existe
+        const oldToast = document.querySelector(".cart-toast");
+        if (oldToast) oldToast.remove();
+
         const toast = document.createElement("div");
         toast.className = "cart-toast";
         toast.textContent = msg;
         document.body.appendChild(toast);
 
+        // Pequeño delay para la animación CSS
         setTimeout(() => toast.classList.add("show"), 10);
+        
         setTimeout(() => {
             toast.classList.remove("show");
             setTimeout(() => toast.remove(), 300);
-        }, 2000);
+        }, 2500);
     }
 
+    // Ejecutar renderizado al cargar la página
     renderCart();
 });

@@ -46,6 +46,7 @@ return [
     // Edit product
     'product_name' => 'Product name',
     'price' => 'Price',
+    'description'=> 'Description',
     'current_image' => 'Current image',
     'select_existing_image' => 'Select existing image',
     'upload_new_image' => 'Upload new image',
@@ -57,6 +58,11 @@ return [
     'confirm_delete_product' => 'Are you sure you want to delete this product?',
 
     // Users (admin)
+    'title_users' => 'User Management',
+    'user' => 'User',
+    'confirm_delete_user' => 'Are you sure you want to delete this user?',
+    'cannot_delete_self' => 'You cannot delete your own user',
+    'admin' => 'Admin',
     'id' => 'ID',
     'username' => 'Username',
     'email' => 'Email',
@@ -65,6 +71,10 @@ return [
     'new_password' => 'New password',
     'update' => 'Update',
     'delete_user' => 'Delete',
+    'user_deleted' => 'User deleted successfully',
+    'user_updated' => 'User updated successfully',
+    'user_delete_error' => 'Error deleting user',
+    'user_update_error' => 'Error updating user',
 
     // Login
     'login' => 'Login',

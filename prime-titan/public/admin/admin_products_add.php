@@ -73,10 +73,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <form method="POST" enctype="multipart/form-data" class="admin-form">
 
-        <label><?= __t('product_name') ?> (ES)</label>
+        <label><?= __t('product_name') ?> </label>
         <input type="text" name="name_es" required>
 
-        <label><?= __t('description') ?> (ES)</label>
+        <label><?= __t('description') ?> </label>
         <textarea name="description_es" rows="4"></textarea>
 
         <label><?= __t('price') ?> (€)</label>

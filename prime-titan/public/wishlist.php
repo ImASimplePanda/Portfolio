@@ -4,6 +4,12 @@ require_once __DIR__ . '/../app/config/config.php';
 require_once __DIR__ . '/../app/config/database.php';
 require_once __DIR__ . '/../app/models/product.php';
 
+
+// Accedemos a la preferencia guardada en el perfil del usuario
+$lang = (isset($_SESSION['user']['language']) && $_SESSION['user']['language'] === 'en') ? 'en' : 'es';
+$name_col = "name_" . $lang; 
+
+
 $extra_css = '<link rel="stylesheet" href="' . BASE_URL . 'assets/css/wishlist.css">';
 require_once BASE_DIR . '/views/layouts/header.php';
 
@@ -14,7 +20,6 @@ if (!isset($_SESSION['user'])) {
 }
 
 $user_id = $_SESSION['user']['id']; 
-
 
 // Aumentar cantidad
 if (isset($_GET['action']) && $_GET['action'] === 'plus') {
@@ -48,7 +53,7 @@ if (isset($_GET['action']) && $_GET['action'] === 'add_to_cart') {
     $id = $_GET['id'];
 
     $stmt = $db->prepare("
-        SELECT w.quantity, p.name, p.price, p.image
+        SELECT w.quantity, p.$name_col AS name, p.price, p.image
         FROM wishlist w
         JOIN products p ON p.id = w.product_id
         WHERE w.user_id = ? AND w.product_id = ?
@@ -78,10 +83,9 @@ if (isset($_GET['action']) && $_GET['action'] === 'add_to_cart') {
     exit;
 }
 
-
 // Obtener wishlist desde db
 $stmt = $db->prepare("
-    SELECT w.product_id AS id, w.quantity, p.name, p.price, p.image
+    SELECT w.product_id AS id, w.quantity, p.$name_col AS name, p.price, p.image
     FROM wishlist w
     JOIN products p ON p.id = w.product_id
     WHERE w.user_id = ?
@@ -90,13 +94,9 @@ $stmt->execute([$user_id]);
 $wishlist = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-
 <div class="page-wrapper">
-
     <main class="wishlist-wrapper">
-
         <div class="wishlist-box">
-
             <h2 class="wishlist-title"><?= __t('wishlist_title') ?></h2>
 
             <?php if (empty($wishlist)): ?>
@@ -105,7 +105,6 @@ $wishlist = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                 <?php foreach ($wishlist as $item): ?>
                     <div class="wishlist-item">
-
                         <img src="<?= BASE_URL ?>assets/images/<?= $item['image']; ?>" class="wishlist-img">
 
                         <div class="wishlist-info">
@@ -139,16 +138,12 @@ $wishlist = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 <?= __t('delete') ?>
                             </a>
                         </div>
-
                     </div>
                 <?php endforeach; ?>
 
             <?php endif; ?>
-
         </div>
-
     </main>
 
     <?php require_once BASE_DIR . '/views/layouts/footer.php'; ?>
-
 </div>

@@ -21,14 +21,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_user_id'])) {
 
     // Evitar que el admin se elimine a sí mismo
     if ($deleteId == $_SESSION['user']['id']) {
-        $error = "No puedes eliminar tu propio usuario.";
+        $error = __t('cannot_delete_self');
     } else {
         try {
             $stmt = $db->prepare("DELETE FROM users WHERE id = :id");
             $stmt->execute([':id' => $deleteId]);
-            $success = "Usuario eliminado correctamente.";
+            $success = __t('user_deleted');
         } catch (PDOException $e) {
-            $error = "Error al eliminar el usuario.";
+            $error = __t('user_delete_error');
         }
     }
 }
@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_user_id'])) {
     $role     = $_POST['role'];
 
     if ($username === '' || $email === '' || !in_array($role, ['user','admin'])) {
-        $error = "Datos inválidos.";
+        $error = __t('invalid_data');
     } else {
         try {
             if (!empty($password)) {
@@ -73,9 +73,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_user_id'])) {
                 ]);
             }
 
-            $success = "Usuario actualizado correctamente.";
+            $success = __t('user_updated');
         } catch (PDOException $e) {
-            $error = "Error al actualizar el usuario. Verifica que el nombre y el email sean únicos.";
+            $error = __t('user_update_error');
         }
     }
 }
@@ -92,7 +92,7 @@ require_once BASE_DIR . '/views/layouts/header.php';
 
     <div class="content-box">
 
-        <h2 class="admin-title">Administrar Usuarios</h2>
+        <h2 class="admin-title"><?= __t('title_users') ?></h2>
 
         <?php if ($error): ?>
             <p class="error-msg"><?= htmlspecialchars($error) ?></p>
@@ -106,11 +106,11 @@ require_once BASE_DIR . '/views/layouts/header.php';
             <table class="admin-table">
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Usuario</th>
-                        <th>Email</th>
-                        <th>Rol</th>
-                        <th>Acciones</th>
+                        <th><?= __t('id') ?></th>
+                        <th><?= __t('user') ?></th>
+                        <th><?= __t('email') ?></th>
+                        <th><?= __t('role') ?></th>
+                        <th><?= __t('actions') ?></th>
                     </tr>
                 </thead>
 
@@ -134,23 +134,31 @@ require_once BASE_DIR . '/views/layouts/header.php';
 
                             <td>
                                 <select name="role">
-                                    <option value="user" <?= $u['role'] === 'user' ? 'selected' : '' ?>>Usuario</option>
-                                    <option value="admin" <?= $u['role'] === 'admin' ? 'selected' : '' ?>>Admin</option>
+                                    <option value="user" <?= $u['role'] === 'user' ? 'selected' : '' ?>>
+                                        <?= __t('user') ?>
+                                    </option>
+                                    <option value="admin" <?= $u['role'] === 'admin' ? 'selected' : '' ?>>
+                                        <?= __t('admin') ?>
+                                    </option>
                                 </select>
                             </td>
 
                             <td class="actions-cell">
 
-                                <input type="password" name="password" placeholder="Nueva contraseña">
+                                <input type="password" name="password" placeholder="<?= __t('new_password') ?>">
                                 <input type="hidden" name="edit_user_id" value="<?= $u['id'] ?>">
-                                <button type="submit" class="update-btn">Actualizar</button>
+                                <button type="submit" class="update-btn">
+                                    <?= __t('update') ?>
+                                </button>
 
                         </form>
 
                                 <!-- Formulario eliminar-->
-                                <form method="POST" onsubmit="return confirm('¿Seguro que quieres eliminar este usuario?');">
+                                <form method="POST" onsubmit="return confirm('<?= __t('confirm_delete_user') ?>');">
                                     <input type="hidden" name="delete_user_id" value="<?= $u['id'] ?>">
-                                    <button type="submit" class="delete-btn">Eliminar</button>
+                                    <button type="submit" class="delete-btn">
+                                        <?= __t('delete') ?>
+                                    </button>
                                 </form>
 
                             </td>

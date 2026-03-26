@@ -1,38 +1,40 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-function updateStars(productId) {
-    fetch(`${BASE_URL}actions/renderStars.php?product_id=${productId}`)
-        .then(res => res.json())
-        .then(data => {
+    function updateStars(productId) {
+        fetch(`${BASE_URL}actions/renderStars.php?product_id=${productId}`)
+            .then(res => res.json())
+            .then(data => {
 
-            // promedio (abajo)
-            document.getElementById("rating-info-" + productId).innerHTML = data.html;
+                // promedio (abajo)
+                document.getElementById("rating-info-" + productId).innerHTML = data.html;
 
-            // estrellas clicables según media
-            paintAverageStars(productId, data.average);
+                // estrellas clicables según media
+                paintAverageStars(productId, data.average);
 
-            // desactivar si ya ha votado
-            const ratingBox = document.querySelector(`.rating[data-product="${productId}"]`);
-            if (data.hasVoted) {
-                ratingBox.classList.add("rating-disabled");
-            } else {
-                ratingBox.classList.remove("rating-disabled");
-            }
-        })
-        .catch(err => console.error("Error en updateStars:", err));
-}
-
+                // desactivar si ya ha votado
+                const ratingBox = document.querySelector(`.rating[data-product="${productId}"]`);
+                if (data.hasVoted) {
+                    ratingBox.classList.add("rating-disabled");
+                } else {
+                    ratingBox.classList.remove("rating-disabled");
+                }
+            })
+            .catch(err => console.error("Error en updateStars:", err));
+    }
 
     function paintAverageStars(productId, average) {
         const stars = document.querySelectorAll(`.rating[data-product="${productId}"] .star`);
+        const avg = parseFloat(average); 
 
         stars.forEach(star => {
-            const value = parseInt(star.dataset.value);
+            const starValue = parseInt(star.dataset.value); 
+            star.classList.remove("active", "half");
 
-            if (value <= average) {
+            if (avg >= starValue) {
+                // Si la media es 3 y la estrella es 2 -> Activa
                 star.classList.add("active");
-            } else {
-                star.classList.remove("active");
+            } else if (avg >= (starValue - 0.7) && avg < starValue) {
+                star.classList.add("half");
             }
         });
     }
