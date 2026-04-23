@@ -42,6 +42,10 @@ return [
     'edit' => 'Edit',
     'delete' => 'Delete',
 
+    // Add product
+    'product_created'        => 'Product created successfully!',
+    'product_exists'         => 'Error: A product with this name already exists.',
+
 
     // Edit product
     'product_name' => 'Product name',

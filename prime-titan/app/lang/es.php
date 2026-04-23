@@ -43,6 +43,10 @@ return [
     'product_management' => 'Gestión de Productos',
     'confirm_delete_product' => '¿Seguro que quieres eliminar este producto?',
 
+    // Añadir un producto
+    'product_created' => '¡Producto creado con éxito!',
+    'product_exists'  => 'Error: Ya existe un producto con ese nombre.',
+
  
     // Editar producto
     'product_name' => 'Nombre del producto',
