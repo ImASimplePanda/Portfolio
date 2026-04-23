@@ -3,5 +3,9 @@
 - Si un producto esta en un carrito y se elimina, sigue en el carrito
 - Comprobar que no se puede crear un mismo producto que ya existe
 - Al crear un producto, tener que añadir una descripcion (Usando api traducir al ingles y guardar en la base de datos)
+- Al crear un producto, el mensaje que sale como exitoso sale mal.
 - Fichero login revisar session_regenerate_id(true); // evita sesiones antiguas
+- Como admin, al eliminar un usuario  en modo oscuro  no se ve bien
+- En la tienda, al buscar productos en la barra de search, cuando sale solo un producto  se ve agrandado
+- Al crear un producto y elegir una imagen, la imagen no se ve en home (En la base de datos la descripcion se esta guardando en la columna image)
 

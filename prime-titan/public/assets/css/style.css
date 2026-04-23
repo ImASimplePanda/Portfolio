@@ -291,57 +291,6 @@ html, body {
 
 
 
-.carousel-container {
-    width: 100%;
-    overflow: hidden;
-    position: relative;
-    margin: 20px 0;
-    color: white;
-}
-
-.carousel-track {
-    display: flex;
-    transition: transform 0.3s ease;
-}
-
-.carousel-item {
-    min-width: 100%;
-    text-align: center;
-    padding: 10px;
-}
-
-.carousel-item img {
-    width: 80%;
-    border-radius: 12px;
-    object-fit: cover;
-}
-
-.carousel-name {
-    font-size: 4vw;
-    margin-top: 10px;
-}
-
-.carousel-price {
-    font-size: 4vw;
-    color: #444;
-}
-
-
-.carousel-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0,0,0,0.4);
-    color: white;
-    border: none;
-    padding: 10px 14px;
-    border-radius: 50%;
-    font-size: 6vw;
-    cursor: pointer;
-}
-
-.prev { left: 10px; }
-.next { right: 10px; }
 
 
 
@@ -573,6 +522,10 @@ html, body {
     border: 1px solid #eee;
 }
 
+.star.active {
+    color: #ffcc00; /* Dorado */
+}
+
 
 
 
@@ -631,10 +584,6 @@ body.dark .side-menu {
     background-color: #1e1e1e;
 }
 
-
-
-
-
 /* Tarjetas de productos */
 body.dark .wishlist-item,
 body.dark .cart-item,
@@ -642,7 +591,6 @@ body.dark .product-card {
     background-color: #2e2d2d;
     border: 1px solid #333;
 }
-
 
 body.dark .side-menu a,
 body.dark .profile-title,
@@ -686,12 +634,21 @@ body.dark .profile-card{
     color: #fff;
 }
 
-body.dark .label{
-    color: #878787;
+body.dark .admin-form label {
+    color: #fff;
 }
 
+body.dark .admin-form input,
+body.dark .admin-form textarea,
+body.dark .admin-form select {
+    background-color: #1e1e1e;
+    color: #fff;
+    border: 1px solid #444;
+}
 
-
+body.dark .admin-title {
+    color: #fff;
+}
 
 
 

@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Si sube una nueva imagen
     if (!empty($_FILES['image_upload']['name'])) {
         $imageName  = basename($_FILES['image_upload']['name']);
-        $targetPath = __DIR__ . '/../../assets/images/' . $imageName;
+        $targetPath = __DIR__ . '/../assets/images/' . $imageName;
         move_uploaded_file($_FILES['image_upload']['tmp_name'], $targetPath);
     }
     // Si selecciona una existente

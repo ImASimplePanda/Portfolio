@@ -1,91 +1,73 @@
-document.addEventListener("DOMContentLoaded", () => {
+// Definimos las funciones de utilidad fuera para que sean accesibles
+const getUserId = () => window.USER_ID || "guest";
+const getLang = () => document.documentElement.lang || 'es';
+const getCartKey = () => "cart_" + getUserId() + "_" + getLang();
 
-    console.log("cart.js CARGADO");
+// Exportamos addToCart al objeto global window para que React la use
+window.addToCart = function(product) {
+    let cart = JSON.parse(localStorage.getItem(getCartKey())) || [];
+    const existing = cart.find(item => item.id === product.id);
+    const qty = Number(product.quantity) || 1;
 
-    // Configuración inicial
-    const userId = window.USER_ID || "guest";
-    // Detectamos el idioma del documento (definido en tu header.php)
-    const lang = document.documentElement.lang || 'es';
-    // Creamos una clave única por usuario E idioma para evitar nombres mezclados
-    const CART_KEY = "cart_" + userId + "_" + lang;
-
-    // Traducciones desde PHP
-    const TXT_ADDED = window.CART_ADDED;
-    const TXT_EMPTY = window.CART_EMPTY;
-    const TXT_QTY = window.CART_QTY;
-    const TXT_REMOVE = window.CART_REMOVE;
-    const TXT_PURCHASE_SUCCESS = window.CART_PURCHASE_SUCCESS;
-    const TXT_PURCHASE_EMPTY = window.CART_PURCHASE_EMPTY;
-
-    function getCart() {
-        return JSON.parse(localStorage.getItem(CART_KEY)) || [];
-    }
-
-    function saveCart(cart) {
-        localStorage.setItem(CART_KEY, JSON.stringify(cart));
-    }
-
-    function addToCart(product) {
-        let cart = getCart();
-        const existing = cart.find(item => item.id === product.id);
-        const qty = Number(product.quantity) || 1;
-
-        if (existing) {
-            existing.quantity += qty;
-        } else {
-            cart.push({
-                id: product.id,
-                name: product.name,
-                price: product.price,
-                image: product.image,
-                quantity: qty
-            });
-        }
-
-        saveCart(cart);
-        showToast(TXT_ADDED);
-    }
-
-    // Evento para botones estándar "Add to Cart"
-    document.querySelectorAll(".add-to-cart").forEach(btn => {
-        btn.addEventListener("click", () => {
-            const product = {
-                id: btn.dataset.id,
-                name: btn.dataset.name,
-                price: parseFloat(btn.dataset.price),
-                image: btn.dataset.image,
-                quantity: 1
-            };
-
-            addToCart(product);
+    if (existing) {
+        existing.quantity += qty;
+    } else {
+        cart.push({
+            id: product.id,
+            name: product.name,
+            price: parseFloat(product.price),
+            image: product.image,
+            quantity: qty
         });
-    });
+    }
 
-    // Evento para añadir desde la Wishlist (corrige el idioma al pasar)
-    document.addEventListener("click", (e) => {
-        const btn = e.target.closest(".add-from-wishlist");
-        if (!btn) return;
+    localStorage.setItem(getCartKey(), JSON.stringify(cart));
+    
+    // Disparamos un evento personalizado por si React necesita enterarse de que el carrito cambió
+    window.dispatchEvent(new Event('cartUpdated'));
+    
+    // Llamamos al toast 
+    if (typeof window.showToast === 'function') {
+        window.showToast(window.CART_ADDED || "Producto añadido");
+    }
 
-        const product = {
-            id: btn.dataset.id,
-            name: btn.dataset.name, 
-            price: parseFloat(btn.dataset.price),
-            image: btn.dataset.image,
-            quantity: parseInt(btn.dataset.quantity) || 1
-        };
+    // Si existe la función de renderizado, la ejecutamos
+    if (typeof window.renderCart === 'function') {
+        window.renderCart();
+    }
+};
 
-        addToCart(product);
-        // Redirigir para limpiar el item de la wishlist en la DB
-        window.location.href = `wishlist.php?action=remove&id=${product.id}`;
-    });
+// Función Toast global
+window.showToast = function(msg) {
+    const oldToast = document.querySelector(".cart-toast");
+    if (oldToast) oldToast.remove();
+    const toast = document.createElement("div");
+    toast.className = "cart-toast";
+    toast.textContent = msg;
+    document.body.appendChild(toast);
+    setTimeout(() => toast.classList.add("show"), 10);
+    setTimeout(() => {
+        toast.classList.remove("show");
+        setTimeout(() => toast.remove(), 300);
+    }, 2500);
+};
 
-    function renderCart() {
+document.addEventListener("DOMContentLoaded", () => {
+    console.log("cart.js CARGADO Y COMPATIBLE CON REACT");
+
+    const TXT_EMPTY = window.CART_EMPTY || "Carrito vacío";
+    const TXT_QTY = window.CART_QTY || "Cantidad";
+    const TXT_REMOVE = window.CART_REMOVE || "Eliminar";
+    const TXT_PURCHASE_SUCCESS = window.CART_PURCHASE_SUCCESS || "Compra realizada";
+    const TXT_PURCHASE_EMPTY = window.CART_PURCHASE_EMPTY || "Carrito vacío";
+
+    // Hacemos renderCart global para que se pueda llamar desde fuera
+    window.renderCart = function() {
         const container = document.getElementById("cart-container");
         const totalPriceEl = document.getElementById("cart-total-price");
-
         if (!container || !totalPriceEl) return;
 
-        const cart = getCart();
+        const cart = JSON.parse(localStorage.getItem(getCartKey())) || [];
 
         if (cart.length === 0) {
             container.innerHTML = `<p>${TXT_EMPTY}</p>`;
@@ -98,7 +80,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         cart.forEach(item => {
             total += item.price * item.quantity;
-
             html += `
                 <div class="cart-item">
                     <img src="${window.BASE_URL}assets/images/${item.image}" class="cart-img">
@@ -115,58 +96,47 @@ document.addEventListener("DOMContentLoaded", () => {
         container.innerHTML = html;
         totalPriceEl.textContent = total.toFixed(2) + "€";
 
-        // Asignar eventos a los botones de borrar recien creados
         document.querySelectorAll(".remove-item").forEach(btn => {
-            btn.addEventListener("click", () => {
-                removeItem(btn.dataset.id);
-            });
+            btn.onclick = () => removeItem(btn.dataset.id);
         });
     }
 
     function removeItem(id) {
-        let cart = getCart();
-        cart = cart.filter(item => item.id !== id);
-        saveCart(cart);
-        renderCart();
+        let cart = JSON.parse(localStorage.getItem(getCartKey())) || [];
+        cart = cart.filter(item => item.id != id);
+        localStorage.setItem(getCartKey(), JSON.stringify(cart));
+        window.dispatchEvent(new Event('cartUpdated')); // Avisar a React
+        window.renderCart();
     }
 
-    const buyBtn = document.getElementById("buy-btn");
+    // Eventos para botones que NO son de React (los que queden en PHP)
+    document.addEventListener("click", (e) => {
+        const btn = e.target.closest(".add-to-cart");
+        if (btn) {
+            const product = {
+                id: btn.dataset.id,
+                name: btn.dataset.name,
+                price: btn.dataset.price,
+                image: btn.dataset.image,
+                quantity: 1
+            };
+            window.addToCart(product);
+        }
+    });
 
+    // Botón comprar
+    const buyBtn = document.getElementById("buy-btn");
     if (buyBtn) {
         buyBtn.addEventListener("click", () => {
-            let cart = getCart();
-
-            if (cart.length === 0) {
-                alert(TXT_PURCHASE_EMPTY);
-                return;
-            }
-
-            // Simular compra: Limpiar carrito
-            saveCart([]);
-            renderCart();
+            const cart = JSON.parse(localStorage.getItem(getCartKey())) || [];
+            if (cart.length === 0) return alert(TXT_PURCHASE_EMPTY);
+            
+            localStorage.setItem(getCartKey(), JSON.stringify([]));
+            window.dispatchEvent(new Event('cartUpdated'));
+            window.renderCart();
             alert(TXT_PURCHASE_SUCCESS);
         });
     }
 
-    function showToast(msg) {
-        // Eliminar toast anterior si existe
-        const oldToast = document.querySelector(".cart-toast");
-        if (oldToast) oldToast.remove();
-
-        const toast = document.createElement("div");
-        toast.className = "cart-toast";
-        toast.textContent = msg;
-        document.body.appendChild(toast);
-
-        // Pequeño delay para la animación CSS
-        setTimeout(() => toast.classList.add("show"), 10);
-        
-        setTimeout(() => {
-            toast.classList.remove("show");
-            setTimeout(() => toast.remove(), 300);
-        }, 2500);
-    }
-
-    // Ejecutar renderizado al cargar la página
-    renderCart();
+    window.renderCart();
 });
