@@ -17,14 +17,17 @@
         </div>
 
         <script>
-            // Mantenemos tus configuraciones globales para que React las use
+            // Configuración base
             window.BASE_URL = "<?= BASE_URL ?>";
             window.USER_ID = "<?= $_SESSION['user']['id'] ?? 'guest' ?>";
-            window.CART_ADDED = "<?= __t('cart_added') ?>"; 
-            window.CART_EMPTY = "<?= __t('cart_empty') ?>";
-            window.CART_QTY = "<?= __t('cart_qty') ?>";
-            window.CART_REMOVE = "<?= __t('cart_remove') ?>";
-            window.IS_GUEST = <?= $isGuest ? 'true' : 'false' ?>;
+            window.CURRENT_LANGUAGE = "<?= $_SESSION['user']['language'] ?? 'es' ?>";
+            window.IS_GUEST = <?= !isset($_SESSION['user']) ? 'true' : 'false' ?>;
+
+            // Etiquetas de traducción (Usando tus claves exactas)
+            window.TXT_SEARCH = "<?= __t('search_products') ?>";
+            window.TXT_ADD_TO_CART = "<?= __t('add_to_cart') ?>";
+            window.TXT_FAVORITE = "<?= __t('favorite') ?>";
+            window.TXT_LOADING = "<?= __t('loading_rating') ?>";
         </script>
 
         <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
