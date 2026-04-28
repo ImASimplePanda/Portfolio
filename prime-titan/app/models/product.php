@@ -86,20 +86,23 @@ class Product {
         return $query->execute();
     }
 
-    // Crear un producto (usa name_es como nombre principal)
-    public function create($name, $price, $image) {
-
-        // Comprobar si ya existe (por nombre en español)
-        if ($this->existsByName($name)) {
+    // Crear un producto 
+    public function create($name_es, $name_en, $description_es, $description_en, $price, $image) {
+        // Verificamos si ya existe por el nombre en español para evitar duplicados
+        if ($this->existsByName($name_es)) {
             return false; 
         }
 
-        // Insertar si no existe
-        $sql = "INSERT INTO products (name_es, price, image) 
-                VALUES (:name, :price, :image)";
+        $sql = "INSERT INTO products (name_es, name_en, description_es, description_en, price, image) 
+                VALUES (:name_es, :name_en, :description_es, :description_en, :price, :image)";
 
         $query = $this->pdo->prepare($sql);
-        $query->bindParam(':name', $name);
+        
+        // Vinculamos todos los parámetros
+        $query->bindParam(':name_es', $name_es);
+        $query->bindParam(':name_en', $name_en);
+        $query->bindParam(':description_es', $description_es);
+        $query->bindParam(':description_en', $description_en);
         $query->bindParam(':price', $price);
         $query->bindParam(':image', $image);
 

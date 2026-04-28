@@ -11,52 +11,69 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
     exit;
 }
 
-$extra_css = '<link rel="stylesheet" href="' . BASE_URL . 'assets/css/admin-products.css">';
-require_once BASE_DIR . '/views/layouts/header.php';
-
 $productModel = new Product($db);
-
 $error = null;
 $success = null;
 
-// Función de traducción ES -> EN 
+/**
+ * Función de traducción automática usando MyMemory API (Gratuita)
+ */
 function translate_es_to_en(string $text): string {
-    
+    if (empty($text)) return '';
+
+    // Preparamos la URL para la API (ES a EN)
+    $url = "https://api.mymemory.translated.net/get?q=" . urlencode($text) . "&langpair=es|en";
+
+    // Realizamos la petición (usamos @ para evitar que un fallo de red rompa la página)
+    $response = @file_get_contents($url);
+    $data = json_decode($response, true);
+
+    // Si la API responde bien, devolvemos traducción; si no, el original
+    if (isset($data['responseData']['translatedText'])) {
+        return $data['responseData']['translatedText'];
+    }
+
     return $text; 
 }
 
-// Procesar formulario
+// Procesar formulario al hacer POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    $name_es        = trim($_POST['name_es']);
-    $description_es = trim($_POST['description_es'] ?? '');
-    $price          = floatval($_POST['price']);
+    $name_es         = trim($_POST['name_es']);
+    $description_es  = trim($_POST['description_es'] ?? '');
+    $price           = floatval($_POST['price']);
 
-    // Traducciones automáticas
+    // --- TRADUCCIÓN AUTOMÁTICA ---
     $name_en        = translate_es_to_en($name_es);
-    $description_en = $description_es !== '' ? translate_es_to_en($description_es) : '';
+    $description_en = ($description_es !== '') ? translate_es_to_en($description_es) : '';
 
-    // Procesar imagen
+    // --- PROCESAR IMAGEN ---
     $imageName = null;
 
-    // Si sube una nueva imagen
+    // 1. Si sube una nueva imagen
     if (!empty($_FILES['image_upload']['name'])) {
         $imageName  = basename($_FILES['image_upload']['name']);
-        $targetPath = __DIR__ . '/../assets/images/' . $imageName;
+        // Ruta absoluta hacia la carpeta de assets
+        $targetPath = '../assets/images/' . $imageName;
         move_uploaded_file($_FILES['image_upload']['tmp_name'], $targetPath);
-    }
-    // Si selecciona una existente
+    } 
+    // 2. Si selecciona una existente
     else if (!empty($_POST['image_select'])) {
         $imageName = $_POST['image_select'];
     }
 
-    // Intentar crear producto
+    // --- GUARDAR EN BBDD ---
+    // Importante: El modelo Product->create ahora recibe 6 parámetros
     if (!$productModel->create($name_es, $name_en, $description_es, $description_en, $price, $imageName)) {
-        $error = __t('product_exists'); // Producto duplicado
+        $error = __t('product_exists'); 
     } else {
-        $success = __t('product_created'); // Producto creado
+        $success = __t('product_created'); 
     }
 }
+
+// Carga de Header y CSS
+$extra_css = '<link rel="stylesheet" href="' . BASE_URL . 'assets/css/admin-products.css">';
+require_once BASE_DIR . '/views/layouts/header.php';
 ?>
 
 <div class="content-box">
@@ -74,10 +91,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <form method="POST" enctype="multipart/form-data" class="admin-form">
 
         <label><?= __t('product_name') ?> </label>
-        <input type="text" name="name_es" required>
+        <input type="text" name="name_es" placeholder="Ej: Creatina..." required>
 
         <label><?= __t('description') ?> </label>
-        <textarea name="description_es" rows="4"></textarea>
+        <textarea name="description_es" rows="4" placeholder="Describe el producto..."></textarea>
 
         <label><?= __t('price') ?> (€)</label>
         <input type="number" step="0.01" name="price" required>
@@ -86,10 +103,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <select name="image_select" class="image-select">
             <option value="">-- <?= __t('none') ?> --</option>
             <?php
-            $images = scandir(__DIR__ . '/../../assets/images/');
-            foreach ($images as $img) {
-                if ($img === '.' || $img === '..') continue;
-                echo "<option value='$img'>$img</option>";
+            $imgPath = __DIR__ . '/../../assets/images/';
+            if (is_dir($imgPath)) {
+                $images = scandir($imgPath);
+                foreach ($images as $img) {
+                    if ($img === '.' || $img === '..' || is_dir($imgPath . $img)) continue;
+                    echo "<option value='$img'>$img</option>";
+                }
             }
             ?>
         </select>
