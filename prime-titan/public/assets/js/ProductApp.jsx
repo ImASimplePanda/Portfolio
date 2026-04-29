@@ -100,8 +100,20 @@ function ProductApp() {
                                 <button className="add-to-cart" onClick={() => window.addToCart(product)}>
                                     🛒 {window.TXT_ADD_TO_CART}
                                 </button>
-                                <button className="add-to-fav" onClick={() => typeof window.addToFav === 'function' && window.addToFav(product.id)}>
-                                    ❤️ {window.TXT_FAVORITE}
+                                
+                                <button 
+                                    className={`add-to-fav ${Number(product.is_favorite) > 0 ? 'is-saved' : ''}`} 
+                                    data-id={product.id}
+                                    disabled={Number(product.is_favorite) > 0}
+                                    onClick={(e) => {
+                                        if (typeof window.addToFav === 'function') {
+                                            window.addToFav(product.id, e.currentTarget);
+                                        }
+                                    }}
+                                >
+                                    ❤️ {Number(product.is_favorite) > 0 
+                                        ? (window.TXT_SAVED || 'Guardado') 
+                                        : (window.TXT_FAVORITE || 'Favorito')}
                                 </button>
                             </div>
                         </div>

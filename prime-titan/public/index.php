@@ -12,9 +12,11 @@
             </div>
 
             <div id="react-product-app">
-                <p>Cargando catálogo...</p> 
+                <p><?php echo __t('loading_catalog'); ?></p> 
             </div>
         </div>
+
+        <script src="<?php echo BASE_URL; ?>assets/js/fav.js"></script>
 
         <script>
             // Configuración base
@@ -27,6 +29,7 @@
             window.TXT_SEARCH = "<?= __t('search_products') ?>";
             window.TXT_ADD_TO_CART = "<?= __t('add_to_cart') ?>";
             window.TXT_FAVORITE = "<?= __t('favorite') ?>";
+            window.TXT_SAVED = "<?= __t('saved') ?>";
             window.TXT_LOADING = "<?= __t('loading_rating') ?>";
         </script>
 

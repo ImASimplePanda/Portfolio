@@ -257,6 +257,13 @@ html, body {
         background-color: #0153ab;
       }
   }
+  /* Estado Guardado (se activa con la clase que pusimos en React) */
+  .add-to-fav.is-saved {
+      background-color: #ff4d4d !important;
+      color: white !important;
+      border-color: #ff4d4d !important;
+      cursor: default;
+}
 
 }
 
@@ -769,7 +776,7 @@ body.dark .modal-content {
 .modal-right .add-to-cart {
     width: 100%; 
     padding: 18px 25px; /* Más grande como pediste */
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: bold;
     text-transform: uppercase;
     background-color: #007bff;

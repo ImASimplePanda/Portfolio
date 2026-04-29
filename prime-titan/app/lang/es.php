@@ -97,11 +97,12 @@ return [
     'loading_rating' => 'Cargando valoración...',
     'add_to_cart' => 'Añadir al carrito',
     'favorite' => 'Favorito',
+    'saved' => 'Guardado',
     'average_rating' => 'Valoración media',
     'votes' => 'votos',
+    'loading_catalog' => 'Cargando catálogo...',
 
     // Peril
-
     'change_photo' => 'Cambiar foto',
     'email' => 'Email',
     'member_since' => 'Miembro desde',

@@ -93,13 +93,14 @@ return [
     'profile_picture_optional' => 'Profile picture (optional)',
 
     // Index
-
     'search_products' => 'Search products',
     'loading_rating' => 'Loading rating...',
     'add_to_cart' => 'Add to cart',
     'favorite' => 'Favorite',
+    'saved' => 'Saved',
     'average_rating' => 'Average rating',
     'votes' => 'votes',
+    'loading_catalog' => 'Loading catalog...',
 
 
     // Profile
