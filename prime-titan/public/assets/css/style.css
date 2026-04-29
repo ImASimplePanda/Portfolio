@@ -220,6 +220,8 @@ html, body {
   background-color: #0056b3;
 }
 
+
+
 /* Productos en grid */
 .products {
   display: grid;
@@ -242,7 +244,7 @@ html, body {
   .add-to-cart,
   .add-to-fav {
       border: none;          
-      background-color: #f4a460; 
+      background-color: #007bff; 
       color: rgb(0, 0, 0);          
       margin-top: 5px;
       width: 100%;
@@ -252,7 +254,7 @@ html, body {
       font-size: 0.9rem;
       transition: background-color 0.3s; 
       &:hover{
-        background-color: #d17f3c;
+        background-color: #0153ab;
       }
   }
 
@@ -596,9 +598,13 @@ body.dark .side-menu a,
 body.dark .profile-title,
 body.dark .value,
 body.dark .profile-username,
-body.dark .product-card h3,
-body.dark .product-card p {
+body.dark .product-card h3{
     color: #fff;
+}
+
+body.dark .product-card p{
+  font-weight: bold;
+  color: #ff9800;
 }
 
 /* Botones */
@@ -653,7 +659,160 @@ body.dark .admin-title {
 
 
 
+/* --- MODAL OVERLAY (Fondo difuminado detrás de la tarjeta) --- */
+.modal-overlay {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100vw; 
+    height: 100vh; 
+    background: rgba(0, 0, 0, 0.75); /* Oscurece el fondo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; 
+    backdrop-filter: blur(5px); /* Efecto desenfoque muy pro */
+}
 
+/* --- MODAL CONTENT (La Tarjeta sólida) --- */
+.modal-content {
+    /* Colores modo claro por defecto */
+    background-color: #ffffff; 
+    color: #333333;
+    
+    width: 90%; 
+    max-width: 800px;
+    max-height: 90vh;
+    border-radius: 20px; /* Bordes más redondeados tipo tarjeta */
+    position: relative;
+    padding: 40px 30px 30px 30px; 
+    overflow-y: auto;
+    
+    /* Forzamos que sea opaco y tenga sombra */
+    border: 1px solid #ddd;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4); 
+    
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- CAMBIOS PARA MODO OSCURO (Basado en tu cookie/clase body) --- */
+body.dark .modal-content {
+    background-color: #222222; /* Fondo gris oscuro sólido */
+    color: #ffffff;
+    border-color: #444444;
+}
+
+/* --- BOTÓN CERRAR (La X con fondo para que no se pierda) --- */
+.modal-close {
+    position: absolute;
+    top: 15px; 
+    right: 15px;
+    background: rgba(128, 128, 128, 0.2); /* Fondo circular suave */
+    border: none;
+    color: inherit; 
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    cursor: pointer;
+    line-height: 1;
+    z-index: 100;
+    transition: all 0.2s ease;
+}
+
+.modal-close:hover {
+    background: #ff4d4d;
+    color: white;
+    transform: rotate(90deg);
+}
+
+/* --- CUERPO DEL MODAL --- */
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.modal-left img {
+    width: 100%;
+    max-width: 350px; 
+    height: auto;
+    border-radius: 12px;
+    display: block;
+    margin: 0 auto;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.modal-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.modal-right h2 {
+    margin-top: 0;
+    font-size: 1.6rem;
+}
+
+.modal-price {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #ff9800;
+    margin: 10px 0;
+}
+
+/* --- BOTÓN AÑADIR AL CARRITO (Grande y Centrado) --- */
+.modal-right .add-to-cart {
+    width: 100%; 
+    padding: 18px 25px; /* Más grande como pediste */
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: #007bff;
+    color: white !important;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.3s ease;
+}
+
+.modal-right .add-to-cart:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
+}
+
+/* --- AJUSTE MODO OSCURO BOTÓN --- */
+body.dark .modal-right .add-to-cart {
+    background-color: #0062cc;
+}
+
+.clickable-img {
+    cursor: pointer;
+    position: relative;
+    transition: opacity 0.2s;
+}
+
+.clickable-img:hover {
+    opacity: 0.9; 
+}
+
+
+
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 
 
 /* Responsive */

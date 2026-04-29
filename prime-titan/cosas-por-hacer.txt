@@ -1,12 +1,8 @@
 - Mirar footer en login.php
 - Mejorar gestion de usuarios
 - Si un producto esta en un carrito y se elimina, sigue en el carrito
-- Comprobar que no se puede crear un mismo producto que ya existe
-- Al crear un producto, tener que añadir una descripcion (Usando api traducir al ingles y guardar en la base de datos)
-- Al crear un producto, el mensaje que sale como exitoso sale mal.
 - Fichero login revisar session_regenerate_id(true); // evita sesiones antiguas
 - Como admin, al eliminar un usuario  en modo oscuro  no se ve bien
 - En la tienda, al buscar productos en la barra de search, cuando sale solo un producto  se ve agrandado
-- Arreglar que al crear un producto,  en la base de datos la descripcion se guarda en image.
 IDEA - que al pulsar en la imagen del producto, se abra una ventana con la descripcion de dicho producto.
-
+- Al recargar la pagina, el react pone Cargando productos aunque el idioma este en ingles, cambiar
