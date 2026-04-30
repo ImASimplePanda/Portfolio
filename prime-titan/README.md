@@ -81,6 +81,30 @@ CREATE TABLE IF NOT EXISTS rating (
         ON UPDATE CASCADE
 );
 
+-- -------------------------------------------------
+-- TABLA: CATÁLOGO EJERCICIOS
+-- -------------------------------------------------
+CREATE TABLE exercises_library (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name_es VARCHAR(255) NOT NULL,
+    name_en VARCHAR(255) NOT NULL,
+    muscle_group VARCHAR(50), 
+    image_url VARCHAR(255)
+);
+
+-- -------------------------------------------------
+-- TABLA: RUTINA USUARIO
+-- -------------------------------------------------
+CREATE TABLE user_workouts (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    day_of_week TINYINT, -- 0 (Lunes) a 6 (Domingo)
+    exercise_id INT,
+    sets INT DEFAULT 3,
+    reps VARCHAR(20) DEFAULT '8-10',
+    FOREIGN KEY (exercise_id) REFERENCES exercises_library(id)
+);
+
 
 -- -------------------------------------------------
 -- INSERTAR 10 PRODUCTOS MULTILENGUAJE
@@ -125,6 +149,20 @@ INSERT INTO products (name_es, description_es, name_en, description_en, price, s
 ('Cuerda para Saltar', 'Cuerda de alta velocidad para cardio.',
  'Jump Rope', 'High-speed rope for cardio training.',
  8.99, 70, 'creatina.jpg');
+
+
+-- -------------------------------------------------
+-- INSERTAR 8 EJERCICIOS MULTILENGUAJE
+-- -------------------------------------------------
+INSERT INTO exercises_library (name_es, name_en, muscle_group, image_url) VALUES
+('Press de Banca', 'Bench Press', 'pecho', 'bench_press.jpg'),
+('Press Inclinado', 'Incline Press', 'pecho', 'incline_press.jpg'),
+('Remo con Barra', 'Barbell Row', 'espalda', 'barbell_row.jpg'),
+('Sentadilla', 'Squat', 'pierna', 'squat.jpg'),
+('Extensión de Pierna', 'Leg Extension', 'pierna', 'leg_extension.jpg'),
+('Peso Muerto Rumano', 'Romanian Deadlift', 'isquios', 'romanian_deadlift.jpg'),
+('Press Militar', 'Military Press', 'hombro', 'military_press.jpg'),
+('Curl de Bíceps', 'Bicep Curl', 'brazo', 'bicep_curl.jpg');
 
 -- -------------------------------------------------
 -- CREAR ADMIN POR DEFECTO

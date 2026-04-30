@@ -4,5 +4,4 @@
 - Fichero login revisar session_regenerate_id(true); // evita sesiones antiguas
 - Como admin, al eliminar un usuario  en modo oscuro  no se ve bien
 - En la tienda, al buscar productos en la barra de search, cuando sale solo un producto  se ve agrandado
-IDEA - que al pulsar en la imagen del producto, se abra una ventana con la descripcion de dicho producto.
-- Al recargar la pagina, el react pone Cargando productos aunque el idioma este en ingles, cambiar
+- En la pestaña de login y registro poner algun boton o desplegable para cambiar el idioma

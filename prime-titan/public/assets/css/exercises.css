@@ -1,0 +1,101 @@
+/* Estructura principal */
+.workout-main {
+    width: 95%; /* Ocupa casi todo el ancho en móvil */
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+/* Contenedor de la semana */
+.workout-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Fila de cada día */
+.day-row {
+    width: 100%;
+    background: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Card del ejercicio dentro del día */
+.exercise-card {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding: 10px 0;
+}
+
+.exercise-card img {
+    width: 80%; /* Imagen ocupando el 80% del ancho del card */
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.exercise-info {
+    width: 90%;
+    text-align: center;
+}
+
+/* Botones de acción */
+.workout-actions {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.btn-add, .btn-recom {
+    width: 48%; /* Dos botones ocupando el 48% cada uno */
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-add { 
+  background: #28a745; 
+  color: white; 
+}
+.btn-recom { 
+  background: #007bff; 
+  color: white; 
+}
+
+
+
+
+.muscle-selector { 
+  display: flex; 
+  flex-wrap: wrap; 
+  gap: 5px; 
+  margin-top: 10px; 
+}
+.muscle-selector button { 
+  padding: 5px 10px;
+  font-size: 0.8rem; 
+  cursor: pointer; 
+}
+
+/* Estilo para el título de la sección */
+.section-header {
+    text-align: center;      /* Centra el título */
+    margin-bottom: 30px;     /* Espacio por debajo (esto separará el título del Lunes) */
+    padding-top: 10px;
+}
+
+.section-header h1 {
+    font-size: 24px;         /* Tamaño equilibrado para móvil */
+    color: #fefefe;             /* Color oscuro para buena lectura */
+    margin: 0;               /* Quitamos márgenes por defecto del h1 */
+}
+
+/* Opcional: Si quieres que el contenedor de los días empiece con un poco más de aire */
+.workout-container {
+    margin-top: 10px;
+}

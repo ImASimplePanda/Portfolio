@@ -11,6 +11,7 @@ return [
     'profile' => 'Mi perfil',
     'preferences' => 'Preferencias',
     'logout' => 'Cerrar sesión',
+    'exercises' => 'Ejercicios',
 
     // Preferencias
     'theme' => 'Tema',
@@ -108,6 +109,12 @@ return [
     'member_since' => 'Miembro desde',
     'current_location' => 'Ubicación actual',
     'detecting_location' => 'Detectando ubicación...',
+
+    // Ejercicios
+    'loading_exercises' => 'Cargando tus ejercicios...'
+    'my_exercises' => 'Mis ejercicios',
+    'add' => 'Añadir',
+    'recommended' => 'Recomendado',
 
 
     

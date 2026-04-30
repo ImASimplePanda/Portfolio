@@ -49,6 +49,7 @@ require_once __DIR__ . '/../../models/product.php';
                 <ul>
                     <li><a href="<?php echo BASE_URL; ?>profile.php"><?= __t('profile') ?></a></li>
                     <li><a href="<?php echo BASE_URL; ?>preferences.php"><?= __t('preferences') ?></a></li>
+                    <li><a href="<?php echo BASE_URL; ?>exercises.php"><?= __t('exercises') ?></a></li>
                     <li><a href="<?php echo BASE_URL; ?>logout.php"><?= __t('logout') ?></a></li>
                 </ul>
             </div>

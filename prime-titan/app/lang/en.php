@@ -11,6 +11,7 @@ return [
     'users' => 'Users',
     'preferences' => 'Preferences',
     'logout' => 'Log out',
+    'exercises' => 'Exercises',
 
     // Preferences
     'theme' => 'Theme',
@@ -112,5 +113,10 @@ return [
     'detecting_location' => 'Detecting location...',
 
 
+    // Exercises
+    'loading_exercises' => 'Loading your exercises...',
+    'my_exercises' => 'My exercises',
+    'add' => 'Add',
+    'recommended' => 'Recommended',
 
 ];
