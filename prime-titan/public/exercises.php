@@ -31,15 +31,28 @@ if (!isset($_SESSION['user'])) {
         </div>
 
         <script>
-            // Configuración base para el app de ejercicios
+            // Configuración base
             window.BASE_URL = "<?= BASE_URL ?>";
             window.USER_ID = "<?= $_SESSION['user']['id'] ?>";
             window.CURRENT_LANGUAGE = "<?= $_SESSION['user']['language'] ?? 'es' ?>";
 
-            // Etiquetas de traducción necesarias
+            // Etiquetas de traducción
+            window.TXT_DAYS = <?php echo json_encode(__t('days')); ?>; // Esto convierte el array PHP a JS
+            window.TXT_SEARCH = "<?= __t('search_placeholder') ?>";
             window.TXT_LOADING = "<?= __t('loading_catalog') ?>";
             window.TXT_ADD = "<?= __t('add') ?>";
             window.TXT_RECOMMENDED = "<?= __t('recommended') ?>";
+            window.MUSCLE_TRANSLATIONS = {
+                'pecho': '<?= __t('chest') ?>',
+                'espalda': '<?= __t('back') ?>',
+                'pierna': '<?= __t('legs') ?>',
+                'isquios': '<?= __t('hamstrings') ?>',
+                'hombro': '<?= __t('shoulders') ?>',
+                'biceps': '<?= __t('biceps') ?>',
+                'triceps': '<?= __t('triceps') ?>',
+                'abs': '<?= __t('abs') ?>'
+            }
+
         </script>
 
         <script src="https://unpkg.com/react@18/umd/react.development.js"></script>

@@ -118,5 +118,16 @@ return [
     'my_exercises' => 'My exercises',
     'add' => 'Add',
     'recommended' => 'Recommended',
+    'days' => ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+    'search_placeholder' => 'Search exercise...',
+
+    // Muscles
+    'chest' => 'Chest',
+    'back' => 'Back',
+    'legs' => 'Legs',
+    'shoulders' => 'Shoulders',
+    'biceps' => 'Biceps',
+    'triceps' => 'Triceps',
+    'abs' => 'Abs'
 
 ];

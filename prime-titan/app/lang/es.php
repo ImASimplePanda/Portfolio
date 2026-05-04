@@ -111,12 +111,21 @@ return [
     'detecting_location' => 'Detectando ubicación...',
 
     // Ejercicios
-    'loading_exercises' => 'Cargando tus ejercicios...'
+    'loading_exercises' => 'Cargando tus ejercicios...',
     'my_exercises' => 'Mis ejercicios',
     'add' => 'Añadir',
     'recommended' => 'Recomendado',
+    'days' => ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'],
+    'search_placeholder' => 'Buscar ejercicio...',
 
-
+    // Músculos
+    'chest' => 'Pecho',
+    'back' => 'Espalda',
+    'legs' => 'Pierna',
+    'shoulders' => 'Hombros',
+    'biceps' => 'Biceps',
+    'triceps' => 'Triceps',
+    'abs' => 'Abdominales'
     
 
 
