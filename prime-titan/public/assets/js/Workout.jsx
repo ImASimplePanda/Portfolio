@@ -2,19 +2,25 @@ const { useState, useEffect } = React;
 
 const ExerciseCard = ({ exercise, onDelete, onUpdate }) => (
     <div className="exercise-card">
+        {/* Botón de borrar ahora posicionado arriba a la derecha */}
         <button className="delete-btn" onClick={() => onDelete(exercise.id)}>✕</button>
-        <img src={`${window.BASE_URL}assets/images/${exercise.image_url}`} alt={exercise.name} />
         
+        {/* Imagen pequeña */}
+        <img 
+            className="exercise-thumb"
+            src={`${window.BASE_URL}assets/images/${exercise.image_url || 'default.jpg'}`} 
+            alt={exercise.name} 
+        />
+        
+        {/* Contenido a la derecha */}
         <div className="exercise-info">
-            <h4>{exercise.name}</h4>
-            {/* Controles de edición en línea */}
+            <h4 className="exercise-title">{exercise.name}</h4>
             <div className="stats-inputs">
                 <input 
                     type="number" 
                     defaultValue={exercise.sets} 
                     onBlur={(e) => onUpdate(exercise.id, 'sets', e.target.value)}
                     className="stat-input"
-                    placeholder="S"
                 />
                 <span>x</span>
                 <input 
@@ -22,7 +28,6 @@ const ExerciseCard = ({ exercise, onDelete, onUpdate }) => (
                     defaultValue={exercise.reps} 
                     onBlur={(e) => onUpdate(exercise.id, 'reps', e.target.value)}
                     className="stat-input"
-                    placeholder="R"
                 />
             </div>
         </div>
@@ -80,13 +85,23 @@ const WorkoutApp = () => {
     const handleUpdate = (workoutId, field, value) => {
         const formData = new FormData();
         formData.append('id', workoutId);
-        formData.append('field', field);
+        formData.append('field', field); // 'sets' o 'reps'
         formData.append('value', value);
 
         fetch(`${window.BASE_URL}actions/update_workout.php`, {
             method: 'POST',
             body: formData
-        });
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                console.log("Guardado con éxito");
+                // Opcional: recargar workouts si es necesario
+            } else {
+                console.error("Error al guardar:", data.message);
+            }
+        })
+        .catch(err => console.error("Error de red:", err));
     };
 
     const handleDelete = (workoutId) => {
