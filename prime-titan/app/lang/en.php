@@ -9,6 +9,7 @@ return [
     'profile' => 'My profile',
     'products' => 'Products',
     'users' => 'Users',
+    'admin_exercises' => "Exercises",
     'preferences' => 'Preferences',
     'logout' => 'Log out',
     'exercises' => 'Exercises',
@@ -44,8 +45,8 @@ return [
     'delete' => 'Delete',
 
     // Add product
-    'product_created'        => 'Product created successfully!',
-    'product_exists'         => 'Error: A product with this name already exists.',
+    'product_created' => 'Product created successfully!',
+    'product_exists' => 'Error: A product with this name already exists.',
 
 
     // Edit product
@@ -80,6 +81,15 @@ return [
     'user_updated' => 'User updated successfully',
     'user_delete_error' => 'Error deleting user',
     'user_update_error' => 'Error updating user',
+
+    // Exercises
+    'exercise_management' => 'Exercise Management',
+    'add_exercise' => 'Add Exercise',
+    'edit_exercise' => 'Edit Exercise',
+    'name' => 'Name',
+    'muscle_group' => 'Muscle Group',
+    'confirm_delete' => 'Are you sure you want to delete this exercise?',
+    'save' => 'Save',
 
     // Login
     'login' => 'Login',

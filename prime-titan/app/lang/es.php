@@ -8,6 +8,7 @@ return [
     'wishlist' => 'Lista de deseados',
     'products' => 'Productos',
     'users' => 'Usuarios',
+    'admin_exercises' => "Ejercicios",
     'profile' => 'Mi perfil',
     'preferences' => 'Preferencias',
     'logout' => 'Cerrar sesión',
@@ -80,6 +81,15 @@ return [
     'user_updated' => 'Usuario actualizado correctamente',
     'user_delete_error' => 'Error al eliminar el usuario',
     'user_update_error' => 'Error al actualizar el usuario',
+
+    // Ejercicios
+    'exercise_management' => 'Gestión de Ejercicios',
+    'add_exercise' => 'Añadir Ejercicio',
+    'edit_exercise' => 'Editar Ejercicio',
+    'name' => 'Nombre',
+    'muscle_group' => 'Grupo Muscular',
+    'confirm_delete' => '¿Seguro que quieres borrar este ejercicio?',
+    'save' => 'Guardar',
 
     // Login
     'login' => 'Iniciar sesión',

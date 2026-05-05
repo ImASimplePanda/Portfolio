@@ -69,6 +69,7 @@ require_once __DIR__ . '/../../models/product.php';
             <?php if ($_SESSION['user']['role'] === 'admin'): ?>
                 <li><a href="<?php echo BASE_URL; ?>admin/admin_products.php">📦 <?= __t('products') ?></a></li>
                 <li><a href="<?php echo BASE_URL; ?>admin/users.php">👥 <?= __t('users') ?></a></li>
+                <li><a href="<?php echo BASE_URL; ?>admin/admin_exercises.php"> <?= __t('admin_exercises') ?></a></li>
             <?php endif; ?>
         <?php else: ?>
             <li><a href="<?php echo BASE_URL; ?>login.php">👤 <?= __t('login') ?></a></li>
