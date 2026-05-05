@@ -117,6 +117,10 @@ return [
     'recommended' => 'Recomendado',
     'days' => ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'],
     'search_placeholder' => 'Buscar ejercicio...',
+    'train_question' => '¿Qué quieres entrenar?',
+    'btn_back' => '⬅ Volver',
+    'exercises_for' => 'Ejercicios para',
+    'no_exercises_found' => 'No se encontraron ejercicios nuevos para este músculo.',
 
     // Músculos
     'chest' => 'Pecho',

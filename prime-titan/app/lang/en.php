@@ -120,6 +120,10 @@ return [
     'recommended' => 'Recommended',
     'days' => ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
     'search_placeholder' => 'Search exercise...',
+    'train_question' => 'What do you want to train?',
+    'btn_back' => '⬅ Back',
+    'exercises_for' => 'Exercises for',
+    'no_exercises_found' => 'No new exercises found for this muscle.',
 
     // Muscles
     'chest' => 'Chest',

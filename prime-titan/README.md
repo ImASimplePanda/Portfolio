@@ -91,6 +91,7 @@ CREATE TABLE exercises_library (
     muscle_group VARCHAR(50), 
     image_url VARCHAR(255)
 );
+ALTER TABLE exercises ADD COLUMN is_recommended TINYINT(1) DEFAULT 0;
 
 -- -------------------------------------------------
 -- TABLA: RUTINA USUARIO

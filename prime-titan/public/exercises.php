@@ -26,7 +26,7 @@ if (!isset($_SESSION['user'])) {
             </div>
 
             <div id="react-workout-app">
-                <p><?= __t('loading_exercises') ?>...</p> 
+                <p><?= __t('loading_exercises') ?></p> 
             </div>
         </div>
 
@@ -42,6 +42,10 @@ if (!isset($_SESSION['user'])) {
             window.TXT_LOADING = "<?= __t('loading_catalog') ?>";
             window.TXT_ADD = "<?= __t('add') ?>";
             window.TXT_RECOMMENDED = "<?= __t('recommended') ?>";
+            window.TXT_TRAIN_QUESTION = "<?= __t('train_question') ?>";
+            window.TXT_BACK = "<?= __t('btn_back') ?>";
+            window.TXT_EXERCISES_FOR = "<?= __t('exercises_for') ?>";
+            window.TXT_NO_EXERCISES_FOUND = "<?= __t('no_exercises_found') ?>";
             window.MUSCLE_TRANSLATIONS = {
                 'pecho': '<?= __t('chest') ?>',
                 'espalda': '<?= __t('back') ?>',
