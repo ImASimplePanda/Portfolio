@@ -9,6 +9,10 @@ if (!isset($_SESSION['user'])) {
 $user = $_SESSION['user'];
 ?>
 
+<head>
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/preferences.css">
+</head>
+
 <div class="page-wrapper">
     <div class="content-box">
 

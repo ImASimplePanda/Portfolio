@@ -1,9 +1,102 @@
+/* --- ESTRUCTURA GENERAL (Igual a ejercicios) --- */
+.content-box {
+    background: #ffffff;
+    width: 90%;
+    margin: 2% auto;
+    padding: 4%;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 60vh;
+}
+
+body.dark .content-box {
+    background-color: #1c1c1c;
+    color: #e5e5e5;
+    border-color: #333;
+}
+
 .admin-title {
     text-align: center;
     font-size: 6vw;
-    margin-bottom: 4%;
+    margin-bottom: 5%;
+    font-weight: bold;
 }
 
+/* --- LISTADO DE PRODUCTOS (Estilo Tarjeta) --- */
+.product-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.product-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: #f9f9f9;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    transition: 0.2s;
+}
+
+body.dark .product-item {
+    background: #2d2d2d;
+    border-color: #444;
+}
+
+.product-img {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.product-info {
+    flex: 1;
+}
+
+.product-name {
+    font-size: 4.5vw;
+    font-weight: bold;
+    margin: 0 0 5px 0;
+}
+
+body.dark .product-name {
+    color: #ffffff;
+}
+
+.product-price {
+    font-size: 4vw;
+    color: #555;
+}
+
+body.dark .product-price {
+    color: #bbb;
+}
+
+.product-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.btn-edit, .btn-delete {
+    padding: 6px 10px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 3.5vw;
+    text-align: center;
+    color: white;
+}
+
+.btn-edit { background: #007bff; }
+.btn-delete { background: #dc3545; }
+
+/* --- BOTÓN AÑADIR --- */
 .btn-add {
     display: block;
     width: 90%;
@@ -15,69 +108,10 @@
     border-radius: 10px;
     font-size: 4.5vw;
     text-decoration: none;
-}
-
-.product-list {
-    display: flex;
-    flex-direction: column;
-    gap: 4%;
-}
-
-.product-item {
-    display: flex;
-    align-items: center;
-    background: #f8f8f8;
-    padding: 3%;
-    border-radius: 10px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
-
-.product-img {
-    width: 25%;
-    border-radius: 8px;
-    margin-right: 4%;
-}
-
-.product-info {
-    flex: 1;
-}
-
-.product-name {
-    font-size: 4.5vw;
     font-weight: bold;
 }
 
-.product-price {
-    font-size: 4vw;
-    color: #444;
-}
-
-.product-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.btn-edit,
-.btn-delete {
-    padding: 6px 10px;
-    border-radius: 6px;
-    text-decoration: none;
-    font-size: 3.5vw;
-    text-align: center;
-}
-
-.btn-edit {
-    background: #007bff;
-    color: white;
-}
-
-.btn-delete {
-    background: #dc3545;
-    color: white;
-}
-
-/* Contenedor general */
+/* --- FORMULARIOS (Admin Form) --- */
 .admin-form {
     width: 92%;
     margin: 0 auto;
@@ -90,30 +124,39 @@
     gap: 5%;
 }
 
-
-.admin-title {
-    text-align: center;
-    font-size: 6vw;
-    margin-bottom: 5%;
-    font-weight: bold;
+body.dark .admin-form {
+    background: #2a2a2a;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
-
 
 .admin-form label {
     font-size: 4.2vw;
     font-weight: 600;
     color: #333;
+    margin-bottom: 2%;
 }
 
+body.dark .admin-form label {
+    color: #e0e0e0;
+}
 
-.admin-form input {
+.admin-form input, .admin-form select, .admin-form textarea {
     width: 100%;
     padding: 3.5%;
     font-size: 4.2vw;
     border-radius: 10px;
     border: 1px solid #ccc;
     background: #fafafa;
+    color: #333;
     transition: 0.2s;
+    box-sizing: border-box;
+    appearance: none;
+}
+
+body.dark .admin-form input, body.dark .admin-form select, body.dark .admin-form textarea {
+    background: #333;
+    color: #e5e5e5;
+    border-color: #555;
 }
 
 .admin-form input:focus {
@@ -122,6 +165,10 @@
     box-shadow: 0 0 6px rgba(0,123,255,0.3);
 }
 
+body.dark .admin-form input:focus {
+    background: #444;
+    border-color: #007bff;
+}
 
 .btn-save {
     margin-top: 6%;
@@ -134,41 +181,22 @@
     font-weight: bold;
     text-align: center;
     transition: 0.2s;
+    cursor: pointer;
 }
 
-.btn-save:active {
-    transform: scale(0.97);
-}
+.btn-save:active { transform: scale(0.97); }
 
-
-.admin-form > * {
-    margin-bottom: 2%;
-}
-
-/* Mensaje de error */
-.error-msg {
+/* --- MENSAJES --- */
+.error-msg, .success-msg {
     width: 92%;
     margin: 0 auto 4%;
     padding: 3%;
-    background: #ffdddd;
-    color: #b30000;
-    border-left: 6px solid #b30000;
     border-radius: 8px;
     font-size: 4vw;
     font-weight: 600;
     text-align: center;
+    border-left: 6px solid;
 }
 
-/* Mensaje de éxito */
-.success-msg {
-    width: 92%;
-    margin: 0 auto 4%;
-    padding: 3%;
-    background: #ddffdd;
-    color: #0f7a0f;
-    border-left: 6px solid #0f7a0f;
-    border-radius: 8px;
-    font-size: 4vw;
-    font-weight: 600;
-    text-align: center;
-}
+.error-msg { background: #ffdddd; color: #b30000; border-color: #b30000; }
+.success-msg { background: #ddffdd; color: #0f7a0f; border-color: #0f7a0f; }

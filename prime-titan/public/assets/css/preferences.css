@@ -1,0 +1,89 @@
+/* --- Estilo Base (Reutilizando la consistencia de productos) --- */
+.content-box {
+    background: #ffffff;
+    width: 90%;
+    margin: 2% auto;
+    padding: 4%;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    min-height: 60vh;
+}
+
+body.dark .content-box {
+    background-color: #1c1c1c;
+    border-color: #333;
+}
+
+.profile-title {
+    text-align: center;
+    font-size: 6vw;
+    margin-bottom: 8%;
+    font-weight: bold;
+    color: #333;
+}
+
+body.dark .profile-title {
+    color: #e5e5e5;
+}
+
+/* --- Card de Preferencias --- */
+.profile-card {
+    display: flex;
+    flex-direction: column;
+    gap: 4%;
+}
+
+.profile-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f9f9f9;
+    padding: 4%;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    transition: 0.2s;
+}
+
+body.dark .profile-item {
+    background: #2d2d2d;
+    border-color: #444;
+}
+
+.label {
+    font-size: 4.2vw;
+    font-weight: 600;
+    color: #333;
+}
+
+body.dark .label {
+    color: #e5e5e5;
+}
+
+/* --- Selects de Preferencias --- */
+.pref-select {
+    width: 45%; /* Ancho controlado para que se vea bien */
+    padding: 2.5%;
+    font-size: 4vw;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background: #ffffff;
+    color: #333;
+    appearance: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+body.dark .pref-select {
+    background: #333;
+    color: #e5e5e5;
+    border-color: #555;
+}
+
+/* Efecto focus para consistencia */
+.pref-select:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 4px rgba(0,123,255,0.3);
+}

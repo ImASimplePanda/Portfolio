@@ -52,8 +52,10 @@ return [
  
     // Editar producto
     'product_name' => 'Nombre del producto',
+    'placeholder_name_product' => 'Ej: Creatina...',
     'price' => 'Precio',
     'description' => 'Descripción',
+    'placeholder_description_product' => 'Ej: Este producto sirve...',
     'current_image' => 'Imagen actual',
     'select_existing_image' => 'Seleccionar imagen existente',
     'upload_new_image' => 'Subir nueva imagen',
@@ -82,7 +84,7 @@ return [
     'user_delete_error' => 'Error al eliminar el usuario',
     'user_update_error' => 'Error al actualizar el usuario',
 
-    // Ejercicios
+    // Ejercicios admin
     'exercise_management' => 'Gestión de Ejercicios',
     'add_exercise' => 'Añadir Ejercicio',
     'edit_exercise' => 'Editar Ejercicio',
@@ -90,6 +92,14 @@ return [
     'muscle_group' => 'Grupo Muscular',
     'confirm_delete' => '¿Seguro que quieres borrar este ejercicio?',
     'save' => 'Guardar',
+
+    // Editar ejercicios
+    'name_es' => 'Nombre',
+    'placeholder_name_exercise' => 'Ej: Press de Banca',
+    'current_image' => 'Imagen actual',
+    'select_existing_image' => 'Usar imagen existente',
+    'upload_new_image' => 'Subir nueva imagen',
+    'save_changes' => 'Guardar cambios',
 
     // Login
     'login' => 'Iniciar sesión',
@@ -131,6 +141,7 @@ return [
     'btn_back' => '⬅ Volver',
     'exercises_for' => 'Ejercicios para',
     'no_exercises_found' => 'No se encontraron ejercicios nuevos para este músculo.',
+
 
     // Músculos
     'chest' => 'Pecho',

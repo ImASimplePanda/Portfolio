@@ -51,8 +51,10 @@ return [
 
     // Edit product
     'product_name' => 'Product name',
+    'placeholder_name_product' => 'E.g: Creatine...',
     'price' => 'Price',
     'description'=> 'Description',
+    'placeholder_description_product' => 'E.g: This product is used for...',
     'current_image' => 'Current image',
     'select_existing_image' => 'Select existing image',
     'upload_new_image' => 'Upload new image',
@@ -82,7 +84,7 @@ return [
     'user_delete_error' => 'Error deleting user',
     'user_update_error' => 'Error updating user',
 
-    // Exercises
+    // Exercises admin
     'exercise_management' => 'Exercise Management',
     'add_exercise' => 'Add Exercise',
     'edit_exercise' => 'Edit Exercise',
@@ -90,6 +92,14 @@ return [
     'muscle_group' => 'Muscle Group',
     'confirm_delete' => 'Are you sure you want to delete this exercise?',
     'save' => 'Save',
+
+    // Edit exercises
+    'name_en' => 'Name',
+    'placeholder_name_exercise' => 'E.g: Bench Press',
+    'current_image' => 'Current image',
+    'select_existing_image' => 'Use existing image',
+    'upload_new_image' => 'Upload new image',
+    'save_changes' => 'Save changes',
 
     // Login
     'login' => 'Login',

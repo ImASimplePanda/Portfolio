@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-$extra_css = '<link rel="stylesheet" href="' . BASE_URL . 'assets/css/admin-products.css">';
+$extra_css = '<link rel="stylesheet" href="' . BASE_URL . 'assets/css/exercises.css">';
 require_once BASE_DIR . '/views/layouts/header.php';
 ?>
 
@@ -52,7 +52,7 @@ require_once BASE_DIR . '/views/layouts/header.php';
 
     <form method="POST" enctype="multipart/form-data" class="admin-form">
         <label><?= __t('name') ?> </label>
-        <input type="text" name="name_es" placeholder="Ej: Press de Banca" required>
+        <input type="text" name="name_es" placeholder="<?= __t('placeholder_name_exercise') ?>" required>
 
         <label><?= __t('muscle_group') ?> </label>
         <select name="muscle_group" required>

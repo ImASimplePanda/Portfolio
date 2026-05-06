@@ -18,6 +18,23 @@ html, body {
   background-attachment: fixed;
 }
 
+.content-box {
+    background: #ffffff;
+    width: 90%;
+    margin: 2% auto;
+    padding: 4%;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    min-height: 60vh;
+}
+
+body.dark .content-box {
+    background-color: #1c1c1c;
+    border-color: #333;
+}
+
 
 /* Contenedor principal */
 
@@ -122,44 +139,92 @@ html, body {
 
 /* Menu lateral */
 
+/* --- Estructura Base del Menú --- */
 .side-menu {
-  position: fixed;
-  top: 0;
-  left: -80%;
-  width: 80%;
-  height: 100%;
-  background: #222;
-  padding: 3%;
-  transition: left 0.3s ease;
-  z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: -80%;
+    width: 80%;
+    height: 100%;
+    padding: 3%;
+    transition: all 0.3s ease; /* Suaviza el cambio de color y posición */
+    z-index: 1000;
+    background: #ffffff; /* Fondo claro por defecto */
+}
+
+/* Modo Oscuro: Cambia el fondo */
+body.dark .side-menu {
+    background: #1c1c1c;
 }
 
 .side-menu.active {
-  left: 0;
+    left: 0;
 }
 
+/* --- Lista y Enlaces --- */
 .side-menu ul {
-  list-style: none;
-  margin-top: 10%;
+    list-style: none;
+    margin-top: 10%;
+    padding: 0;
 }
 
 .side-menu ul li {
-  margin-bottom: 5%;
+    margin-bottom: 5%;
 }
 
-.side-menu ul li a {
-  color: white;
-  text-decoration: none;
-  font-size: 100%;
+.side-menu a {
+    display: flex;
+    align-items: center; /* Centrado vertical */
+    justify-content: flex-start;
+    padding: 3%;
+    text-decoration: none;
+    font-size: 100%;
+    color: #333; /* Texto claro */
+    transition: background 0.2s;
 }
 
+/* Modo Oscuro: Texto */
+body.dark .side-menu a {
+    color: #e5e5e5;
+}
+
+/* Efecto Hover */
+.side-menu a:hover {
+    background: rgba(0,0,0,0.05); /* Gris muy suave */
+}
+
+body.dark .side-menu a:hover {
+    background: rgba(255,255,255,0.1); /* Blanco muy suave */
+}
+
+/* --- Iconos SVG --- */
+.side-menu a svg {
+    width: 7vw; 
+    height: 7vw;
+    margin-right: 4%;
+    fill: #ffffff; /* Azul corporativo */
+    transition: fill 0.3s;
+}
+
+/* Modo Oscuro: Iconos se vuelven blancos */
+body.dark .side-menu a svg {
+    fill: #1c1c1c;
+}
+
+/* --- Botón Cerrar --- */
 .side-menu .close-btn {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 120%;
-  cursor: pointer;
+    background: none;
+    border: none;
+    font-size: 120%;
+    cursor: pointer;
+    color: #333;
 }
+
+body.dark .side-menu .close-btn {
+    color: #e5e5e5;
+}
+
+
 
 
 
@@ -175,19 +240,6 @@ html, body {
   display: block;
 }
 
-
-.content-box {
-  background: #ffffff;  
-  width: 90%;           
-  margin: 2% auto;      
-  padding: 4%;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  display: flex;
-  flex-direction: column;
-  flex: 1;              
-  min-height: 60vh;     
-}
 
 /* Buscador */
 .search-container {
@@ -572,11 +624,7 @@ body.dark {
     color: #e5e5e5;
 }
 
-body.dark .content-box {
-    background-color: #1c1c1c;
-    color: #e5e5e5;
-    border-color: #333;
-}
+
 
 /* Header */
 body.dark .header {
@@ -870,11 +918,6 @@ body.dark .modal-right .add-to-cart {
   .profile-dropdown ul li a {
     padding: 7px 10px;
     font-size: 0.85rem;
-  }
-
-  .content-box {
-    width: 95%;
-    padding: 3%;
   }
 
   .products {

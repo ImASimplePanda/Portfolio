@@ -61,20 +61,19 @@ require_once __DIR__ . '/../../models/product.php';
 <nav class="side-menu" id="sideMenu">
     <button class="close-btn" id="closeBtn">✕</button>
     <ul>
-        <li><a href="<?php echo BASE_URL; ?>index.php">🏠 <?= __t('home') ?></a></li>
-        <li><a href="<?php echo BASE_URL; ?>cart.php">🛒 <?= __t('cart') ?></a></li>
-        <li><a href="<?php echo BASE_URL; ?>wishlist.php">❤️ <?= __t('wishlist') ?></a></li>
+        <li><a href="<?= BASE_URL ?>index.php"><?php renderIcon('home-2.svg'); ?> <?= __t('home') ?></a></li>
+        <li><a  href="<?= BASE_URL ?>cart.php"><?php renderIcon('shopping-cart.svg'); ?> <?= __t('cart') ?></a></li>
+        <li><a href="<?= BASE_URL ?>wishlist.php"><?php renderIcon('heart-star.svg'); ?> <?= __t('wishlist') ?></a></li>
 
         <?php if (isset($_SESSION['user'])): ?>
             <?php if ($_SESSION['user']['role'] === 'admin'): ?>
-                <li><a href="<?php echo BASE_URL; ?>admin/admin_products.php">📦 <?= __t('products') ?></a></li>
-                <li><a href="<?php echo BASE_URL; ?>admin/users.php">👥 <?= __t('users') ?></a></li>
-                <li><a href="<?php echo BASE_URL; ?>admin/admin_exercises.php"> <?= __t('admin_exercises') ?></a></li>
+                <li><a href="<?= BASE_URL ?>admin/admin_products.php"><?php renderIcon('package.svg'); ?> <?= __t('products') ?></a></li>
+                <li><a href="<?= BASE_URL ?>admin/users.php"><?php renderIcon('user.svg'); ?> <?= __t('users') ?></a></li>
+                <li><a href="<?= BASE_URL ?>admin/admin_exercises.php"><?php renderIcon('barbell.svg'); ?> <?= __t('admin_exercises') ?></a></li>
             <?php endif; ?>
         <?php else: ?>
-            <li><a href="<?php echo BASE_URL; ?>login.php">👤 <?= __t('login') ?></a></li>
+            <li><a href="<?= BASE_URL ?>login.php"><?php renderIcon('user.svg'); ?> <?= __t('login') ?></a></li>
         <?php endif; ?>
     </ul>
 </nav>
-
 <div class="overlay" id="overlay"></div>

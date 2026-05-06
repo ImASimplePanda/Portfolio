@@ -31,7 +31,6 @@ require_once BASE_DIR . '/views/layouts/header.php';
                 
                 <div class="product-info">
                     <p class="product-name"><?= htmlspecialchars($e['name']); ?></p>
-                    <p class="product-price"><?= htmlspecialchars($e['muscle_group']); ?></p>
                 </div>
 
                 <div class="product-actions">

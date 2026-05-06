@@ -234,3 +234,221 @@
 .dark .btn-back:hover {
     background-color: #4b5563;
 }
+
+
+/* --- ESTILOS GENERALES Y LAYOUT --- */
+.workout-main {
+    width: 95%;
+    margin: 0 auto;
+    padding: 20px 0;
+    color: #333333;
+}
+
+.workout-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.day-row {
+    width: 100%;
+    background: #ffffff;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    color: #333333;
+}
+
+.day-row h3 {
+    margin-top: 0;
+    color: #333333;
+    font-size: 1.2rem;
+    border-bottom: 1px solid #eeeeee;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+/* --- TARJETA DE EJERCICIO --- */
+.exercise-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: #f9f9f9;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    position: relative;
+}
+
+.exercise-thumb {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.exercise-info { flex-grow: 1; }
+.exercise-info h4 { margin: 0 0 5px 0; color: #333333; font-size: 1rem; }
+
+.stats-inputs { display: flex; align-items: center; gap: 5px; }
+.stat-input { width: 45px; padding: 5px; text-align: center; border: 1px solid #ccc; border-radius: 4px; background: white; }
+
+.delete-btn {
+    position: absolute; top: 5px; right: 5px;
+    background: #ff4d4d; color: white; border: none; border-radius: 5px;
+    cursor: pointer; padding: 2px 8px; font-size: 0.8rem;
+}
+
+/* --- ACCIONES Y SELECTORES --- */
+.workout-actions { display: flex; justify-content: space-between; width: 100%; margin-top: 15px; }
+.btn-add, .btn-recom { width: 48%; padding: 10px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; }
+.btn-add { background: #28a745; color: white; }
+.btn-recom { background: #007bff; color: white; }
+
+.muscle-selector { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px; }
+.muscle-selector button { padding: 8px 12px; font-size: 0.8rem; cursor: pointer; background: #eeeeee; color: #333333; border: 1px solid #cccccc; border-radius: 5px; }
+
+.section-header { text-align: center; margin-bottom: 30px; padding-top: 10px; }
+.section-header h1 { font-size: 24px; color: #333333; margin: 0; }
+
+/* --- MODO OSCURO (General) --- */
+.dark .day-row { background: #1e1e1e; color: #ffffff; }
+.dark .day-row h3 { color: #ffffff; border-bottom: 1px solid #333333; }
+.dark .exercise-card { background: #2d2d2d; border-color: #444; }
+.dark .exercise-info h4 { color: #ffffff; }
+.dark .stat-input { background: #333; color: white; border-color: #555; }
+.dark .muscle-selector button { background: #333333; color: #ffffff; border: 1px solid #555555; }
+.dark .section-header h1 { color: #ffffff; }
+
+/* --- MODAL --- */
+.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); display: flex; justify-content: center; align-items: center; z-index: 9999; }
+.modal-content { background: #ffffff; width: 90%; height: 80%; padding: 20px; border-radius: 15px; overflow-y: auto; position: relative; }
+.dark .modal-content { background: #222; }
+.close-btn { position: absolute; top: 10px; right: 10px; background: red; color: white; border: none; padding: 10px; cursor: pointer; }
+.search-bar { width: 100%; padding: 12px; margin-bottom: 20px; border-radius: 8px; border: 1px solid #ccc; box-sizing: border-box; }
+.modal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+
+.modal-card { text-align: center; cursor: pointer; padding: 10px; border-radius: 10px; transition: background-color 0.2s ease, transform 0.1s ease; border: 1px solid transparent; background-color: #ffffff; color: #1f2937; border-color: #e5e7eb; }
+.modal-card img { width: 100%; height: 80px; object-fit: cover; border-radius: 5px; margin-bottom: 8px; }
+.modal-card p { margin: 0; font-size: 0.9em; font-weight: 500; }
+.modal-card:hover { background-color: #f3f4f6; border-color: #d1d5db; }
+.dark .modal-card { background-color: #374151; color: #f9fafb; border-color: #4b5563; }
+.dark .modal-card:hover { background-color: #4b5563; border-color: #6b7280; }
+
+/* --- BOTÓN ATRÁS --- */
+.btn-back { display: inline-flex; align-items: center; justify-content: center; background-color: #e5e7eb; color: #374151; padding: 8px 16px; border-radius: 8px; border: none; font-size: 14px; font-weight: 500; cursor: pointer; transition: background-color 0.2s ease, transform 0.2s ease; margin-bottom: 10px; }
+.btn-back:hover { background-color: #d1d5db; transform: translateY(-1px); }
+.dark .btn-back { background-color: #374151; color: #f3f4f6; }
+.dark .btn-back:hover { background-color: #4b5563; }
+
+/* --- ADMIN FORMS (Añadir y Editar) --- */
+.content-box {
+    background: #ffffff;
+    width: 90%;
+    margin: 2% auto;
+    padding: 4%;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 60vh;
+}
+
+body.dark .content-box {
+    background-color: #1c1c1c;
+    color: #e5e5e5;
+    border-color: #333;
+}
+
+.admin-title {
+    text-align: center;
+    font-size: 6vw;
+    margin-bottom: 5%;
+    font-weight: bold;
+}
+
+.admin-form {
+    width: 92%;
+    margin: 0 auto;
+    padding: 5%;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 5%;
+}
+
+body.dark .admin-form {
+    background: #2a2a2a;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.admin-form label {
+    font-size: 4.2vw;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 2%;
+}
+
+body.dark .admin-form label {
+    color: #e0e0e0;
+}
+
+.admin-form input, 
+.admin-form select {
+    width: 100%;
+    padding: 3.5%;
+    font-size: 4.2vw;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    background: #fafafa;
+    color: #333;
+    transition: 0.2s;
+    box-sizing: border-box;
+    appearance: none;
+}
+
+body.dark .admin-form input, 
+body.dark .admin-form select {
+    background: #333;
+    color: #e5e5e5;
+    border-color: #555;
+}
+
+.admin-form input:focus, 
+.admin-form select:focus {
+    border-color: #007bff;
+    background: #fff;
+    box-shadow: 0 0 6px rgba(0,123,255,0.3);
+}
+
+body.dark .admin-form input:focus, 
+body.dark .admin-form select:focus {
+    background: #444;
+    border-color: #007bff;
+}
+
+.btn-save {
+    margin-top: 6%;
+    padding: 3.5%;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 4.5vw;
+    font-weight: bold;
+    text-align: center;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.btn-save:active {
+    transform: scale(0.97);
+}
+
+.admin-form > * {
+    margin-bottom: 2%;
+}
