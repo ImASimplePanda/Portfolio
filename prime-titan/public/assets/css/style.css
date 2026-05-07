@@ -99,6 +99,7 @@ body.dark .content-box {
 }
 
 
+/* --- Estilos base (Modo Claro) --- */
 .profile-dropdown {
   display: none;
   position: absolute;
@@ -109,6 +110,7 @@ body.dark .content-box {
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   width: 150px;
   z-index: 20;
+  transition: background 0.3s ease;
 }
 
 .profile-dropdown ul {
@@ -130,10 +132,30 @@ body.dark .content-box {
   padding: 8px 10px;
   font-size: 0.9rem;
   color: #111;
+  text-decoration: none;
 }
 
 .profile-dropdown ul li a:hover {
   background: #f0f0f0;
+}
+
+/* --- MODO OSCURO (body.dark) --- */
+
+body.dark .profile-dropdown {
+  background: #222; /* Fondo oscuro */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+
+body.dark .profile-dropdown ul li {
+  border-bottom: 1px solid #333; /* Separador más sutil */
+}
+
+body.dark .profile-dropdown ul li a {
+  color: #e5e5e5; /* Texto claro */
+}
+
+body.dark .profile-dropdown ul li a:hover {
+  background: #333; /* Fondo al pasar el ratón en oscuro */
 }
 
 
@@ -277,8 +299,9 @@ body.dark .side-menu .close-btn {
 /* Productos en grid */
 .products {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); 
   gap: 15px;
+  width: 100%;
 }
 
 /* Tarjetas de productos */
@@ -315,9 +338,32 @@ body.dark .side-menu .close-btn {
       color: white !important;
       border-color: #ff4d4d !important;
       cursor: default;
+  }
 }
 
+.product-card h3 {
+  /* 1. Forzamos una altura fija basada en líneas de texto */
+  /* Si usas un tamaño de fuente estándar, 2.8em suele equivaler a 2 líneas */
+  height: 2.8em; 
+  line-height: 1.4em;
+  
+  /* 2. Centramos el texto verticalmente dentro de ese espacio */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* 3. Evitamos que nombres extremadamente largos rompan el diseño */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Corta el texto con "..." tras la segunda línea */
+  -webkit-box-orient: vertical;
+  
+  margin: 10px 0;
+  font-size: 1.1rem; /* Ajusta según tu diseño */
 }
+
+
 
 
 .cart-toast {

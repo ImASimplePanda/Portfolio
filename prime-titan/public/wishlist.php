@@ -4,23 +4,17 @@ require_once __DIR__ . '/../app/config/config.php';
 require_once __DIR__ . '/../app/config/database.php';
 require_once __DIR__ . '/../app/models/product.php';
 
-
-// Accedemos a la preferencia guardada en el perfil del usuario
-$lang = (isset($_SESSION['user']['language']) && $_SESSION['user']['language'] === 'en') ? 'en' : 'es';
-$name_col = "name_" . $lang; 
-
-
-$extra_css = '<link rel="stylesheet" href="' . BASE_URL . 'assets/css/wishlist.css">';
-require_once BASE_DIR . '/views/layouts/header.php';
-
-// Si no hay usuario, redirigir
+// 1. PRIMERO LA LÓGICA DE SESIÓN Y REDIRECCIÓN DE USUARIO
 if (!isset($_SESSION['user'])) {
     header("Location: " . BASE_URL . "login.php");
     exit;
 }
 
 $user_id = $_SESSION['user']['id']; 
+$lang = (isset($_SESSION['user']['language']) && $_SESSION['user']['language'] === 'en') ? 'en' : 'es';
+$name_col = "name_" . $lang; 
 
+// 2. LÓGICA DE ACCIONES (Antes de cualquier salida HTML/Include)
 // Aumentar cantidad
 if (isset($_GET['action']) && $_GET['action'] === 'plus') {
     $id = $_GET['id'];
@@ -83,7 +77,7 @@ if (isset($_GET['action']) && $_GET['action'] === 'add_to_cart') {
     exit;
 }
 
-// Obtener wishlist desde db
+// 3. OBTENCIÓN DE DATOS PARA LA VISTA
 $stmt = $db->prepare("
     SELECT w.product_id AS id, w.quantity, p.$name_col AS name, p.price, p.image
     FROM wishlist w
@@ -92,6 +86,10 @@ $stmt = $db->prepare("
 ");
 $stmt->execute([$user_id]);
 $wishlist = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// 4. AHORA SÍ, INCLUIMOS EL HEADER (Aquí empieza la salida visual)
+$extra_css = '<link rel="stylesheet" href="' . BASE_URL . 'assets/css/wishlist.css">';
+require_once BASE_DIR . '/views/layouts/header.php';
 ?>
 
 <div class="page-wrapper">
