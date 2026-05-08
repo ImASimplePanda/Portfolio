@@ -200,3 +200,135 @@ body.dark .admin-form input:focus {
 
 .error-msg { background: #ffdddd; color: #b30000; border-color: #b30000; }
 .success-msg { background: #ddffdd; color: #0f7a0f; border-color: #0f7a0f; }
+
+/* Responsive tablet */
+@media (min-width: 768px) {
+    .content-box {
+        width: 85%;
+        padding: 4.5%;
+    }
+
+    .admin-title {
+        font-size: 3rem;
+        margin-bottom: 3.5%;
+    }
+
+    .product-list {
+        gap: 14px;
+    }
+
+    .product-item {
+        padding: 14px;
+    }
+
+    .product-img {
+        width: 90px;
+        height: 90px;
+    }
+
+    .product-name {
+        font-size: 1.2rem;
+    }
+
+    .product-price {
+        font-size: 1rem;
+    }
+
+    .product-actions {
+        flex-direction: row;
+        gap: 10px;
+    }
+
+    .btn-edit, .btn-delete {
+        font-size: 0.95rem;
+        padding: 0.75rem 1rem;
+    }
+
+    .btn-add {
+        width: 55%;
+        font-size: 1rem;
+        padding: 1rem 0.9rem;
+    }
+
+    .admin-form {
+        width: 90%;
+        padding: 4.5%;
+    }
+
+    .admin-form label,
+    .admin-form input,
+    .admin-form select,
+    .admin-form textarea,
+    .btn-save,
+    .error-msg,
+    .success-msg {
+        font-size: 1rem;
+    }
+}
+
+/* Responsive escritorio */
+@media (min-width: 1024px) {
+    .content-box {
+        width: 75%;
+        padding: 4.5%;
+    }
+
+    .admin-title {
+        font-size: 2.6rem;
+        margin-bottom: 3%;
+    }
+
+    .product-list {
+        gap: 16px;
+    }
+
+    .product-item {
+        gap: 18px;
+        padding: 16px;
+    }
+
+    .product-img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .product-name {
+        font-size: 1.3rem;
+    }
+
+    .product-price {
+        font-size: 1.1rem;
+    }
+
+    .product-actions {
+        justify-content: flex-end;
+        flex-direction: row;
+        gap: 12px;
+    }
+
+    .btn-edit, .btn-delete {
+        font-size: 1rem;
+        padding: 0.85rem 1.1rem;
+    }
+
+    .btn-add {
+        width: 40%;
+        font-size: 1rem;
+        padding: 1rem 0.9rem;
+    }
+
+    .admin-form {
+        width: 85%;
+        padding: 4%;
+    }
+
+    .admin-form label,
+    .admin-form input,
+    .admin-form select,
+    .admin-form textarea,
+    .btn-save,
+    .error-msg,
+    .success-msg {
+        font-size: 1rem;
+    }
+}

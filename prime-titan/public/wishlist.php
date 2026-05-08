@@ -4,7 +4,7 @@ require_once __DIR__ . '/../app/config/config.php';
 require_once __DIR__ . '/../app/config/database.php';
 require_once __DIR__ . '/../app/models/product.php';
 
-// 1. PRIMERO LA LÓGICA DE SESIÓN Y REDIRECCIÓN DE USUARIO
+// 1. LÓGICA DE SESIÓN Y REDIRECCIÓN
 if (!isset($_SESSION['user'])) {
     header("Location: " . BASE_URL . "login.php");
     exit;
@@ -14,70 +14,30 @@ $user_id = $_SESSION['user']['id'];
 $lang = (isset($_SESSION['user']['language']) && $_SESSION['user']['language'] === 'en') ? 'en' : 'es';
 $name_col = "name_" . $lang; 
 
-// 2. LÓGICA DE ACCIONES (Antes de cualquier salida HTML/Include)
-// Aumentar cantidad
-if (isset($_GET['action']) && $_GET['action'] === 'plus') {
+// 2. LÓGICA DE ACCIONES (PHP Nativo)
+if (isset($_GET['action'])) {
     $id = $_GET['id'];
-    $stmt = $db->prepare("UPDATE wishlist SET quantity = quantity + 1 WHERE user_id = ? AND product_id = ?");
-    $stmt->execute([$user_id, $id]);
-    header("Location: wishlist.php");
-    exit;
-}
-
-// Disminuir cantidad
-if (isset($_GET['action']) && $_GET['action'] === 'minus') {
-    $id = $_GET['id'];
-    $stmt = $db->prepare("UPDATE wishlist SET quantity = GREATEST(quantity - 1, 1) WHERE user_id = ? AND product_id = ?");
-    $stmt->execute([$user_id, $id]);
-    header("Location: wishlist.php");
-    exit;
-}
-
-// Eliminar
-if (isset($_GET['action']) && $_GET['action'] === 'remove') {
-    $id = $_GET['id'];
-    $stmt = $db->prepare("DELETE FROM wishlist WHERE user_id = ? AND product_id = ?");
-    $stmt->execute([$user_id, $id]);
-    header("Location: wishlist.php");
-    exit;
-}
-
-// Añadir al carrito
-if (isset($_GET['action']) && $_GET['action'] === 'add_to_cart') {
-    $id = $_GET['id'];
-
-    $stmt = $db->prepare("
-        SELECT w.quantity, p.$name_col AS name, p.price, p.image
-        FROM wishlist w
-        JOIN products p ON p.id = w.product_id
-        WHERE w.user_id = ? AND w.product_id = ?
-    ");
-    $stmt->execute([$user_id, $id]);
-    $item = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    if ($item) {
-        if (!isset($_SESSION['cart'])) {
-            $_SESSION['cart'] = [];
-        }
-
-        if (!isset($_SESSION['cart'][$id])) {
-            $_SESSION['cart'][$id] = [
-                'id' => $id,
-                'name' => $item['name'],
-                'price' => $item['price'],
-                'image' => $item['image'],
-                'quantity' => $item['quantity']
-            ];
-        } else {
-            $_SESSION['cart'][$id]['quantity'] += $item['quantity'];
-        }
+    
+    if ($_GET['action'] === 'plus') {
+        $stmt = $db->prepare("UPDATE wishlist SET quantity = quantity + 1 WHERE user_id = ? AND product_id = ?");
+        $stmt->execute([$user_id, $id]);
+    }
+    
+    if ($_GET['action'] === 'minus') {
+        $stmt = $db->prepare("UPDATE wishlist SET quantity = GREATEST(quantity - 1, 1) WHERE user_id = ? AND product_id = ?");
+        $stmt->execute([$user_id, $id]);
+    }
+    
+    if ($_GET['action'] === 'remove') {
+        $stmt = $db->prepare("DELETE FROM wishlist WHERE user_id = ? AND product_id = ?");
+        $stmt->execute([$user_id, $id]);
     }
 
     header("Location: wishlist.php");
     exit;
 }
 
-// 3. OBTENCIÓN DE DATOS PARA LA VISTA
+// 3. OBTENCIÓN DE DATOS
 $stmt = $db->prepare("
     SELECT w.product_id AS id, w.quantity, p.$name_col AS name, p.price, p.image
     FROM wishlist w
@@ -87,7 +47,6 @@ $stmt = $db->prepare("
 $stmt->execute([$user_id]);
 $wishlist = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// 4. AHORA SÍ, INCLUIMOS EL HEADER (Aquí empieza la salida visual)
 $extra_css = '<link rel="stylesheet" href="' . BASE_URL . 'assets/css/wishlist.css">';
 require_once BASE_DIR . '/views/layouts/header.php';
 ?>
@@ -102,39 +61,33 @@ require_once BASE_DIR . '/views/layouts/header.php';
             <?php else: ?>
 
                 <?php foreach ($wishlist as $item): ?>
-                    <div class="wishlist-item">
-                        <img src="<?= BASE_URL ?>assets/images/<?= $item['image']; ?>" class="wishlist-img">
-
-                        <div class="wishlist-info">
-                            <p class="wishlist-name"><?= $item['name']; ?></p>
-
-                            <p class="wishlist-price">
-                                <?= number_format($item['price'] * $item['quantity'], 2); ?>€
-                                <span style="font-size:3.5vw; color:#777;">
-                                    (<?= number_format($item['price'], 2); ?>€ <?= __t('per_unit') ?>)
-                                </span>
-                            </p>
-
-                            <div class="wishlist-qty">
-                                <a href="wishlist.php?action=minus&id=<?= $item['id']; ?>" class="qty-btn">-</a>
-                                <span class="qty-number"><?= $item['quantity']; ?></span>
-                                <a href="wishlist.php?action=plus&id=<?= $item['id']; ?>" class="qty-btn">+</a>
+                    <div class="cart-item"> 
+                        <img src="<?= BASE_URL ?>assets/images/<?= $item['image']; ?>" class="cart-img">
+                        
+                        <div class="cart-info">
+                            <p class="cart-item-name"><strong><?= $item['name']; ?></strong></p>
+                            <p class="cart-item-price"><?= number_format($item['price'], 2); ?>€</p>
+                            
+                            <div class="wishlist-qty-row">
+                                <a href="wishlist.php?action=minus&id=<?= $item['id']; ?>" class="qty-btn-dark">-</a>
+                                <span class="qty-text">Cantidad: <?= $item['quantity']; ?></span>
+                                <a href="wishlist.php?action=plus&id=<?= $item['id']; ?>" class="qty-btn-dark">+</a>
                             </div>
 
-                            <button 
-                                class="btn-cart add-from-wishlist"
-                                data-id="<?= $item['id']; ?>"
-                                data-name="<?= $item['name']; ?>"
-                                data-price="<?= $item['price']; ?>"
-                                data-image="<?= $item['image']; ?>"
-                                data-quantity="<?= $item['quantity']; ?>"
-                            >
-                                <?= __t('add_to_cart') ?>
-                            </button>
+                            <div class="wishlist-actions-row">
+                                <button class="add-from-wishlist btn-action-dark" 
+                                        data-id="<?= $item['id']; ?>" 
+                                        data-name="<?= $item['name']; ?>"
+                                        data-price="<?= $item['price']; ?>"
+                                        data-image="<?= $item['image']; ?>"
+                                        data-quantity="<?= $item['quantity']; ?>">
+                                    Añadir
+                                </button>
 
-                            <a href="wishlist.php?action=remove&id=<?= $item['id']; ?>" class="btn-remove">
-                                <?= __t('delete') ?>
-                            </a>
+                                <a href="wishlist.php?action=remove&id=<?= $item['id']; ?>" class="btn-remove-dark">
+                                    Eliminar
+                                </a>
+                            </div>
                         </div>
                     </div>
                 <?php endforeach; ?>

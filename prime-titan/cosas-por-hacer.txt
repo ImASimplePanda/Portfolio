@@ -1,7 +1,0 @@
-- Mirar footer en login.php
-- Mejorar gestion de usuarios
-- Si un producto esta en un carrito y se elimina, sigue en el carrito
-- Fichero login revisar session_regenerate_id(true); // evita sesiones antiguas
-- Como admin, al eliminar un usuario  en modo oscuro  no se ve bien
-- En la tienda, al buscar productos en la barra de search, cuando sale solo un producto  se ve agrandado
-- En la pestaña de login y registro poner algun boton o desplegable para cambiar el idioma

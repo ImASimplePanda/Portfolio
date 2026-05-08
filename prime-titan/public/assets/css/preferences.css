@@ -87,3 +87,65 @@ body.dark .pref-select {
     outline: none;
     box-shadow: 0 0 4px rgba(0,123,255,0.3);
 }
+
+/* Responsive Tablet */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .content-box {
+        width: 85%;
+        padding: 3.5%;
+    }
+
+    .profile-title {
+        font-size: 3.6vw;
+        margin-bottom: 6%;
+    }
+
+    .profile-card {
+        gap: 3.5%;
+    }
+
+    .profile-item {
+        padding: 3.2%;
+    }
+
+    .label {
+        font-size: 1.8vw;
+    }
+
+    .pref-select {
+        width: 40%;
+        padding: 1.8%;
+        font-size: 2.1vw;
+    }
+}
+
+/* Responsive Escritorio */
+@media (min-width: 1025px) {
+    .content-box {
+        width: 75%;
+        padding: 4.5%;
+    }
+
+    .profile-title {
+        font-size: 2.8vw;
+        margin-bottom: 5%;
+    }
+
+    .profile-card {
+        gap: 3%;
+    }
+
+    .profile-item {
+        padding: 3%;
+    }
+
+    .label {
+        font-size: 2vw;
+    }
+
+    .pref-select {
+        width: 35%;
+        padding: 1.6%;
+        font-size: 1.4vw;
+    }
+}

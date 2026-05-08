@@ -1,4 +1,5 @@
 <?php
+ob_start();
 session_start();
 session_regenerate_id(true); // evita sesiones antiguas
 

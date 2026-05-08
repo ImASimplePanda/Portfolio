@@ -5,7 +5,7 @@ return [
     // Menú principal
     'home' => 'Inicio',
     'cart' => 'Carrito',
-    'wishlist' => 'Lista de deseados',
+    'wishlist' => 'Deseados',
     'products' => 'Productos',
     'users' => 'Usuarios',
     'admin_exercises' => "Ejercicios",
@@ -51,6 +51,7 @@ return [
 
  
     // Editar producto
+    'edit_product' => 'Editar producto',
     'product_name' => 'Nombre del producto',
     'placeholder_name_product' => 'Ej: Creatina...',
     'price' => 'Precio',
@@ -71,6 +72,7 @@ return [
     'user' => 'Usuario',
     'admin' => 'Administrador',
     'confirm_delete_user' => '¿Estás seguro de que quieres eliminar este usuario?',
+    'cannot_delete_self' => 'No puedes eliminar tu propio usuario',
     'id' => 'ID',
     'username' => 'Usuario',
     'email' => 'Email',
@@ -92,6 +94,9 @@ return [
     'muscle_group' => 'Grupo Muscular',
     'confirm_delete' => '¿Seguro que quieres borrar este ejercicio?',
     'save' => 'Guardar',
+    'is_recommended' => '¿Es recomendado?',
+    'yes' => 'Sí',
+    'no' => 'No',
 
     // Editar ejercicios
     'name_es' => 'Nombre',

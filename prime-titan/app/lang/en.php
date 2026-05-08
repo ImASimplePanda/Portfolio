@@ -50,6 +50,7 @@ return [
 
 
     // Edit product
+    'edit_product'=> 'Edit product',
     'product_name' => 'Product name',
     'placeholder_name_product' => 'E.g: Creatine...',
     'price' => 'Price',
@@ -92,6 +93,9 @@ return [
     'muscle_group' => 'Muscle Group',
     'confirm_delete' => 'Are you sure you want to delete this exercise?',
     'save' => 'Save',
+    'is_recommended' => 'Is recommended?',
+    'yes' => 'Yes',
+    'no' => 'No',
 
     // Edit exercises
     'name_en' => 'Name',

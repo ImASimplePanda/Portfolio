@@ -6,9 +6,8 @@ class Exercise {
         $this->pdo = $pdo;
     }
 
-    // Obtener todos los ejercicios (con traducción automática a 'name')
+    // Obtener todos los ejercicios
     public function getAll() {
-        // Detectamos el idioma tal como en Product
         $lang = $_SESSION['user']['language'] ?? 'es';
         $nameField = "name_" . $lang;
 
@@ -17,7 +16,8 @@ class Exercise {
                 id,
                 COALESCE($nameField, name_es) AS name,
                 muscle_group,
-                image_url
+                image_url,
+                is_recommended
             FROM exercises_library
             ORDER BY muscle_group ASC, name ASC
         ";
@@ -27,7 +27,7 @@ class Exercise {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    // Obtener un ejercicio por ID (para editar)
+    // Obtener un ejercicio por ID
     public function getById($id) {
         $sql = "SELECT * FROM exercises_library WHERE id = ?";
         $stmt = $this->pdo->prepare($sql);
@@ -35,26 +35,26 @@ class Exercise {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    // Crear nuevo ejercicio
-    public function create($name_es, $name_en, $muscle_group, $image_url) {
-        $sql = "INSERT INTO exercises_library (name_es, name_en, muscle_group, image_url) VALUES (?, ?, ?, ?)";
+    // Crear nuevo ejercicio incluyendo recomendación
+    public function create($name_es, $name_en, $muscle_group, $image_url, $is_recommended) {
+        $sql = "INSERT INTO exercises_library (name_es, name_en, muscle_group, image_url, is_recommended) VALUES (?, ?, ?, ?, ?)";
         $stmt = $this->pdo->prepare($sql);
-        return $stmt->execute([$name_es, $name_en, $muscle_group, $image_url]);
+        return $stmt->execute([$name_es, $name_en, $muscle_group, $image_url, $is_recommended]);
     }
 
-    // Actualizar ejercicio
-    public function update($id, $name_es, $name_en, $muscle_group, $image_url) {
+    // Actualizar ejercicio incluyendo recomendación
+    public function update($id, $name_es, $name_en, $muscle_group, $image_url, $is_recommended) {
         $sql = "UPDATE exercises_library 
                 SET name_es = ?, 
                     name_en = ?, 
                     muscle_group = ?, 
-                    image_url = ? 
+                    image_url = ?,
+                    is_recommended = ?
                 WHERE id = ?";
         $stmt = $this->pdo->prepare($sql);
-        return $stmt->execute([$name_es, $name_en, $muscle_group, $image_url, $id]);
+        return $stmt->execute([$name_es, $name_en, $muscle_group, $image_url, $is_recommended, $id]);
     }
 
-    // Eliminar ejercicio
     public function delete($id) {
         $sql = "DELETE FROM exercises_library WHERE id = ?";
         $stmt = $this->pdo->prepare($sql);

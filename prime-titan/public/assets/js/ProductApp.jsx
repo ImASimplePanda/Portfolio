@@ -97,7 +97,19 @@ function ProductApp() {
                             <div className="rating-info" dangerouslySetInnerHTML={{ __html: r.html }}></div>
 
                             <div className="product-actions">
-                                <button className="add-to-cart" onClick={() => window.addToCart(product)}>
+                                <button 
+                                    className="add-to-cart" 
+                                    onClick={() => {
+                                        const productToCart = {
+                                            id: product.id,
+                                            name: product.name || product.titulo, 
+                                            price: product.price || product.precio || 0, 
+                                            image: product.image || product.imagen,
+                                            quantity: 1
+                                        };
+                                        window.addToCart(productToCart);
+                                    }}
+                                >
                                     🛒 {window.TXT_ADD_TO_CART}
                                 </button>
                                 

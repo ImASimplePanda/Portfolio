@@ -1,9 +1,13 @@
 <?php
+ob_start(); // Prevenir errores de headers
 session_start();
 
 require_once __DIR__ . '/../../app/config/config.php';
 require_once __DIR__ . '/../../app/config/database.php';
 require_once __DIR__ . '/../../app/models/product.php';
+
+// Definir la ruta física real de las imágenes usando tus constantes
+$img_folder_path = $_SERVER['DOCUMENT_ROOT'] . BASE_URL . 'assets/images/';
 
 // Solo admin
 if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
@@ -37,21 +41,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name_en        = translate_es_to_en($name_es);
     $description_en = ($description_es !== '') ? translate_es_to_en($description_es) : '';
 
-    // Procesar imagen
-    $imageName = null;
-    if (!empty($_FILES['image_upload']['name'])) {
-        $imageName  = basename($_FILES['image_upload']['name']);
-        $targetPath = '../assets/images/' . $imageName;
-        move_uploaded_file($_FILES['image_upload']['tmp_name'], $targetPath);
-    } else if (!empty($_POST['image_select'])) {
+    // PROCESAR IMAGEN (Misma mecánica que el editor)
+    $imageName = 'default.png'; // Imagen por defecto si no elige nada
+
+    // 1. Si elige una existente del desplegable
+    if (!empty($_POST['image_select'])) {
         $imageName = $_POST['image_select'];
     }
 
-    // Guardar
+    // 2. Si sube una nueva imagen (esta tiene prioridad)
+    if (!empty($_FILES['image_upload']['name'])) {
+        $tempName = basename($_FILES['image_upload']['name']);
+        $targetPath = $img_folder_path . $tempName;
+        
+        if (move_uploaded_file($_FILES['image_upload']['tmp_name'], $targetPath)) {
+            $imageName = $tempName;
+        }
+    }
+
+    // Guardar en Base de Datos
     if (!$productModel->create($name_es, $name_en, $description_es, $description_en, $price, $imageName)) {
         $error = __t('product_exists'); 
     } else {
-        $success = __t('product_created'); 
+        $success = __t('product_created');
+        // Redirigir tras 2 segundos para ver el mensaje de éxito o usar JS
+        echo "<script>setTimeout(() => { window.location.href = '" . BASE_URL . "admin/admin_products.php'; }, 2000);</script>";
     }
 }
 
@@ -63,11 +77,11 @@ require_once BASE_DIR . '/views/layouts/header.php';
     <h2 class="admin-title"><?= __t('add_product') ?></h2>
 
     <?php if ($error): ?>
-        <p class="error-msg"><?= htmlspecialchars($error) ?></p>
+        <p class="error-msg" style="color:red; background: #ffe6e6; padding: 10px; border-radius: 5px;"><?= htmlspecialchars($error) ?></p>
     <?php endif; ?>
 
     <?php if ($success): ?>
-        <p class="success-msg"><?= htmlspecialchars($success) ?></p>
+        <p class="success-msg" style="color:green; background: #e6ffec; padding: 10px; border-radius: 5px;"><?= htmlspecialchars($success) ?></p>
     <?php endif; ?>
 
     <form method="POST" enctype="multipart/form-data" class="admin-form">
@@ -81,22 +95,30 @@ require_once BASE_DIR . '/views/layouts/header.php';
         <input type="number" step="0.01" name="price" required>
 
         <label><?= __t('select_existing_image') ?></label>
-        <select name="image_select">
+        <select name="image_select" class="image-select" style="width: 100%; padding: 10px; border-radius: 8px; margin-bottom: 20px;">
             <option value="">-- <?= __t('none') ?> --</option>
             <?php
-            $imgPath = __DIR__ . '/../../assets/images/';
-            if (is_dir($imgPath)) {
-                $images = scandir($imgPath);
+            // Usamos la ruta absoluta calculada arriba para el scandir
+            if (is_dir($img_folder_path)) {
+                $images = scandir($img_folder_path);
                 foreach ($images as $img) {
-                    if ($img === '.' || $img === '..' || is_dir($imgPath . $img)) continue;
-                    echo "<option value='$img'>$img</option>";
+                    if (in_array($img, ['.', '..'])) continue;
+                    
+                    $ext = strtolower(pathinfo($img, PATHINFO_EXTENSION));
+                    $allowed = ['jpg', 'jpeg', 'png', 'webp', 'gif', 'svg'];
+                    
+                    if (in_array($ext, $allowed)) {
+                        echo "<option value='" . htmlspecialchars($img) . "'>$img</option>";
+                    }
                 }
+            } else {
+                echo "<option disabled>Error: Carpeta de imágenes no encontrada</option>";
             }
             ?>
         </select>
 
         <label><?= __t('upload_new_image') ?></label>
-        <input type="file" name="image_upload" accept="image/*">
+        <input type="file" name="image_upload" accept="image/*" style="margin-bottom: 20px;">
 
         <button type="submit" class="btn-save"><?= __t('save') ?></button>
     </form>

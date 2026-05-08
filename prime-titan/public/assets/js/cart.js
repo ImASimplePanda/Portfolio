@@ -1,73 +1,141 @@
-// Definimos las funciones de utilidad fuera para que sean accesibles
+/* ==========================================================================
+   CART.JS - Gestión de Carrito con Validación de Base de Datos
+   ========================================================================== */
+
+// 1. Identificadores únicos para el carrito (según usuario e idioma)
 const getUserId = () => window.USER_ID || "guest";
 const getLang = () => document.documentElement.lang || 'es';
 const getCartKey = () => "cart_" + getUserId() + "_" + getLang();
 
-// Exportamos addToCart al objeto global window para que React la use
+/**
+ * Validar productos contra la Base de Datos (Opción 1)
+ * Elimina automáticamente del LocalStorage los productos que ya no existen en la DB.
+ */
+async function validateCartItems(cart) {
+    if (cart.length === 0) return cart;
+
+    try {
+        const ids = cart.map(item => item.id);
+        
+        // Usamos window.BASE_URL para garantizar la ruta correcta sin importar la página
+        const response = await fetch(window.BASE_URL + 'actions/validate_products.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ ids: ids })
+        });
+        
+        if (!response.ok) throw new Error("Archivo de validación no encontrado (404)");
+
+        const validIds = await response.json(); 
+        
+        // Solo conservamos los productos cuyos IDs han sido devueltos por la DB
+        const cleanCart = cart.filter(item => validIds.includes(String(item.id)));
+        
+        // Si hubo cambios, actualizamos el almacenamiento local
+        if (cleanCart.length !== cart.length) {
+            localStorage.setItem(getCartKey(), JSON.stringify(cleanCart));
+            window.dispatchEvent(new Event('cartUpdated'));
+        }
+        return cleanCart;
+    } catch (error) {
+        console.warn("Validación de DB omitida:", error.message);
+        return cart; // Si falla el servidor, devolvemos el carrito local para no perder datos
+    }
+}
+
+/**
+ * Añadir al carrito
+ */
 window.addToCart = function(product) {
+    if (!product.id || product.id === "null" || !product.name) {
+        console.error("Producto inválido:", product);
+        return;
+    }
+
     let cart = JSON.parse(localStorage.getItem(getCartKey())) || [];
-    const existing = cart.find(item => item.id === product.id);
+    const productId = String(product.id).trim();
+    const existing = cart.find(item => String(item.id) === productId);
     const qty = Number(product.quantity) || 1;
+    const price = parseFloat(product.price) || 0;
 
     if (existing) {
         existing.quantity += qty;
     } else {
         cart.push({
-            id: product.id,
+            id: productId,
             name: product.name,
-            price: parseFloat(product.price),
-            image: product.image,
+            price: price, 
+            image: product.image || 'default.jpg',
             quantity: qty
         });
     }
 
     localStorage.setItem(getCartKey(), JSON.stringify(cart));
-    
-    // Disparamos un evento personalizado por si React necesita enterarse de que el carrito cambió
     window.dispatchEvent(new Event('cartUpdated'));
     
-    // Llamamos al toast 
     if (typeof window.showToast === 'function') {
         window.showToast(window.CART_ADDED || "Producto añadido");
     }
 
-    // Si existe la función de renderizado, la ejecutamos
     if (typeof window.renderCart === 'function') {
         window.renderCart();
     }
 };
 
-// Función Toast global
-window.showToast = function(msg) {
-    const oldToast = document.querySelector(".cart-toast");
-    if (oldToast) oldToast.remove();
-    const toast = document.createElement("div");
-    toast.className = "cart-toast";
-    toast.textContent = msg;
-    document.body.appendChild(toast);
-    setTimeout(() => toast.classList.add("show"), 10);
-    setTimeout(() => {
-        toast.classList.remove("show");
-        setTimeout(() => toast.remove(), 300);
-    }, 2500);
+/**
+ * Actualizar cantidad (+/-)
+ */
+window.updateCartQty = function(id, delta) {
+    let cart = JSON.parse(localStorage.getItem(getCartKey())) || [];
+    const item = cart.find(i => String(i.id) === String(id));
+    
+    if (item) {
+        item.quantity = parseInt(item.quantity) + delta;
+        if (item.quantity < 1) {
+            cart = cart.filter(i => String(i.id) !== String(id));
+        }
+        localStorage.setItem(getCartKey(), JSON.stringify(cart));
+        window.dispatchEvent(new Event('cartUpdated'));
+        window.renderCart();
+    }
 };
 
-document.addEventListener("DOMContentLoaded", () => {
-    console.log("cart.js CARGADO Y COMPATIBLE CON REACT");
+/**
+ * Borrar de Wishlist al añadir al carrito
+ */
+function removeFromWishlistDB(id) {
+    if (!id || id === "null") return;
+    fetch('wishlist-remove.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: `id=${encodeURIComponent(id)}`
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.success) window.location.href = "wishlist.php"; 
+    });
+}
 
+/**
+ * Renderizar el Carrito en el HTML
+ */
+document.addEventListener("DOMContentLoaded", () => {
     const TXT_EMPTY = window.CART_EMPTY || "Carrito vacío";
     const TXT_QTY = window.CART_QTY || "Cantidad";
     const TXT_REMOVE = window.CART_REMOVE || "Eliminar";
-    const TXT_PURCHASE_SUCCESS = window.CART_PURCHASE_SUCCESS || "Compra realizada";
-    const TXT_PURCHASE_EMPTY = window.CART_PURCHASE_EMPTY || "Carrito vacío";
 
-    // Hacemos renderCart global para que se pueda llamar desde fuera
-    window.renderCart = function() {
+    window.renderCart = async function() {
         const container = document.getElementById("cart-container");
         const totalPriceEl = document.getElementById("cart-total-price");
         if (!container || !totalPriceEl) return;
 
-        const cart = JSON.parse(localStorage.getItem(getCartKey())) || [];
+        let cart = JSON.parse(localStorage.getItem(getCartKey())) || [];
+        
+        // 1. Limpieza inicial
+        cart = cart.filter(item => item.id && item.id !== "null" && item.name);
+        
+        // 2. Validación con el servidor (Elimina lo que ya no existe en DB)
+        cart = await validateCartItems(cart); 
 
         if (cart.length === 0) {
             container.innerHTML = `<p>${TXT_EMPTY}</p>`;
@@ -79,15 +147,24 @@ document.addEventListener("DOMContentLoaded", () => {
         let total = 0;
 
         cart.forEach(item => {
-            total += item.price * item.quantity;
+            const itemPrice = parseFloat(item.price) || 0;
+            const itemQty = parseInt(item.quantity) || 1;
+            total += itemPrice * itemQty;
+            
             html += `
                 <div class="cart-item">
                     <img src="${window.BASE_URL}assets/images/${item.image}" class="cart-img">
                     <div class="cart-info">
                         <p class="cart-item-name"><strong>${item.name}</strong></p>
-                        <p class="cart-item-price">${item.price.toFixed(2)}€</p>
-                        <p class="cart-item-qty">${TXT_QTY}: ${item.quantity}</p>
-                        <button class="remove-item" data-id="${item.id}">${TXT_REMOVE}</button>
+                        <p class="cart-item-price">${itemPrice.toFixed(2)}€</p>
+                        
+                        <div class="wishlist-qty-row">
+                            <button class="qty-btn-dark change-qty" data-id="${item.id}" data-delta="-1">-</button>
+                            <span class="qty-text">${TXT_QTY}: ${itemQty}</span>
+                            <button class="qty-btn-dark change-qty" data-id="${item.id}" data-delta="1">+</button>
+                        </div>
+
+                        <button class="remove-item btn-remove-dark" data-id="${item.id}">${TXT_REMOVE}</button>
                     </div>
                 </div>
             `;
@@ -96,47 +173,47 @@ document.addEventListener("DOMContentLoaded", () => {
         container.innerHTML = html;
         totalPriceEl.textContent = total.toFixed(2) + "€";
 
+        // Re-asignar eventos a botones generados dinámicamente
+        document.querySelectorAll(".change-qty").forEach(btn => {
+            btn.onclick = () => updateCartQty(btn.dataset.id, parseInt(btn.dataset.delta));
+        });
+
         document.querySelectorAll(".remove-item").forEach(btn => {
             btn.onclick = () => removeItem(btn.dataset.id);
         });
-    }
+    };
 
     function removeItem(id) {
         let cart = JSON.parse(localStorage.getItem(getCartKey())) || [];
-        cart = cart.filter(item => item.id != id);
+        cart = cart.filter(item => String(item.id) !== String(id));
         localStorage.setItem(getCartKey(), JSON.stringify(cart));
-        window.dispatchEvent(new Event('cartUpdated')); // Avisar a React
+        window.dispatchEvent(new Event('cartUpdated'));
         window.renderCart();
     }
 
-    // Eventos para botones que NO son de React (los que queden en PHP)
+    // Delegación de eventos para botones de "Añadir al Carrito"
     document.addEventListener("click", (e) => {
-        const btn = e.target.closest(".add-to-cart");
+        const btn = e.target.closest(".add-to-cart, .add-from-wishlist");
         if (btn) {
-            const product = {
-                id: btn.dataset.id,
-                name: btn.dataset.name,
-                price: btn.dataset.price,
-                image: btn.dataset.image,
-                quantity: 1
-            };
-            window.addToCart(product);
+            e.preventDefault(); 
+            const productId = btn.getAttribute("data-id");
+            const productName = btn.getAttribute("data-name");
+
+            if (!productId || productId === "null" || !productName) return;
+
+            window.addToCart({
+                id: productId,
+                name: productName,
+                price: btn.getAttribute("data-price"),
+                image: btn.getAttribute("data-image"),
+                quantity: btn.getAttribute("data-quantity") || 1
+            });
+
+            if (btn.classList.contains("add-from-wishlist")) {
+                removeFromWishlistDB(productId);
+            }
         }
     });
-
-    // Botón comprar
-    const buyBtn = document.getElementById("buy-btn");
-    if (buyBtn) {
-        buyBtn.addEventListener("click", () => {
-            const cart = JSON.parse(localStorage.getItem(getCartKey())) || [];
-            if (cart.length === 0) return alert(TXT_PURCHASE_EMPTY);
-            
-            localStorage.setItem(getCartKey(), JSON.stringify([]));
-            window.dispatchEvent(new Event('cartUpdated'));
-            window.renderCart();
-            alert(TXT_PURCHASE_SUCCESS);
-        });
-    }
 
     window.renderCart();
 });

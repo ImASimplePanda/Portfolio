@@ -1,71 +1,226 @@
+/* --- ESTILOS GENERALES Y MODO CLARO (POR DEFECTO) --- */
 .cart-wrapper {
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  padding: 5%;
+  transition: background 0.3s ease;
 }
+
 .cart-title {
     text-align: center;
     font-size: 6vw;
     margin-bottom: 5%;
+    color: #1a1a1a;
+    font-weight: bold;
 }
 
 .cart-item {
     display: flex;
     gap: 4%;
-    background: #fff;
+    background: #ffffff; /* Card blanca */
     padding: 4%;
-    border-radius: 12px;
+    border-radius: 15px;
     margin-bottom: 4%;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    align-items: center;
+    transition: background 0.3s ease;
 }
 
 .cart-img {
     width: 30%;
-    border-radius: 10px;
+    border-radius: 12px;
+    object-fit: cover;
 }
 
 .cart-info {
     width: 60%;
     font-size: 4vw;
+    color: #1a1a1a;
 }
 
+/* --- CONTROLES DE CANTIDAD --- */
+.wishlist-qty-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 3% 0;
+}
+
+.qty-btn-dark {
+    background-color: #eeeeee; /* Gris clarito en modo claro */
+    color: #1a1a1a;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
+}
+
+.qty-btn-dark:active {
+    transform: scale(0.9);
+}
+
+.qty-text {
+    font-size: 3.8vw;
+    color: #1a1a1a;
+    font-weight: 500;
+}
+
+/* --- BOTONES DE ACCIÓN --- */
 .remove-item {
     margin-top: 4%;
-    padding: 2% 4%;
+    padding: 3% 5%;
     background: #ff4d4d;
     color: #fff;
     border: none;
-    border-radius: 8px;
-    width: 60%;
+    border-radius: 10px;
+    width: 80%;
+    font-weight: bold;
+    cursor: pointer;
+    transition: opacity 0.2s;
 }
 
 .cart-total {
     text-align: center;
-    font-size: 5vw;
-    margin-top: 5%;
+    font-size: 5.5vw;
+    margin-top: 8%;
+    color: #1a1a1a;
+    font-weight: bold;
 }
 
-
 .buy-btn {
-
     width: 90%;
-    margin-top: auto;
-
     margin: 5% auto;
     display: block;
-    padding: 4%;
-    background: #000;
-    color: #fff;
+    padding: 4.5%;
+    background: #000000; /* Negro en modo claro */
+    color: #ffffff;
     border: none;
-    border-radius: 12px;
+    border-radius: 15px;
     font-size: 5vw;
     font-weight: bold;
     text-align: center;
     cursor: pointer;
-    transition: 0.2s;
+    transition: 0.3s;
 }
 
-.buy-btn:hover {
-    background: #333;
+.dark .cart-title, .dark .cart-total, .dark .qty-text, .dark .cart-info {
+    color: #ffffff;
+}
+
+.dark .cart-item {
+    background: #262626; /* Fondo gris oscuro para los items */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.dark .qty-btn-dark {
+    background-color: #444444; /* Botones +/- gris oscuro */
+    color: #ffffff;
+}
+
+.dark .buy-btn {
+    background: #262626; /* Botón comprar blanco en modo oscuro */
+    color: #ffffff;      /* Texto negro */
+}
+
+.dark .buy-btn:hover {
+    background: #e0e0e0;
+}
+
+/* --- RESPONSIVE TABLET --- */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .cart-title { font-size: 3.8vw; }
+  .cart-info { font-size: 2.2vw; }
+  .qty-text { font-size: 2.2vw; }
+  .qty-btn-dark { width: 28px; height: 28px; }
+  .remove-item { width: 60%; font-size: 2vw; }
+  .cart-total { font-size: 3.5vw; }
+  .buy-btn { width: 80%; font-size: 2.5vw; }
+}
+
+/* --- RESPONSIVE ESCRITORIO --- */
+@media (min-width: 1023px) {
+
+  /* 1. Agranda el contenedor principal para que no se vea estrecho */
+  .cart-wrapper {
+    width: 95%;
+    max-width: 1100px; /* Subimos de 780px a 1100px para ganar espacio */
+    margin: 0 auto;
+    padding: 3% 2%;
+  }
+
+  .cart-title {
+    font-size: 2.5vw;
+    margin-bottom: 4%;
+  }
+
+  /* 2. Estructura de la Card: Imagen más grande y contenido alineado */
+  .cart-item {
+    display: grid;
+    grid-template-columns: 25% 70%; /* Reservamos 25% solo para la imagen */
+    gap: 5%;
+    padding: 2.5%;
+    margin-bottom: 30px;
+    border-radius: 20px;
+  }
+
+  .cart-img {
+    width: 100%; /* La imagen ahora ocupa todo su 25% asignado */
+    height: auto;
+    max-height: 200px; /* Evita que crezca infinitamente hacia abajo */
+    object-fit: cover;
+  }
+
+  .cart-info {
+    width: 100%;
+    font-size: 1.2vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .cart-item-name {
+    font-size: 1.8vw; /* Nombre del producto más grande */
+    margin-bottom: 10px;
+  }
+
+  .qty-text {
+    font-size: 1.2vw;
+  }
+
+  .qty-btn-dark {
+    width: 35px;
+    height: 35px;
+    font-size: 18px;
+  }
+
+  /* Botón eliminar más estilizado */
+  .remove-item {
+    width: fit-content;
+    padding: 10px 30px;
+    font-size: 1vw;
+    margin-top: 15px;
+  }
+
+  /* Total y Botón de compra */
+  .cart-total {
+    font-size: 2.2vw;
+    text-align: right;
+    margin-right: 5%;
+  }
+
+  .buy-btn {
+    width: 300px; /* Ancho fijo para que no sea un botón gigante horizontal */
+    font-size: 1.4vw;
+    padding: 1.5% 0;
+    margin: 4% auto 0 auto;
+  }
 }
