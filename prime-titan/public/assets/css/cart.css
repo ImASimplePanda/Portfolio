@@ -16,6 +16,12 @@
     font-weight: bold;
 }
 
+#cart-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4%;
+}
+
 .cart-item {
     display: flex;
     gap: 4%;
@@ -38,6 +44,43 @@
     width: 60%;
     font-size: 4vw;
     color: #1a1a1a;
+}
+
+#toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+}
+
+.toast-message {
+    background: #2ecc71;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    font-weight: bold;
+    animation: slideIn 0.5s ease forwards;
+}
+
+.toast-message.hide {
+    animation: slideOut 0.5s ease forwards;
+}
+
+body.dark .toast-message {
+    background: #27ae60;
+    border: 1px solid #1e8449;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideOut {
+    from { transform: translateX(0); opacity: 1; }
+    to { transform: translateX(100%); opacity: 0; }
 }
 
 /* --- CONTROLES DE CANTIDAD --- */
@@ -137,6 +180,10 @@
 
 /* --- RESPONSIVE TABLET --- */
 @media (min-width: 768px) and (max-width: 1024px) {
+  #cart-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .cart-title { font-size: 3.8vw; }
   .cart-info { font-size: 2.2vw; }
   .qty-text { font-size: 2.2vw; }
@@ -148,6 +195,9 @@
 
 /* --- RESPONSIVE ESCRITORIO --- */
 @media (min-width: 1023px) {
+    #cart-container {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
 
   /* 1. Agranda el contenedor principal para que no se vea estrecho */
   .cart-wrapper {

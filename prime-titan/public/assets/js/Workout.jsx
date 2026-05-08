@@ -122,7 +122,7 @@ const WorkoutApp = () => {
             {isAddModalOpen && (
                 <div className="modal-overlay">
                     <div className="modal-content">
-                        <button className="close-btn" onClick={() => setIsAddModalOpen(false)}>X</button>
+                        <button className="modal-close-x" onClick={() => setIsAddModalOpen(false)}>X</button>
                         <input type="text" className="search-bar" placeholder={TXT_SEARCH} onChange={(e) => setSearchTerm(e.target.value)} />
                         {Object.keys(grouped).map(muscle => (
                             <div key={muscle} className="group-section">

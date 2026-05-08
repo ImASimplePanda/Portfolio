@@ -113,4 +113,3 @@ document.addEventListener("DOMContentLoaded", () => {
     window.BASE_URL = '<?= BASE_URL ?>';
     window.USER_ID = '<?= $_SESSION['user']['id'] ?? "guest" ?>';
 </script>
-<script src="<?= BASE_URL ?>assets/js/cart.js"></script>

@@ -148,14 +148,15 @@ return [
     'no_exercises_found' => 'No se encontraron ejercicios nuevos para este músculo.',
 
 
+
     // Músculos
-    'chest' => 'Pecho',
-    'back' => 'Espalda',
-    'legs' => 'Pierna',
+    'chest'     => 'Pecho',
+    'back'      => 'Espalda',
+    'legs'      => 'Piernas',
     'shoulders' => 'Hombros',
-    'biceps' => 'Biceps',
-    'triceps' => 'Triceps',
-    'abs' => 'Abdominales'
+    'biceps'    => 'Bíceps',
+    'triceps'   => 'Tríceps',
+    'abs'       => 'Abdominales',
     
 
 

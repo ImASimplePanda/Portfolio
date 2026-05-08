@@ -150,12 +150,12 @@ return [
     'no_exercises_found' => 'No new exercises found for this muscle.',
 
     // Muscles
-    'chest' => 'Chest',
-    'back' => 'Back',
-    'legs' => 'Legs',
+    'chest'     => 'Chest',
+    'back'      => 'Back',
+    'legs'      => 'Legs',
     'shoulders' => 'Shoulders',
-    'biceps' => 'Biceps',
-    'triceps' => 'Triceps',
-    'abs' => 'Abs'
+    'biceps'    => 'Biceps',
+    'triceps'   => 'Triceps',
+    'abs'       => 'Abs',
 
 ];

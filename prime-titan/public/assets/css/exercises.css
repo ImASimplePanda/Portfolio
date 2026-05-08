@@ -108,6 +108,16 @@
     font-weight: bold;
 }
 
+
+.btn-add:hover, .btn-recom:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-add:active, .btn-recom:active {
+    transform: scale(0.98);
+}
+
 .btn-add { background: #28a745; color: white; }
 .btn-recom { background: #007bff; color: white; }
 
@@ -608,6 +618,41 @@ body.dark .admin-form select:focus {
         font-size: 2.2rem;
     }
 
+    .modal-content {
+        position: relative;
+        max-width: 850px;
+        width: 90%;
+        margin: 40px auto;
+        padding: 30px;
+        /* Evita que el botón se solape con el contenido */
+        overflow-y: auto; 
+    }
+
+    .modal-close-x {
+        display: flex !important; /* Solo para esta X */
+        position: absolute; 
+        top: 15px;
+        right: 20px;
+        background: #f1f1f1;
+        border: none;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        cursor: pointer;
+        z-index: 1000;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+    }
+
+    .modal-close-x:hover {
+        background: #67231b;
+        color: white;
+        transform: scale(1.1);
+    }
+
     .modal-grid {
         grid-template-columns: 1fr 1fr 1fr 1fr;
         gap: 16px;
@@ -615,6 +660,11 @@ body.dark .admin-form select:focus {
 
     .modal-card img {
         height: 120px;
+    }
+
+    body.dark .modal-close-x {
+        background: #333;
+        color: white;
     }
 
     .content-box {

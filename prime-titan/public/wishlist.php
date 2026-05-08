@@ -59,39 +59,39 @@ require_once BASE_DIR . '/views/layouts/header.php';
             <?php if (empty($wishlist)): ?>
                 <p class="wishlist-empty"><?= __t('wishlist_empty') ?></p>
             <?php else: ?>
-
-                <?php foreach ($wishlist as $item): ?>
-                    <div class="cart-item"> 
-                        <img src="<?= BASE_URL ?>assets/images/<?= $item['image']; ?>" class="cart-img">
-                        
-                        <div class="cart-info">
-                            <p class="cart-item-name"><strong><?= $item['name']; ?></strong></p>
-                            <p class="cart-item-price"><?= number_format($item['price'], 2); ?>€</p>
+                <div class="wishlist-grid">
+                    <?php foreach ($wishlist as $item): ?>
+                        <div class="cart-item"> 
+                            <img src="<?= BASE_URL ?>assets/images/<?= $item['image']; ?>" class="cart-img">
                             
-                            <div class="wishlist-qty-row">
-                                <a href="wishlist.php?action=minus&id=<?= $item['id']; ?>" class="qty-btn-dark">-</a>
-                                <span class="qty-text">Cantidad: <?= $item['quantity']; ?></span>
-                                <a href="wishlist.php?action=plus&id=<?= $item['id']; ?>" class="qty-btn-dark">+</a>
-                            </div>
+                            <div class="cart-info">
+                                <p class="cart-item-name"><strong><?= $item['name']; ?></strong></p>
+                                <p class="cart-item-price"><?= number_format($item['price'], 2); ?>€</p>
+                                
+                                <div class="wishlist-qty-row">
+                                    <a href="wishlist.php?action=minus&id=<?= $item['id']; ?>" class="qty-btn-dark">-</a>
+                                    <span class="qty-text">Cantidad: <?= $item['quantity']; ?></span>
+                                    <a href="wishlist.php?action=plus&id=<?= $item['id']; ?>" class="qty-btn-dark">+</a>
+                                </div>
 
-                            <div class="wishlist-actions-row">
-                                <button class="add-from-wishlist btn-action-dark" 
-                                        data-id="<?= $item['id']; ?>" 
-                                        data-name="<?= $item['name']; ?>"
-                                        data-price="<?= $item['price']; ?>"
-                                        data-image="<?= $item['image']; ?>"
-                                        data-quantity="<?= $item['quantity']; ?>">
-                                    Añadir
-                                </button>
+                                <div class="wishlist-actions-row">
+                                    <button class="add-from-wishlist btn-action-dark" 
+                                            data-id="<?= $item['id']; ?>" 
+                                            data-name="<?= $item['name']; ?>"
+                                            data-price="<?= $item['price']; ?>"
+                                            data-image="<?= $item['image']; ?>"
+                                            data-quantity="<?= $item['quantity']; ?>">
+                                        Añadir
+                                    </button>
 
-                                <a href="wishlist.php?action=remove&id=<?= $item['id']; ?>" class="btn-remove-dark">
-                                    Eliminar
-                                </a>
+                                    <a href="wishlist.php?action=remove&id=<?= $item['id']; ?>" class="btn-remove-dark">
+                                        Eliminar
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                <?php endforeach; ?>
-
+                    <?php endforeach; ?>
+                </div>
             <?php endif; ?>
         </div>
     </main>

@@ -148,8 +148,10 @@ body.dark .main-header {
         padding: 12px 15px;
         border-radius: 10px;
         font-size: 1.1rem;
-        transition: 0.2s;
-        color: inherit; 
+        transition: all 0.3s ease; 
+        color: inherit;
+        position: relative;
+        z-index: 1;
     }
 
     .nav-main-links svg { 
@@ -157,31 +159,42 @@ body.dark .main-header {
         height: 24px; 
     }
 
-    /* Hover adaptable */
-    .nav-main-links a:hover {
-        background: rgba(0, 0, 0, 0.05);
-    }
-    body.dark .nav-main-links a:hover {
-        background: rgba(255, 255, 255, 0.1);
-    }
+
 }
 
 /* --- ESCRITORIO (>= 1024px) --- */
 @media (min-width: 1024px) {
     .menu-btn, .close-btn { display: none; }
 
+    .main-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .logo-container {
+        flex: 1; /* Ocupa el espacio lateral */
+        display: flex;
+        justify-content: flex-start;
+    }
     .main-navbar {
-        flex: 1;
+        flex: 2; /* Le damos más peso visual al centro */
         display: flex;
         justify-content: center;
-        margin-left: 250px;
+        margin-left: 0; /* Eliminamos el margen de 350px que descuadraba todo */
+        position: static; /* Aseguramos que no interfiera el posicionamiento de móvil */
     }
-
+    .nav-user-section {
+        flex: 1; /* Ocupa el espacio lateral opuesto al logo */
+        display: flex;
+        justify-content: flex-end;
+    }
     .nav-main-links {
         display: flex;
         flex-direction: row;
         gap: 20px;
         list-style: none;
+        padding: 0;
+        margin: 0;
     }
 
     .nav-main-links a {
@@ -194,6 +207,18 @@ body.dark .main-header {
         font-size: 0.95rem;
         padding: 8px 12px;
         border-radius: 8px;
+    }
+
+    /* Hover mejorado */
+    .nav-main-links a:hover {
+        background: rgba(0, 0, 0, 0.08) !important; 
+        transform: scale(1.03); 
+    }
+
+    /* Hover para Modo Oscuro */
+    body.dark .nav-main-links a:hover {
+        background: rgba(255, 255, 255, 0.15) !important;
+        color: #ffffff; 
     }
 }
 

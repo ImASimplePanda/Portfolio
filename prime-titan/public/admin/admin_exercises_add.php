@@ -67,12 +67,13 @@ require_once BASE_DIR . '/views/layouts/header.php';
 
         <label><?= __t('muscle_group') ?></label>
         <select name="muscle_group" required>
-            <option value="chest">Chest</option>
-            <option value="back">Back</option>
-            <option value="legs">Legs</option>
-            <option value="shoulders">Shoulders</option>
-            <option value="biceps">Biceps</option>
-            <option value="triceps">Triceps</option>
+            <option value="chest"><?= __t('chest') ?></option>
+            <option value="back"><?= __t('back') ?></option>
+            <option value="legs"><?= __t('legs') ?></option>
+            <option value="shoulders"><?= __t('shoulders') ?></option>
+            <option value="biceps"><?= __t('biceps') ?></option>
+            <option value="triceps"><?= __t('triceps') ?></option>
+            <option value="abs"><?= __t('abs') ?></option>
         </select>
 
         <label><?= __t('is_recommended') ?></label>

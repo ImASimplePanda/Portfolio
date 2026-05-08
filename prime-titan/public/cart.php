@@ -4,23 +4,17 @@ session_start();
 require_once __DIR__ . '/../app/config/config.php';
 require_once __DIR__ . '/../app/config/database.php';
 
-// --- LÓGICA DE IDIOMA IGUAL A LA WISHLIST ---
-$lang = (isset($_SESSION['user']['language']) && $_SESSION['user']['language'] === 'en') ? 'en' : 'es';
-$name_col = "name_" . $lang; 
-// --------------------------------------------
-
-// Cargar CSS específico del carrito ANTES del header
-$extra_css = '<link rel="stylesheet" href="' . BASE_URL . 'assets/css/cart.css">';
-
-require_once BASE_DIR . '/views/layouts/header.php';
-
-// Si no hay usuario, redirigir
+// Redirigir si no hay sesión antes de cargar nada
 if (!isset($_SESSION['user'])) {
     header("Location: " . BASE_URL . "login.php");
     exit;
 }
 
-$userId = $_SESSION['user']['id'];
+$lang = (isset($_SESSION['user']['language']) && $_SESSION['user']['language'] === 'en') ? 'en' : 'es';
+$name_col = "name_" . $lang; 
+
+$extra_css = '<link rel="stylesheet" href="' . BASE_URL . 'assets/css/cart.css">';
+require_once BASE_DIR . '/views/layouts/header.php';
 ?>
 
 <div class="page-wrapper">
@@ -34,7 +28,7 @@ $userId = $_SESSION['user']['id'];
                 <?= __t('total') ?>: <span id="cart-total-price">0€</span>
             </div>
 
-            <button id="buy-btn" class="buy-btn"><?= __t('buy') ?></button>
+            <button id="buy-btn" class="buy-btn" style="display:none;"><?= __t('buy') ?></button>
         </div>
     </div>
 
@@ -42,11 +36,12 @@ $userId = $_SESSION['user']['id'];
 </div>
 
 <script>
-    // PASAMOS EL NOMBRE DE LA COLUMNA AL JAVASCRIPT
+    // Variables globales para el funcionamiento de cart.js
     window.PRODUCT_NAME_COL = "<?= $name_col ?>";
     window.CURRENT_LANG = "<?= $lang ?>";
+    window.USER_ID = "<?= $_SESSION['user']['id'] ?>";
 
-    // Tus traducciones actuales
+    // Traducciones
     window.CART_ADDED = "<?= __t('cart_added') ?>";
     window.CART_EMPTY = "<?= __t('cart_empty') ?>";
     window.CART_QTY = "<?= __t('quantity') ?>";
