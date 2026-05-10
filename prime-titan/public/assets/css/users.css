@@ -103,16 +103,16 @@
     border: 1px solid #f8d7da;
 }
 
-/* Modo Oscuro (body.dark) */
+/* Modo Oscuro*/
 body.dark .success-msg {
-    background: #1b3320; /* Verde muy oscuro */
-    color: #2ecc71;      /* Texto verde claro vibrante */
+    background: #1b3320; 
+    color: #2ecc71;      
     border: 1px solid #27ae60;
 }
 
 body.dark .error-msg {
-    background: #331b1b; /* Rojo muy oscuro */
-    color: #e74c3c;      /* Texto rojo claro vibrante */
+    background: #331b1b; 
+    color: #e74c3c;      
     border: 1px solid #c0392b;
 }
 
@@ -127,7 +127,8 @@ body.dark .error-msg {
 }
 
 .update-btn{
-    background-color: #000000;
+    background-color: #007bff;
+    color: #0a0a0a;
 }
 
 .delete-btn {

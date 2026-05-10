@@ -1,10 +1,10 @@
 const { useState, useEffect, useMemo } = React;
 
+/* Componente principal de productos */
 function ProductApp() {
     const [products, setProducts] = useState([]);
     const [search, setSearch] = useState("");
     const [ratings, setRatings] = useState({});
-    // Nuevo estado para el Modal
     const [selectedProduct, setSelectedProduct] = useState(null);
 
     const lang = window.CURRENT_LANGUAGE || 'es';
@@ -27,6 +27,7 @@ function ProductApp() {
         }
     }, []);
 
+    /* Carga de datos de calificaciones por producto */
     const loadRatingData = (productId) => {
         fetch(`${window.BASE_URL}actions/renderStars.php?product_id=${productId}`)
             .then(res => res.json())
@@ -36,6 +37,7 @@ function ProductApp() {
             .catch(err => console.error("Error rating:", err));
     };
 
+    /* Envío de voto al servidor */
     const handleVote = (productId, ratingValue) => {
         if (window.IS_GUEST) return;
         const formData = new FormData();
@@ -52,6 +54,7 @@ function ProductApp() {
         });
     };
 
+    /* Filtrado de productos según la búsqueda del usuario */
     const filteredProducts = useMemo(() => {
         return products.filter(p => {
             const name = (p.name || "").toLowerCase();
@@ -64,6 +67,7 @@ function ProductApp() {
     return (
         <div className="products-container">
             <div className="products">
+                {/* Lista de tarjetas de productos */}
                 {filteredProducts.map(product => {
                     const r = ratings[product.id] || { average: 0, html: '...', hasVoted: false };
                     const displayName = product.name;
@@ -133,7 +137,7 @@ function ProductApp() {
                 })}
             </div>
 
-            {/*VENTANA DETALLE */}
+            {/* Ventana modal con detalle del producto seleccionado */}
             {selectedProduct && (
                 <div className="modal-overlay" onClick={() => setSelectedProduct(null)}>
                     <div className="modal-content" onClick={(e) => e.stopPropagation()}>

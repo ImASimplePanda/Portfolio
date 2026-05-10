@@ -2,6 +2,7 @@
 class Product {
     private $pdo;
 
+    // Constructor: inicializa la conexión PDO
     public function __construct($pdo) {
         $this->pdo = $pdo;
     }
@@ -59,12 +60,14 @@ class Product {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    // Verificar si existe un producto por nombre
     public function existsByName($name) {
         $stmt = $this->pdo->prepare("SELECT id FROM products WHERE name_es = :name LIMIT 1");
         $stmt->execute([':name' => $name]);
         return $stmt->fetch(PDO::FETCH_ASSOC) ? true : false;
     }
 
+    // Eliminar un producto por ID
     public function delete($id) {
         $sql = "DELETE FROM products WHERE id = :id";
         $query = $this->pdo->prepare($sql);
@@ -72,6 +75,7 @@ class Product {
         return $query->execute();
     }
 
+    // Actualizar nombre, precio e imagen de un producto
     public function update($id, $name, $price, $image) {
         $sql = "UPDATE products SET name_es = :name, price = :price, image = :image WHERE id = :id";
         $query = $this->pdo->prepare($sql);
@@ -82,6 +86,7 @@ class Product {
         return $query->execute();
     }
 
+    // Crear un nuevo producto con nombres y descripciones en español e inglés
     public function create($name_es, $name_en, $description_es, $description_en, $price, $image) {
         if ($this->existsByName($name_es)) return false; 
         $sql = "INSERT INTO products (name_es, name_en, description_es, description_en, price, image) 
@@ -96,6 +101,7 @@ class Product {
         return $query->execute();
     }
 
+    // Obtener la calificación promedio de un producto
     public function getRatingAverage($productId) {
         $sql = "SELECT AVG(cantidad) AS media FROM votos WHERE idPr = ?";
         $stmt = $this->pdo->prepare($sql);
@@ -104,6 +110,7 @@ class Product {
         return $row['media'] ?? 0;
     }
 
+    // Obtener el número total de calificaciones de un producto
     public function getRatingCount($productId) {
         $sql = "SELECT COUNT(*) AS total FROM votos WHERE idPr = ?";
         $stmt = $this->pdo->prepare($sql);
@@ -112,6 +119,7 @@ class Product {
         return $row['total'] ?? 0;
     }
 
+    // Verificar si un usuario ya ha calificado un producto
     public function userHasRated($productId, $username) {
         $sql = "SELECT * FROM votos WHERE idPr = ? AND idUs = ?";
         $stmt = $this->pdo->prepare($sql);
@@ -119,12 +127,14 @@ class Product {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    // Insertar una nueva calificación para un producto
     public function insertVote($productId, $username, $rating) {
         $sql = "INSERT INTO votos (cantidad, idPr, idUs) VALUES (?, ?, ?)";
         $stmt = $this->pdo->prepare($sql);
         return $stmt->execute([$rating, $productId, $username]);
     }
 
+    // Actualizar la calificación de un usuario para un producto
     public function updateVote($productId, $username, $rating) {
         $sql = "UPDATE votos SET cantidad = ? WHERE idPr = ? AND idUs = ?";
         $stmt = $this->pdo->prepare($sql);

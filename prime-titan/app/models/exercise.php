@@ -55,6 +55,7 @@ class Exercise {
         return $stmt->execute([$name_es, $name_en, $muscle_group, $image_url, $is_recommended, $id]);
     }
 
+    // Eliminar ejercicio
     public function delete($id) {
         $sql = "DELETE FROM exercises_library WHERE id = ?";
         $stmt = $this->pdo->prepare($sql);

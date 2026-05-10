@@ -31,29 +31,28 @@
     margin-bottom: 15px;
 }
 
-/* --- ESTILOS DE LA TARJETA DE EJERCICIO (NUEVO DISEÑO) --- */
-
+/* --- ESTILOS DE LA TARJETA DE EJERCICIO  --- */
 .exercise-card {
     display: flex;
-    align-items: center; /* Alinea verticalmente */
-    gap: 15px;           /* Espacio entre imagen y texto */
+    align-items: center; 
+    gap: 15px;           
     background: #f9f9f9;
     padding: 10px;
     border-radius: 10px;
     margin-bottom: 10px;
     border: 1px solid #ddd;
-    position: relative;  /* Para posicionar el botón de borrar */
+    position: relative;  
 }
 
 .exercise-thumb {
     width: 70px;
     height: 70px;
-    object-fit: cover;   /* Recorta la imagen para que no se deforme */
+    object-fit: cover;   
     border-radius: 8px;
 }
 
 .exercise-info {
-    flex-grow: 1;        /* Ocupa el espacio restante */
+    flex-grow: 1;        
 }
 
 .exercise-info h4 {
@@ -166,7 +165,7 @@
     padding: 10px;
     border-radius: 10px;
     transition: background-color 0.2s ease, transform 0.1s ease;
-    border: 1px solid transparent; /* Para evitar saltos al poner el borde */
+    border: 1px solid transparent; 
 }
 
 .modal-card img {
@@ -197,7 +196,7 @@
 
 /* --- MODO OSCURO (.dark) --- */
 .dark .modal-card {
-    background-color: #374151; /* Tu tono original #333 ajustado */
+    background-color: #374151; 
     color: #f9fafb;
     border-color: #4b5563;
 }
@@ -624,12 +623,11 @@ body.dark .admin-form select:focus {
         width: 90%;
         margin: 40px auto;
         padding: 30px;
-        /* Evita que el botón se solape con el contenido */
         overflow-y: auto; 
     }
 
     .modal-close-x {
-        display: flex !important; /* Solo para esta X */
+        display: flex !important; 
         position: absolute; 
         top: 15px;
         right: 20px;

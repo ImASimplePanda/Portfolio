@@ -19,7 +19,7 @@ $productModel = new Product($db);
 $error = null;
 $success = null;
 
-// Función de traducción
+// Función que traduce texto de español a inglés usando la API MyMemory
 function translate_es_to_en(string $text): string {
     if (empty($text)) return '';
     $url = "https://api.mymemory.translated.net/get?q=" . urlencode($text) . "&langpair=es|en";
@@ -41,15 +41,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name_en        = translate_es_to_en($name_es);
     $description_en = ($description_es !== '') ? translate_es_to_en($description_es) : '';
 
-    // PROCESAR IMAGEN (Misma mecánica que el editor)
-    $imageName = 'default.png'; // Imagen por defecto si no elige nada
+    // PROCESAR IMAGEN 
+    $imageName = 'default.png'; 
 
-    // 1. Si elige una existente del desplegable
+    // Si elige una existente del desplegable
     if (!empty($_POST['image_select'])) {
         $imageName = $_POST['image_select'];
     }
 
-    // 2. Si sube una nueva imagen (esta tiene prioridad)
+    // Si sube una nueva imagen 
     if (!empty($_FILES['image_upload']['name'])) {
         $tempName = basename($_FILES['image_upload']['name']);
         $targetPath = $img_folder_path . $tempName;
@@ -64,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = __t('product_exists'); 
     } else {
         $success = __t('product_created');
-        // Redirigir tras 2 segundos para ver el mensaje de éxito o usar JS
+        // Redirigir tras 2 segundos para ver el mensaje de éxito
         echo "<script>setTimeout(() => { window.location.href = '" . BASE_URL . "admin/admin_products.php'; }, 2000);</script>";
     }
 }

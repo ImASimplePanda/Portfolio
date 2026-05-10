@@ -37,6 +37,8 @@ return [
     'wishlist_title' => 'Lista de deseados',
     'wishlist_empty' => 'Tu lista está vacía',
     'per_unit' => 'c/u',
+    'add' => 'Añadir',
+    'remove' => 'Eliminar',
 
     // Productos (admin)
     'add_product' => 'Añadir producto',
@@ -73,6 +75,7 @@ return [
     'admin' => 'Administrador',
     'confirm_delete_user' => '¿Estás seguro de que quieres eliminar este usuario?',
     'cannot_delete_self' => 'No puedes eliminar tu propio usuario',
+    'cannot_delete_other_admin' => 'No puedes eliminar a otro usuario administrador',
     'id' => 'ID',
     'username' => 'Usuario',
     'email' => 'Email',

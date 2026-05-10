@@ -25,6 +25,7 @@ body.dark .content-box {
     font-weight: bold;
 }
 
+
 /* --- LISTADO DE PRODUCTOS (Estilo Tarjeta) --- */
 .product-list {
     display: flex;
@@ -93,8 +94,19 @@ body.dark .product-price {
     color: white;
 }
 
-.btn-edit { background: #007bff; }
-.btn-delete { background: #dc3545; }
+.btn-edit { 
+    background: #007bff; 
+    &:hover{
+        background-color: #0056b3;
+    }
+
+}
+.btn-delete { 
+    background: #dc3545; 
+    &:hover{
+        background-color: #a30000;
+    }
+}
 
 /* --- BOTÓN AÑADIR --- */
 .btn-add {

@@ -1,4 +1,5 @@
 
+/* ESTILOS GLOBALES */
 * {
   margin: 0;
   padding: 0;
@@ -6,10 +7,11 @@
   font-family: Arial, sans-serif;
 }
 
+/* Configuración del cuerpo: fondo con gradiente e imagen de fondo */
 html, body {
   width: 100%;
   height: 100%;
-  overflow-x: hidden; /* evita scroll horizontal */
+  overflow-x: hidden;
   background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
   background-image: url('../images/movil.png'); 
   background-size: cover;
@@ -18,6 +20,7 @@ html, body {
   background-attachment: fixed;
 }
 
+/* Caja de contenido principal con estilos responsivos */
 .content-box {
     background: #ffffff;
     width: 90%;
@@ -30,21 +33,21 @@ html, body {
     min-height: 60vh;
 }
 
+/* Modo oscuro para caja de contenido */
 body.dark .content-box {
     background-color: #1c1c1c;
     border-color: #333;
 }
 
 
-/* Contenedor principal */
-
+/* CONTENEDOR PRINCIPAL Y HEADER */
 .page-wrapper {
   display: flex;
   flex-direction: column;
   min-height: 100vh; 
 }
 
-
+/* Barra de encabezado con navegación y logo */
 .header {
   display: flex;
   align-items: center;
@@ -61,10 +64,7 @@ body.dark .content-box {
 
 }
 
-
-
-
-/* Perfil usuario */
+/* PERFIL DE USUARIO - Dropdown y avatar */
 .profile-container {
   position: relative;
   cursor: pointer;
@@ -78,8 +78,7 @@ body.dark .content-box {
   object-fit: cover;
 }
 
-
-/* --- Estilos base (Modo Claro) --- */
+/* Menú desplegable del perfil con estilos para modo claro */
 .profile-dropdown {
   display: none;
   position: absolute;
@@ -119,28 +118,25 @@ body.dark .content-box {
   background: #f0f0f0;
 }
 
-/* --- MODO OSCURO (body.dark) --- */
-
+/* MODO OSCURO - Estilos para el dropdown del perfil */
 body.dark .profile-dropdown {
-  background: #222; /* Fondo oscuro */
+  background: #222; 
   box-shadow: 0 4px 12px rgba(0,0,0,0.5);
 }
 
 body.dark .profile-dropdown ul li {
-  border-bottom: 1px solid #333; /* Separador más sutil */
+  border-bottom: 1px solid #333; 
 }
 
 body.dark .profile-dropdown ul li a {
-  color: #e5e5e5; /* Texto claro */
+  color: #e5e5e5; 
 }
 
 body.dark .profile-dropdown ul li a:hover {
-  background: #333; /* Fondo al pasar el ratón en oscuro */
+  background: #333; 
 }
 
-
-/* Menu lateral */
-
+/* MENÚ LATERAL - Navegación fija responsive */
 .side-menu {
     position: fixed;
     top: 0;
@@ -148,12 +144,12 @@ body.dark .profile-dropdown ul li a:hover {
     width: 80%;
     height: 100%;
     padding: 3%;
-    transition: all 0.3s ease; /* Suaviza el cambio de color y posición */
+    transition: all 0.3s ease; 
     z-index: 1000;
-    background: #ffffff; /* Fondo claro por defecto */
+    background: #ffffff; 
 }
 
-/* Modo Oscuro: Cambia el fondo */
+/* Modo oscuro para el menú lateral */
 body.dark .side-menu {
     background: #1c1c1c;
 }
@@ -162,7 +158,7 @@ body.dark .side-menu {
     left: 0;
 }
 
-/* --- Lista y Enlaces --- */
+/* Enlaces y lista del menú lateral */
 .side-menu ul {
     list-style: none;
     margin-top: 10%;
@@ -175,35 +171,35 @@ body.dark .side-menu {
 
 .side-menu a {
     display: flex;
-    align-items: center; /* Centrado vertical */
+    align-items: center; 
     justify-content: flex-start;
     padding: 3%;
     text-decoration: none;
     font-size: 100%;
-    color: #333; /* Texto claro */
+    color: #333; 
     transition: background 0.2s;
 }
 
-/* Modo Oscuro: Texto */
+/* Modo oscuro para los enlaces del menú */
 body.dark .side-menu a {
     color: #e5e5e5;
 }
 
 /* Efecto Hover */
 .side-menu a:hover {
-    background: rgba(0,0,0,0.05); /* Gris muy suave */
+    background: rgba(0,0,0,0.05);
 }
 
 body.dark .side-menu a:hover {
-    background: rgba(255,255,255,0.1); /* Blanco muy suave */
+    background: rgba(255,255,255,0.1);
 }
 
-/* --- Iconos SVG --- */
+/* Iconos SVG del menú lateral */
 .side-menu a svg {
     width: 7vw; 
     height: 7vw;
     margin-right: 4%;
-    fill: #ffffff; /* Azul corporativo */
+    fill: #ffffff;
     transition: fill 0.3s;
 }
 
@@ -212,7 +208,7 @@ body.dark .side-menu a svg {
     fill: #1c1c1c;
 }
 
-/* --- Botón Cerrar --- */
+/* Botón para cerrar el menú lateral */
 .side-menu .close-btn {
     background: none;
     border: none;
@@ -225,10 +221,7 @@ body.dark .side-menu .close-btn {
     color: #e5e5e5;
 }
 
-
-
-
-
+/* OVERLAY Y BUSCADOR */
 .overlay {
   display: none;
   position: fixed;
@@ -241,8 +234,7 @@ body.dark .side-menu .close-btn {
   display: block;
 }
 
-
-/* Buscador */
+/* Contenedor y componentes de búsqueda */
 .search-container {
   width: 100%;
   display: flex;
@@ -273,9 +265,7 @@ body.dark .side-menu .close-btn {
   background-color: #0056b3;
 }
 
-
-
-/* Productos en grid */
+/* SECCIÓN DE PRODUCTOS - Grid y tarjetas */
 .products {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); 
@@ -283,7 +273,7 @@ body.dark .side-menu .close-btn {
   width: 100%;
 }
 
-/* Tarjetas de productos */
+/* Estilos para cada tarjeta de producto */
 .product-card {
 
   display: flex;
@@ -295,11 +285,12 @@ body.dark .side-menu .close-btn {
   padding: 10px;
   text-align: center;
   box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+  /* Botones de agregar al carrito y favoritos */
   .add-to-cart,
   .add-to-fav {
       border: none;          
       background-color: #8931A4; 
-      color: rgb(0, 0, 0);          
+      color: #ffffff;          
       margin-top: 5px;
       width: 100%;
       padding: 3px;
@@ -311,7 +302,7 @@ body.dark .side-menu .close-btn {
         background-color: #582069;
       }
   }
-  /* Estado Guardado (se activa con la clase que pusimos en React) */
+  /* Estado de favorito guardado */
   .add-to-fav.is-saved {
       background-color: #ff4d4d !important;
       color: white !important;
@@ -320,30 +311,22 @@ body.dark .side-menu .close-btn {
   }
 }
 
+/* Título del producto con truncado de texto */
 .product-card h3 {
-  /* 1. Forzamos una altura fija basada en líneas de texto */
-  /* Si usas un tamaño de fuente estándar, 2.8em suele equivaler a 2 líneas */
   height: 2.8em; 
   line-height: 1.4em;
-  
-  /* 2. Centramos el texto verticalmente dentro de ese espacio */
   display: flex;
   align-items: center;
   justify-content: center;
-  
-  /* 3. Evitamos que nombres extremadamente largos rompan el diseño */
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  
   margin: 10px 0;
-  font-size: 1.1rem; /* Ajusta según tu diseño */
+  font-size: 1.1rem;
 }
 
-
-
-
+/* Notificación toast del carrito */
 .cart-toast {
     position: fixed;
     bottom: 30px;
@@ -367,18 +350,14 @@ body.dark .side-menu .close-btn {
     transform: translateY(0);
 }
 
-
+/* Imágenes de productos */
 .product-card img {
   width: 100%;
   border-radius: 8px;
   object-fit: cover;
 }
 
-
-
-
-
-
+/* FOOTER */
 .footer {
   background: #111;
   color: #fff;
@@ -390,9 +369,7 @@ body.dark .side-menu .close-btn {
   margin-top: auto;
 }
 
-
-/* Perfil de usuario */
-
+/* PÁGINA DE PERFIL DE USUARIO - Componentes principales */
 .profile-box {
   display: flex;
   flex-direction: column;
@@ -401,13 +378,14 @@ body.dark .side-menu .close-btn {
   padding-top: 10px;
 }
 
+/* Título de la sección de perfil */
 .profile-title {
   font-size: 1.6rem;
   font-weight: bold;
   color: #222;
 }
 
-/* Tarjeta principal */
+/* Tarjeta principal del perfil */
 .profile-card {
   background: #ffffff;
   width: 100%;
@@ -421,7 +399,7 @@ body.dark .side-menu .close-btn {
   gap: 25px;
 }
 
-/* Avatar */
+/* Contenedor del avatar con borde gradiente */
 .profile-avatar-wrapper {
   width: 130px;
   height: 130px;
@@ -441,7 +419,7 @@ body.dark .side-menu .close-btn {
   background: #fff;
 }
 
-
+/* Nombre de usuario */
 .profile-username {
   font-size: 1.4rem;
   font-weight: bold;
@@ -449,7 +427,7 @@ body.dark .side-menu .close-btn {
   margin-top: -10px;
 }
 
-
+/* Contenedor de información del perfil */
 .profile-info {
   width: 100%;
   display: flex;
@@ -457,7 +435,7 @@ body.dark .side-menu .close-btn {
   gap: 15px;
 }
 
-
+/* Elementos individuales de información (email, fecha, etc) */
 .profile-item {
   background: #fafafa;
   padding: 15px;
@@ -480,6 +458,7 @@ body.dark .side-menu .close-btn {
   font-weight: 500;
 }
 
+/* Botón para cambiar avatar */
 .change-avatar-btn {
   margin-top: 10px;
   padding: 8px 14px;
@@ -496,6 +475,7 @@ body.dark .side-menu .close-btn {
   background: #ff7b82;
 }
 
+/* Mapa de ubicación del perfil */
 .profile-map {
   width: 100%;
   height: 250px;
@@ -511,19 +491,19 @@ body.dark .side-menu .close-btn {
 
 
 
-/* --- Contenedor Principal --- */
+/* Contenedor Principal */
 .rating {
     width: 100%;
     display: flex;
     justify-content: center;
     gap: 6px;
     margin-top: 8px;
-    font-family: "FontAwesome"; /* Asegura que los iconos carguen bien */
+    font-family: "FontAwesome";
 }
 
-/* --- Estrellas Base --- */
+/* Estrellas Base */
 .rating .star {
-    color: #ccc; /* Gris por defecto (estrella vacía) */
+    color: #ccc;
     font-size: 22px;
     cursor: pointer;
     transition: transform 0.2s, color 0.2s;
@@ -532,26 +512,25 @@ body.dark .side-menu .close-btn {
 
 /* Definición de Iconos mediante Pseudo-elementos */
 .rating .star:before {
-    content: "\f006"; /* Icono fa-star-o (contorno vacío) por defecto */
+    content: "\f006";
 }
 
-/* --- ESTADOS DE COLOR (ACTIVA Y MEDIA) --- */
 
 /* Estrella Llena */
 .rating .star.active:before {
-    content: "\f005"; /* fa-star (llena) */
+    content: "\f005";
     color: gold;
 }
 
 /* Media Estrella */
 .rating .star.half:before {
-    content: "\f123"; /* fa-star-half-o (media) */
+    content: "\f123";
     color: gold;
 }
 
-/* --- INTERACCIÓN HOVER (Solo usuarios logueados que no han votado) --- */
+/* INTERACCIÓN HOVER (Solo usuarios logueados que no han votado) */
 .rating:not(.rating-disabled):not(.not-logged):hover .star:before {
-    content: "\f005"; /* Al pasar el ratón sobre el grupo, todas parecen llenas */
+    content: "\f005";
     color: gold;
 }
 
@@ -565,18 +544,18 @@ body.dark .side-menu .close-btn {
     color: #ccc;
 }
 
-/* --- ESTADO: INVITADO (Not Logged) --- */
+/* ESTADO: INVITADO  */
 .rating.not-logged .star {
-    cursor: pointer; /* Mantenemos el cursor para que el usuario haga clic y salte el alert */
+    cursor: pointer;
 }
 
 .rating.not-logged .star:hover {
-    transform: none !important; /* Evitamos animaciones para invitados */
+    transform: none !important;
 }
 
-/* --- ESTADO: YA VOTADO (Disabled) --- */
+/* ESTADO: YA VOTADO (Disabled) */
 .rating.rating-disabled {
-    pointer-events: none; /* Bloquea cualquier clic */
+    pointer-events: none;
     cursor: default;
 }
 
@@ -591,7 +570,7 @@ body.dark .side-menu .close-btn {
     color: #e0e0e0 !important;
 }
 
-/* --- INFO INFERIOR (Texto de votos) --- */
+/* INFO INFERIOR (Texto de votos)*/
 .rating-info {
     font-size: 0.85em;
     color: #777;
@@ -608,7 +587,7 @@ body.dark .side-menu .close-btn {
 }
 
 .star.active {
-    color: #ffcc00; /* Dorado */
+    color: #ffcc00;
 }
 
 
@@ -639,38 +618,36 @@ body.dark .side-menu .close-btn {
 
 
 
-/* ============================
-   MODO OSCURO GLOBAL
-============================ */
+/* MODO OSCURO GLOBAL */
 
 body.dark {
-    background-color: #121212;
-    color: #e5e5e5;
+  background-color: #121212;
+  color: #e5e5e5;
 }
 
 
 
 /* Header */
 body.dark .header {
-    background-color: #1e1e1e;
-    border-bottom: 1px solid #333;
+  background-color: #1e1e1e;
+  border-bottom: 1px solid #333;
 }
 
 body.dark .logo {
-    color: #fff;
+  color: #fff;
 }
 
 /* Menú lateral */
 body.dark .side-menu {
-    background-color: #1e1e1e;
+  background-color: #1e1e1e;
 }
 
 /* Tarjetas de productos */
 body.dark .wishlist-item,
 body.dark .cart-item,
 body.dark .product-card {
-    background-color: #2e2d2d;
-    border: 1px solid #333;
+  background-color: #2e2d2d;
+  border: 1px solid #333;
 }
 
 body.dark .side-menu a,
@@ -678,7 +655,7 @@ body.dark .profile-title,
 body.dark .value,
 body.dark .profile-username,
 body.dark .product-card h3{
-    color: #fff;
+  color: #fff;
 }
 
 body.dark .product-card p{
@@ -692,18 +669,18 @@ body.dark button,
 body.dark .add-to-cart,
 body.dark .add-to-fav {
 
-    color: #fff;
+  color: #fff;
 }
 
 body.dark button:hover {
-    background-color: #444;
+  background-color: #444;
 }
 
 /* Buscador */
 body.dark .search-input {
-    background-color: #1e1e1e;
-    color: #fff;
-    border: 1px solid #333;
+  background-color: #1e1e1e;
+  color: #fff;
+  border: 1px solid #333;
 }
 
 
@@ -713,175 +690,174 @@ body.dark .product-item,
 body.dark .wishlist-box,
 body.dark .profile-item,
 body.dark .profile-card{
-    background-color: #1e1e1e;
-    border: 1px solid #333;
-    color: #fff;
+  background-color: #1e1e1e;
+  border: 1px solid #333;
+  color: #fff;
 }
 
 body.dark .admin-form label {
-    color: #fff;
+  color: #fff;
 }
 
 body.dark .admin-form input,
 body.dark .admin-form textarea,
 body.dark .admin-form select {
-    background-color: #1e1e1e;
-    color: #fff;
-    border: 1px solid #444;
+  background-color: #1e1e1e;
+  color: #fff;
+ border: 1px solid #444;
 }
 
 body.dark .admin-title {
-    color: #fff;
+  color: #fff;
 }
 
 
 
 
-/* --- MODAL OVERLAY (Fondo difuminado detrás de la tarjeta) --- */
+/* MODAL OVERLAY */
 .modal-overlay {
-    position: fixed; 
-    top: 0;
-    left: 0;
-    width: 100vw; 
-    height: 100vh; 
-    background: rgba(0, 0, 0, 0.75); /* Oscurece el fondo */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999; 
-    backdrop-filter: blur(5px); /* Efecto desenfoque muy pro */
+  position: fixed; 
+  top: 0;
+  left: 0;
+  width: 100vw; 
+  height: 100vh; 
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; 
+  backdrop-filter: blur(5px);
 }
 
-/* --- MODAL CONTENT (La Tarjeta sólida) --- */
+/* MODAL CONTENT */
 .modal-content {
-    /* Colores modo claro por defecto */
-    background-color: #ffffff; 
-    color: #333333;
+  background-color: #ffffff; 
+  color: #333333;
     
-    width: 90%; 
-    max-width: 800px;
-    max-height: 90vh;
-    border-radius: 20px; /* Bordes más redondeados tipo tarjeta */
-    position: relative;
-    padding: 40px 30px 30px 30px; 
-    overflow-y: auto;
+  width: 90%; 
+  max-width: 800px;
+  max-height: 90vh;
+  border-radius: 20px;
+  position: relative;
+  padding: 40px 30px 30px 30px; 
+  overflow-y: auto;
     
-    /* Forzamos que sea opaco y tenga sombra */
-    border: 1px solid #ddd;
-    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4); 
     
-    display: flex;
-    flex-direction: column;
+  border: 1px solid #ddd;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4); 
+    
+  display: flex;
+  flex-direction: column;
 }
 
-/* --- CAMBIOS PARA MODO OSCURO (Basado en tu cookie/clase body) --- */
+
 body.dark .modal-content {
-    background-color: #222222; /* Fondo gris oscuro sólido */
-    color: #ffffff;
-    border-color: #444444;
+  background-color: #222222;
+  color: #ffffff;
+  border-color: #444444;
 }
 
-/* --- BOTÓN CERRAR (La X con fondo para que no se pierda) --- */
+/*  BOTÓN CERRAR  */
 .modal-close {
-    position: absolute;
-    top: 15px; 
-    right: 15px;
-    background: rgba(128, 128, 128, 0.2); /* Fondo circular suave */
-    border: none;
-    color: inherit; 
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.8rem;
-    cursor: pointer;
-    line-height: 1;
-    z-index: 100;
-    transition: all 0.2s ease;
+  position: absolute;
+  top: 15px; 
+  right: 15px;
+  background: rgba(128, 128, 128, 0.2);
+  border: none;
+  color: inherit; 
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.8rem;
+  cursor: pointer;
+  line-height: 1;
+  z-index: 100;
+  transition: all 0.2s ease;
 }
 
 .modal-close:hover {
-    background: #ff4d4d;
-    color: white;
-    transform: rotate(90deg);
+  background: #ff4d4d;
+  color: white;
+  transform: rotate(90deg);
 }
 
-/* --- CUERPO DEL MODAL --- */
+/*  CUERPO DEL MODAL  */
 .modal-body {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
 .modal-left img {
-    width: 100%;
-    max-width: 350px; 
-    height: auto;
-    border-radius: 12px;
-    display: block;
-    margin: 0 auto;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 350px; 
+  height: auto;
+  border-radius: 12px;
+  display: block;
+  margin: 0 auto;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 .modal-right {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .modal-right h2 {
-    margin-top: 0;
-    font-size: 1.6rem;
+  margin-top: 0;
+  font-size: 1.6rem;
 }
 
 .modal-price {
-    font-size: 1.4rem;
-    font-weight: bold;
-    color: #ff9800;
-    margin: 10px 0;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #ff9800;
+  margin: 10px 0;
 }
 
-/* --- BOTÓN AÑADIR AL CARRITO (Grande y Centrado) --- */
+/* BOTÓN AÑADIR AL CARRITO */
 .modal-right .add-to-cart {
-    width: 100%; 
-    padding: 18px 25px; /* Más grande como pediste */
-    font-size: 1.1rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    background-color: #8931A4;
-    color: white !important;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 12px;
-    transition: all 0.3s ease;
+  width: 100%; 
+  padding: 18px 25px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  background-color: #8931A4;
+  color: white !important;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.3s ease;
 }
 
 .modal-right .add-to-cart:hover {
-    background-color: #582069;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
+  background-color: #582069;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
 }
 
 /* --- AJUSTE MODO OSCURO BOTÓN --- */
 body.dark .modal-right .add-to-cart {
-    background-color: #582069;
+  background-color: #582069;
 }
 
 .clickable-img {
-    cursor: pointer;
-    position: relative;
-    transition: opacity 0.2s;
+  cursor: pointer;
+  position: relative;
+  transition: opacity 0.2s;
 }
 
 .clickable-img:hover {
-    opacity: 0.9; 
+  opacity: 0.9; 
 }
 
 

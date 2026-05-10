@@ -15,6 +15,7 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
 
 $exerciseModel = new Exercise($db);
 
+// Función que traduce texto de español a inglés usando la API MyMemory
 function translate_es_to_en(string $text): string {
     if (empty($text)) return '';
     $opts = ["http" => ["method" => "GET", "header" => "User-Agent: PHP\r\n"]];
@@ -32,14 +33,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name_en = translate_es_to_en($name_es);
 
     // Procesar imagen
-    $imageName = 'default_exercise.png'; // Valor por defecto
+    $imageName = 'default_exercise.png'; 
 
-    // 1. Si selecciona una existente
+    // Si selecciona una existente
     if (!empty($_POST['image_select'])) {
         $imageName = $_POST['image_select'];
     }
 
-    // 2. Si sube una nueva
+    // Si sube una nueva
     if (!empty($_FILES['image_upload']['name'])) {
         $tempName = basename($_FILES['image_upload']['name']);
         $targetPath = $img_folder_path . $tempName; 

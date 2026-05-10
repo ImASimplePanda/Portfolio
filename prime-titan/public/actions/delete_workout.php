@@ -1,6 +1,5 @@
 <?php
 session_start();
-// Asegúrate de que esta ruta apunta correctamente a tu archivo de conexión
 require_once __DIR__ . '/../../app/config/database.php';
 
 header('Content-Type: application/json');
@@ -11,11 +10,7 @@ $user_id = $_SESSION['user']['id'] ?? null;
 
 if ($id && $user_id) {
     try {
-        // En PDO, preparamos la sentencia con ?
         $stmt = $db->prepare("DELETE FROM user_workouts WHERE id = ? AND user_id = ?");
-        
-        // Ejecutamos pasando el array de valores directamente.
-        // Esto sustituye al bind_param de MySQLi.
         $stmt->execute([$id, $user_id]);
         
         echo json_encode(['success' => true]);

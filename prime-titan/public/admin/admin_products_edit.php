@@ -6,8 +6,7 @@ require_once __DIR__ . '/../../app/config/config.php';
 require_once __DIR__ . '/../../app/config/database.php';
 require_once __DIR__ . '/../../app/models/product.php';
 
-// 1. Definir la ruta física de las imágenes correctamente
-// Según tu config, desde la raíz del proyecto sería: public/assets/images
+// Definir la ruta física de las imágenes correctamente
 $img_folder_path = $_SERVER['DOCUMENT_ROOT'] . BASE_URL . 'assets/images/';
 
 // Solo admin
@@ -29,9 +28,9 @@ if (!$product) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $_POST['name'];
     $price = $_POST['price'];
-    $imageToSave = $product['image']; // Valor por defecto
+    $imageToSave = $product['image']; 
 
-    // Prioridad 1: Subida de archivo nuevo
+    // Subida de archivo nuevo
     if (!empty($_FILES['image_upload']['name'])) {
         $imageName = basename($_FILES['image_upload']['name']);
         $targetPath = $img_folder_path . $imageName;
@@ -39,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $imageToSave = $imageName;
         }
     } 
-    // Prioridad 2: Selección de imagen existente
+    // Selección de imagen existente
     else if (!empty($_POST['image_select'])) {
         $imageToSave = $_POST['image_select'];
     }

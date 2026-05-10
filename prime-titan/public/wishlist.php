@@ -4,7 +4,7 @@ require_once __DIR__ . '/../app/config/config.php';
 require_once __DIR__ . '/../app/config/database.php';
 require_once __DIR__ . '/../app/models/product.php';
 
-// 1. LÓGICA DE SESIÓN Y REDIRECCIÓN
+// LÓGICA DE SESIÓN Y REDIRECCIÓN
 if (!isset($_SESSION['user'])) {
     header("Location: " . BASE_URL . "login.php");
     exit;
@@ -14,7 +14,7 @@ $user_id = $_SESSION['user']['id'];
 $lang = (isset($_SESSION['user']['language']) && $_SESSION['user']['language'] === 'en') ? 'en' : 'es';
 $name_col = "name_" . $lang; 
 
-// 2. LÓGICA DE ACCIONES (PHP Nativo)
+// LÓGICA DE ACCIONES
 if (isset($_GET['action'])) {
     $id = $_GET['id'];
     
@@ -37,7 +37,7 @@ if (isset($_GET['action'])) {
     exit;
 }
 
-// 3. OBTENCIÓN DE DATOS
+// OBTENCIÓN DE DATOS
 $stmt = $db->prepare("
     SELECT w.product_id AS id, w.quantity, p.$name_col AS name, p.price, p.image
     FROM wishlist w
@@ -81,11 +81,11 @@ require_once BASE_DIR . '/views/layouts/header.php';
                                             data-price="<?= $item['price']; ?>"
                                             data-image="<?= $item['image']; ?>"
                                             data-quantity="<?= $item['quantity']; ?>">
-                                        Añadir
+                                        <?= __t('add'); ?>
                                     </button>
 
                                     <a href="wishlist.php?action=remove&id=<?= $item['id']; ?>" class="btn-remove-dark">
-                                        Eliminar
+                                        <?= __t('remove'); ?>
                                     </a>
                                 </div>
                             </div>

@@ -1,4 +1,4 @@
-/* --- Estilo Base (Reutilizando la consistencia de productos) --- */
+
 .content-box {
     background: #ffffff;
     width: 90%;
@@ -28,7 +28,7 @@ body.dark .profile-title {
     color: #e5e5e5;
 }
 
-/* --- Card de Preferencias --- */
+/* Card de Preferencias */
 .profile-card {
     display: flex;
     flex-direction: column;
@@ -61,9 +61,9 @@ body.dark .label {
     color: #e5e5e5;
 }
 
-/* --- Selects de Preferencias --- */
+/* Selects de Preferencias */
 .pref-select {
-    width: 45%; /* Ancho controlado para que se vea bien */
+    width: 45%; 
     padding: 2.5%;
     font-size: 4vw;
     border-radius: 8px;

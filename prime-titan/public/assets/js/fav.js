@@ -7,7 +7,6 @@
 
 window.addToFav = function(id, btn = null) {
 
-    // Si el botón viene de un evento de React, es mejor pasarlo para feedback visual inmediato
     const targetBtn = btn || document.querySelector(`.add-to-fav[data-id="${id}"]`);
 
     const formData = new FormData();
@@ -20,7 +19,6 @@ window.addToFav = function(id, btn = null) {
     .then(res => res.json())
     .then(data => {
         if (data.success) {
-            // Si pasamos el elemento botón, cambiamos su aspecto
             if (targetBtn) {
                 // Usamos una variable global de texto o un string traducido si lo tienes
                 targetBtn.innerHTML = "❤️ " + (window.TXT_SAVED || "Saved");

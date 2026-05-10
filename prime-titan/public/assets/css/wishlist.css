@@ -1,4 +1,4 @@
-/* --- ESTILO BASE (MODO CLARO) --- */
+/* MODO CLARO */
 .wishlist-wrapper {
     width: 100%;
     display: flex;
@@ -11,7 +11,7 @@
 .wishlist-box {
     width: 92%;
     max-width: 1100px;
-    background: #ffffff; /* Caja blanca */
+    background: #ffffff; 
     padding: 5%;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
@@ -32,7 +32,7 @@
     gap: 20px;
 }
 
-/* --- ITEM DISEÑO GRID --- */
+/* ITEM DISEÑO GRID */
 .cart-item {
     display: grid;
     grid-template-columns: 30% 65%;
@@ -77,7 +77,7 @@
     margin: 2% 0 5% 0;
 }
 
-/* --- CANTIDAD --- */
+/* CANTIDAD */
 .wishlist-qty-row {
     display: flex;
     align-items: center;
@@ -103,7 +103,7 @@
     color: #1a1a1a;
 }
 
-/* --- BOTONES DE ACCIÓN EN LÍNEA --- */
+/* BOTONES DE ACCIÓN EN LÍNEA  */
 .wishlist-actions-row {
     display: flex;
     gap: 8px;
@@ -125,7 +125,7 @@
 .btn-action-dark {
     background-color: #8931A4; 
     border: 1px solid #dddddd;
-    color: #1a1a1a;
+    color: #ffffff;
     &:hover {
         background-color: #582069;
     }
@@ -134,9 +134,12 @@
 .btn-remove-dark {
     background: #ff4d4d;
     color: white;
+    &:hover {
+        background-color: #852828;
+    }
 }
 
-/* --- MODO OSCURO (Sobreescribe los colores si hay clase .dark) --- */
+/* MODO OSCURO  */
 .dark .wishlist-box { background: #1a1a1a; }
 .dark .wishlist-title { color: #ffffff; }
 .dark .cart-item { background: #262626; box-shadow: 0 4px 10px rgb(0, 0, 0);}

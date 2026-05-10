@@ -37,7 +37,6 @@ $stmt->execute([$user_id, $product_id]);
 $exists = $stmt->fetch();
 
 if ($exists) {
-    // Si ya existe, podrías devolver un mensaje diciendo que ya está añadido
     echo json_encode(['success' => true, 'message' => __t('already_in_wishlist'), 'saved' => true]);
 } else {
     // Insertar nuevo

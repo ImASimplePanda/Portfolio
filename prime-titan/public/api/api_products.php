@@ -10,15 +10,13 @@ require_once __DIR__ . '/../../app/models/Product.php';
 header('Content-Type: application/json');
 
 try {
-    // 1. Verificamos EXACTAMENTE dónde tienes guardado el ID del usuario
-    // Si tu sesión guarda el usuario en $_SESSION['user']['id'], esto funcionará:
+    // Verificamos dónde está guardado el ID del usuario
     $user_id = 0;
     if (isset($_SESSION['user']) && isset($_SESSION['user']['id'])) {
         $user_id = $_SESSION['user']['id'];
     }
 
-    // 2. Usamos la conexión (asegúrate de que en database.php se llame $db o $pdo)
-    // Si tu archivo database.php crea $db, usa $db. Si crea $pdo, usa $pdo.
+    // Usamos la conexión
     $conexion = (isset($db)) ? $db : $pdo;
 
     $productModel = new Product($conexion); 

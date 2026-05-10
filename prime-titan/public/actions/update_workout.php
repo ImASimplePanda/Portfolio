@@ -18,7 +18,7 @@ $allowed_fields = ['sets', 'reps', 'weight'];
 
 if ($id && in_array($field, $allowed_fields) && is_numeric($value)) {
     try {
-        // Preparamos la consulta. Nota: $field es seguro porque está en el array $allowed_fields
+        // Preparamos la consulta.
         $sql = "UPDATE user_workouts SET $field = ? WHERE id = ? AND user_id = ?";
         $stmt = $db->prepare($sql);
         $stmt->execute([$value, $id, $user_id]);

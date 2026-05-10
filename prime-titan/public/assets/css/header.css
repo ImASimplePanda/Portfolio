@@ -1,6 +1,4 @@
-/* =========================================
-   1. RESET Y BASES
-   ========================================= */
+
 * {
     margin: 0;
     padding: 0;
@@ -32,9 +30,7 @@ body.dark {
     min-height: 100vh; 
 }
 
-/* =========================================
-   2. HEADER PRINCIPAL (CORREGIDO)
-   ========================================= */
+/* HEADER PRINCIPAL  */
 .main-header {
     display: flex;
     align-items: center;
@@ -56,9 +52,9 @@ body.dark .main-header {
 
 /* Zona Izquierda: Botón Menú */
 .menu-btn {
-    flex: 1; /* Ocupa el espacio izquierdo disponible */
+    flex: 1; 
     display: flex;
-    justify-content: flex-start; /* Pega el icono a la izquierda */
+    justify-content: flex-start; 
     background: none;
     border: none;
     font-size: 1.5rem;
@@ -67,14 +63,14 @@ body.dark .main-header {
 
 /* Zona Central: Logo */
 .logo-container {
-    flex: 0; /* Solo ocupa el ancho de la imagen */
+    flex: 0; 
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .logo-img {
-    height: 90px; /* Ajustado para que quepa bien en el header de 70px */
+    height: 90px; 
     width: auto;
     display: block;
     object-fit: contain;
@@ -88,16 +84,14 @@ body.dark .main-header {
     align-items: center;
 }
 
-/* =========================================
-   3. MENÚ LATERAL (SIDE MENU)
-   ========================================= */
+/* MENÚ LATERAL*/
 
 /* --- MÓVIL Y TABLET (< 1024px) --- */
 @media (max-width: 1023px) {
     .main-navbar {
         position: fixed;
         top: 0;
-        left: -100%; /* Escondido */
+        left: -100%; 
         width: 280px;
         height: 100vh;
         transition: 0.3s ease-in-out;
@@ -172,19 +166,19 @@ body.dark .main-header {
         align-items: center;
     }
     .logo-container {
-        flex: 1; /* Ocupa el espacio lateral */
+        flex: 1; 
         display: flex;
         justify-content: flex-start;
     }
     .main-navbar {
-        flex: 2; /* Le damos más peso visual al centro */
+        flex: 2; 
         display: flex;
         justify-content: center;
-        margin-left: 0; /* Eliminamos el margen de 350px que descuadraba todo */
-        position: static; /* Aseguramos que no interfiera el posicionamiento de móvil */
+        margin-left: 0; 
+        position: static; 
     }
     .nav-user-section {
-        flex: 1; /* Ocupa el espacio lateral opuesto al logo */
+        flex: 1; 
         display: flex;
         justify-content: flex-end;
     }
@@ -222,9 +216,7 @@ body.dark .main-header {
     }
 }
 
-/* =========================================
-   4. USUARIO Y DROPDOWN
-   ========================================= */
+/* USUARIO Y DROPDOWN */
 .user-dropdown-container { position: relative; }
 
 .user-trigger {
@@ -292,9 +284,7 @@ body.dark .dropdown-content {
 }
 .overlay.active { display: block; }
 
-/* =========================================
-   5. CONTENIDOS
-   ========================================= */
+/* CONTENIDOS */
 .content-box {
     background: #ffffff;
     width: 90%;

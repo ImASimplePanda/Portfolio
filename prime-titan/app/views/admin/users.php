@@ -24,9 +24,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_user_id'])) {
         $error = __t('cannot_delete_self');
     } else {
         try {
-            $stmt = $db->prepare("DELETE FROM users WHERE id = :id");
-            $stmt->execute([':id' => $deleteId]);
-            $success = __t('user_deleted');
+            // Consultar el rol del usuario que se quiere eliminar
+            $checkStmt = $db->prepare("SELECT role FROM users WHERE id = :id");
+            $checkStmt->execute([':id' => $deleteId]);
+            $userToDelete = $checkStmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($userToDelete && $userToDelete['role'] === 'admin') {
+                // Si es admin, bloqueamos la acción
+                $error = __t('cannot_delete_other_admin'); 
+            } else {
+                // Si no es admin o no existe, procedemos al borrado
+                $stmt = $db->prepare("DELETE FROM users WHERE id = :id");
+                $stmt->execute([':id' => $deleteId]);
+                $success = __t('user_deleted');
+            }
         } catch (PDOException $e) {
             $error = __t('user_delete_error');
         }

@@ -2,7 +2,6 @@
     <div class="page-wrapper">
         <?php 
             include __DIR__ . '/../app/views/layouts/header.php';
-            // Mantenemos la lógica de sesión para las variables JS
             $isGuest = !isset($_SESSION['user']);
         ?>
 

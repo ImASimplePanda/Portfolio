@@ -1,18 +1,12 @@
-/* ==========================================================================
-   CART.JS - Gestión de Carrito y Wishlist con Notificaciones
-   ========================================================================== */
 
-// 1. Identificadores únicos para el carrito (según usuario e idioma)
+// Identificadores únicos para el carrito (según usuario e idioma)
 if (typeof window.getUserId === 'undefined') {
     window.getUserId = () => window.USER_ID || "guest";
     window.getLang = () => document.documentElement.lang || 'es';
     window.getCartKey = () => "cart_" + window.getUserId() + "_" + window.getLang();
 }
 
-/**
- * Función para mostrar notificaciones (Toast)
- * Si no tienes esta función definida en otro sitio, esta servirá.
- */
+// Función para mostrar notificaciones (Toast)
 window.showToast = function(message) {
     let container = document.getElementById('toast-container');
     if (!container) {
@@ -27,7 +21,7 @@ window.showToast = function(message) {
     }
 
     const toast = document.createElement('div');
-    toast.className = 'toast-message success'; // Puedes usar tus clases de CSS existentes
+    toast.className = 'toast-message success'; 
     toast.textContent = message;
     
     // Estilos rápidos de fallback
@@ -47,9 +41,8 @@ window.showToast = function(message) {
     }, 3000);
 };
 
-/**
- * Borra el producto de la wishlist en la DB
- */
+// Borra el producto de la wishlist en la DB
+
 async function removeFromWishlistDB(id) {
     if (!id || id === "null") return false;
     try {
@@ -66,9 +59,8 @@ async function removeFromWishlistDB(id) {
     }
 }
 
-/**
- * Validar productos contra la Base de Datos
- */
+// Validar productos contra la Base de Datos
+
 async function validateCartItems(cart) {
     if (cart.length === 0) return cart;
 
@@ -96,9 +88,8 @@ async function validateCartItems(cart) {
     }
 }
 
-/**
- * Añadir al carrito
- */
+// Añadir al carrito
+
 window.addToCart = function(product) {
     if (!product.id || product.id === "null" || !product.name) return;
 
@@ -132,9 +123,8 @@ window.addToCart = function(product) {
     }
 };
 
-/**
- * Lógica del botón COMPRAR
- */
+// Lógica del botón COMPRAR
+
 window.handleCheckout = function() {
     const key = window.getCartKey();
     let cart = JSON.parse(localStorage.getItem(key)) || [];
@@ -151,9 +141,8 @@ window.handleCheckout = function() {
     window.location.href = window.BASE_URL + "index.php";
 };
 
-/**
- * Renderizado y Eventos
- */
+// Renderizado y Eventos
+
 document.addEventListener("DOMContentLoaded", () => {
     const TXT_EMPTY = window.CART_EMPTY || "Carrito vacío";
     const TXT_QTY = window.CART_QTY || "Cantidad";
@@ -175,15 +164,13 @@ document.addEventListener("DOMContentLoaded", () => {
             quantity: btn.getAttribute("data-quantity") || 1
         };
 
-        // 1. Añadir al carrito local y mostrar mensaje
+        // Añadir al carrito local y mostrar mensaje
         window.addToCart(productData);
 
-        // 2. Si es desde wishlist, borrar de la DB y recargar
+        // Si es desde wishlist, borrar de la DB y recargar
         if (btn.classList.contains("add-from-wishlist")) {
             const deleted = await removeFromWishlistDB(productId);
             if (deleted) {
-                // Esperamos un segundo (1000ms) para que el usuario vea el mensaje 
-                // antes de que la página se refresque
                 setTimeout(() => {
                     window.location.reload(); 
                 }, 1000);

@@ -37,6 +37,8 @@ return [
     'wishlist_title' => 'Wishlist',
     'wishlist_empty' => 'Your wishlist is empty',
     'per_unit' => 'each',
+    'add' => 'Add',
+    'remove' => 'Remove',
 
     // Products (admin)
     'add_product' => 'Add product',
@@ -71,6 +73,7 @@ return [
     'user' => 'User',
     'confirm_delete_user' => 'Are you sure you want to delete this user?',
     'cannot_delete_self' => 'You cannot delete your own user',
+    'cannot_delete_other_admin' => 'You cannot delete another admin user',
     'admin' => 'Admin',
     'id' => 'ID',
     'username' => 'Username',

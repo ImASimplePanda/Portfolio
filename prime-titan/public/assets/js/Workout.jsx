@@ -1,6 +1,6 @@
 const { useState, useEffect } = React;
 
-// --- COMPONENTE HIJO (Card) ---
+/* Componente hijo para mostrar cada ejercicio en la rutina */
 const ExerciseCard = ({ exercise, onDelete, onUpdate }) => (
     <div className="exercise-card">
         <button className="delete-btn" onClick={() => onDelete(exercise.id)}>✕</button>
@@ -20,21 +20,22 @@ const ExerciseCard = ({ exercise, onDelete, onUpdate }) => (
     </div>
 );
 
-// --- COMPONENTE PRINCIPAL ---
+/* Componente principal del workout */
 const WorkoutApp = () => {
     const [workouts, setWorkouts] = useState([]);
     const [allExercises, setAllExercises] = useState([]);
     const [currentDay, setCurrentDay] = useState(null);
     const [searchTerm, setSearchTerm] = useState('');
     
-    // Estados para Modales
+    /* Modales de selección */
     const [isAddModalOpen, setIsAddModalOpen] = useState(false);
-    const [isRecModalOpen, setIsRecModalOpen] = useState(false);
+    const [isRecModalOpen, setIsRecModal] = useState(false);
     
-    // Estados para Recomendación
+    /* Recomendaciones por músculo */
     const [selectedMuscle, setSelectedMuscle] = useState(null);
     const [recommendedList, setRecommendedList] = useState([]);
 
+    /* Carga inicial de entrenamientos del usuario */
     useEffect(() => { loadWorkouts(); }, []);
 
     const loadWorkouts = () => {
@@ -43,7 +44,7 @@ const WorkoutApp = () => {
             .then(data => setWorkouts(Array.isArray(data) ? data : []));
     };
 
-    // --- LÓGICA DE RECOMENDACIÓN (Detecta cambio de músculo y trae los datos) ---
+    /* Actualiza la lista de recomendados cuando cambia el músculo seleccionado */
     useEffect(() => {
         if (selectedMuscle) {
             fetch(`${window.BASE_URL}actions/get_recommended.php?muscle=${selectedMuscle}`)
@@ -61,6 +62,7 @@ const WorkoutApp = () => {
             .then(data => { setAllExercises(Array.isArray(data) ? data : []); setIsAddModalOpen(true); });
     };
 
+    /* Añade un ejercicio seleccionado al día actual */
     const handleAdd = (exerciseId) => {
         const formData = new FormData();
         formData.append('exercise_id', exerciseId);
@@ -95,6 +97,7 @@ const WorkoutApp = () => {
         .then(() => loadWorkouts());
     };
 
+    /* Filtro y agrupación de ejercicios para el modal de selección */
     const filtered = allExercises.filter(ex => ex.name.toLowerCase().includes(searchTerm.toLowerCase()));
     const grouped = filtered.reduce((acc, ex) => {
         if (!acc[ex.muscle_group]) acc[ex.muscle_group] = [];
@@ -104,6 +107,7 @@ const WorkoutApp = () => {
 
     return (
         <div className="workout-container">
+            {/* Horarios semanales: cada día muestra sus ejercicios */}
             {TXT_DAYS.map((dayName, index) => (
                 <div key={index} className="day-row">
                     <h3>{dayName}</h3>
@@ -118,7 +122,7 @@ const WorkoutApp = () => {
                 </div>
             ))}
 
-            {/* MODAL 1: BUSCADOR GENERAL */}
+            {/* Modal 1: búsqueda general de ejercicios */}
             {isAddModalOpen && (
                 <div className="modal-overlay">
                     <div className="modal-content">
@@ -141,7 +145,7 @@ const WorkoutApp = () => {
                 </div>
             )}
 
-            {/* MODAL 2: RECOMENDADO POR MÚSCULO */}
+            {/* Modal 2: recomendados por músculo */}
             {isRecModalOpen && (
                 <div className="modal-overlay">
                     <div className="modal-content">

@@ -25,7 +25,7 @@ $products = $productModel->getAll();
 
     <h2 class="admin-title"><?= __t('product_management') ?></h2>
 
-    <!-- Botón añadir -->
+
     <a href="<?= BASE_URL; ?>admin/admin_products_add.php" class="btn-add">
         + <?= __t('add_product') ?>
     </a>

@@ -1,4 +1,5 @@
 <?php
+// Script para obtener ejercicios recomendados por grupo muscular
 session_start();
 require_once __DIR__ . '/../../app/config/database.php';
 header('Content-Type: application/json');
@@ -8,15 +9,14 @@ $user_id = $_SESSION['user']['id'] ?? null;
 $lang = $_SESSION['user']['language'] ?? 'es';
 $columna = ($lang === 'en') ? 'name_en' : 'name_es';
 
+// Validar parámetros requeridos
 if (!$muscle || !$user_id) {
     echo json_encode([]);
     exit;
 }
 
 try {
-    // 1. muscle_group = ? : Filtra por el músculo seleccionado
-    // 2. is_recommended = 1 : Solo trae los que tú has marcado como recomendados
-    // 3. NOT IN : Excluye los que el usuario ya tiene en su rutina
+    // Consultar ejercicios recomendados no incluidos en el entrenamiento del usuario
     $sql = "SELECT id, $columna AS name, image_url 
             FROM exercises_library 
             WHERE muscle_group = ? 
@@ -29,8 +29,7 @@ try {
     
     echo json_encode($exercises);
 } catch (Exception $e) {
-    // Es buena práctica no mostrar el error real al usuario final por seguridad, 
-    // pero para desarrollo puedes dejarlo así:
+    // Manejar errores
     echo json_encode(['error' => $e->getMessage()]);
 }
 ?>

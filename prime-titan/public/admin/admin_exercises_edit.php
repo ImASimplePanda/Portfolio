@@ -19,6 +19,7 @@ $ex = $exerciseModel->getById($id);
 
 if (!$ex) { exit("Ejercicio no encontrado"); }
 
+// Función que traduce texto de español a inglés usando la API MyMemory
 function translate_es_to_en(string $text): string {
     if (empty($text)) return '';
     $opts = ["http" => ["method" => "GET", "header" => "User-Agent: PHP\r\n"]];
@@ -38,12 +39,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Valor por defecto (el actual)
     $imageName = $ex['image_url'];
 
-    // Prioridad 1: Si selecciona una existente del desplegable
+    // Si selecciona una existente del desplegable
     if (!empty($_POST['image_select'])) {
         $imageName = $_POST['image_select'];
     }
 
-    // Prioridad 2: Si sube una nueva imagen (manda sobre el select)
+    // Si sube una nueva imagen 
     if (!empty($_FILES['image_upload']['name'])) {
         $tempName = basename($_FILES['image_upload']['name']);
         $targetPath = $img_folder_path . $tempName;

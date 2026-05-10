@@ -29,7 +29,7 @@ class User
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-
+    // Actualizar imagen de perfil
     public function updateAvatar($id, $avatar) {
         $query = "UPDATE users SET avatar = :avatar WHERE id = :id";
         $stmt = $this->db->prepare($query);
@@ -38,6 +38,7 @@ class User
         return $stmt->execute();
     }
 
+    // Actualizar preferencias de usuario (tema y idioma)
     public function updatePreferences($id, $theme, $language) {
         $query = "UPDATE users SET theme = :theme, language = :language WHERE id = :id";
         $stmt = $this->db->prepare($query);
