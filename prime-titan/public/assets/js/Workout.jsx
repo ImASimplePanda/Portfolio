@@ -29,7 +29,7 @@ const WorkoutApp = () => {
     
     /* Modales de selección */
     const [isAddModalOpen, setIsAddModalOpen] = useState(false);
-    const [isRecModalOpen, setIsRecModal] = useState(false);
+    const [isRecModalOpen, setIsRecModalOpen] = useState(false);
     
     /* Recomendaciones por músculo */
     const [selectedMuscle, setSelectedMuscle] = useState(null);
@@ -47,7 +47,12 @@ const WorkoutApp = () => {
     /* Actualiza la lista de recomendados cuando cambia el músculo seleccionado */
     useEffect(() => {
         if (selectedMuscle) {
-            fetch(`${window.BASE_URL}actions/get_recommended.php?muscle=${selectedMuscle}`)
+            const translationEs = (window.MUSCLE_TRANSLATIONS[selectedMuscle] || '').toLowerCase();
+            
+            // Enviamos tanto el término en inglés (selectedMuscle) como en español (translationEs)
+            const url = `${window.BASE_URL}actions/get_recommended.php?muscle=${selectedMuscle}&muscle_es=${translationEs}`;
+            
+            fetch(url)
                 .then(res => res.json())
                 .then(data => setRecommendedList(Array.isArray(data) ? data : []))
                 .catch(err => console.error("Error al cargar recomendados:", err));
@@ -126,7 +131,7 @@ const WorkoutApp = () => {
             {isAddModalOpen && (
                 <div className="modal-overlay">
                     <div className="modal-content">
-                        <button className="modal-close-x" onClick={() => setIsAddModalOpen(false)}>X</button>
+                        <button className="modal-close-btn" onClick={() => setIsAddModalOpen(false)}>X</button>
                         <input type="text" className="search-bar" placeholder={TXT_SEARCH} onChange={(e) => setSearchTerm(e.target.value)} />
                         {Object.keys(grouped).map(muscle => (
                             <div key={muscle} className="group-section">
@@ -149,7 +154,7 @@ const WorkoutApp = () => {
             {isRecModalOpen && (
                 <div className="modal-overlay">
                     <div className="modal-content">
-                        <button className="close-btn" onClick={() => { setIsRecModalOpen(false); setSelectedMuscle(null); }}>X</button>
+                        <button className="modal-close-btn" onClick={() => { setIsRecModalOpen(false); setSelectedMuscle(null); }}>X</button>
                         
                         {!selectedMuscle ? (
                             <div>

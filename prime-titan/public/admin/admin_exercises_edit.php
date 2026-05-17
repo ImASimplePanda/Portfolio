@@ -75,11 +75,11 @@ require_once BASE_DIR . '/views/layouts/header.php';
             $groups = ['chest', 'back', 'legs', 'shoulders', 'biceps', 'triceps'];
             foreach ($groups as $g): 
             ?>
-                <option value="<?= $g ?>" <?= $ex['muscle_group'] == $g ? 'selected' : '' ?>><?= ucfirst($g) ?></option>
+                <option value="<?= $g ?>" <?= $ex['muscle_group'] == $g ? 'selected' : '' ?>><?= __t($g) ?></option>
             <?php endforeach; ?>
         </select>
 
-        <label><?= __t('is_recommended') ?>?</label>
+        <label><?= __t('is_recommended') ?></label>
         <select name="is_recommended">
             <option value="0" <?= $ex['is_recommended'] == 0 ? 'selected' : '' ?>><?= __t('no') ?></option>
             <option value="1" <?= $ex['is_recommended'] == 1 ? 'selected' : '' ?>><?= __t('yes') ?></option>
