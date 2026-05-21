@@ -10,7 +10,6 @@ class User
     }
 
     // Busca un usuario por email o username
-
     public function findByEmailOrUsername($input) {
         $stmt = $this->db->prepare("SELECT * FROM users WHERE username = :input OR email = :input LIMIT 1");
         $stmt->execute(['input' => $input]);
