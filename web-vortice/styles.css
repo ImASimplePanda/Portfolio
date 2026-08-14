@@ -1,0 +1,373 @@
+/* =============================================================
+   1. Tokens
+   ============================================================= */
+:root {
+  --bg:        #0a0a0a;
+  --bg-2:      #141414;
+  --ink:       #fafafa;
+  --mute:      #9a9a9a;
+  --mute-2:    #5c5c5c;
+  --accent:    #00ff88;
+  --line:      rgba(250,250,250,0.14);
+
+  --gradient-1: #ff006e;
+  --gradient-2: #8338ec;
+  --gradient-3: #3a86ff;
+  --gradient-4: #06ffa5;
+
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-body:    "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-soft:   cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* =============================================================
+   2. Reset & base
+   ============================================================= */
+*, *::before, *::after { box-sizing: border-box; margin: 0; }
+html {
+  -webkit-text-size-adjust: 100%;
+  tab-size: 2;
+  overflow-x: clip;
+  scroll-behavior: smooth;
+}
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+  overscroll-behavior-y: none;
+}
+img, svg, video { display: block; max-width: 100%; }
+img { height: auto; }
+button { font: inherit; color: inherit; cursor: pointer; border: 0; background: none; }
+a { color: inherit; text-decoration: none; }
+p { text-wrap: pretty; }
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  text-wrap: balance;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+}
+em { font-style: italic; font-weight: 500; color: var(--accent); }
+::selection { background: var(--accent); color: var(--bg); }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* =============================================================
+   3. Utilities
+   ============================================================= */
+.skip-link {
+  position: fixed; top: -100px; left: 1rem;
+  padding: .6rem 1rem; background: var(--accent); color: var(--bg);
+  z-index: 9999; border-radius: 6px; font-weight: 500; font-size: .85rem;
+}
+.skip-link:focus { top: 1rem; }
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .7s var(--ease-out), transform .7s var(--ease-out);
+}
+.reveal.is-visible { opacity: 1; transform: none; }
+
+/* =============================================================
+   4. Nav
+   ============================================================= */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.1rem 1.5rem;
+  background: rgba(10,10,10,0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid transparent;
+  transition: border-color .3s var(--ease-out), background .3s var(--ease-out);
+}
+.nav.is-scrolled { border-bottom-color: var(--line); background: rgba(10,10,10,0.85); }
+.nav-brand { font-family: var(--font-display); font-weight: 700; letter-spacing: 0.01em; font-size: 1.15rem; }
+.nav-dot { color: var(--accent); }
+.nav-links { display: flex; align-items: center; gap: 1.6rem; font-size: .85rem; }
+.nav-links a:not(.nav-cta) { color: var(--mute); position: relative; }
+.nav-links a:not(.nav-cta)::after {
+  content: ""; position: absolute; left: 0; bottom: -4px; width: 100%; height: 1px;
+  background: var(--accent); transform: scaleX(0); transform-origin: left;
+  transition: transform .35s var(--ease-out);
+}
+.nav-links a:not(.nav-cta):hover { color: var(--ink); }
+.nav-links a:not(.nav-cta):hover::after { transform: scaleX(1); }
+.nav-cta {
+  padding: .5rem 1rem; border: 1px solid var(--line); border-radius: 100px;
+  transition: border-color .3s var(--ease-out), color .3s var(--ease-out);
+}
+.nav-cta:hover { border-color: var(--accent); color: var(--accent); }
+
+@media (max-width: 719px) {
+  .nav-links a:not(.nav-cta) { display: none; }
+}
+
+/* =============================================================
+   5. Hero
+   ============================================================= */
+.hero {
+  position: relative;
+  min-height: 100vh; min-height: 100svh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center;
+  padding: 7rem 1.25rem 4rem;
+  overflow: hidden;
+}
+.hero-gradient {
+  position: absolute; inset: 0; z-index: -1;
+  background:
+    radial-gradient(circle 600px at var(--mx, 30%) var(--my, 30%), var(--gradient-1) 0%, transparent 55%),
+    radial-gradient(circle 700px at calc(var(--mx, 70%) + 10%) calc(var(--my, 70%) - 10%), var(--gradient-2) 0%, transparent 55%),
+    radial-gradient(circle 500px at var(--mx, 50%) var(--my, 50%), var(--gradient-3) 0%, transparent 50%),
+    var(--bg);
+  filter: blur(70px) saturate(140%);
+  opacity: 0.55;
+  transition: background 0.4s ease;
+}
+.hero-kicker {
+  font-family: var(--font-body); font-size: .78rem; color: var(--mute);
+  text-transform: uppercase; letter-spacing: 0.12em; font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+.hero-title {
+  font-size: clamp(2.6rem, 10vw, 6.8rem);
+  font-weight: 700;
+  max-width: 20ch;
+  margin-inline: auto;
+}
+.hero-title span,
+.hero-title { transition: color .2s var(--ease-out); }
+.hero-title:hover { cursor: default; }
+.hero-title.is-inverted { color: var(--bg); }
+.hero-sub {
+  margin-top: 1.6rem;
+  max-width: 46ch;
+  color: var(--mute);
+  font-size: 1rem;
+}
+.hero-actions {
+  margin-top: 2.4rem;
+  display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
+}
+.hero-scroll {
+  position: absolute; bottom: 2.2rem; left: 50%; transform: translateX(-50%);
+  width: 1px; height: 46px; background: var(--line); overflow: hidden;
+}
+.hero-scroll span {
+  position: absolute; top: -100%; left: 0; width: 100%; height: 100%;
+  background: var(--accent);
+  animation: scrollLine 2.2s var(--ease-soft) infinite;
+}
+@keyframes scrollLine { to { top: 100%; } }
+
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: .85rem 1.6rem; border-radius: 100px; font-size: .9rem; font-weight: 500;
+  transition: transform .3s var(--ease-out), background .3s var(--ease-out), color .3s var(--ease-out), border-color .3s var(--ease-out);
+}
+.btn-primary { background: var(--accent); color: var(--bg); }
+.btn-primary:hover { transform: translateY(-2px); }
+.btn-ghost { border: 1px solid var(--line); color: var(--ink); }
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+.has-magnetic { display: inline-flex; position: relative; isolation: isolate; }
+.magnetic-inner {
+  display: inline-flex; align-items: center; justify-content: center; gap: inherit;
+  will-change: transform;
+  transition: transform .8s var(--ease-soft);
+}
+
+/* =============================================================
+   6. Manifesto
+   ============================================================= */
+.manifesto {
+  max-width: 62ch; margin-inline: auto;
+  padding: 6rem 1.25rem;
+  font-size: clamp(1.1rem, 2.4vw, 1.6rem);
+  line-height: 1.5;
+  text-align: center;
+  color: var(--mute);
+}
+.manifesto em { color: var(--ink); font-style: normal; }
+
+/* =============================================================
+   7. Stats
+   ============================================================= */
+.stats { padding: 2rem 1.25rem 6rem; }
+.stats-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;
+  max-width: 960px; margin-inline: auto;
+  border-top: 1px solid var(--line);
+  padding-top: 2.5rem;
+}
+.stat { text-align: center; }
+.stat-value {
+  font-family: var(--font-display); font-style: italic; font-size: clamp(2rem, 4.8vw, 3.2rem);
+  font-weight: 600; color: var(--accent);
+}
+.stat-label { margin-top: .4rem; font-size: .82rem; color: var(--mute); }
+
+@media (min-width: 720px) {
+  .stats-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* =============================================================
+   8. Section titles
+   ============================================================= */
+.section-title {
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  padding: 0 1.25rem;
+  max-width: 1100px; margin-inline: auto;
+  display: flex; align-items: baseline; gap: .8rem; flex-wrap: wrap;
+}
+.section-title-mute {
+  font-family: var(--font-body); font-size: .85rem; color: var(--mute-2); font-weight: 400;
+}
+
+/* =============================================================
+   9. Work list
+   ============================================================= */
+.work { padding: 3rem 0 6rem; }
+.work-list { max-width: 1100px; margin: 2rem auto 0; padding: 0 1.25rem; }
+.work-row {
+  border-top: 1px solid var(--line);
+  padding: 1.6rem 0;
+  cursor: pointer;
+}
+.work-row:last-child { border-bottom: 1px solid var(--line); }
+.work-row-head {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 1rem;
+}
+.work-name {
+  font-family: var(--font-display); font-size: clamp(1.4rem, 4vw, 2.2rem); font-weight: 600;
+  transition: color .3s var(--ease-out);
+}
+.work-row:hover .work-name,
+.work-row.is-open .work-name { color: var(--accent); }
+.work-meta {
+  font-family: var(--font-body); display: flex; align-items: baseline; gap: 1rem;
+  color: var(--mute); font-size: .78rem; text-transform: uppercase; letter-spacing: 0.06em;
+  flex-shrink: 0;
+}
+.work-detail {
+  max-height: 0; overflow: hidden;
+  transition: max-height .45s var(--ease-out);
+}
+.work-row.is-open .work-detail { max-height: 120px; }
+.work-detail-inner { padding-top: .9rem; color: var(--mute); max-width: 60ch; font-size: .95rem; }
+
+/* =============================================================
+   10. Process
+   ============================================================= */
+.process { padding: 3rem 0 6rem; }
+.process-grid {
+  max-width: 1100px; margin: 2.5rem auto 0; padding: 0 1.25rem;
+  display: grid; gap: 2rem;
+}
+.process-item { border-top: 1px solid var(--line); padding-top: 1.6rem; }
+.process-num {
+  font-family: var(--font-body); color: var(--accent); font-size: .8rem;
+  letter-spacing: 0.08em; font-weight: 500;
+}
+.process-title { font-family: var(--font-display); margin-top: .6rem; font-size: 1.3rem; font-weight: 600; }
+.process-text { margin-top: .6rem; color: var(--mute); font-size: .92rem; max-width: 42ch; }
+
+@media (min-width: 720px) {
+  .process-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* =============================================================
+   11. Contact
+   ============================================================= */
+.contact {
+  text-align: center;
+  padding: 7rem 1.25rem 8rem;
+}
+.contact-kicker {
+  font-family: var(--font-body); color: var(--mute); font-size: .8rem;
+  text-transform: uppercase; letter-spacing: 0.1em; font-weight: 500;
+}
+.contact-email {
+  font-family: var(--font-display);
+  font-style: italic;
+  display: inline-block;
+  margin-top: 1.2rem;
+  font-size: clamp(1.8rem, 7vw, 4rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  position: relative;
+}
+.contact-email::after {
+  content: ""; position: absolute; left: 0; bottom: -6px; width: 100%; height: 2px;
+  background: var(--accent); transform: scaleX(0); transform-origin: left;
+  transition: transform .4s var(--ease-out);
+}
+.contact-email:hover::after { transform: scaleX(1); }
+.contact-email:hover { color: var(--accent); }
+.contact-note { margin-top: 1.4rem; color: var(--mute-2); font-size: .85rem; }
+
+/* =============================================================
+   12. Footer
+   ============================================================= */
+.footer {
+  border-top: 1px solid var(--line);
+  padding: 1.6rem 1.25rem;
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: .5rem;
+  font-size: .78rem; color: var(--mute-2);
+}
+
+/* =============================================================
+   13. Custom cursor
+   ============================================================= */
+.cursor {
+  position: fixed; top: 0; left: 0;
+  pointer-events: none; z-index: 9999;
+  display: none;
+  mix-blend-mode: difference;
+  opacity: 0;
+  transition: opacity .25s var(--ease-out);
+}
+.cursor.is-ready { opacity: 1; }
+@media (hover: hover) and (pointer: fine) { .cursor { display: block; } }
+.cursor-dot, .cursor-ring {
+  position: fixed; top: 0; left: 0; pointer-events: none; will-change: transform;
+}
+.cursor-dot { width: 5px; height: 5px; margin: -2.5px; background: var(--ink); border-radius: 50%; }
+.cursor-ring {
+  width: 32px; height: 32px; margin: -16px; border: 1px solid var(--ink); border-radius: 50%;
+  transition: width .35s var(--ease-out), height .35s var(--ease-out), margin .35s var(--ease-out);
+}
+.cursor.is-interactive .cursor-ring { width: 52px; height: 52px; margin: -26px; }
+.has-cursor, .has-cursor a, .has-cursor button, .has-cursor .work-row { cursor: none; }
+
+/* =============================================================
+   14. Responsive
+   ============================================================= */
+@media (min-width: 960px) {
+  .stats-grid { padding-top: 3rem; }
+}
+
+/* =============================================================
+   15. Reduced motion — only the truly intrusive
+   ============================================================= */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .hero-scroll span { animation: none; }
+}

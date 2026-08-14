@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ORIGEN — Café de especialidad</title>
+<meta name="description" content="ORIGEN. Café de especialidad y tueste propio, grano a grano.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Inter:wght@300;400;500;600&display=swap">
+
+<link rel="stylesheet" href="styles.css?v=20260812">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%23120e0b%22/><text x=%2250%25%22 y=%2260%25%22 font-size=%2258%22 text-anchor=%22middle%22 fill=%22%23c97a3d%22>O</text></svg>">
+</head>
+<body>
+
+<a href="#main" class="skip-link">Saltar al contenido</a>
+
+<div class="splash" data-splash aria-hidden="true">
+  <span class="splash-mark">ORIGEN</span>
+</div>
+
+<header class="nav" data-nav>
+  <a href="#main" class="nav-brand">ORIGEN</a>
+  <nav class="nav-links">
+    <a href="#proceso">Proceso</a>
+    <a href="#carta">Carta</a>
+    <a href="#visitanos">Visítanos</a>
+    <a href="#reserva" class="nav-cta">Reservar mesa</a>
+  </nav>
+</header>
+
+<main id="main">
+
+  <section class="hero">
+    <div class="hero-media">
+      <video class="hero-video" data-hero-video autoplay muted loop playsinline preload="auto">
+        <source src="assets/video/hero-pour.mp4" type="video/mp4">
+      </video>
+      <div class="hero-tint"></div>
+      <div class="hero-mesh" data-mesh></div>
+      <div class="hero-grain"></div>
+    </div>
+    <div class="hero-inner">
+      <p class="hero-kicker">Tueste propio · Grano de origen único</p>
+      <h1 class="hero-title">Cada taza<br>cuenta un <em>origen</em>.</h1>
+      <p class="hero-sub">Compramos directo a pequeños productores y tostamos en lotes cortos, cada semana, en nuestro obrador.</p>
+      <div class="hero-actions">
+        <a href="#carta" class="btn btn-primary">Ver la carta</a>
+        <a href="#reserva" class="btn btn-ghost" data-magnetic data-magnetic-strength="0.2">Reservar mesa</a>
+      </div>
+    </div>
+    <div class="hero-scroll" aria-hidden="true"><span></span></div>
+  </section>
+
+  <section class="manifesto">
+    <p data-reveal>
+      No creemos en el café de saco grande ni en la carta interminable.
+      Elegimos pocas fincas, las visitamos, y tostamos poco para tostar bien.
+      <em>Lo que sirves en una taza, dice mucho de dónde vino.</em>
+    </p>
+  </section>
+
+  <section id="proceso" class="process">
+    <h2 class="section-title" data-reveal>Del grano a la taza</h2>
+    <div class="process-grid">
+
+      <article class="process-card" data-tilt-card data-reveal>
+        <div class="process-card-media">
+          <video class="process-card-video" muted loop playsinline preload="metadata">
+            <source src="assets/video/origen-beans.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="process-card-body">
+          <span class="process-num">01</span>
+          <h3 class="process-title">Origen</h3>
+          <p class="process-text">Seleccionamos fincas pequeñas de Colombia, Etiopía y Guatemala, con trazabilidad completa.</p>
+        </div>
+      </article>
+
+      <article class="process-card" data-tilt-card data-reveal>
+        <div class="process-card-media">
+          <video class="process-card-video" muted loop playsinline preload="metadata">
+            <source src="assets/video/beans-cup.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="process-card-body">
+          <span class="process-num">02</span>
+          <h3 class="process-title">Tueste</h3>
+          <p class="process-text">Lotes de menos de 12 kg, tostados cada semana en nuestro obrador para máxima frescura.</p>
+        </div>
+      </article>
+
+      <article class="process-card" data-tilt-card data-reveal>
+        <div class="process-card-media">
+          <video class="process-card-video" muted loop playsinline preload="metadata">
+            <source src="assets/video/taza-latte.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="process-card-body">
+          <span class="process-num">03</span>
+          <h3 class="process-title">Taza</h3>
+          <p class="process-text">Extracción a medida, cada método con su tueste y su tiempo. Servido por gente que le importa.</p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="stats" aria-label="Cifras de la casa" data-reveal>
+    <div class="stats-grid">
+      <div class="stat"><div class="stat-value" data-count-to="12">12</div><div class="stat-label">Años tostando</div></div>
+      <div class="stat"><div class="stat-value" data-count-to="7">7</div><div class="stat-label">Orígenes en carta</div></div>
+      <div class="stat"><div class="stat-value" data-count-to="4.8" data-decimals="1">4.8</div><div class="stat-label">Valoración media</div></div>
+      <div class="stat"><div class="stat-value" data-count-to="100" data-suffix="%">100%</div><div class="stat-label">Grano de especialidad</div></div>
+    </div>
+  </section>
+
+  <section id="carta" class="menu">
+    <h2 class="section-title" data-reveal>La carta<span class="section-title-mute">· espresso bar</span></h2>
+    <div class="menu-grid">
+      <ul class="menu-list" data-reveal>
+        <li class="menu-item"><span class="menu-item-name">Espresso</span><span class="menu-item-line"></span><span class="menu-item-price">2,40 €</span></li>
+        <li class="menu-item"><span class="menu-item-name">Cortado</span><span class="menu-item-line"></span><span class="menu-item-price">2,80 €</span></li>
+        <li class="menu-item"><span class="menu-item-name">Flat White</span><span class="menu-item-line"></span><span class="menu-item-price">3,60 €</span></li>
+        <li class="menu-item"><span class="menu-item-name">Latte</span><span class="menu-item-line"></span><span class="menu-item-price">3,80 €</span></li>
+        <li class="menu-item"><span class="menu-item-name">V60 de temporada</span><span class="menu-item-line"></span><span class="menu-item-price">4,50 €</span></li>
+      </ul>
+      <ul class="menu-list" data-reveal>
+        <li class="menu-item"><span class="menu-item-name">Cold Brew</span><span class="menu-item-line"></span><span class="menu-item-price">4,20 €</span></li>
+        <li class="menu-item"><span class="menu-item-name">Chai latte</span><span class="menu-item-line"></span><span class="menu-item-price">3,90 €</span></li>
+        <li class="menu-item"><span class="menu-item-name">Tostada de masa madre</span><span class="menu-item-line"></span><span class="menu-item-price">5,50 €</span></li>
+        <li class="menu-item"><span class="menu-item-name">Bizcocho del día</span><span class="menu-item-line"></span><span class="menu-item-price">3,20 €</span></li>
+        <li class="menu-item"><span class="menu-item-name">Bolsa de grano 250g</span><span class="menu-item-line"></span><span class="menu-item-price">9,00 €</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="visitanos" class="visit">
+    <div class="visit-info" data-reveal>
+      <h2 class="section-title">Visítanos</h2>
+      <p class="visit-address">Carrer del Tost, 14<br>08012 Barcelona</p>
+      <p class="visit-hours">Lun–Vie, 8:00–19:00<br>Sáb–Dom, 9:00–14:00</p>
+    </div>
+
+    <div class="cta-wrap">
+      <form id="reserva" class="cta-form" data-contact-form novalidate aria-label="Formulario de reserva">
+        <div class="cta-form-row">
+          <input type="text" name="name" required placeholder="Nombre" autocomplete="name">
+          <input type="email" name="email" required placeholder="Email" autocomplete="email">
+        </div>
+        <div class="cta-form-row">
+          <input type="number" name="people" min="1" max="12" required placeholder="Personas">
+          <input type="date" name="date" required placeholder="Fecha">
+        </div>
+        <textarea name="message" placeholder="¿Alguna petición especial? (opcional)" rows="3"></textarea>
+        <button type="submit" class="cta-submit btn btn-primary">
+          <span class="cta-form-label">Reservar mesa</span>
+          <span class="cta-form-spinner"></span>
+          <svg class="cta-form-check" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6" pathLength="1"/></svg>
+        </button>
+      </form>
+      <div class="cta-success" data-contact-success aria-hidden="true">
+        <h3>Reserva recibida.</h3>
+        <p data-contact-success-msg></p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>© 2026 ORIGEN Café de especialidad</p>
+  <p class="footer-mute">Sitio de demostración — vídeos HD de Mixkit, licencia libre de uso comercial.</p>
+</footer>
+
+<script defer src="lib/gsap.min.js"></script>
+<script defer src="lib/ScrollTrigger.min.js"></script>
+<script defer src="main.js?v=20260812"></script>
+</body>
+</html>
