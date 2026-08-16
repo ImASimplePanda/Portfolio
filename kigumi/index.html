@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KIGUMI — Carpintería sin clavos</title>
+<meta name="description" content="KIGUMI. Estudio de carpintería tradicional japonesa: estructuras enteras sostenidas solo por el encaje de la madera, sin un solo clavo.">
+<meta property="og:title" content="KIGUMI — Carpintería sin clavos">
+<meta property="og:description" content="Estructuras enteras sostenidas solo por el encaje de la madera.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/img/og-default.webp">
+<meta name="theme-color" content="#f4efe6">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png?v=20260814">
+<link rel="icon" type="image/png" sizes="64x64" href="assets/img/favicon-64.png?v=20260814">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;1,500;1,600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=20260814">
+</head>
+<body>
+<a href="#main" class="skip-link">Saltar al contenido</a>
+
+<header class="nav" data-nav>
+  <a href="#top" class="nav-brand">KIGUMI</a>
+  <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Abrir menú" data-nav-toggle>
+    <span></span><span></span><span></span>
+  </button>
+  <nav class="nav-links" id="nav-links" data-nav-links>
+    <a href="#metodo">Método</a>
+    <a href="#proceso">Proceso</a>
+    <a href="#prensa">Prensa</a>
+    <a href="#consulta" class="nav-cta">Solicitar consulta</a>
+  </nav>
+</header>
+<div class="nav-scrim" data-nav-scrim aria-hidden="true"></div>
+
+<main id="main">
+
+  <section class="scrubber" id="top" data-scrubber>
+    <div class="scrubber-pin">
+      <div class="scrubber-canvas-wrap">
+        <canvas id="scrub-canvas" data-frames="96" data-path="assets/frames/frame-"></canvas>
+      </div>
+
+      <div class="scrubber-loading" data-scrubber-loading>
+        <p>Preparando el modelo</p>
+        <div class="scrubber-loading-bar"><span data-scrubber-loading-fill></span></div>
+      </div>
+
+      <p class="scrubber-hint" data-scrubber-hint>Desplázate para desmontar</p>
+
+      <div class="scrubber-overlay">
+        <div class="scrubber-text is-active" data-scrubber-text data-from="0" data-to="0.18">
+          <p class="kicker">Carpintería tradicional japonesa</p>
+          <h1>Construimos <em>sin un solo clavo</em>.</h1>
+          <p class="lede">Cada estructura de KIGUMI se sostiene solo por el encaje de la madera — una técnica de siglos, tallada a mano, pieza a pieza.</p>
+        </div>
+        <div class="scrubber-text" data-scrubber-text data-from="0.32" data-to="0.58">
+          <h2>Cada pieza está tallada para encajar en <em>una sola</em>.</h2>
+          <p class="lede">No hay dos juntas iguales. El armazón entero es un rompecabezas resuelto antes de cortar la primera viga.</p>
+        </div>
+        <div class="scrubber-text" data-scrubber-text data-from="0.76" data-to="1.01">
+          <h2>Así es como se sostiene, <em>desde dentro</em>.</h2>
+          <p class="lede">Desármalo y verás el mismo principio que lo mantiene en pie desde hace cuatrocientos años.</p>
+        </div>
+      </div>
+
+      <div class="scrubber-meta">
+        <span data-scrubber-counter>01 / 96</span>
+        <div class="scrubber-progress"><span data-scrubber-progress-fill></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="manifesto" id="metodo">
+    <div class="container">
+      <div class="manifesto-row" data-reveal>
+        <span class="manifesto-num">01</span>
+        <p>El kigumi (木組み) es el arte de unir madera sin metal: cada junta se talla para que la tensión de una pieza sostenga a la otra. <em>Nuestro estudio</em> aplica esta técnica a vivienda contemporánea, restauración de machiya y mobiliario estructural — todo diseñado primero en 3D, tallado después a mano.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bento" id="servicios">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="section-eyebrow">Lo que hacemos</p>
+        <h2 class="section-title">Seis principios, un mismo encaje</h2>
+      </div>
+      <div class="bento-grid" data-reveal>
+        <div class="bento-card is-wide">
+          <span class="bento-num">01</span>
+          <div><h3 class="bento-title">Sin clavos ni tornillos</h3><p class="bento-desc">Toda unión estructural se resuelve por geometría de la madera, no por metal. Menos puntos de fallo, más vida útil.</p></div>
+        </div>
+        <div class="bento-card">
+          <span class="bento-num">02</span>
+          <div><h3 class="bento-title">Diseño paramétrico</h3><p class="bento-desc">Cada junta se modela antes de tocar la sierra.</p></div>
+        </div>
+        <div class="bento-card is-tall">
+          <span class="bento-num">03</span>
+          <div><h3 class="bento-title">Madera curada en el sitio</h3><p class="bento-desc">Secado y templado según el clima final de la obra, no en fábrica.</p></div>
+        </div>
+        <div class="bento-card">
+          <span class="bento-num">04</span>
+          <div><h3 class="bento-title">Sismo-resistente</h3><p class="bento-desc">La flexión de la junta absorbe el movimiento en vez de resistirlo.</p></div>
+        </div>
+        <div class="bento-card is-wide">
+          <span class="bento-num">05</span>
+          <div><h3 class="bento-title">Restauración de machiya</h3><p class="bento-desc">Recuperamos casas de madera tradicionales manteniendo su método de construcción original, junta por junta.</p></div>
+        </div>
+        <div class="bento-card">
+          <span class="bento-num">06</span>
+          <div><h3 class="bento-title">Consultoría técnica</h3><p class="bento-desc">Para estudios de arquitectura que quieren incorporar kigumi en obra nueva.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Kanawa tsugi <em>·</em></span>
+      <span>Ari kake <em>·</em></span>
+      <span>Hozo sashi <em>·</em></span>
+      <span>Watari ago <em>·</em></span>
+      <span>Kanawa tsugi <em>·</em></span>
+      <span>Ari kake <em>·</em></span>
+      <span>Hozo sashi <em>·</em></span>
+      <span>Watari ago <em>·</em></span>
+    </div>
+  </div>
+
+  <section class="process" id="proceso">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="section-eyebrow">El proceso</p>
+        <h2 class="section-title">De la madera en bruto a la estructura en pie</h2>
+      </div>
+      <div class="process-track" data-reveal>
+        <div class="process-card">
+          <span class="process-step">01</span>
+          <h3>Estudio del sitio</h3>
+          <p>Clima, carga de nieve, sismicidad — la estructura empieza por el lugar, no por el catálogo.</p>
+        </div>
+        <div class="process-card">
+          <span class="process-step">02</span>
+          <h3>Selección de madera</h3>
+          <p>Ciprés hinoki y cedro sugi, elegidos pieza a pieza según la veta y el uso que tendrán.</p>
+        </div>
+        <div class="process-card">
+          <span class="process-step">03</span>
+          <h3>Talla de las juntas</h3>
+          <p>Cada corte se hace a mano en taller, siguiendo el modelo paramétrico pieza por pieza.</p>
+        </div>
+        <div class="process-card">
+          <span class="process-step">04</span>
+          <h3>Montaje en seco</h3>
+          <p>Se levanta la estructura completa en taller antes de mover una sola pieza a la obra.</p>
+        </div>
+        <div class="process-card">
+          <span class="process-step">05</span>
+          <h3>Ensamblaje final</h3>
+          <p>En sitio, las piezas numeradas se encajan en el orden exacto probado en taller.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="press" id="prensa">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="section-eyebrow">Prensa</p>
+        <h2 class="section-title">Lo que dicen de KIGUMI</h2>
+      </div>
+      <div class="press-grid">
+        <div class="press-card" data-reveal>
+          <p class="press-quote">"Ver la estructura desmontarse pieza a pieza es entender, por fin, cómo se sostiene una casa japonesa."</p>
+          <p class="press-source">Arquitectura Viva</p>
+        </div>
+        <div class="press-card" data-reveal>
+          <p class="press-quote">"KIGUMI no vende un estilo — vende un método de setecientos años que sigue siendo el más resistente."</p>
+          <p class="press-source">Domus</p>
+        </div>
+        <div class="press-card" data-reveal>
+          <p class="press-quote">"La ausencia de un solo clavo, en pleno 2026, es la forma más radical de innovación que he visto."</p>
+          <p class="press-source">Dezeen</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-final" id="consulta">
+    <div class="cta-final-mesh" aria-hidden="true"></div>
+    <div class="container">
+      <div class="cta-final-inner cta-wrap" data-cta-wrap data-reveal>
+        <p class="section-eyebrow">Consulta</p>
+        <h2 class="section-title">Hablemos de tu proyecto</h2>
+        <p>Estudios de arquitectura, propietarios de machiya, promotores — cuéntanos qué quieres construir.</p>
+        <form class="cta-form" data-cta-form novalidate>
+          <input type="email" name="email" placeholder="tu@correo.com" aria-label="Correo electrónico" required>
+          <button type="submit" class="btn btn-primary"><span>Enviar</span></button>
+        </form>
+        <p class="cta-note">Respondemos en menos de 48 horas.</p>
+        <p class="cta-success" data-cta-success>Recibido. Te escribiremos pronto.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">KIGUMI</div>
+        <p class="footer-tagline">Carpintería tradicional japonesa. Sin clavos, solo encaje.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explorar</h4>
+        <div class="footer-links">
+          <a href="#metodo">Método</a>
+          <a href="#proceso">Proceso</a>
+          <a href="#prensa">Prensa</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <div class="footer-links">
+          <a href="#">Privacidad</a>
+          <a href="#">Términos</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 KIGUMI. Todos los derechos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+<script defer src="main.js?v=20260814"></script>
+</body>
+</html>
