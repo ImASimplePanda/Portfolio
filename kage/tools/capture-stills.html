@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Kage — still capture</title>
+<style>
+  body { margin: 0; background: #10141b; color: #cfd6e2; font: 13px/1.6 ui-monospace, monospace; padding: 18px; }
+  h1 { font-size: 12px; letter-spacing: .2em; text-transform: uppercase; }
+  #stage { position: fixed; left: -6000px; top: 0; }
+  .grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); }
+  figure { margin: 0; }
+  img { width: 100%; display: block; border: 1px solid #232b38; }
+  figcaption { color: #7d8798; padding-top: 5px; }
+  #log { margin-top: 14px; white-space: pre-wrap; color: #8fb0e0; }
+</style>
+</head>
+<body>
+<h1>Scene plates</h1>
+<canvas id="stage"></canvas>
+<div class="grid" id="grid"></div>
+<div id="log">rendering…</div>
+<script type="module">
+  import { createWorld } from '../assets/js/scene.js';
+
+  const W = 1600;
+  const H = 1000;
+  const PLATES = [
+    { name: 'approach', shot: 0.45, frames: 90 },
+    { name: 'sanmon', shot: 1.15, frames: 90 },
+    { name: 'moonwater', shot: 2.0, frames: 130 },
+    { name: 'lantern-court', shot: 3.1, frames: 150 },
+    { name: 'shoji', shot: 4.0, frames: 170 },
+    { name: 'afterlight', shot: 5.2, frames: 190 },
+  ];
+
+  const log = document.getElementById('log');
+  const grid = document.getElementById('grid');
+  const lines = [];
+  const say = (s) => { lines.push(s); log.textContent = lines.join('\n'); };
+
+  window.KAGE_RESULT = { done: false, files: [], errors: [], console: [] };
+  window.addEventListener('error', (e) => window.KAGE_RESULT.errors.push(String(e.message)));
+
+  const canvas = document.getElementById('stage');
+  canvas.width = W;
+  canvas.height = H;
+
+  let world;
+  try {
+    world = createWorld({ canvas, quality: 'capture' });
+    world.setSize(W, H, 1);
+  } catch (err) {
+    window.KAGE_RESULT.errors.push(`createWorld: ${err.message}`);
+    say(`FATAL ${err.message}\n${err.stack}`);
+    throw err;
+  }
+
+  // stills are meant to be graded plates, so lean a touch harder on the look
+  world.post.uGrain.value = 0.03;
+  world.post.uVignette.value = 0.7;
+
+  const toBlob = (c, type, q) => new Promise((r) => c.toBlob(r, type, q));
+  // rAF is throttled when this tab is not composited, so advance the scene clock
+  // by hand: each frame burns a few real milliseconds before the next render.
+  const spin = (ms) => { const t0 = performance.now(); while (performance.now() - t0 < ms); };
+
+  for (const plate of PLATES) {
+    world.jumpTo(plate.shot);
+    for (let i = 0; i < plate.frames; i += 1) {
+      world.render();
+      spin(8);
+    }
+    world.render();
+
+    const blob = await toBlob(canvas, 'image/webp', 0.86);
+    const path = `assets/stills/kage-${plate.name}.webp`;
+    const res = await fetch(`/__save?path=${encodeURIComponent(path)}`, { method: 'POST', body: blob });
+    say(`${res.ok ? 'saved' : 'FAILED'} ${path} — ${(blob.size / 1024).toFixed(1)} kB`);
+    window.KAGE_RESULT.files.push({ path, kb: Number((blob.size / 1024).toFixed(1)), ok: res.ok });
+
+    const fig = document.createElement('figure');
+    const img = new Image();
+    img.src = URL.createObjectURL(blob);
+    const cap = document.createElement('figcaption');
+    cap.textContent = `${plate.name} · shot ${plate.shot}`;
+    fig.append(img, cap);
+    grid.appendChild(fig);
+  }
+
+  window.KAGE_RESULT.done = true;
+  say('done.');
+</script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Kage — foreground cutout generator</title>
+<style>
+  body { margin: 0; background: #14181f; color: #cfd6e2; font: 13px/1.5 ui-monospace, monospace; padding: 20px; }
+  h1 { font-size: 13px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; }
+  .grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+  figure { margin: 0; background: linear-gradient(#0a0f18, #05070b); border: 1px solid #232b38; padding: 8px; }
+  canvas { width: 100%; height: auto; display: block; }
+  figcaption { padding-top: 6px; color: #7d8798; }
+  #log { white-space: pre-wrap; margin-top: 16px; color: #8fb0e0; }
+</style>
+</head>
+<body>
+<h1>Foreground cutouts</h1>
+<div class="grid" id="grid"></div>
+<div id="log">working…</div>
+<script type="module">
+  import { ASSETS } from './foreground-art.js';
+
+  const grid = document.getElementById('grid');
+  const log = document.getElementById('log');
+  const lines = [];
+  const say = (s) => { lines.push(s); log.textContent = lines.join('\n'); };
+
+  const toBlob = (canvas, type, quality) =>
+    new Promise((resolve) => canvas.toBlob(resolve, type, quality));
+
+  window.KAGE_RESULT = { done: false, files: [], errors: [] };
+
+  for (const asset of ASSETS) {
+    const canvas = document.createElement('canvas');
+    canvas.width = asset.w;
+    canvas.height = asset.h;
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, asset.w, asset.h);
+    try {
+      asset.draw(ctx, asset.w, asset.h);
+    } catch (err) {
+      window.KAGE_RESULT.errors.push(`${asset.name}: ${err.message}`);
+      say(`ERROR ${asset.name}: ${err.message}`);
+      continue;
+    }
+
+    const fig = document.createElement('figure');
+    fig.appendChild(canvas);
+    const cap = document.createElement('figcaption');
+    cap.textContent = `${asset.name} · ${asset.w}×${asset.h}`;
+    fig.appendChild(cap);
+    grid.appendChild(fig);
+
+    const blob = await toBlob(canvas, 'image/webp', 0.84);
+    if (!blob || blob.type !== 'image/webp') {
+      window.KAGE_RESULT.errors.push(`${asset.name}: webp encode failed (${blob && blob.type})`);
+      continue;
+    }
+    const path = `assets/foreground/${asset.name}.webp`;
+    const res = await fetch(`/__save?path=${encodeURIComponent(path)}`, { method: 'POST', body: blob });
+    const kb = (blob.size / 1024).toFixed(1);
+    say(`${res.ok ? 'saved' : 'FAILED'} ${path} — ${kb} kB`);
+    window.KAGE_RESULT.files.push({ path, kb: Number(kb), ok: res.ok });
+  }
+
+  window.KAGE_RESULT.done = true;
+  say('done.');
+</script>
+</body>
+</html>

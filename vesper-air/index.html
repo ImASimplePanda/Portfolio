@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Vesper · La aerolínea del crepúsculo</title>
+<meta name="description" content="Vesper es una aerolínea nocturna de vuelos boutique: sale con la última luz del día y llega con la noche todavía de tu lado.">
+<meta name="theme-color" content="#06070a">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Manrope:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+
+<link rel="stylesheet" href="styles.css?v=20260819g">
+</head>
+<body>
+
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+<div class="cursor" data-cursor-root aria-hidden="true">
+  <span class="cursor-dot"></span>
+  <span class="cursor-ring"></span>
+</div>
+
+<div class="splash" data-splash aria-hidden="true">
+  <div class="splash-inner">
+    <span class="splash-word">VESPER</span>
+    <span class="splash-line"></span>
+  </div>
+</div>
+
+<canvas class="scene-canvas" data-canvas aria-hidden="true"></canvas>
+<div class="scrim" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+
+<header class="nav" data-nav>
+  <div class="nav-inner">
+    <a class="nav-brand" href="#inicio">VESPER</a>
+    <nav class="nav-links" aria-label="Secciones">
+      <a href="#la-puerta">La Puerta</a>
+      <a href="#el-ascenso">El Ascenso</a>
+      <a href="#el-crucero">El Crucero</a>
+      <a href="#a-bordo">A Bordo</a>
+      <a href="#el-descenso">El Descenso</a>
+    </nav>
+    <a class="btn btn-ghost nav-cta" href="#el-descenso">Reservar</a>
+    <button class="nav-burger" data-nav-burger aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-mobile">
+      <span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<nav class="nav-mobile" id="nav-mobile" data-nav-mobile aria-hidden="true" aria-label="Menú móvil">
+  <a href="#la-puerta">La Puerta</a>
+  <a href="#el-ascenso">El Ascenso</a>
+  <a href="#el-crucero">El Crucero</a>
+  <a href="#a-bordo">A Bordo</a>
+  <a href="#el-descenso">El Descenso</a>
+  <a class="btn btn-primary" href="#el-descenso">Reservar vuelo</a>
+</nav>
+
+<nav class="chapter-rail" aria-label="Capítulos">
+  <a href="#inicio"><span class="rail-label">Inicio</span><span class="rail-tick"></span><span class="rail-num mono">·</span></a>
+  <a href="#la-puerta"><span class="rail-label">La Puerta</span><span class="rail-tick"></span><span class="rail-num mono">I</span></a>
+  <a href="#el-ascenso"><span class="rail-label">El Ascenso</span><span class="rail-tick"></span><span class="rail-num mono">II</span></a>
+  <a href="#el-crucero"><span class="rail-label">El Crucero</span><span class="rail-tick"></span><span class="rail-num mono">III</span></a>
+  <a href="#a-bordo"><span class="rail-label">A Bordo</span><span class="rail-tick"></span><span class="rail-num mono">IV</span></a>
+  <a href="#el-descenso"><span class="rail-label">El Descenso</span><span class="rail-tick"></span><span class="rail-num mono">V</span></a>
+</nav>
+
+<main id="contenido">
+
+  <!-- HERO -->
+  <section class="hero" id="inicio" data-theme-section data-chapter="0">
+    <div class="hero-video" aria-hidden="true">
+      <video data-hero-video muted loop playsinline preload="none">
+        <source src="assets/video/hero-bg.mp4" type="video/mp4">
+      </video>
+      <div class="hero-video-scrim"></div>
+    </div>
+    <div class="chapter-vertical" aria-hidden="true"><span>VESPER</span></div>
+    <div class="hero-inner">
+      <p class="kicker mono">Vesper · Vuelos nocturnos · Est. 2026</p>
+      <h1 class="hero-title" data-split="words">Vuela con la <em>última luz</em><br>del día.</h1>
+      <p class="hero-sub">Salimos al atardecer. Cruzamos la noche. Llegamos antes de que el cielo decida amanecer sin nosotros.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" data-magnetic data-magnetic-strength="0.3" href="#el-descenso">Reservar tu vuelo</a>
+        <a class="btn btn-ghost" href="#el-crucero">Ver rutas</a>
+      </div>
+    </div>
+    <div class="scroll-cue" aria-hidden="true"><span></span>Desliza</div>
+    <div class="foreground" data-foreground aria-hidden="true">
+      <svg viewBox="0 0 1440 260" preserveAspectRatio="xMidYMax slice">
+        <g style="fill:var(--bg-charcoal)">
+          <rect x="0" y="190" width="1440" height="70"/>
+          <rect x="90" y="150" width="60" height="110"/>
+          <rect x="230" y="170" width="40" height="90"/>
+          <rect x="1180" y="160" width="70" height="100"/>
+          <rect x="1300" y="180" width="50" height="80"/>
+        </g>
+        <g style="stroke:var(--bg-charcoal)" stroke-width="2">
+          <line x1="680" y1="40" x2="680" y2="150"/>
+        </g>
+        <circle cx="680" cy="150" r="26" style="fill:var(--bg-charcoal)"/>
+        <rect x="655" y="150" width="50" height="34" rx="2" style="fill:var(--bg-charcoal)"/>
+        <g style="fill:var(--accent)" opacity="0.85">
+          <circle cx="672" cy="164" r="2.4"/>
+          <circle cx="690" cy="164" r="2.4"/>
+          <circle cx="681" cy="40" r="3"/>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <!-- CAPÍTULO I — LA PUERTA -->
+  <section class="chapter chapter-puerta" id="la-puerta" data-theme-section data-chapter="1">
+    <div class="chapter-vertical" aria-hidden="true"><span>UMBRAL</span></div>
+    <div class="container">
+      <div class="chapter-head">
+        <span class="chapter-num mono">I</span>
+        <p class="kicker mono">Capítulo I · Embarque</p>
+        <h2 class="chapter-title" data-split="words">El umbral antes<br><em>del cielo.</em></h2>
+      </div>
+      <p class="chapter-lede" data-reveal>No hay colas en Vesper, hay un umbral. Un solo control, una sola puerta, y una sala de espera pensada para que el viaje empiece antes de que despegue el avión.</p>
+      <div class="pillars">
+        <article class="pillar" data-reveal>
+          <span class="pillar-num mono">01</span>
+          <h3>Puntualidad real</h3>
+          <p>El 98% de nuestros vuelos nocturnos despega en su franja de diez minutos. No prometemos horarios, los sostenemos.</p>
+        </article>
+        <article class="pillar" data-reveal>
+          <span class="pillar-num mono">02</span>
+          <h3>Equipaje sin fricción</h3>
+          <p>Facturación en menos de noventa segundos y una maleta que llega contigo, no media hora después.</p>
+        </article>
+        <article class="pillar" data-reveal>
+          <span class="pillar-num mono">03</span>
+          <h3>Sala Crepúsculo</h3>
+          <p>Luz baja, silencio real y una carta pensada para cenar antes de subir, no durante el vuelo.</p>
+        </article>
+      </div>
+    </div>
+    <div class="foreground" data-foreground aria-hidden="true">
+      <svg viewBox="0 0 1440 260" preserveAspectRatio="xMidYMax slice">
+        <g style="stroke:var(--bg-charcoal)" stroke-width="16" fill="none">
+          <path d="M560,260 L560,60 Q720,10 880,60 L880,260"/>
+        </g>
+        <g style="fill:var(--accent)" opacity="0.8">
+          <circle cx="560" cy="140" r="3"/>
+          <circle cx="560" cy="200" r="3"/>
+          <circle cx="880" cy="140" r="3"/>
+          <circle cx="880" cy="200" r="3"/>
+          <circle cx="720" cy="16" r="3.4"/>
+        </g>
+        <rect x="0" y="246" width="1440" height="14" style="fill:var(--bg-charcoal)"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- CAPÍTULO II — EL ASCENSO -->
+  <section class="chapter chapter-ascenso" id="el-ascenso" data-theme-section data-chapter="2">
+    <div class="chapter-vertical" aria-hidden="true"><span>ASCENSO</span></div>
+    <div class="container narrative-grid">
+      <div class="narrative-text">
+        <span class="chapter-num mono">II</span>
+        <p class="kicker mono">Capítulo II · Despegue</p>
+        <h2 class="chapter-title" data-split="words">Atravesamos<br><em>las nubes,</em><br>no las evitamos.</h2>
+        <p data-reveal>Los primeros ocho minutos son los únicos que no se pueden diseñar del todo: el motor, la inclinación, el peso del cuerpo contra el asiento. Lo que sí diseñamos es todo lo demás — la cabina se atenúa, la música baja a un susurro, y el cielo nocturno empieza a abrirse al otro lado de la ventanilla.</p>
+        <p data-reveal>A los once mil metros, la turbulencia del despegue queda abajo, literalmente. Empieza el crucero.</p>
+      </div>
+      <div class="narrative-figure" aria-hidden="true">
+        <div class="figure-halo figure-halo-ascenso"></div>
+        <div class="figure-frame">
+          <span class="figure-stat mono">+340<small>km/h</small></span>
+          <span class="figure-caption">Velocidad de ascenso media</span>
+        </div>
+      </div>
+    </div>
+    <div class="foreground" data-foreground aria-hidden="true">
+      <svg viewBox="0 0 1440 260" preserveAspectRatio="xMidYMax slice">
+        <g style="fill:var(--text)" filter="url(#cloudBlur)">
+          <ellipse cx="220" cy="220" rx="260" ry="60" opacity="0.16"/>
+          <ellipse cx="620" cy="240" rx="340" ry="70" opacity="0.22"/>
+          <ellipse cx="1080" cy="215" rx="300" ry="65" opacity="0.18"/>
+          <ellipse cx="1380" cy="235" rx="220" ry="55" opacity="0.14"/>
+        </g>
+        <defs><filter id="cloudBlur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="18"/></filter></defs>
+      </svg>
+    </div>
+  </section>
+
+  <!-- CAPÍTULO III — EL CRUCERO -->
+  <section class="chapter chapter-crucero" id="el-crucero" data-theme-section data-chapter="3">
+    <div class="chapter-vertical" aria-hidden="true"><span>OCASO</span></div>
+    <div class="container">
+      <div class="chapter-head chapter-head-center">
+        <span class="chapter-num mono">III</span>
+        <p class="kicker mono">Capítulo III · Rutas</p>
+        <h2 class="chapter-title" data-split="words">Seis destinos.<br><em>Una sola hora:</em> el atardecer.</h2>
+      </div>
+      <ul class="routes" data-routes>
+        <li class="route-row" data-reveal><span class="route-code mono">VSP-701</span><span class="route-city">Kioto</span><span class="route-meta mono">11h 40m · Nocturno directo</span></li>
+        <li class="route-row" data-reveal><span class="route-code mono">VSP-114</span><span class="route-city">Reikiavik</span><span class="route-meta mono">6h 15m · Sale con la última luz</span></li>
+        <li class="route-row" data-reveal><span class="route-code mono">VSP-329</span><span class="route-city">Marrakech</span><span class="route-meta mono">3h 50m · Vuelo del atardecer</span></li>
+        <li class="route-row" data-reveal><span class="route-code mono">VSP-556</span><span class="route-city">Santorini</span><span class="route-meta mono">4h 05m · Llegada al amanecer</span></li>
+        <li class="route-row" data-reveal><span class="route-code mono">VSP-802</span><span class="route-city">Buenos Aires</span><span class="route-meta mono">13h 20m · Cruce nocturno</span></li>
+        <li class="route-row" data-reveal><span class="route-code mono">VSP-218</span><span class="route-city">Ciudad del Cabo</span><span class="route-meta mono">11h 55m · Vuelo de las estrellas</span></li>
+      </ul>
+    </div>
+    <div class="foreground" data-foreground aria-hidden="true">
+      <svg viewBox="0 0 1440 260" preserveAspectRatio="xMidYMax slice">
+        <radialGradient id="sunGrad" cx="50%" cy="100%" r="70%">
+          <stop offset="0%" style="stop-color:var(--vermilion)" stop-opacity="0.9"/>
+          <stop offset="100%" style="stop-color:var(--vermilion)" stop-opacity="0"/>
+        </radialGradient>
+        <circle cx="720" cy="230" r="120" fill="url(#sunGrad)"/>
+        <circle cx="720" cy="230" r="46" style="fill:var(--vermilion)" opacity="0.85"/>
+        <path d="M0,260 L0,190 Q180,150 360,185 T720,175 T1080,190 T1440,180 L1440,260 Z" style="fill:var(--bg-charcoal)"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- CAPÍTULO IV — A BORDO -->
+  <section class="chapter chapter-abordo" id="a-bordo" data-theme-section data-chapter="4">
+    <div class="chapter-vertical" aria-hidden="true"><span>CABINA</span></div>
+    <div class="container">
+      <div class="chapter-head">
+        <span class="chapter-num mono">IV</span>
+        <p class="kicker mono">Capítulo IV · Cabina</p>
+        <h2 class="chapter-title" data-split="words">A bordo, el tiempo<br><em>cambia de forma.</em></h2>
+      </div>
+      <div class="testimonials" data-testimonials>
+        <article class="testimonial" data-reveal>
+          <p class="testimonial-quote">El silencio de la cabina a once mil metros es el lujo más honesto que existe.</p>
+          <div><p class="testimonial-name">M. Alarcón</p><p class="testimonial-role">Pasajera frecuente · Ruta Kioto</p></div>
+        </article>
+        <article class="testimonial" data-reveal>
+          <p class="testimonial-quote">Aterrizamos y todavía no había amanecido. Vesper cumple lo que promete: llegar con la noche de tu lado.</p>
+          <div><p class="testimonial-name">D. Ferreira</p><p class="testimonial-role">Vuelo VSP-802 · Buenos Aires</p></div>
+        </article>
+        <article class="testimonial" data-reveal>
+          <p class="testimonial-quote">Nunca pensé que un vuelo pudiera sentirse como una pausa, y no como un trámite.</p>
+          <div><p class="testimonial-name">S. Okafor</p><p class="testimonial-role">Vuelo VSP-114 · Reikiavik</p></div>
+        </article>
+      </div>
+    </div>
+    <div class="foreground" data-foreground aria-hidden="true">
+      <svg viewBox="0 0 1440 260" preserveAspectRatio="xMidYMax slice">
+        <path d="M0,230 Q400,150 900,190 T1440,170" style="stroke:var(--bg-charcoal)" stroke-width="30" fill="none" opacity="0.9"/>
+        <ellipse cx="1180" cy="150" rx="150" ry="95" style="fill:var(--bg-deep)" stroke="var(--accent-2)" stroke-width="2" opacity="0.92"/>
+        <ellipse cx="1180" cy="150" rx="120" ry="75" style="fill:var(--bg-charcoal)"/>
+        <circle cx="1180" cy="140" r="4" style="fill:var(--accent)" opacity="0.7"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- CAPÍTULO V — EL DESCENSO -->
+  <section class="chapter chapter-descenso" id="el-descenso" data-theme-section data-chapter="5">
+    <div class="chapter-vertical" aria-hidden="true"><span>LLEGADA</span></div>
+    <div class="container">
+      <div class="descenso-grid">
+        <div class="descenso-text">
+          <span class="chapter-num mono">V</span>
+          <p class="kicker mono">Capítulo V · Llegada</p>
+          <h2 class="chapter-title" data-split="words">Bajamos hacia<br>las luces, <em>antes</em><br>del amanecer.</h2>
+          <p data-reveal>Reserva tu próximo cruce nocturno. Te avisamos cuando se abra tu puerta.</p>
+        </div>
+        <form class="cta-form" data-contact-form novalidate>
+          <div class="field">
+            <input type="text" id="f-name" name="name" required placeholder=" ">
+            <label for="f-name">Nombre</label>
+          </div>
+          <div class="field">
+            <input type="email" id="f-email" name="email" required placeholder=" ">
+            <label for="f-email">Email</label>
+          </div>
+          <div class="field">
+            <select id="f-route" name="route" required>
+              <option value="" disabled selected>Elige una ruta</option>
+              <option>VSP-701 · Kioto</option>
+              <option>VSP-114 · Reikiavik</option>
+              <option>VSP-329 · Marrakech</option>
+              <option>VSP-556 · Santorini</option>
+              <option>VSP-802 · Buenos Aires</option>
+              <option>VSP-218 · Ciudad del Cabo</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary cta-submit">
+            <span class="cta-form-label">Solicitar plaza</span>
+            <span class="cta-form-spinner"></span>
+            <svg class="cta-form-check" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6" pathLength="1"/></svg>
+          </button>
+          <div class="cta-success" data-contact-success aria-hidden="true">
+            <h3>Recibido.</h3>
+            <p data-contact-success-msg></p>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="foreground" data-foreground aria-hidden="true">
+      <svg viewBox="0 0 1440 260" preserveAspectRatio="xMidYMax slice">
+        <g style="fill:var(--bg-charcoal)">
+          <rect x="0" y="180" width="1440" height="80"/>
+          <rect x="120" y="120" width="70" height="70"/>
+          <rect x="260" y="90" width="50" height="100"/>
+          <rect x="980" y="100" width="60" height="90"/>
+          <rect x="1150" y="130" width="80" height="60"/>
+          <rect x="1290" y="80" width="46" height="110"/>
+        </g>
+        <g style="fill:var(--accent)" opacity="0.75">
+          <circle cx="135" cy="140" r="2"/><circle cx="155" cy="155" r="2"/><circle cx="175" cy="140" r="2"/>
+          <circle cx="272" cy="110" r="2"/><circle cx="292" cy="130" r="2"/>
+          <circle cx="1000" cy="120" r="2"/><circle cx="1020" cy="145" r="2"/>
+          <circle cx="1170" cy="150" r="2"/><circle cx="1195" cy="165" r="2"/><circle cx="1215" cy="150" r="2"/>
+          <circle cx="1305" cy="100" r="2"/><circle cx="1305" cy="125" r="2"/>
+        </g>
+        <g style="fill:var(--vermilion)" opacity="0.9">
+          <circle cx="620" cy="230" r="3"/>
+          <circle cx="700" cy="225" r="2.6"/>
+          <circle cx="780" cy="230" r="3"/>
+          <circle cx="540" cy="240" r="2.4"/>
+          <circle cx="860" cy="240" r="2.4"/>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" data-theme-section data-chapter="6">
+    <div class="container">
+      <p class="kicker mono">Preguntas</p>
+      <h2 class="chapter-title-sm">Antes de reservar</h2>
+      <div class="accordion" data-faqs>
+        <div class="accordion-item is-open" data-accordion-item>
+          <button class="accordion-q" type="button" aria-expanded="true"><span>¿Cuánto equipaje puedo facturar?</span><span class="plus mono">+</span></button>
+          <div class="accordion-a"><p>Una maleta de bodega de hasta 23 kg y un equipaje de mano incluidos en cualquier tarifa Vesper, sin cargos ocultos.</p></div>
+        </div>
+        <div class="accordion-item" data-accordion-item>
+          <button class="accordion-q" type="button" aria-expanded="false"><span>¿Puedo cambiar la fecha de mi vuelo?</span><span class="plus mono">+</span></button>
+          <div class="accordion-a"><p>Sí. Los cambios son gratuitos hasta 48 horas antes del despegue; después, aplicamos una tarifa simbólica de reprogramación.</p></div>
+        </div>
+        <div class="accordion-item" data-accordion-item>
+          <button class="accordion-q" type="button" aria-expanded="false"><span>¿Viajan mascotas a bordo?</span><span class="plus mono">+</span></button>
+          <div class="accordion-a"><p>Aceptamos mascotas pequeñas en cabina y animales de mayor tamaño en bodega climatizada, previa reserva con 72 horas de antelación.</p></div>
+        </div>
+        <div class="accordion-item" data-accordion-item>
+          <button class="accordion-q" type="button" aria-expanded="false"><span>¿Hay wifi durante el vuelo?</span><span class="plus mono">+</span></button>
+          <div class="accordion-a"><p>Wifi de cortesía en todas las rutas nocturnas, pensado para desconectar más que para trabajar.</p></div>
+        </div>
+        <div class="accordion-item" data-accordion-item>
+          <button class="accordion-q" type="button" aria-expanded="false"><span>¿Tienen programa de millas?</span><span class="plus mono">+</span></button>
+          <div class="accordion-a"><p>Sí, el Círculo Vesper: acumulas millas desde tu primer vuelo, canjeables por mejoras de cabina y noches de hotel asociadas.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER / MANIFESTO -->
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-manifesto" data-split="words">No vendemos vuelos. Vendemos la última luz del día, alargada seis horas más, y la certeza de que llegarás antes de que amanezca sobre un lugar nuevo.</p>
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span class="footer-logo">VESPER</span>
+          <p>La aerolínea del crepúsculo.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Vuela</h4>
+          <a href="#el-crucero">Rutas</a>
+          <a href="#a-bordo">Cabina</a>
+          <a href="#el-descenso">Reservar</a>
+        </div>
+        <div class="footer-col">
+          <h4>Vesper</h4>
+          <a href="#la-puerta">La Puerta</a>
+          <a href="#" data-contact-email>hola@vesper.aero</a>
+          <a href="#" data-contact-phone>+34 900 100 200</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Vesper. Estudio de diseño independiente — proyecto de portafolio.</span>
+      </div>
+    </div>
+  </footer>
+
+</main>
+
+<script defer src="lib/gsap.min.js"></script>
+<script defer src="lib/ScrollTrigger.min.js"></script>
+<script defer src="lib/three.min.js"></script>
+<script defer src="lib/manifest.js"></script>
+<script defer src="main.js?v=20260819g"></script>
+</body>
+</html>

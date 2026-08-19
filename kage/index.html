@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kage — 影 · Un paseo nocturno por un templo de montaña</title>
+<meta name="description" content="Kage es un paseo nocturno en cinco capítulos por un templo ficticio en las montañas de Kioto, renderizado en vivo con WebGL: torii, escalinatas de piedra, un patio de faroles, lluvia y una luna bermellón inmensa.">
+<meta name="theme-color" content="#05070b">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2305070b'/%3E%3Ccircle cx='16' cy='13' r='7' fill='%23c8402c'/%3E%3C/svg%3E">
+<link rel="preload" href="./assets/fonts/instrument-serif-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="./assets/fonts/instrument-sans-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="./assets/css/kage.css">
+<meta property="og:title" content="Kage — Un paseo nocturno por un templo de montaña">
+<meta property="og:description" content="Cinco capítulos, una sola cámara continua, un templo de montaña vivo en WebGL bajo la lluvia.">
+<meta property="og:locale" content="es_ES">
+<meta property="og:type" content="website">
+</head>
+<body>
+
+<a class="skip" href="#main">Saltar al paseo</a>
+
+<canvas class="world" id="world" aria-hidden="true"></canvas>
+<div class="world-fallback" aria-hidden="true"></div>
+
+<div class="cursor" id="cursor" aria-hidden="true"></div>
+<div class="cursor__ring" id="cursor-ring" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <a class="wordmark" href="#inicio">KAGE<span class="wordmark__jp" lang="ja">影</span></a>
+
+  <nav class="nav__nav" id="nav-panel" aria-label="Capítulos">
+    <button class="nav__close" type="button" data-nav-close>Cerrar</button>
+    <ul class="nav__list">
+      <li><a class="nav__link" href="#umbral"><em>01</em>Umbral</a></li>
+      <li><a class="nav__link" href="#jardines"><em>02</em>Jardines quietos</a></li>
+      <li><a class="nav__link" href="#faroles"><em>03</em>Patio de faroles</a></li>
+      <li><a class="nav__link" href="#oficio"><em>04</em>Oficio sagrado</a></li>
+      <li><a class="nav__link" href="#ultima-luz"><em>05</em>Última luz</a></li>
+    </ul>
+  </nav>
+
+  <button class="nav__toggle" type="button" id="nav-toggle" aria-expanded="false" aria-controls="nav-panel">
+    Capítulos
+  </button>
+</header>
+
+<nav class="rail" id="rail" aria-label="Progreso de capítulos">
+  <a class="rail__item" href="#umbral" data-rail="umbral"><span class="rail__label">Umbral</span>01<span class="rail__tick"></span></a>
+  <a class="rail__item" href="#jardines" data-rail="jardines"><span class="rail__label">Jardines quietos</span>02<span class="rail__tick"></span></a>
+  <a class="rail__item" href="#faroles" data-rail="faroles"><span class="rail__label">Patio de faroles</span>03<span class="rail__tick"></span></a>
+  <a class="rail__item" href="#oficio" data-rail="oficio"><span class="rail__label">Oficio sagrado</span>04<span class="rail__tick"></span></a>
+  <a class="rail__item" href="#ultima-luz" data-rail="ultima-luz"><span class="rail__label">Última luz</span>05<span class="rail__tick"></span></a>
+</nav>
+
+<main class="shell" id="main">
+
+  <!-- ============================================================ hero -->
+  <section class="chapter chapter--hero" id="inicio" data-key="inicio" data-shot="0" aria-labelledby="hero-title">
+    <div class="chapter__inner">
+      <div class="wrap">
+        <p class="vertical vertical--warm" lang="ja" aria-hidden="true">影</p>
+
+        <div class="hero__eyebrow" data-reveal style="--i:0">
+          <p class="label">Kioto · Templo de montaña</p>
+          <p class="label">Cinco capítulos</p>
+          <p class="label label--warm">Renderizado en vivo</p>
+        </div>
+
+        <h1 class="display display--hero" id="hero-title" data-split>La montaña guarda lo que el día devuelve</h1>
+
+        <div class="hero__foot">
+          <div>
+            <p class="hero__lede" data-reveal style="--i:1">
+              Kage es un paseo nocturno por un templo que no existe, sobre una ciudad que sí.
+              Una sola cámara, sin cortes. La escalinata, la lluvia, los faroles y la luna se
+              levantan en el momento en que llegas, y se desmontan cuando te vas.
+            </p>
+
+            <a class="scroll-cue" href="#umbral" data-reveal style="--i:2">
+              Empieza la subida <span></span>
+            </a>
+          </div>
+
+          <dl class="hero__meta" data-reveal style="--i:3">
+            <div><dt>Posición</dt><dd>35°01′N 135°47′E</dd></div>
+            <div><dt>Altitud</dt><dd>431 m</dd></div>
+            <div><dt>Hora</dt><dd>23:40 JST</dd></div>
+            <div><dt>Tiempo</dt><dd>Lluvia débil</dd></div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================== 01 umbral -->
+  <section class="chapter" id="umbral" data-key="umbral" data-shot="1" aria-labelledby="umbral-title">
+    <div class="chapter__inner">
+      <div class="wrap">
+        <p class="vertical" lang="ja" aria-hidden="true">山門</p>
+
+        <div class="chapter__head" data-reveal style="--i:0">
+          <p class="chapter__num">01</p>
+          <div class="chapter__kicker">
+            <p class="label">Umbral</p>
+            <p class="label label--warm" lang="ja">山門 · Sanmon</p>
+          </div>
+        </div>
+
+        <h2 class="display display--chapter" id="umbral-title" data-split>Cruzas donde el mundo se adelgaza</h2>
+
+        <div class="chapter__body chapter__body--split">
+          <div class="prose" data-reveal style="--i:1">
+            <p>
+              Un torii no es una puerta. No hay nada cerrado detrás y a nadie se le niega el paso.
+              Señala el punto donde <strong>termina el suelo corriente</strong> y empieza el otro,
+              y lo hace con dos pilares y un dintel.
+            </p>
+            <p>
+              Bajo la puerta el camino es de grava y la lluvia suena como papel al rasgarse.
+              Por encima, noventa y un peldaños, cada uno gastado hasta formar un cuenco por
+              gente que subió aquí a oscuras mucho antes que tú.
+            </p>
+            <figure class="quote">
+              <blockquote>
+                <p>Camina por un lado. El centro del camino es de aquel para quien se levantó la puerta.</p>
+              </blockquote>
+              <figcaption>Regla de la puerta baja</figcaption>
+            </figure>
+          </div>
+
+          <figure class="plate" data-reveal style="--i:2">
+            <div class="plate__frame">
+              <img src="./assets/stills/kage-sanmon.webp" width="1600" height="1000"
+                   alt="Peldaños de piedra que suben entre hileras de faroles encendidos hacia una puerta de templo a oscuras, con una luna bermellón baja detrás."
+                   loading="lazy" decoding="async" data-parallax>
+            </div>
+            <figcaption class="plate__caption">
+              <b>Lámina 01 — La puerta baja</b>
+              <span>35 mm · ISO 1600 · 1/40 s</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================= 02 jardines -->
+  <section class="chapter" id="jardines" data-key="jardines" data-shot="2" aria-labelledby="jardines-title">
+    <div class="chapter__inner">
+      <div class="wrap">
+        <p class="vertical" lang="ja" aria-hidden="true">静庭</p>
+
+        <div class="chapter__head" data-reveal style="--i:0">
+          <p class="chapter__num">02</p>
+          <div class="chapter__kicker">
+            <p class="label">Jardines quietos</p>
+            <p class="label label--warm" lang="ja">静庭 · Seitei</p>
+          </div>
+        </div>
+
+        <h2 class="display display--chapter" id="jardines-title" data-split>Aquí nada tiene prisa</h2>
+
+        <div class="chapter__body chapter__body--wide">
+          <div class="prose" data-reveal style="--i:1">
+            <p>
+              Al oeste de la escalinata el terreno se allana en un cuenco de grava rastrillada
+              y un estanque negro. A esta hora el agua es lo más luminoso de la montaña, porque
+              es lo único que sostiene la luna.
+            </p>
+            <p>
+              Un jardín así es <strong>sobre todo renuncia</strong>. Apenas flores, ningún color
+              que no esté ya en la piedra. Lo que queda tiene que estar dispuesto con tal exactitud
+              que quitar una sola roca se notaría.
+            </p>
+          </div>
+
+          <div class="plates plates--pair">
+            <figure class="plate" data-reveal style="--i:2">
+              <div class="plate__frame">
+                <img src="./assets/stills/kage-moonwater.webp" width="1600" height="1000"
+                     alt="Un estanque negro y quieto que sostiene una columna rota de luz de luna anaranjada, con un farol de piedra encendido en la orilla opuesta."
+                     loading="lazy" decoding="async" data-parallax>
+                <button class="plate__play" type="button" data-play="2" aria-label="Reproducir el plano del estanque: oculta el texto y deja que la cámara derive">
+                  <span><svg viewBox="0 0 24 28" aria-hidden="true"><path d="M0 0l24 14L0 28z"/></svg></span>
+                </button>
+              </div>
+              <figcaption class="plate__caption">
+                <b>Lámina 02 — Agua de luna</b>
+                <span>Plano fijo · 8 s</span>
+              </figcaption>
+            </figure>
+
+            <figure class="plate" data-reveal style="--i:3">
+              <div class="plate__frame">
+                <img src="./assets/stills/kage-approach.webp" width="1600" height="1000"
+                     alt="La subida iluminada por faroles vista desde abajo, con pinos negros y una pagoda recortados contra la luna."
+                     loading="lazy" decoding="async" data-parallax>
+              </div>
+              <figcaption class="plate__caption">
+                <b>Lámina 03 — La subida</b>
+                <span>50 mm · f/1.8</span>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================= 03 faroles -->
+  <section class="chapter" id="faroles" data-key="faroles" data-shot="3" aria-labelledby="faroles-title">
+    <div class="chapter__inner">
+      <div class="wrap">
+        <p class="vertical" lang="ja" aria-hidden="true">灯籠</p>
+
+        <div class="chapter__head" data-reveal style="--i:0">
+          <p class="chapter__num">03</p>
+          <div class="chapter__kicker">
+            <p class="label">Patio de faroles</p>
+            <p class="label label--warm" lang="ja">灯籠 · Tōrō</p>
+          </div>
+        </div>
+
+        <h2 class="display display--chapter" id="faroles-title" data-split>Cien fuegos pequeños, cuidados a mano</h2>
+
+        <div class="chapter__body chapter__body--split">
+          <div>
+            <div class="prose" data-reveal style="--i:1">
+              <p>
+                La electricidad llegó a esta montaña en 1958 y se detuvo en la cocina.
+                El patio se sigue encendiendo a la manera antigua: alguien recorre el
+                circuito entero dos veces por noche con una mecha y un paño.
+              </p>
+            </div>
+
+            <ol class="index" data-reveal style="--i:3">
+              <li>
+                <span class="index__num">i</span>
+                <span class="index__name">Mecha recortada<span>Antes de que cambie la hora, para que la llama quede baja y no ahúme la piedra.</span></span>
+                <span class="index__jp" lang="ja">火</span>
+              </li>
+              <li>
+                <span class="index__num">ii</span>
+                <span class="index__name">Vidrio limpiado<span>La lluvia deja una película. Un farol sucio se lee como un farol desatendido.</span></span>
+                <span class="index__jp" lang="ja">水</span>
+              </li>
+              <li>
+                <span class="index__num">iii</span>
+                <span class="index__name">Musgo intacto<span>Lo único de la montaña que nadie tiene permiso para arreglar.</span></span>
+                <span class="index__jp" lang="ja">苔</span>
+              </li>
+              <li>
+                <span class="index__num">iv</span>
+                <span class="index__name">Última luz contada<span>Noventa y seis en total. Si uno está apagado, la ronda vuelve a empezar.</span></span>
+                <span class="index__jp" lang="ja">光</span>
+              </li>
+            </ol>
+          </div>
+
+          <figure class="plate" data-reveal style="--i:2">
+            <div class="plate__frame">
+              <img src="./assets/stills/kage-lantern-court.webp" width="1600" height="1000"
+                   alt="Un patio mojado de faroles de piedra ardiendo frente a la sala del templo, con sus paneles de papel encendidos en ámbar."
+                   loading="lazy" decoding="async" data-parallax>
+            </div>
+            <figcaption class="plate__caption">
+              <b>Lámina 04 — El patio, 23:40</b>
+              <span>Angular · 44°</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================== 04 oficio -->
+  <section class="chapter" id="oficio" data-key="oficio" data-shot="4" aria-labelledby="oficio-title">
+    <div class="chapter__inner">
+      <div class="wrap">
+        <p class="vertical" lang="ja" aria-hidden="true">手仕事</p>
+
+        <div class="chapter__head" data-reveal style="--i:0">
+          <p class="chapter__num">04</p>
+          <div class="chapter__kicker">
+            <p class="label">Oficio sagrado</p>
+            <p class="label label--warm" lang="ja">手仕事 · Tashigoto</p>
+          </div>
+        </div>
+
+        <h2 class="display display--chapter" id="oficio-title" data-split>La mano recuerda lo que la mente suelta</h2>
+
+        <div class="chapter__body chapter__body--triple">
+          <div class="prose" data-reveal style="--i:1">
+            <p>
+              Detrás de los paneles la sala es una sola estancia, y la estancia es casi
+              todo suelo. Lo poco que se guarda en ella lo hicieron cuatro personas que
+              son, cada una, la cuarta o la quinta de su nombre en hacerlo.
+            </p>
+            <p>
+              Ninguno de estos oficios es difícil de describir y todos llevan una vida
+              entera. Ese es el chiste que la montaña no deja de contar.
+            </p>
+          </div>
+
+          <figure class="plate" data-reveal style="--i:2">
+            <div class="plate__frame">
+              <img src="./assets/stills/kage-shoji.webp" width="1600" height="1000"
+                   alt="Vista cercana de paneles de papel iluminados tras columnas de madera oscura; la retícula proyecta una cuadrícula de sombra."
+                   loading="lazy" decoding="async" data-parallax>
+            </div>
+            <figcaption class="plate__caption">
+              <b>Lámina 05 — Shoji, desde la galería</b>
+              <span>85 mm · 1/25 s</span>
+            </figcaption>
+          </figure>
+
+          <ol class="index" data-reveal style="--i:3">
+            <li><span class="index__num">01</span><span class="index__name">Washi<span>Corteza de morera batida hasta hacer pasta, secada sobre una tabla contra el muro norte.</span></span><span class="index__jp" lang="ja">和紙</span></li>
+            <li><span class="index__num">02</span><span class="index__name">Sumi<span>Hollín y cola, prensados y dejados a oscuras tres años antes de que nadie escriba con ellos.</span></span><span class="index__jp" lang="ja">墨</span></li>
+            <li><span class="index__num">03</span><span class="index__name">Kumiko<span>Celosía cortada para encajar sin un solo clavo ni una gota de cola.</span></span><span class="index__jp" lang="ja">木</span></li>
+            <li><span class="index__num">04</span><span class="index__name">Kintsugi<span>La rotura reunida con laca y oro, y nunca disculpada.</span></span><span class="index__jp" lang="ja">金</span></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================== 05 última luz -->
+  <section class="chapter" id="ultima-luz" data-key="ultima-luz" data-shot="5" aria-labelledby="ultima-luz-title">
+    <div class="chapter__inner">
+      <div class="wrap">
+        <p class="vertical vertical--warm" lang="ja" aria-hidden="true">残光</p>
+
+        <div class="chapter__head" data-reveal style="--i:0">
+          <p class="chapter__num">05</p>
+          <div class="chapter__kicker">
+            <p class="label">Última luz</p>
+            <p class="label label--warm" lang="ja">残光 · Zankō</p>
+          </div>
+        </div>
+
+        <h2 class="display display--chapter" id="ultima-luz-title" data-split>Lo que la oscuridad te devuelve</h2>
+
+        <div class="chapter__body chapter__body--split">
+          <div class="prose" data-reveal style="--i:1">
+            <p>
+              Desde encima de la sala se ve la subida entera de una vez: las puertas por las
+              que pasaste, el patio, los faroles bajando la escalinata como un collar que se
+              ha caído, y más allá de todo eso el valle con sus propias luces, más frías.
+            </p>
+            <p>
+              Aquí no se te ha pedido nada y no se te va a pedir. La lluvia sigue. Dentro de
+              cuatro horas el cielo detrás de la cresta empezará a agrisarse, y todo el conjunto
+              volverá a parecer piedra mojada y corriente.
+            </p>
+          </div>
+
+          <figure class="plate" data-reveal style="--i:2">
+            <div class="plate__frame">
+              <img src="./assets/stills/kage-afterlight.webp" width="1600" height="1000"
+                   alt="El tejado del templo desde arriba, con sus paneles iluminados pequeños bajo una luna bermellón y crestas de montaña superpuestas."
+                   loading="lazy" decoding="async" data-parallax>
+              <button class="plate__play" type="button" data-play="5" aria-label="Reproducir el plano de la última luz: oculta el texto y deja que la cámara derive">
+                <span><svg viewBox="0 0 24 28" aria-hidden="true"><path d="M0 0l24 14L0 28z"/></svg></span>
+              </button>
+            </div>
+            <figcaption class="plate__caption">
+              <b>Lámina 06 — Última luz</b>
+              <span>Plano fijo · 8 s</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ========================================================= manifiesto -->
+<footer class="manifesto" id="manifiesto" data-key="manifiesto" data-shot="6">
+  <div class="wrap">
+    <p class="manifesto__jp" lang="ja" data-reveal style="--i:0">影は光の記憶である</p>
+    <p class="manifesto__statement" data-split>Una sombra no es más que la memoria de la luz, guardada por aquello sobre lo que cayó.</p>
+
+    <div class="colophon">
+      <div data-reveal style="--i:1">
+        <h3>El mundo</h3>
+        <p>El templo, los torii, la escalinata, la pagoda, el estanque, los árboles, la lluvia, las hojas y las ascuas se generan en tiempo de ejecución con Three.js. Nada es un archivo de modelo.</p>
+      </div>
+      <div data-reveal style="--i:2">
+        <h3>La luz</h3>
+        <p>Una sola luna direccional fría, cuatro focos cálidos en el patio y en la sala, y una cadena de bloom, bruma, grano y viñeta escrita a mano.</p>
+      </div>
+      <div data-reveal style="--i:3">
+        <h3>Las láminas</h3>
+        <p>Cada imagen fija de esta página es un fotograma de la misma escena viva, capturado en el capítulo al que pertenece. Las capas recortadas están dibujadas por procedimiento.</p>
+      </div>
+      <div data-reveal style="--i:4">
+        <h3>Lo demás</h3>
+        <p>Sin framework, sin paso de compilación, sin analítica, sin rastreadores, sin tipografías remotas y sin peticiones de red después de cargar. La tipografía es Instrument y Shippori Mincho, alojadas aquí mismo.</p>
+      </div>
+    </div>
+
+    <div class="manifesto__foot">
+      <p>Kage · 影 — un estudio de diseño independiente. Sin vinculación con ningún templo ni institución.</p>
+      <p><a href="#inicio">Volver al valle ↑</a></p>
+    </div>
+  </div>
+</footer>
+
+<!-- =============================================== foreground cutout band -->
+<div class="foreground" id="foreground" aria-hidden="true">
+  <div class="fg-set" data-for="inicio">
+    <img class="fg" src="./assets/foreground/ridge-hill.webp" width="2200" height="560" alt="" data-depth="0.18" style="left:-4%;height:44%;bottom:38%;opacity:.38">
+    <img class="fg" src="./assets/foreground/tall-grass.webp" width="1800" height="700" alt="" data-depth="1" style="left:-4%;height:92%">
+    <img class="fg" src="./assets/foreground/maple-branch.webp" width="1300" height="900" alt="" data-depth="1.5" style="right:-2%;height:100%">
+  </div>
+
+  <div class="fg-set" data-for="umbral">
+    <img class="fg" src="./assets/foreground/temple-wall.webp" width="1800" height="640" alt="" data-depth="0.7" style="left:-6%;height:84%">
+    <img class="fg" src="./assets/foreground/basalt-stones.webp" width="1600" height="560" alt="" data-depth="1.2" style="right:1%;height:58%">
+    <img class="fg" src="./assets/foreground/stone-lantern.webp" width="760" height="1180" alt="" data-depth="1.6" style="left:45%;height:80%">
+  </div>
+
+  <div class="fg-set" data-for="jardines">
+    <img class="fg" src="./assets/foreground/garden-bush.webp" width="1200" height="660" alt="" data-depth="0.9" style="left:1%;height:88%">
+    <img class="fg" src="./assets/foreground/basalt-stones.webp" width="1600" height="560" alt="" data-depth="1.15" style="left:21%;height:54%">
+    <img class="fg" src="./assets/foreground/tall-grass.webp" width="1800" height="700" alt="" data-depth="1.45" style="right:-4%;height:84%">
+  </div>
+
+  <div class="fg-set" data-for="faroles">
+    <img class="fg" src="./assets/foreground/ridge-hill.webp" width="2200" height="560" alt="" data-depth="0.16" style="left:8%;height:40%;bottom:44%;opacity:.34">
+    <img class="fg" src="./assets/foreground/stone-lantern.webp" width="760" height="1180" alt="" data-depth="1.5" style="left:56%;height:60%">
+    <img class="fg" src="./assets/foreground/pine-bough.webp" width="1300" height="900" alt="" data-depth="1.1" style="right:2%;height:60%">
+  </div>
+
+  <div class="fg-set" data-for="oficio">
+    <img class="fg" src="./assets/foreground/sakura-branch.webp" width="1300" height="860" alt="" data-depth="1.4" style="left:-6%;height:92%">
+    <img class="fg fg--flip" src="./assets/foreground/temple-wall.webp" width="1800" height="640" alt="" data-depth="0.75" style="right:-6%;height:80%">
+  </div>
+
+  <div class="fg-set" data-for="ultima-luz">
+    <img class="fg" src="./assets/foreground/pine-bough.webp" width="1300" height="900" alt="" data-depth="1.2" style="right:-4%;height:88%">
+    <img class="fg" src="./assets/foreground/shrine-ruins.webp" width="1500" height="720" alt="" data-depth="0.95" style="left:10%;height:90%">
+    <img class="fg" src="./assets/foreground/tall-grass.webp" width="1800" height="700" alt="" data-depth="1.4" style="left:-6%;height:78%;opacity:.9">
+  </div>
+
+  <div class="fg-set" data-for="manifiesto">
+    <img class="fg" src="./assets/foreground/ridge-hill.webp" width="2200" height="560" alt="" data-depth="0.14" style="left:2%;height:52%;bottom:30%;opacity:.32">
+    <img class="fg" src="./assets/foreground/tall-grass.webp" width="1800" height="700" alt="" data-depth="0.8" style="left:-4%;height:62%;opacity:.5">
+  </div>
+</div>
+
+<p class="cinema-note" id="cinema-note" aria-hidden="true">Desplázate, haz clic o pulsa Esc para volver</p>
+
+<script type="module" src="./assets/js/site.js"></script>
+</body>
+</html>
