@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rompe el Cascarón</title>
+<meta name="description" content="Un idle de huevos que se explica a sí mismo: cascas, eclosionan y coleccionas skins mientras el cuaderno te abre las doce fichas del diseño del género incremental.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Luckiest+Guy&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <svg class="logo" viewBox="0 0 100 130" aria-hidden="true">
+        <path d="M50 4C78 4 94 44 94 76c0 30-20 50-44 50S6 106 6 76C6 44 22 4 50 4z" fill="#FFF4DF" stroke="#3A2415" stroke-width="7"/>
+        <path d="M18 68l16-9 12 11 14-12 12 10 10-7" fill="none" stroke="#3A2415" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+        <circle cx="36" cy="94" r="6" fill="#3A2415"/><circle cx="64" cy="94" r="6" fill="#3A2415"/>
+        <path d="M44 108q6 7 12 0" fill="none" stroke="#3A2415" stroke-width="5" stroke-linecap="round"/>
+      </svg>
+      <div>
+        <div class="mark">ROMPE EL CASCARÓN</div>
+        <div class="sub">Un idle que se explica a sí mismo</div>
+      </div>
+    </div>
+    <div class="bank">
+      <span class="big" id="bank">0</span>
+      <span class="rate"><b id="rate">0</b> yemas/s · <span id="clickval">+1</span> por golpe</span>
+    </div>
+    <div class="hstats">
+      <div class="pill"><span class="lbl">Total</span><span class="v" id="stTotal">0</span></div>
+      <div class="pill"><span class="lbl">Fichas</span><span class="v" id="stLessons">1/12</span></div>
+      <div class="pill gen-p"><span class="lbl">Genes</span><span class="v" id="stInsight">0</span></div>
+      <button class="sound" id="btnSound" aria-label="Activar o silenciar el sonido">🔊</button>
+    </div>
+  </header>
+
+  <div class="tabs" role="tablist">
+    <button role="tab" aria-selected="true" data-tab="0">Nido</button>
+    <button role="tab" aria-selected="false" data-tab="1">Corral</button>
+    <button role="tab" aria-selected="false" data-tab="2">Cuaderno</button>
+  </div>
+
+  <div class="game">
+    <!-- ══ nido ══ -->
+    <div class="col active" data-col="0">
+      <div class="card">
+        <div class="stage" id="stage">
+          <div class="cloud c1"></div>
+          <div class="cloud c2"></div>
+          <div class="nest"><svg viewBox="0 0 240 86" aria-hidden="true"><ellipse cx="120" cy="52" rx="116" ry="32" fill="#A8763B" stroke="#3A2415" stroke-width="5"/><ellipse cx="120" cy="42" rx="80" ry="18" fill="#7C5227"/><g stroke="#3A2415" stroke-width="3.4" stroke-linecap="round" opacity=".65"><path d="M22 54q26-14 54-10"/><path d="M44 68q30-16 66-12"/><path d="M120 72q36-10 72-26"/><path d="M150 56q28-2 52-14"/><path d="M74 44q26 10 56 6"/><path d="M96 78q40 2 78-16"/></g><g stroke="#D9A65C" stroke-width="3" stroke-linecap="round" opacity=".8"><path d="M30 62q28-10 52-8"/><path d="M130 64q34-6 62-20"/><path d="M60 74q34-8 64-6"/></g></svg></div>
+          <div class="crew" id="crew"></div>
+          <button class="eggbtn" id="clicker" aria-label="Cascar el huevo"></button>
+          <canvas id="fx"></canvas>
+          <div class="combo" id="combo">COMBO ×1,0<div class="cbar"><i></i></div></div>
+          <div class="crackbar" id="crackbar">Grietas 0/10<div class="cb"><i></i></div></div>
+          <button id="golden" aria-label="Huevo dorado"></button>
+        </div>
+        <div class="clickbar">
+          <span class="cta">¡CASCA EL HUEVO!</span>
+          <span class="val" id="clickval2">+1 yema</span>
+          <span class="hint">También vale la barra espaciadora · golpes seguidos suben el combo · al llenar las grietas, eclosiona</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="hd"><h3>Libreta de la granja</h3><span class="lbl" id="sessionT">00:00</span></div>
+        <div class="bd stats">
+          <div class="srow"><span class="k">Golpes a mano</span><span class="v" id="stManual">0</span></div>
+          <div class="srow"><span class="k">Huevos eclosionados</span><span class="v" id="stHatch">0</span></div>
+          <div class="srow"><span class="k">Producción automática</span><span class="v" id="stAuto">0/s</span></div>
+          <div class="srow"><span class="k">Parte automatizada</span><span class="v" id="stAutoPct">0 %</span></div>
+          <div class="srow"><span class="k">Multiplicador global</span><span class="v" id="stMult">×1,00</span></div>
+          <div class="srow"><span class="k">Puestas (relanzamientos)</span><span class="v" id="stPrestiges">0</span></div>
+        </div>
+      </div>
+
+      <div class="card prestige">
+        <div class="hd"><h3>Poner de nuevo</h3><span class="lbl">Capa 2</span></div>
+        <div class="bd">
+          <p class="txt" style="margin:0;font-size:13px">Se va todo: yemas, corral y skins equipadas. A cambio heredas <b>Genes</b>: cada uno es <b>+10 %</b> de producción para siempre.</p>
+          <div class="pbar"><i id="pbar"></i></div>
+          <div style="display:flex;justify-content:space-between;font-size:12px;font-weight:600;color:var(--ink-2)"><span id="pnext">Necesitas 1,00M totales</span><span id="pgain">+0</span></div>
+          <button class="bigbtn" id="doPrestige" disabled style="margin-top:9px">Poner de nuevo</button>
+          <div class="metas" id="metas"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ corral + huevera ══ -->
+    <div class="col" data-col="1">
+      <div class="card">
+        <div class="hd">
+          <h3>Tu corral</h3>
+          <div class="buyrow">
+            <span class="lbl">Comprar</span>
+            <button class="qty" data-q="1" aria-pressed="true">×1</button>
+            <button class="qty" data-q="10" aria-pressed="false">×10</button>
+            <button class="qty" data-q="max" aria-pressed="false">MÁX</button>
+          </div>
+        </div>
+        <div id="gens"></div>
+      </div>
+
+      <div class="card">
+        <div class="hd"><h3>Huevera · skins</h3><span class="lbl" id="upCount">0 de 12</span></div>
+        <div class="bd">
+          <p style="margin:0 0 10px;font-size:12px;color:var(--ink-2)">Cada skin que compras se queda tuya y da su mejora para siempre. Toca una que ya tengas para ponérsela al huevo del nido.</p>
+          <div class="skins" id="skins"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="hd"><h3>Partida</h3><span class="lbl">Se guarda sola</span></div>
+        <div class="tools">
+          <button class="tool" id="btnSave">Guardar ahora</button>
+          <button class="tool" id="btnExport">Exportar código</button>
+          <button class="tool" id="btnImport">Importar código</button>
+          <button class="tool" id="btnWipe">Borrar todo</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ cuaderno ══ -->
+    <div class="col" data-col="2">
+      <div class="card">
+        <div class="hd"><h3>Cuaderno de diseño</h3><span class="lbl" id="nbCount">1 / 12</span></div>
+        <div class="nb" id="notebook"></div>
+        <div class="sources">
+          <span class="lbl">De dónde sale esto</span>
+          <p style="margin:5px 0 0;font-size:11.5px;color:var(--ink-2);line-height:1.45">Las doce fichas resumen lo que repiten los análisis del género: el bucle golpe→automatización→multiplicador→reinicio, la curva de coste entre ×1,07 y ×1,15, el prestigio como acelerador y la recompensa variable como motor de retención. Cada ficha se abre justo cuando el juego te hace vivir esa mecánica.</p>
+          <ul>
+            <li><a href="https://bugnet.io/blog/how-to-design-an-idle-or-incremental-game" target="_blank" rel="noopener">Bugnet — How to Design an Idle or Incremental Game</a></li>
+            <li><a href="https://www.gamedeveloper.com/design/the-math-of-idle-games-part-i" target="_blank" rel="noopener">Game Developer — The Math of Idle Games</a></li>
+            <li><a href="https://ericguan.substack.com/p/idle-game-design-principles" target="_blank" rel="noopener">Eric Guan — Idle Game Design Principles</a></li>
+            <li><a href="https://en.wikipedia.org/wiki/Incremental_game" target="_blank" rel="noopener">Wikipedia — Incremental game</a></li>
+            <li><a href="https://dev.to/aguier/i-built-7-idle-games-in-30-days-what-i-learned-about-incremental-design-5d3f" target="_blank" rel="noopener">DEV — I Built 7 Idle Games in 30 Days</a></li>
+            <li><a href="https://www.topincrementalgames.com/guides/top-10-incremental-idle-games-june-2026" target="_blank" rel="noopener">Top Incremental Games — ranking junio 2026</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="frenzy" id="frenzy"></div>
+
+<div class="scrim" id="scrim">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+    <h3 id="mTitle">Mientras no estabas</h3>
+    <p id="mBody">El corral siguió trabajando.</p>
+    <span class="gain" id="mGain">+0</span>
+    <button class="bigbtn" id="mClose">¡Vamos!</button>
+  </div>
+</div>
+<script src="main.js"></script>
+</body>
+</html>
