@@ -1,0 +1,579 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bóveda — Banca para empresas que crecen</title>
+<meta name="description" content="Bóveda: cuentas, tarjetas corporativas y control de gasto para empresas. Todo tu dinero, en un solo libro mayor.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --obsidian:#08080a; --onyx:#040406; --carbon:#121317; --graphite:#1c1d22; --slate:#2e3038;
+  --smoke:#464853; --ash:#5e616e; --steel:#777a88; --fog:#9194a1; --mist:#acafb9;
+  --silver:#c7c9d1; --bone:#e2e3e9; --white:#fff; --copper:#cc9166; --sage:#8fb39a;
+  --gilded:linear-gradient(103deg,#ae9357,#fff0cc 40%,#ae9357 70%,rgba(189,157,79,0));
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --max:1216px; --gap:160px; --ring:rgba(255,255,255,.2) 0 0 0 1px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--obsidian);color:var(--bone);font:400 16px/1.5 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button,input{font:inherit;color:inherit}
+img,svg{display:block;max-width:100%}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+.serif{font-family:var(--serif);font-weight:400;letter-spacing:.01em;color:var(--white)}
+.eyebrow{font-size:13px;font-weight:600;letter-spacing:-.02em;color:var(--fog);line-height:1}
+.eyebrow.cu{color:var(--copper)}
+:focus-visible{outline:1px solid var(--copper);outline-offset:3px}
+
+/* Botones */
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:9999px;padding:10px 20px;font-size:14px;font-weight:500;line-height:1.3;cursor:pointer;border:1px solid transparent;transition:background .2s,color .2s,border-color .2s;white-space:nowrap}
+.btn-primary{background:var(--white);color:#000}
+.btn-primary:hover{background:var(--bone)}
+.btn-ghost{background:transparent;border-color:var(--white);color:var(--white)}
+.btn-ghost:hover{background:rgba(255,255,255,.08)}
+.pill{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--steel);border-radius:9999px;padding:6px 10px;font-size:12px;color:var(--white);background:transparent;cursor:pointer;transition:border-color .2s,background .2s}
+.pill[aria-pressed="true"]{background:var(--graphite);border-color:var(--silver)}
+
+/* Nav */
+header{position:fixed;inset:0 0 auto;z-index:50;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+header.scrolled{background:rgba(8,8,10,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:var(--graphite)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px;gap:24px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:600;font-size:16px;color:var(--white);letter-spacing:-.01em}
+.logo-mark{width:26px;height:26px;border-radius:9999px;box-shadow:var(--ring);display:grid;place-items:center;font-family:var(--serif);font-size:15px}
+.menu{display:flex;gap:2px;list-style:none}
+.menu a{display:block;padding:6px 10px;font-size:14px;color:var(--fog);border-radius:2px;transition:color .2s;position:relative}
+.menu a:hover{color:var(--white)}
+.menu a::after{content:"";position:absolute;left:10px;right:10px;bottom:0;height:1px;background:var(--white);border-radius:2px;transform:scaleX(0);transition:transform .25s}
+.menu a:hover::after{transform:scaleX(1)}
+.nav-cta{display:flex;gap:8px}
+.burger{display:none;width:40px;height:40px;border-radius:9999px;border:1px solid var(--slate);background:none;cursor:pointer;place-items:center}
+.burger span{display:block;width:16px;height:1px;background:var(--white);box-shadow:0 5px 0 var(--white),0 -5px 0 var(--white)}
+
+/* Hero */
+.hero{padding:160px 0 0}
+.hero-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(46px,7vw,88px);line-height:1;margin:20px 0 24px}
+.hero h1 em{font-style:italic}
+.hero p.lead{font-size:20px;line-height:1.38;letter-spacing:-.04em;color:var(--fog);max-width:470px}
+.capture{margin-top:36px;display:flex;align-items:center;border:1px solid var(--white);border-radius:9999px;padding:5px 5px 5px 20px;max-width:440px}
+.capture input{flex:1;min-width:0;background:none;border:0;outline:0;font-size:15px;color:var(--white);padding:5px 0}
+.capture input::placeholder{color:var(--steel)}
+.capture-note{margin-top:14px;font-size:13px;color:var(--ash)}
+.capture-ok{display:none;margin-top:14px;font-size:14px;color:var(--copper)}
+
+/* Dashboard */
+.dash{display:grid;grid-template-columns:1.45fr 1fr;gap:12px}
+.card{background:var(--onyx);border-radius:10px;padding:24px;border:1px solid var(--graphite)}
+.bal-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.bal-label{font-size:13px;color:var(--fog)}
+.bal{font-size:clamp(30px,3.4vw,40px);font-weight:500;letter-spacing:-.04em;color:var(--white);margin-top:8px;line-height:1;font-variant-numeric:tabular-nums}
+.bal-delta{font-size:13px;color:var(--sage);margin-top:8px}
+.periods{display:flex;gap:4px}
+.chart{margin:26px 0 18px;width:100%;height:150px}
+.chart path.line{fill:none;stroke:url(#gild);stroke-width:2;stroke-linecap:round;stroke-dasharray:900;stroke-dashoffset:900;animation:draw 1.8s .3s cubic-bezier(.65,0,.35,1) forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.limit{border-top:1px solid var(--graphite);padding-top:18px}
+.limit-row{display:flex;justify-content:space-between;font-size:13px;color:var(--fog);margin-bottom:10px}
+.limit-row b{color:var(--bone);font-weight:500}
+.bar{height:4px;background:var(--graphite);border-radius:9999px;overflow:hidden}
+.bar i{display:block;height:100%;width:62%;background:var(--gilded);border-radius:9999px}
+.tx{background:transparent;border:1px solid var(--graphite);border-radius:10px;padding:20px}
+.tx h4{font-size:13px;font-weight:500;color:var(--fog);margin-bottom:14px;display:flex;justify-content:space-between}
+.tx ul{list-style:none}
+.tx li{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--graphite);font-size:13px}
+.tx li:last-child{border:0}
+.av{width:28px;height:28px;flex:none;border-radius:9999px;border:1px solid var(--slate);display:grid;place-items:center;font-size:11px;font-weight:600;color:var(--silver);background:var(--carbon)}
+.tx .who{flex:1;min-width:0}
+.tx .who b{display:block;font-weight:500;color:var(--bone);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tx .who small{color:var(--ash);font-size:12px}
+.tx .amt{font-variant-numeric:tabular-nums;color:var(--bone)}
+.tx .amt.in{color:var(--sage)}
+
+/* Logos */
+.logos{padding:96px 0 0}
+.logos p{text-align:center;font-size:13px;color:var(--ash);margin-bottom:28px}
+.logo-row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px 40px;align-items:center;color:var(--smoke);font-size:19px;font-weight:600;letter-spacing:-.03em}
+.logo-row span:nth-child(2n){font-family:var(--serif);font-weight:500;letter-spacing:.01em;font-size:21px}
+
+/* Secciones */
+section.block{padding-top:var(--gap)}
+.head{text-align:center;max-width:760px;margin:0 auto 64px}
+.head h2{font-size:clamp(36px,5vw,64px);line-height:1.13;margin:18px 0 18px}
+.head p{font-size:18px;line-height:1.38;letter-spacing:-.02em;color:var(--fog);font-weight:300}
+
+/* Features */
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.feat{background:var(--onyx);border:1px solid var(--graphite);border-radius:10px;padding:24px;display:flex;flex-direction:column;gap:14px;transition:border-color .3s}
+.feat:hover{border-color:var(--slate)}
+.ico{width:40px;height:40px;border-radius:9999px;border:1px solid var(--slate);display:grid;place-items:center}
+.ico svg{width:18px;height:18px;stroke:var(--mist);fill:none;stroke-width:1.2}
+.feat h3{font-size:20px;font-weight:500;letter-spacing:-.03em;color:var(--white);line-height:1.3;margin-top:8px}
+.feat p{font-size:15px;color:var(--mist);line-height:1.5}
+.feat .mini{margin-top:auto;padding-top:18px;border-top:1px solid var(--graphite);font-size:13px;color:var(--fog);display:flex;justify-content:space-between}
+.feat .mini b{color:var(--bone);font-weight:500;font-variant-numeric:tabular-nums}
+
+/* Tabla */
+.split{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:center}
+.split h2{font-size:clamp(34px,4.4vw,52px);line-height:1.13;margin:18px 0 20px}
+.split p{font-size:18px;line-height:1.38;color:var(--fog);font-weight:300;letter-spacing:-.02em}
+.checks{list-style:none;margin-top:28px;display:grid;gap:12px}
+.checks li{display:flex;gap:12px;font-size:15px;color:var(--silver)}
+.checks li::before{content:"";flex:none;width:6px;height:6px;margin-top:8px;border-radius:9999px;background:var(--copper)}
+.table-card{background:var(--onyx);border:1px solid var(--graphite);border-radius:10px;padding:24px;overflow-x:auto}
+.table-card h4{display:flex;justify-content:space-between;align-items:center;font-size:15px;font-weight:500;color:var(--white);margin-bottom:16px}
+table{width:100%;border-collapse:collapse;min-width:520px}
+th{text-align:left;font-size:14px;font-weight:500;color:var(--fog);padding:10px 8px 10px 0;border-bottom:1px solid var(--graphite)}
+td{font-size:15px;color:var(--bone);padding:14px 8px 14px 0;border-bottom:1px solid var(--graphite);font-variant-numeric:tabular-nums}
+tr:last-child td{border-bottom:0}
+.r{text-align:right}
+.status{display:inline-block;border:1px solid;border-radius:9999px;padding:2px 9px;font-size:12px;font-weight:500}
+.status.on{color:var(--sage);border-color:rgba(143,179,154,.45)}
+.status.off{color:var(--steel);border-color:var(--slate)}
+td .sub{display:block;font-size:12px;color:var(--ash)}
+
+/* Stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--graphite);border-bottom:1px solid var(--graphite)}
+.stat{padding:48px 24px;text-align:center}
+.stat+.stat{border-left:1px solid var(--graphite)}
+.stat .n{font-family:var(--serif);font-size:clamp(34px,3.6vw,44px);color:var(--white);letter-spacing:.01em;line-height:1;font-variant-numeric:lining-nums}
+.stat .c{font-size:14px;color:var(--fog);margin-top:12px}
+
+/* Testimonios */
+.testis{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.testi{position:relative;aspect-ratio:4/5;border-radius:10px;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:24px}
+.testi .bg{position:absolute;inset:0;z-index:0}
+.testi::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(4,4,6,.95) 0%,rgba(4,4,6,.55) 45%,rgba(4,4,6,0) 75%);z-index:1}
+.testi > *:not(.bg){position:relative;z-index:2}
+.testi blockquote{font-family:var(--serif);font-size:28px;line-height:1.2;color:var(--white);letter-spacing:.01em;margin-bottom:22px}
+.testi .name{font-size:16px;font-weight:500;color:var(--white)}
+.testi .role{font-size:14px;color:var(--mist)}
+.bg-1{background:radial-gradient(120% 80% at 30% 20%,#3a2c20 0%,#16120f 55%,#08080a 100%)}
+.bg-2{background:radial-gradient(120% 80% at 70% 15%,#24262d 0%,#121317 55%,#08080a 100%)}
+.bg-3{background:radial-gradient(120% 80% at 50% 10%,#2d2418 0%,#14110c 55%,#08080a 100%)}
+.bg .initial{position:absolute;top:24px;right:24px;font-family:var(--serif);font-size:140px;line-height:.8;color:rgba(255,240,204,.07)}
+
+/* Blog */
+.blog{display:grid;grid-template-columns:repeat(3,1fr);gap:32px 16px}
+.post{display:flex;flex-direction:column;gap:14px}
+.thumb{aspect-ratio:16/10;border-radius:10px;overflow:hidden;background:var(--carbon);border:1px solid var(--graphite);transition:border-color .3s}
+.post:hover .thumb{border-color:var(--slate)}
+.thumb svg{width:100%;height:100%;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.post:hover .thumb svg{transform:scale(1.04)}
+.meta{display:flex;gap:10px;align-items:center;font-size:13px;color:var(--fog)}
+.meta .eyebrow{line-height:1.3}
+.post h3{font-size:20px;line-height:1.38;font-weight:500;letter-spacing:-.03em;color:var(--white)}
+.post .rt{font-size:13px;color:var(--mist)}
+.more{display:flex;justify-content:center;margin-top:48px}
+.link-cu{color:var(--copper);font-size:14px;font-weight:500;border-bottom:1px solid rgba(204,145,102,.35);padding-bottom:2px}
+.link-cu:hover{border-color:var(--copper)}
+
+/* FAQ */
+.faq{max-width:820px;margin:0 auto}
+.faq details{border-bottom:1px solid var(--graphite)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:24px 0;font-size:18px;font-weight:500;color:var(--white);letter-spacing:-.02em}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary .plus{flex:none;width:28px;height:28px;border-radius:9999px;border:1px solid var(--slate);position:relative;transition:transform .3s}
+.faq summary .plus::before,.faq summary .plus::after{content:"";position:absolute;left:50%;top:50%;width:10px;height:1px;background:var(--silver);transform:translate(-50%,-50%)}
+.faq summary .plus::after{transform:translate(-50%,-50%) rotate(90deg)}
+.faq details[open] .plus{transform:rotate(45deg)}
+.faq details p{padding:0 48px 24px 0;color:var(--mist);font-size:16px}
+
+/* CTA */
+.cta{text-align:center;padding:var(--gap) 0}
+.cta h2{font-size:clamp(44px,7vw,88px);line-height:1;max-width:900px;margin:20px auto 24px}
+.cta p{color:var(--fog);font-size:18px;font-weight:300;max-width:520px;margin:0 auto 36px}
+.cta .capture{margin:0 auto}
+
+/* Footer */
+footer{border-top:1px solid var(--graphite);padding:72px 0 40px}
+.foot{display:grid;grid-template-columns:1.6fr repeat(4,1fr);gap:32px}
+.foot h5{font-size:13px;font-weight:600;color:var(--white);margin-bottom:16px}
+.foot ul{list-style:none;display:grid;gap:10px}
+.foot li a{font-size:14px;color:var(--fog);transition:color .2s}
+.foot li a:hover{color:var(--white)}
+.foot .about{font-size:14px;color:var(--ash);max-width:300px;margin-top:16px}
+.legal{margin-top:64px;padding-top:24px;border-top:1px solid var(--graphite);font-size:12px;color:var(--ash);display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.legal p{max-width:760px}
+
+/* Revelado */
+.rv{opacity:0;transform:translateY(16px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .rv{opacity:1;transform:none;transition:none}
+  .chart path.line{animation:none;stroke-dashoffset:0}
+  html{scroll-behavior:auto}
+}
+
+/* Responsive */
+@media (max-width:1080px){
+  .menu{display:none}
+  .burger{display:grid}
+  .hero-grid,.split{grid-template-columns:1fr}
+  .hero{padding-top:128px}
+  .features,.testis,.blog{grid-template-columns:1fr 1fr}
+  .stats{grid-template-columns:1fr 1fr}
+  .stat:nth-child(3){border-left:0}
+  .stat:nth-child(n+3){border-top:1px solid var(--graphite)}
+  .foot{grid-template-columns:1fr 1fr 1fr}
+  .foot > div:first-child{grid-column:1/-1}
+}
+@media (max-width:680px){
+  :root{--gap:104px}
+  .wrap{padding:0 16px}
+  .nav-cta .btn-ghost{display:none}
+  .dash{grid-template-columns:1fr}
+  .features,.testis,.blog{grid-template-columns:1fr}
+  .testi{aspect-ratio:4/4.2}
+  .foot{grid-template-columns:1fr 1fr}
+  .capture{flex-direction:column;align-items:stretch;border-radius:24px;padding:8px}
+  .capture input{padding:8px 12px}
+  .capture .btn{justify-content:center}
+  .faq details p{padding-right:0}
+  .head{margin-bottom:44px}
+}
+.mobile-menu{display:none;position:fixed;inset:68px 0 0;background:var(--obsidian);z-index:49;padding:24px 16px;border-top:1px solid var(--graphite)}
+.mobile-menu.open{display:block}
+.mobile-menu a{display:block;font-family:var(--serif);font-size:34px;color:var(--white);padding:10px 0;border-bottom:1px solid var(--graphite)}
+.mobile-menu .btn{margin-top:28px;font-family:var(--sans);font-size:14px;border:0;display:inline-flex}
+</style>
+</head>
+<body>
+
+<header id="top">
+  <div class="wrap nav">
+    <a href="#" class="logo" aria-label="Bóveda, inicio"><span class="logo-mark">B</span>Bóveda</a>
+    <ul class="menu">
+      <li><a href="#producto">Producto</a></li>
+      <li><a href="#control">Control de gasto</a></li>
+      <li><a href="#clientes">Clientes</a></li>
+      <li><a href="#ideas">Ideas</a></li>
+      <li><a href="#faq">Preguntas</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="#" class="btn btn-ghost">Iniciar sesión</a>
+      <a href="#empezar" class="btn btn-primary">Abrir cuenta</a>
+      <button class="burger" aria-label="Abrir menú" aria-expanded="false" id="burger"><span></span></button>
+    </div>
+  </div>
+</header>
+<nav class="mobile-menu" id="mm" aria-label="Menú móvil">
+  <a href="#producto">Producto</a>
+  <a href="#control">Control de gasto</a>
+  <a href="#clientes">Clientes</a>
+  <a href="#ideas">Ideas</a>
+  <a href="#faq">Preguntas</a>
+  <a href="#" class="btn btn-ghost">Iniciar sesión</a>
+</nav>
+
+<main>
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="rv">
+      <span class="eyebrow cu">Banca para empresas · Nuevo: cuentas en USD</span>
+      <h1 class="serif">El dinero de tu empresa, <em>en un solo libro.</em></h1>
+      <p class="lead">Cuentas, tarjetas corporativas y pagos a proveedores con la precisión de un banco privado y la velocidad de un software moderno.</p>
+      <form class="capture" data-capture>
+        <input type="email" required placeholder="tu@empresa.com" aria-label="Correo de empresa">
+        <button class="btn btn-primary" type="submit">Abrir cuenta</button>
+      </form>
+      <p class="capture-note">Sin comisiones de mantenimiento. Alta en menos de 10 minutos.</p>
+      <p class="capture-ok" role="status">Gracias. Te escribimos en menos de 24 horas.</p>
+    </div>
+
+    <div class="dash rv" aria-label="Vista del panel de Bóveda">
+      <div class="card">
+        <div class="bal-top">
+          <div>
+            <div class="bal-label">Saldo total</div>
+            <div class="bal" id="bal">2.481.902,14 €</div>
+            <div class="bal-delta" id="delta">+12,4 % este mes</div>
+          </div>
+          <div class="periods" role="group" aria-label="Periodo">
+            <button class="pill" aria-pressed="false" data-p="7">7D</button>
+            <button class="pill" aria-pressed="true" data-p="30">1M</button>
+            <button class="pill" aria-pressed="false" data-p="365">1A</button>
+          </div>
+        </div>
+        <svg class="chart" viewBox="0 0 400 150" preserveAspectRatio="none" aria-hidden="true">
+          <defs>
+            <linearGradient id="gild" x1="0" x2="1" y1="0" y2=".25">
+              <stop offset="0" stop-color="#ae9357"/>
+              <stop offset=".4" stop-color="#fff0cc"/>
+              <stop offset=".7" stop-color="#ae9357"/>
+              <stop offset="1" stop-color="#bd9d4f" stop-opacity=".15"/>
+            </linearGradient>
+            <linearGradient id="fade" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0" stop-color="#ae9357" stop-opacity=".16"/>
+              <stop offset="1" stop-color="#ae9357" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <g stroke="#1c1d22" stroke-width="1">
+            <line x1="0" x2="400" y1="37" y2="37"/><line x1="0" x2="400" y1="75" y2="75"/><line x1="0" x2="400" y1="113" y2="113"/>
+          </g>
+          <path id="area" fill="url(#fade)" d=""/>
+          <path id="line" class="line" d=""/>
+        </svg>
+        <div class="limit">
+          <div class="limit-row"><span>Límite mensual · Marketing</span><b>31.000 / 50.000 €</b></div>
+          <div class="bar"><i></i></div>
+        </div>
+      </div>
+
+      <div class="tx">
+        <h4><span>Movimientos</span><span>Hoy</span></h4>
+        <ul>
+          <li><span class="av">NH</span><span class="who"><b>Nube Hosting</b><small>Tarjeta ··4021</small></span><span class="amt">−1.240,00 €</span></li>
+          <li><span class="av">CL</span><span class="who"><b>Cliente Lumen S.L.</b><small>Transferencia</small></span><span class="amt in">+18.500,00 €</span></li>
+          <li><span class="av">RC</span><span class="who"><b>Rutas Cargo</b><small>Proveedor</small></span><span class="amt">−4.310,55 €</span></li>
+          <li><span class="av">PS</span><span class="who"><b>Papelería Sur</b><small>Tarjeta ··7790</small></span><span class="amt">−86,20 €</span></li>
+          <li><span class="av">VA</span><span class="who"><b>Viajes Alba</b><small>Tarjeta ··4021</small></span><span class="amt">−612,00 €</span></li>
+          <li><span class="av">AT</span><span class="who"><b>Agencia Tributaria</b><small>Modelo 303</small></span><span class="amt">−9.874,10 €</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOGOS -->
+<section class="logos">
+  <div class="wrap">
+    <p>Más de 10.000 empresas guardan su dinero en Bóveda</p>
+    <div class="logo-row" aria-hidden="true">
+      <span>norteña</span><span>Casa Ámbar</span><span>FRÍO&amp;CO</span><span>Talleres Vela</span><span>orbe.studio</span><span>Molino</span>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTO -->
+<section class="block" id="producto">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="eyebrow">Producto</span>
+      <h2 class="serif">Todo lo que mueve tu dinero, sin hojas de cálculo.</h2>
+      <p>Una plataforma para cobrar, pagar y controlar. Conciliación automática con tu contabilidad desde el primer día.</p>
+    </div>
+    <div class="features">
+      <article class="feat rv">
+        <div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18M7 15h3"/></svg></div>
+        <h3>Tarjetas corporativas ilimitadas</h3>
+        <p>Físicas y virtuales, una por empleado, proveedor o suscripción. Bloquéalas en un clic.</p>
+        <div class="mini"><span>Cashback</span><b>hasta 1,5 %</b></div>
+      </article>
+      <article class="feat rv">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/><circle cx="18" cy="17" r="2"/></svg></div>
+        <h3>Cuentas en euros y dólares</h3>
+        <p>IBAN español y cuenta en USD para cobrar a clientes internacionales sin intermediarios.</p>
+        <div class="mini"><span>Rendimiento del saldo</span><b>3,1 % TAE</b></div>
+      </article>
+      <article class="feat rv">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M5 12l4 4L19 6"/></svg></div>
+        <h3>Pagos con doble aprobación</h3>
+        <p>Define quién propone y quién aprueba. Cada euro deja rastro en tu libro mayor.</p>
+        <div class="mini"><span>Tiempo de SEPA Instant</span><b>&lt; 10 s</b></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CONTROL -->
+<section class="block" id="control">
+  <div class="wrap split">
+    <div class="rv">
+      <span class="eyebrow">Control de gasto</span>
+      <h2 class="serif">Límites que se cumplen solos.</h2>
+      <p>Asigna presupuestos por equipo, proveedor o proyecto. Bóveda bloquea lo que se sale del plan y te avisa antes de que ocurra.</p>
+      <ul class="checks">
+        <li>Límites diarios, mensuales o por transacción</li>
+        <li>Categorías de comercio permitidas y bloqueadas</li>
+        <li>Recibos capturados por foto o correo, sin perseguir a nadie</li>
+      </ul>
+    </div>
+    <div class="table-card rv">
+      <h4><span>Límites de gasto</span><button class="pill" type="button">+ Nuevo límite</button></h4>
+      <table>
+        <thead><tr><th>Equipo</th><th>Titular</th><th class="r">Gastado</th><th class="r">Límite</th><th>Estado</th></tr></thead>
+        <tbody>
+          <tr><td>Marketing<span class="sub">Mensual</span></td><td>Lucía M.</td><td class="r">31.000 €</td><td class="r">50.000 €</td><td><span class="status on">Activo</span></td></tr>
+          <tr><td>Ingeniería<span class="sub">Mensual</span></td><td>Andrés P.</td><td class="r">12.480 €</td><td class="r">20.000 €</td><td><span class="status on">Activo</span></td></tr>
+          <tr><td>Viajes<span class="sub">Trimestral</span></td><td>Sara G.</td><td class="r">8.920 €</td><td class="r">15.000 €</td><td><span class="status on">Activo</span></td></tr>
+          <tr><td>Eventos<span class="sub">Por proyecto</span></td><td>Javier R.</td><td class="r">0 €</td><td class="r">6.000 €</td><td><span class="status off">En pausa</span></td></tr>
+          <tr><td>Software<span class="sub">Mensual</span></td><td>Marta L.</td><td class="r">3.214 €</td><td class="r">4.000 €</td><td><span class="status on">Activo</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="block">
+  <div class="wrap">
+    <div class="stats rv">
+      <div class="stat"><div class="n" data-count="10000" data-suffix="+">10.000+</div><div class="c">empresas</div></div>
+      <div class="stat"><div class="n" data-count="4" data-prefix="" data-suffix=" mil M€">4 mil M€</div><div class="c">procesados al año</div></div>
+      <div class="stat"><div class="n" data-count="100" data-suffix=" %">100 %</div><div class="c">fondos protegidos</div></div>
+      <div class="stat"><div class="n" data-count="24" data-suffix="/7">24/7</div><div class="c">soporte humano</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section class="block" id="clientes">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="eyebrow">Clientes</span>
+      <h2 class="serif">Quien lleva las cuentas, lo nota.</h2>
+    </div>
+    <div class="testis">
+      <figure class="testi rv">
+        <div class="bg bg-1"><span class="initial">E</span></div>
+        <blockquote>“Cerramos el mes en dos días, no en dos semanas.”</blockquote>
+        <figcaption><div class="name">Elena Ruiz</div><div class="role">Directora financiera, Casa Ámbar</div></figcaption>
+      </figure>
+      <figure class="testi rv">
+        <div class="bg bg-2"><span class="initial">D</span></div>
+        <blockquote>“Cada tarjeta tiene su límite. Se acabaron las sorpresas.”</blockquote>
+        <figcaption><div class="name">Diego Ferrer</div><div class="role">Fundador, Talleres Vela</div></figcaption>
+      </figure>
+      <figure class="testi rv">
+        <div class="bg bg-3"><span class="initial">N</span></div>
+        <blockquote>“Cobramos en dólares sin perder un 3 % por el camino.”</blockquote>
+        <figcaption><div class="name">Nuria Soler</div><div class="role">COO, orbe.studio</div></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section class="block" id="ideas">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="eyebrow">Ideas</span>
+      <h2 class="serif">Notas para quien firma los pagos.</h2>
+    </div>
+    <div class="blog">
+      <a href="#" class="post rv">
+        <div class="thumb"><svg viewBox="0 0 320 200" aria-hidden="true"><rect width="320" height="200" fill="#121317"/><g fill="none" stroke="#2e3038"><rect x="60" y="30" width="200" height="140"/><rect x="85" y="50" width="150" height="100"/><rect x="110" y="70" width="100" height="60"/><rect x="135" y="88" width="50" height="24"/></g><circle cx="160" cy="100" r="4" fill="#cc9166"/></svg></div>
+        <div class="meta"><span class="eyebrow cu">Tesorería</span><span>·</span><span>2 oct 2026</span></div>
+        <h3>Cómo salir del laberinto del flujo de caja en tu primer año</h3>
+        <span class="rt">6 min de lectura</span>
+      </a>
+      <a href="#" class="post rv">
+        <div class="thumb"><svg viewBox="0 0 320 200" aria-hidden="true"><rect width="320" height="200" fill="#121317"/><g stroke="#2e3038"><line x1="40" x2="280" y1="160" y2="160"/></g><g fill="none" stroke="#464853"><rect x="70" y="110" width="30" height="50"/><rect x="115" y="90" width="30" height="70"/><rect x="160" y="70" width="30" height="90"/></g><rect x="205" y="40" width="30" height="120" fill="none" stroke="#cc9166"/></svg></div>
+        <div class="meta"><span class="eyebrow cu">Control de gasto</span><span>·</span><span>24 sep 2026</span></div>
+        <h3>Cinco límites de gasto que toda empresa de 20 personas necesita</h3>
+        <span class="rt">4 min de lectura</span>
+      </a>
+      <a href="#" class="post rv">
+        <div class="thumb"><svg viewBox="0 0 320 200" aria-hidden="true"><rect width="320" height="200" fill="#121317"/><g fill="none" stroke="#2e3038"><circle cx="130" cy="100" r="56"/><circle cx="190" cy="100" r="56"/></g><path d="M160 53a56 56 0 0 1 0 94a56 56 0 0 1 0-94z" fill="none" stroke="#cc9166"/></svg></div>
+        <div class="meta"><span class="eyebrow cu">Internacional</span><span>·</span><span>11 sep 2026</span></div>
+        <h3>Facturar en dólares desde España: lo que nadie te cuenta</h3>
+        <span class="rt">8 min de lectura</span>
+      </a>
+    </div>
+    <div class="more"><a href="#" class="link-cu">Ver todas las notas →</a></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="block" id="faq">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="eyebrow">Preguntas</span>
+      <h2 class="serif">Lo que suelen preguntarnos.</h2>
+    </div>
+    <div class="faq rv">
+      <details><summary>¿Está protegido mi dinero?<span class="plus"></span></summary><p>Los fondos se depositan en entidades de crédito reguladas por el Banco de España y están cubiertos por el Fondo de Garantía de Depósitos hasta 100.000 € por titular y entidad. Repartimos saldos superiores entre varias entidades.</p></details>
+      <details><summary>¿Cuánto cuesta?<span class="plus"></span></summary><p>El plan Esencial no tiene cuota. El plan Empresa cuesta 49 € al mes e incluye cuentas en USD, aprobaciones multinivel y soporte prioritario.</p></details>
+      <details><summary>¿Se conecta con mi software de contabilidad?<span class="plus"></span></summary><p>Sí. Sincronizamos movimientos, recibos y categorías con los principales programas de contabilidad y exportamos a cualquier formato contable estándar.</p></details>
+      <details><summary>¿Cuánto tarda el alta?<span class="plus"></span></summary><p>La mayoría de empresas completa la verificación en menos de 10 minutos. Si necesitamos documentación adicional, te avisamos el mismo día.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="empezar">
+  <div class="wrap rv">
+    <span class="eyebrow cu">Empieza hoy</span>
+    <h2 class="serif">Pon orden en tu dinero.</h2>
+    <p>Abre tu cuenta en minutos. Sin permanencia, sin comisiones ocultas.</p>
+    <form class="capture" data-capture>
+      <input type="email" required placeholder="tu@empresa.com" aria-label="Correo de empresa">
+      <button class="btn btn-primary" type="submit">Abrir cuenta</button>
+    </form>
+    <p class="capture-ok" role="status">Gracias. Te escribimos en menos de 24 horas.</p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a href="#" class="logo"><span class="logo-mark">B</span>Bóveda</a>
+        <p class="about">Banca para empresas que prefieren saber dónde está cada euro.</p>
+      </div>
+      <div><h5>Producto</h5><ul><li><a href="#">Cuentas</a></li><li><a href="#">Tarjetas</a></li><li><a href="#">Pagos</a></li><li><a href="#">Control de gasto</a></li></ul></div>
+      <div><h5>Empresa</h5><ul><li><a href="#">Sobre nosotros</a></li><li><a href="#">Empleo</a></li><li><a href="#">Prensa</a></li><li><a href="#">Contacto</a></li></ul></div>
+      <div><h5>Recursos</h5><ul><li><a href="#">Ideas</a></li><li><a href="#">Guías</a></li><li><a href="#">Estado del servicio</a></li><li><a href="#">Seguridad</a></li></ul></div>
+      <div><h5>Legal</h5><ul><li><a href="#">Privacidad</a></li><li><a href="#">Cookies</a></li><li><a href="#">Términos</a></li><li><a href="#">Aviso legal</a></li></ul></div>
+    </div>
+    <div class="legal">
+      <p>Bóveda es una empresa tecnológica, no una entidad de crédito. Los servicios de pago y depósito son prestados por entidades autorizadas. Sitio de demostración.</p>
+      <span>© 2026 Bóveda</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Cabecera al hacer scroll
+const header=document.getElementById('top');
+const onScroll=()=>header.classList.toggle('scrolled',scrollY>12);
+addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+// Menú móvil
+const burger=document.getElementById('burger'),mm=document.getElementById('mm');
+burger.addEventListener('click',()=>{const o=mm.classList.toggle('open');burger.setAttribute('aria-expanded',o);document.body.style.overflow=o?'hidden':''});
+mm.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mm.classList.remove('open');burger.setAttribute('aria-expanded',false);document.body.style.overflow=''}));
+
+// Revelado
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(el.parentElement.children.length>1?[...el.parentElement.children].indexOf(el)*70:0)+'ms';io.observe(el)});
+
+// Gráfico
+const data={
+  7:{v:[62,58,64,61,70,68,76,74,80,78,84],bal:'2.481.902,14 €',d:'+3,1 % esta semana'},
+  30:{v:[40,46,42,50,47,55,52,60,58,66,63,70,74,72,80,86],bal:'2.481.902,14 €',d:'+12,4 % este mes'},
+  365:{v:[18,22,20,28,26,34,40,37,46,52,49,58,64,61,72,78,84,90],bal:'2.481.902,14 €',d:'+148 % este año'}
+};
+function build(v){
+  const W=400,H=150,pad=12,max=100;
+  const pts=v.map((y,i)=>[i*(W/(v.length-1)),H-pad-(y/max)*(H-pad*2)]);
+  let d=`M${pts[0][0]},${pts[0][1]}`;
+  for(let i=1;i<pts.length;i++){const [x0,y0]=pts[i-1],[x1,y1]=pts[i],cx=(x0+x1)/2;d+=` C${cx},${y0} ${cx},${y1} ${x1},${y1}`}
+  return {d,a:d+` L${W},${H} L0,${H} Z`};
+}
+const line=document.getElementById('line'),area=document.getElementById('area');
+function setP(p){
+  const {d,a}=build(data[p].v);line.setAttribute('d',d);area.setAttribute('d',a);
+  document.getElementById('delta').textContent=data[p].d;
+  document.querySelectorAll('.periods .pill').forEach(b=>b.setAttribute('aria-pressed',b.dataset.p==p));
+  line.style.animation='none';line.getBoundingClientRect();line.style.animation='';
+}
+document.querySelectorAll('.periods .pill').forEach(b=>b.addEventListener('click',()=>setP(b.dataset.p)));
+setP(30);
+
+// Formularios
+document.querySelectorAll('[data-capture]').forEach(f=>f.addEventListener('submit',e=>{
+  e.preventDefault();const ok=f.parentElement.querySelector('.capture-ok');
+  f.style.display='none';const note=f.nextElementSibling;if(note&&note.classList.contains('capture-note'))note.style.display='none';
+  ok.style.display='block';
+}));
+</script>
+</body>
+</html>

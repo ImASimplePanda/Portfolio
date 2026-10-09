@@ -1,0 +1,35 @@
+{
+  "_nota": "Opiniones DE EJEMPLO. Publicar opiniones inventadas como reales es ilegal (Directiva Ómnibus / Ley 4/2022). Sustitúyelas por reseñas reales con su fuente, o pon \"visible\": false.",
+  "visible": true,
+  "ejemplo": true,
+  "fuenteUrl": "",
+  "lista": [
+    {
+      "autor": "Claudia M.",
+      "origen": { "es": "Madrid", "en": "Madrid" },
+      "experiencia": { "es": "Bautizo de buceo", "en": "Discover Scuba Diving" },
+      "texto": {
+        "es": "Tenía miedo de agobiarme con la mascarilla y Laura no se separó de mí ni un segundo. Vimos un pulpo a cinco metros. Repetiré.",
+        "en": "I was afraid I'd panic with the mask and Laura never left my side. We saw an octopus at five metres. I'll be back."
+      }
+    },
+    {
+      "autor": "Tom & Ellie",
+      "origen": { "es": "Bristol, Reino Unido", "en": "Bristol, UK" },
+      "experiencia": { "es": "Curso Open Water", "en": "Open Water course" },
+      "texto": {
+        "es": "Grupos de cuatro, material nuevo y explicaciones muy claras en inglés. Sacarse el título en El Cabrón es un lujo.",
+        "en": "Groups of four, new gear and very clear explanations. Getting certified at El Cabrón is a treat."
+      }
+    },
+    {
+      "autor": "Jürgen K.",
+      "origen": { "es": "Colonia, Alemania", "en": "Cologne, Germany" },
+      "experiencia": { "es": "Inmersiones guiadas", "en": "Guided dives" },
+      "texto": {
+        "es": "Briefings serios, horarios puntuales y un angelote enorme en la arena. Exactamente lo que buscaba.",
+        "en": "Serious briefings, punctual schedule and a huge angel shark on the sand. Exactly what I was looking for."
+      }
+    }
+  ]
+}

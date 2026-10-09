@@ -1,0 +1,45 @@
+{
+  "_nota": "DATOS DE DEMOSTRACIÓN. Todo lo de este archivo es inventado: sustitúyelo por los datos reales antes de publicar y pon \"demo\": false.",
+  "demo": true,
+  "nombre": "Hondura",
+  "nombreCompleto": "Hondura · Centro de Buceo",
+  "dominio": "https://hondurabuceo.es",
+  "fundado": 2014,
+  "agencia": "PADI",
+  "certificacionCentro": { "es": "Centro PADI 5 Estrellas", "en": "PADI 5 Star Dive Center" },
+  "contacto": {
+    "email": "reservas@hondurabuceo.es",
+    "telefono": "+34 928 000 000",
+    "whatsapp": "34600000000",
+    "whatsappVisible": "+34 600 00 00 00"
+  },
+  "direccion": {
+    "calle": "Paseo Marítimo de Arinaga, s/n",
+    "cp": "35118",
+    "localidad": "Playa de Arinaga, Agüimes",
+    "provincia": "Las Palmas",
+    "region": "Gran Canaria",
+    "pais": "ES",
+    "lat": 27.8635,
+    "lon": -15.3905
+  },
+  "horario": {
+    "es": "Todos los días, de 8:30 a 18:00",
+    "en": "Every day, 8:30 am to 6 pm",
+    "schema": ["Mo-Su 08:30-18:00"]
+  },
+  "idiomas": { "es": "Español, inglés, alemán e italiano", "en": "Spanish, English, German and Italian" },
+  "redes": [
+    { "red": "Instagram", "url": "https://www.instagram.com/" },
+    { "red": "Facebook", "url": "https://www.facebook.com/" },
+    { "red": "YouTube", "url": "https://www.youtube.com/" }
+  ],
+  "titular": {
+    "razonSocial": "Hondura Buceo Arinaga S.L.",
+    "cif": "B00000000",
+    "domicilio": "Paseo Marítimo de Arinaga, s/n, 35118 Agüimes, Las Palmas",
+    "registro": "Registro Mercantil de Las Palmas, tomo 0000, folio 00, hoja GC-00000",
+    "emailLegal": "privacidad@hondurabuceo.es"
+  },
+  "agua": { "temperaturaInvierno": 19, "temperaturaVerano": 24 }
+}

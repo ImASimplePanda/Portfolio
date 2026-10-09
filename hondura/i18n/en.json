@@ -1,0 +1,141 @@
+{
+  "lang": "en",
+  "locale": "en_GB",
+  "meta": {
+    "title": "Hondura · Dive centre in Arinaga, Gran Canaria",
+    "description": "Try dives, guided dives and PADI courses in the El Cabrón reserve, Arinaga (Gran Canaria). Small groups, certified instructors and insurance included.",
+    "ogAlt": "Dive boat moored beside a volcanic cliff, with two divers descending below the surface"
+  },
+  "skip": "Skip to content",
+  "demo": "Demo · sample data",
+  "nav": {
+    "label": "Main",
+    "menu": "Menu",
+    "cerrar": "Close menu",
+    "experiencias": "Experiences",
+    "puntos": "Dive sites",
+    "seguridad": "Safety",
+    "equipo": "Team",
+    "faq": "FAQ",
+    "reservar": "Book",
+    "idioma": "Español",
+    "idiomaCorto": "ES",
+    "idiomaLabel": "Leer esta página en español"
+  },
+  "hud": { "prof": "Depth", "presion": "Pressure", "temp": "Water", "zonas": ["Surface", "Seagrass", "Blue", "Wreck", "Bottom"] },
+  "hero": {
+    "eyebrow": "Arinaga · Gran Canaria · 0 m",
+    "titulo": "Hondura",
+    "valor": "Dive the volcanic coast of Gran Canaria with an instructor by your side and groups of four.",
+    "reservar": "Book a dive",
+    "ver": "See the dives",
+    "scroll": "Descend",
+    "alt": "Dive boat moored beside a volcanic cliff at sunset; below the surface, two divers descend through rays of light"
+  },
+  "tramos": {
+    "sebadal": { "prof": "−8 m", "titulo": "The light comes in", "texto": "At eight metres the water turns turquoise and the seagrass meadow sways with the swell.", "alt": "Seagrass meadow with a school of silver fish, a parrotfish and a diver in the distance under sunbeams" },
+    "pecio": { "prof": "−20 m", "titulo": "Deep blue", "texto": "Further down the light fades. Wrecks, rays and the angel shark appear, still on the sand.", "alt": "Life-covered wreck in blue twilight, with an angel shark on the sand, a ray and a diver holding a torch" },
+    "fondo": { "prof": "−36 m", "titulo": "The bottom", "texto": "Down here you only see what your torch lights up. Time to decide when you're coming down." }
+  },
+  "experiencias": {
+    "kicker": "−8 m · Experiences",
+    "titulo": "Choose how deep you go",
+    "intro": "From your very first breath underwater to the 30-metre wreck. Always with gear, insurance and a professional with you.",
+    "duracion": "Duration",
+    "profMax": "Max. depth",
+    "nivel": "Level",
+    "incluye": "Includes",
+    "desde": "from",
+    "superficie": "Surface",
+    "reservar": "Book",
+    "destacada": "Most popular",
+    "moneda": "€"
+  },
+  "puntos": {
+    "kicker": "−12 m · Dive sites",
+    "titulo": "Where we go in",
+    "intro": "Five sites around the island, chosen every morning according to wind and swell. Tap one to see its details.",
+    "prof": "Depth",
+    "nivel": "Level",
+    "acceso": "Access",
+    "fauna": "What you'll see",
+    "mapa": "Illustrated map of Gran Canaria with the dive sites",
+    "centro": "Hondura centre",
+    "norte": "N"
+  },
+  "seguridad": {
+    "kicker": "−22 m · Safety and gear",
+    "titulo": "Serious about the serious part",
+    "intro": "Diving is a sport with risks. That's why what you don't see —ratios, servicing, protocols— is what we care about most.",
+    "certTitulo": "Centre certifications",
+    "alt": "An instructor adjusts a student's mask on the boat deck before the dive"
+  },
+  "equipo": {
+    "kicker": "−26 m · The team",
+    "titulo": "Who dives with you",
+    "titulacion": "Certification",
+    "idiomas": "Languages",
+    "inmersiones": "logged dives"
+  },
+  "opiniones": {
+    "kicker": "−28 m · Reviews",
+    "titulo": "What they say when they surface",
+    "ejemplo": "Sample reviews"
+  },
+  "faq": {
+    "kicker": "−34 m · FAQ",
+    "titulo": "Before you go down"
+  },
+  "reserva": {
+    "kicker": "−40 m · Booking",
+    "titulo": "Book your dive",
+    "intro": "Tell us what you'd like to do and we'll confirm your place within 24 hours. No upfront payment.",
+    "experiencia": "Experience",
+    "elige": "Choose an option",
+    "fecha": "Preferred date",
+    "personas": "Number of people",
+    "nivel": "Your level",
+    "niveles": ["Never dived", "Done a try dive", "Open Water or equivalent", "Advanced or higher"],
+    "nombre": "Full name",
+    "email": "Email",
+    "telefono": "Phone (optional)",
+    "mensaje": "Message (optional)",
+    "mensajePh": "Questions, sizes, if anyone wears glasses…",
+    "privacidad": "I have read the <a href=\"{priv}\">privacy policy</a> and agree to my data being used to reply to my booking.",
+    "obligatorio": "required",
+    "enviar": "Send request",
+    "enviando": "Sending…",
+    "ok": "Got it! We'll write back within 24 hours to confirm your place.",
+    "fallo": "We couldn't send the form. Please try again or message us on WhatsApp.",
+    "errores": "Please check these fields:",
+    "err": {
+      "requerido": "This field is required.",
+      "email": "Enter a valid email, for example name@email.com.",
+      "fecha": "Choose a date from tomorrow onwards.",
+      "personas": "Enter between 1 and 8 people.",
+      "privacidad": "We need your consent to be able to reply."
+    },
+    "o": "Rather talk?",
+    "whatsapp": "Message us on WhatsApp",
+    "whatsappTexto": "Hi, I'd like to book a dive with Hondura.",
+    "llamar": "Call",
+    "honey": "Do not fill in this field"
+  },
+  "pie": {
+    "direccion": "Find us",
+    "horario": "Opening hours",
+    "contacto": "Contact",
+    "redes": "Social",
+    "legal": "Legal notice",
+    "privacidad": "Privacy",
+    "cookies": "This website uses no cookies or analytics.",
+    "subir": "Back to the surface",
+    "derechos": "All rights reserved."
+  },
+  "paginas": {
+    "aviso": { "slug": "legal-notice/", "titulo": "Legal notice" },
+    "privacidad": { "slug": "privacy/", "titulo": "Privacy policy" },
+    "gracias": { "slug": "thanks/", "titulo": "Request received", "texto": "Thank you. We've received your request and will write back within 24 hours to confirm your place.", "volver": "Back to home" },
+    "actualizado": "Last updated"
+  }
+}

@@ -1,0 +1,137 @@
+[
+  {
+    "id": "el-cabron",
+    "nombre": "El Cabrón",
+    "zona": {
+      "es": "Arinaga · a 5 min del centro",
+      "en": "Arinaga · 5 min from the centre"
+    },
+    "lat": 27.872,
+    "lon": -15.381,
+    "profundidad": [
+      5,
+      25
+    ],
+    "nivel": {
+      "es": "Todos los niveles",
+      "en": "All levels"
+    },
+    "acceso": {
+      "es": "Costa y barco",
+      "en": "Shore and boat"
+    },
+    "fauna": {
+      "es": "Arcos y cuevas volcánicas, angelotes en la arena, rayas, chuchos y bancos de roncadores.",
+      "en": "Volcanic arches and caves, angel sharks on the sand, rays, stingrays and schools of grunts."
+    },
+    "etiqueta": "izq-arriba"
+  },
+  {
+    "id": "risco-verde",
+    "nombre": "Risco Verde",
+    "zona": {
+      "es": "Arinaga",
+      "en": "Arinaga"
+    },
+    "lat": 27.853,
+    "lon": -15.392,
+    "profundidad": [
+      3,
+      12
+    ],
+    "nivel": {
+      "es": "Bautizos e iniciación",
+      "en": "Try dives and beginners"
+    },
+    "acceso": {
+      "es": "Costa",
+      "en": "Shore"
+    },
+    "fauna": {
+      "es": "Pradera de seba, peces trompeta, pulpos, sepias y viejas entre las rocas.",
+      "en": "Seagrass meadow, trumpetfish, octopus, cuttlefish and parrotfish among the rocks."
+    },
+    "etiqueta": "izq-abajo"
+  },
+  {
+    "id": "cermona",
+    "nombre": "Pecio Cermona II",
+    "zona": {
+      "es": "Pasito Blanco · en barco",
+      "en": "Pasito Blanco · by boat"
+    },
+    "lat": 27.748,
+    "lon": -15.618,
+    "profundidad": [
+      16,
+      22
+    ],
+    "nivel": {
+      "es": "Advanced",
+      "en": "Advanced"
+    },
+    "acceso": {
+      "es": "Barco",
+      "en": "Boat"
+    },
+    "fauna": {
+      "es": "Un pesquero hundido colonizado por morenas, meros, rayas y nubes de catalufas.",
+      "en": "A sunken fishing vessel colonised by morays, groupers, rays and clouds of bigeyes."
+    },
+    "etiqueta": "abajo"
+  },
+  {
+    "id": "la-catedral",
+    "nombre": "La Catedral",
+    "zona": {
+      "es": "La Isleta · en barco",
+      "en": "La Isleta · by boat"
+    },
+    "lat": 28.168,
+    "lon": -15.428,
+    "profundidad": [
+      18,
+      35
+    ],
+    "nivel": {
+      "es": "Advanced · experiencia en profundidad",
+      "en": "Advanced · deep experience"
+    },
+    "acceso": {
+      "es": "Barco",
+      "en": "Boat"
+    },
+    "fauna": {
+      "es": "Una gran bóveda de lava con chimeneas de luz, barracudas y algún tiburón ángel.",
+      "en": "A great lava vault with light chimneys, barracudas and the odd angel shark."
+    },
+    "etiqueta": "izq"
+  },
+  {
+    "id": "sardina",
+    "nombre": "Sardina del Norte",
+    "zona": {
+      "es": "Gáldar · salida especial",
+      "en": "Gáldar · special trip"
+    },
+    "lat": 28.151,
+    "lon": -15.7,
+    "profundidad": [
+      3,
+      20
+    ],
+    "nivel": {
+      "es": "Open Water",
+      "en": "Open Water"
+    },
+    "acceso": {
+      "es": "Costa",
+      "en": "Shore"
+    },
+    "fauna": {
+      "es": "Paredes con nudibranquios, bancos de salemas y sargos, y agua fría y limpia del norte.",
+      "en": "Walls with nudibranchs, schools of salema and bream, and the clear, cooler water of the north."
+    },
+    "etiqueta": "der"
+  }
+]

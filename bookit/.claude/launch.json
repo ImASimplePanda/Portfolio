@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "bookit",
+      "runtimeExecutable": "C:/xampp/php/php.exe",
+      "runtimeArgs": ["-S", "localhost:8080", "-t", "C:/Users/yere_/Desktop/Paginas/webs/bookit", "C:/Users/yere_/Desktop/Paginas/webs/bookit/router.php"],
+      "port": 8080
+    }
+  ]
+}

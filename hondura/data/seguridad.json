@@ -1,0 +1,26 @@
+{
+  "cifras": [
+    { "valor": "4", "prefijo": "1:", "texto": { "es": "alumnos por instructor como máximo en cursos y bautizos", "en": "students per instructor at most on courses and try dives" } },
+    { "valor": "6", "prefijo": "1:", "texto": { "es": "buceadores por guía en inmersiones guiadas", "en": "divers per guide on guided dives" } },
+    { "valor": "2014", "prefijo": "", "texto": { "es": "buceando en Arinaga sin un solo accidente grave", "en": "diving in Arinaga without a single serious accident" } },
+    { "valor": "100", "prefijo": "", "sufijo": "%", "texto": { "es": "del equipo con titulación de primeros auxilios y oxigenoterapia", "en": "of the team trained in first aid and oxygen provision" } }
+  ],
+  "puntos": [
+    {
+      "t": { "es": "Instructores titulados", "en": "Certified instructors" },
+      "d": { "es": "Todo el equipo es profesional PADI en activo, con seguro de responsabilidad civil y reciclaje anual.", "en": "The whole team are active PADI professionals, with liability insurance and yearly refreshers." }
+    },
+    {
+      "t": { "es": "Material revisado", "en": "Serviced equipment" },
+      "d": { "es": "Reguladores revisados cada año por un taller oficial, botellas con prueba hidráulica en vigor y compresor con análisis de aire trimestral.", "en": "Regulators serviced yearly by an authorised workshop, tanks with valid hydrostatic tests and a compressor with quarterly air analysis." }
+    },
+    {
+      "t": { "es": "Seguro incluido", "en": "Insurance included" },
+      "d": { "es": "Todas las experiencias incluyen seguro de accidentes de buceo para cada participante.", "en": "Every experience includes diving accident insurance for each participant." }
+    },
+    {
+      "t": { "es": "Oxígeno y protocolo", "en": "Oxygen and protocol" },
+      "d": { "es": "Kit de oxígeno y botiquín en el barco y en cada salida, y un plan de emergencia coordinado con la cámara hiperbárica de Las Palmas.", "en": "Oxygen kit and first-aid box on the boat and on every trip, and an emergency plan coordinated with the hyperbaric chamber in Las Palmas." }
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+# Bookit · Apache / Hostinger
+Options -Indexes
+DirectoryIndex index.php
+ErrorDocument 404 /404.php
+
+RewriteEngine On
+# Carpetas internas fuera del alcance público
+RewriteRule ^(data|inc|_src)(/|$) - [F,L]
+RewriteRule ^(config|config\.local|router)\.php$ - [F,L]
+RewriteRule ^(PRODUCT|DESIGN|README)\.md$ - [F,L]
+RewriteRule ^\.impeccable - [F,L]
+
+RewriteRule ^catalogo/?$ catalogo.php [L,QSA]
+RewriteRule ^catalogo/([a-z]+)/?$ catalogo.php?col=$1 [L,QSA]
+RewriteRule ^libro/([a-z0-9-]+)/?$ libro.php?l=$1 [L,QSA]
+RewriteRule ^pedido/([A-Za-z0-9]+)/?$ pedido.php?c=$1 [L,QSA]
+RewriteRule ^(cesta|entrar|cuenta|deseados|salir|creditos)/?$ $1.php [L,QSA]
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.(woff2|webp|avif|png|svg|ico)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.(css|js)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+</IfModule>
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json image/svg+xml
+</IfModule>
+AddType font/woff2 .woff2
+AddType image/webp .webp

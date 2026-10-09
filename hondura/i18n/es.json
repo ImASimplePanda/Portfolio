@@ -1,0 +1,141 @@
+{
+  "lang": "es",
+  "locale": "es_ES",
+  "meta": {
+    "title": "Hondura · Centro de buceo en Arinaga, Gran Canaria",
+    "description": "Bautizos de buceo, inmersiones guiadas y cursos PADI en la reserva de El Cabrón, Arinaga (Gran Canaria). Grupos pequeños, instructores titulados y seguro incluido.",
+    "ogAlt": "Barco de buceo fondeado junto a un acantilado volcánico, con dos buceadores descendiendo bajo la superficie"
+  },
+  "skip": "Saltar al contenido",
+  "demo": "Demo · datos ficticios",
+  "nav": {
+    "label": "Principal",
+    "menu": "Menú",
+    "cerrar": "Cerrar menú",
+    "experiencias": "Experiencias",
+    "puntos": "Puntos de buceo",
+    "seguridad": "Seguridad",
+    "equipo": "Equipo",
+    "faq": "Preguntas",
+    "reservar": "Reservar",
+    "idioma": "English",
+    "idiomaCorto": "EN",
+    "idiomaLabel": "Read this page in English"
+  },
+  "hud": { "prof": "Prof.", "presion": "Presión", "temp": "Agua", "zonas": ["Superficie", "Sebadal", "Azul", "Pecio", "Fondo"] },
+  "hero": {
+    "eyebrow": "Arinaga · Gran Canaria · 0 m",
+    "titulo": "Hondura",
+    "valor": "Bucea la costa volcánica de Gran Canaria con un instructor a tu lado y grupos de cuatro.",
+    "reservar": "Reservar inmersión",
+    "ver": "Ver inmersiones",
+    "scroll": "Desciende",
+    "alt": "Barco de buceo fondeado junto a un acantilado volcánico al atardecer; bajo la superficie, dos buceadores descienden entre rayos de luz"
+  },
+  "tramos": {
+    "sebadal": { "prof": "−8 m", "titulo": "Entra la luz", "texto": "A ocho metros el agua se vuelve turquesa y la pradera de seba se mueve con el mar de fondo.", "alt": "Pradera de seba con un banco de peces plateados, una vieja y un buceador al fondo bajo los rayos del sol" },
+    "pecio": { "prof": "−20 m", "titulo": "Azul profundo", "texto": "Más abajo la luz se apaga. Aparecen los pecios, las rayas y el angelote, quieto sobre la arena.", "alt": "Pecio cubierto de vida en penumbra azul, con un angelote sobre la arena, una raya y un buceador con linterna" },
+    "fondo": { "prof": "−36 m", "titulo": "El fondo", "texto": "Aquí abajo solo se ve lo que ilumina tu linterna. Es el momento de decidir cuándo bajas tú." }
+  },
+  "experiencias": {
+    "kicker": "−8 m · Experiencias",
+    "titulo": "Elige hasta dónde bajas",
+    "intro": "Desde tu primera respiración bajo el agua hasta los 30 metros del pecio. Todo con equipo, seguro y un profesional contigo.",
+    "duracion": "Duración",
+    "profMax": "Prof. máxima",
+    "nivel": "Nivel",
+    "incluye": "Incluye",
+    "desde": "desde",
+    "superficie": "Superficie",
+    "reservar": "Reservar",
+    "destacada": "La más pedida",
+    "moneda": "€"
+  },
+  "puntos": {
+    "kicker": "−12 m · Puntos de buceo",
+    "titulo": "Dónde nos metemos",
+    "intro": "Cinco puntos de la isla, elegidos cada mañana según el viento y el mar de fondo. Pulsa uno para ver su ficha.",
+    "prof": "Profundidad",
+    "nivel": "Nivel",
+    "acceso": "Acceso",
+    "fauna": "Qué se ve",
+    "mapa": "Mapa ilustrado de Gran Canaria con los puntos de buceo",
+    "centro": "Centro Hondura",
+    "norte": "N"
+  },
+  "seguridad": {
+    "kicker": "−22 m · Seguridad y equipo",
+    "titulo": "Lo serio, en serio",
+    "intro": "El buceo es un deporte con riesgo. Por eso lo que no se ve —ratios, revisiones, protocolos— es lo que más cuidamos.",
+    "certTitulo": "Certificaciones del centro",
+    "alt": "Un instructor ajusta la máscara a una alumna en la cubierta del barco antes de la inmersión"
+  },
+  "equipo": {
+    "kicker": "−26 m · El equipo",
+    "titulo": "Quién baja contigo",
+    "titulacion": "Titulación",
+    "idiomas": "Idiomas",
+    "inmersiones": "inmersiones registradas"
+  },
+  "opiniones": {
+    "kicker": "−28 m · Opiniones",
+    "titulo": "Lo que cuentan al salir",
+    "ejemplo": "Opiniones de ejemplo"
+  },
+  "faq": {
+    "kicker": "−34 m · Preguntas frecuentes",
+    "titulo": "Antes de bajar"
+  },
+  "reserva": {
+    "kicker": "−40 m · Reserva",
+    "titulo": "Reserva tu inmersión",
+    "intro": "Cuéntanos qué quieres hacer y te confirmamos plaza en menos de 24 horas. Sin pago por adelantado.",
+    "experiencia": "Experiencia",
+    "elige": "Elige una opción",
+    "fecha": "Fecha deseada",
+    "personas": "Número de personas",
+    "nivel": "Tu nivel",
+    "niveles": ["Nunca he buceado", "Bautizo hecho", "Open Water o equivalente", "Advanced o superior"],
+    "nombre": "Nombre y apellidos",
+    "email": "Correo electrónico",
+    "telefono": "Teléfono (opcional)",
+    "mensaje": "Mensaje (opcional)",
+    "mensajePh": "Dudas, tallas, si alguien lleva gafas…",
+    "privacidad": "He leído la <a href=\"{priv}\">política de privacidad</a> y acepto que tratéis mis datos para responder a mi reserva.",
+    "obligatorio": "obligatorio",
+    "enviar": "Enviar solicitud",
+    "enviando": "Enviando…",
+    "ok": "¡Recibido! Te escribimos en menos de 24 horas para confirmar tu plaza.",
+    "fallo": "No hemos podido enviar el formulario. Prueba de nuevo o escríbenos por WhatsApp.",
+    "errores": "Revisa estos campos:",
+    "err": {
+      "requerido": "Este campo es obligatorio.",
+      "email": "Escribe un correo válido, por ejemplo nombre@correo.com.",
+      "fecha": "Elige una fecha a partir de mañana.",
+      "personas": "Indica entre 1 y 8 personas.",
+      "privacidad": "Necesitamos tu consentimiento para poder responderte."
+    },
+    "o": "¿Prefieres hablar?",
+    "whatsapp": "Escríbenos por WhatsApp",
+    "whatsappTexto": "Hola, me gustaría reservar una inmersión con Hondura.",
+    "llamar": "Llamar",
+    "honey": "No rellenes este campo"
+  },
+  "pie": {
+    "direccion": "Dónde estamos",
+    "horario": "Horario",
+    "contacto": "Contacto",
+    "redes": "Redes",
+    "legal": "Aviso legal",
+    "privacidad": "Privacidad",
+    "cookies": "Esta web no usa cookies ni analítica.",
+    "subir": "Volver a la superficie",
+    "derechos": "Todos los derechos reservados."
+  },
+  "paginas": {
+    "aviso": { "slug": "aviso-legal/", "titulo": "Aviso legal" },
+    "privacidad": { "slug": "privacidad/", "titulo": "Política de privacidad" },
+    "gracias": { "slug": "gracias/", "titulo": "Solicitud recibida", "texto": "Gracias. Hemos recibido tu solicitud y te escribiremos en menos de 24 horas para confirmar tu plaza.", "volver": "Volver al inicio" },
+    "actualizado": "Última actualización"
+  }
+}

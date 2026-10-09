@@ -1,0 +1,68 @@
+[
+  {
+    "id": "bautizo",
+    "nombre": { "es": "Bautizo de buceo", "en": "Discover Scuba Diving" },
+    "resumen": { "es": "Tu primera respiración bajo el agua, desde la orilla y con un instructor a tu lado todo el tiempo.", "en": "Your first breath underwater, from the shore, with an instructor beside you the whole time." },
+    "duracion": { "es": "3 h", "en": "3 h" },
+    "profundidad": 6,
+    "nivel": { "es": "Sin experiencia · desde 10 años", "en": "No experience · age 10+" },
+    "incluye": {
+      "es": ["Equipo completo", "Charla y práctica en aguas someras", "Seguro de accidentes", "Fotos de la inmersión"],
+      "en": ["Full equipment", "Briefing and shallow-water practice", "Accident insurance", "Photos of your dive"]
+    },
+    "precio": 75,
+    "destacada": true
+  },
+  {
+    "id": "guiadas",
+    "nombre": { "es": "Inmersiones guiadas", "en": "Guided dives" },
+    "resumen": { "es": "Salidas en barco y desde costa a los mejores puntos del sureste, en grupos pequeños.", "en": "Boat and shore dives to the best sites of the south-east, in small groups." },
+    "duracion": { "es": "2 h por inmersión", "en": "2 h per dive" },
+    "profundidad": 30,
+    "nivel": { "es": "Open Water o equivalente", "en": "Open Water or equivalent" },
+    "incluye": {
+      "es": ["Guía titulado", "Botella y lastre", "Barco o traslado a costa", "Bono de 5 inmersiones: 200 €"],
+      "en": ["Certified guide", "Tank and weights", "Boat or transfer to the shore", "5-dive pack: €200"]
+    },
+    "precio": 45
+  },
+  {
+    "id": "open-water",
+    "nombre": { "es": "Curso Open Water Diver", "en": "Open Water Diver course" },
+    "resumen": { "es": "La titulación internacional que te permite bucear en todo el mundo hasta 18 metros.", "en": "The international certification that lets you dive anywhere in the world to 18 metres." },
+    "duracion": { "es": "3–4 días", "en": "3–4 days" },
+    "profundidad": 18,
+    "nivel": { "es": "Sin experiencia · desde 10 años", "en": "No experience · age 10+" },
+    "incluye": {
+      "es": ["Material didáctico digital", "Equipo completo", "4 inmersiones en el mar", "Tasas de certificación"],
+      "en": ["Digital learning materials", "Full equipment", "4 open-water dives", "Certification fees"]
+    },
+    "precio": 420
+  },
+  {
+    "id": "advanced",
+    "nombre": { "es": "Curso Advanced Open Water", "en": "Advanced Open Water course" },
+    "resumen": { "es": "Cinco inmersiones de aventura: profunda, navegación, pecio, nocturna y flotabilidad.", "en": "Five adventure dives: deep, navigation, wreck, night and buoyancy." },
+    "duracion": { "es": "2–3 días", "en": "2–3 days" },
+    "profundidad": 30,
+    "nivel": { "es": "Open Water o equivalente", "en": "Open Water or equivalent" },
+    "incluye": {
+      "es": ["5 inmersiones de especialidad", "Linterna para la nocturna", "Equipo completo", "Tasas de certificación"],
+      "en": ["5 specialty dives", "Torch for the night dive", "Full equipment", "Certification fees"]
+    },
+    "precio": 360
+  },
+  {
+    "id": "snorkel",
+    "nombre": { "es": "Snorkel en la reserva", "en": "Snorkel in the reserve" },
+    "resumen": { "es": "Gafas, tubo y aletas para asomarte al sebadal y a los arcos de El Cabrón desde la superficie.", "en": "Mask, snorkel and fins to peek at the seagrass and the arches of El Cabrón from the surface." },
+    "duracion": { "es": "2 h", "en": "2 h" },
+    "profundidad": 0,
+    "nivel": { "es": "Saber nadar · desde 8 años", "en": "Able to swim · age 8+" },
+    "incluye": {
+      "es": ["Gafas, tubo, aletas y neopreno", "Guía en el agua", "Seguro de accidentes"],
+      "en": ["Mask, snorkel, fins and wetsuit", "In-water guide", "Accident insurance"]
+    },
+    "precio": 30
+  }
+]

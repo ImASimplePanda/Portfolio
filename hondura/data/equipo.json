@@ -1,0 +1,34 @@
+[
+  {
+    "nombre": "Nayra Santana",
+    "rol": { "es": "Directora y Course Director", "en": "Owner and Course Director" },
+    "titulacion": "PADI Course Director · EFR Instructor Trainer",
+    "idiomas": "ES · EN",
+    "inmersiones": 4200,
+    "foto": ""
+  },
+  {
+    "nombre": "Ayoze Rodríguez",
+    "rol": { "es": "Instructor y patrón del barco", "en": "Instructor and boat skipper" },
+    "titulacion": "PADI MSDT · Patrón de Embarcaciones de Recreo",
+    "idiomas": "ES · EN",
+    "inmersiones": 2600,
+    "foto": ""
+  },
+  {
+    "nombre": "Laura Benítez",
+    "rol": { "es": "Instructora", "en": "Instructor" },
+    "titulacion": "PADI OWSI · Oxigenoterapia DAN",
+    "idiomas": "ES · EN · DE",
+    "inmersiones": 1500,
+    "foto": ""
+  },
+  {
+    "nombre": "Marco Vitale",
+    "rol": { "es": "Divemaster y guía", "en": "Divemaster and guide" },
+    "titulacion": "PADI Divemaster · Primeros auxilios EFR",
+    "idiomas": "IT · EN · ES",
+    "inmersiones": 900,
+    "foto": ""
+  }
+]

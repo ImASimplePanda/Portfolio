@@ -1,0 +1,51 @@
+[
+  {
+    "p": { "es": "¿Necesito saber nadar?", "en": "Do I need to know how to swim?" },
+    "r": {
+      "es": "Para el bautizo basta con sentirte cómodo en el agua: el instructor te sujeta y controla tu flotabilidad. Para los cursos te pediremos nadar 200 metros sin parar (sin tiempo) y flotar 10 minutos.",
+      "en": "For a try dive you only need to feel comfortable in the water: the instructor holds you and controls your buoyancy. For courses we'll ask you to swim 200 metres non-stop (untimed) and float for 10 minutes."
+    }
+  },
+  {
+    "p": { "es": "¿Cuál es la edad mínima?", "en": "What is the minimum age?" },
+    "r": {
+      "es": "10 años para el bautizo y el Open Water (con autorización de madre, padre o tutor), y 8 años para el snorkel. No hay edad máxima: lo que cuenta es tu estado de salud.",
+      "en": "10 for try dives and Open Water (with parental consent), and 8 for snorkelling. There is no maximum age: what matters is your health."
+    }
+  },
+  {
+    "p": { "es": "¿Tengo que presentar un certificado médico?", "en": "Do I need a medical certificate?" },
+    "r": {
+      "es": "Antes de bucear rellenarás un cuestionario médico. Si respondes «sí» a alguna pregunta (asma, problemas cardíacos, cirugías recientes…), necesitaremos el visto bueno de un médico antes de meterte en el agua.",
+      "en": "Before diving you'll fill in a medical questionnaire. If you answer \"yes\" to any question (asthma, heart problems, recent surgery…), we'll need a doctor's sign-off before you get in the water."
+    }
+  },
+  {
+    "p": { "es": "Llevo gafas, ¿puedo bucear?", "en": "I wear glasses. Can I dive?" },
+    "r": {
+      "es": "Sí. Las lentillas blandas se pueden usar sin problema, y en el centro tenemos máscaras graduadas de −1 a −6 dioptrías. Avísanos al reservar.",
+      "en": "Yes. Soft contact lenses are fine, and we have prescription masks from −1 to −6 dioptres. Let us know when you book."
+    }
+  },
+  {
+    "p": { "es": "¿Qué pasa si hace mal tiempo?", "en": "What happens if the weather is bad?" },
+    "r": {
+      "es": "Si el mar no está en condiciones seguras, cancelamos nosotros y puedes elegir otra fecha o la devolución completa. Si cancelas tú con más de 48 horas, te devolvemos el importe íntegro.",
+      "en": "If the sea isn't safe, we cancel and you can choose another date or a full refund. If you cancel more than 48 hours ahead, you get your money back in full."
+    }
+  },
+  {
+    "p": { "es": "¿Qué tengo que llevar?", "en": "What should I bring?" },
+    "r": {
+      "es": "Bañador, toalla, crema solar respetuosa con el mar y agua. Nosotros ponemos el resto. Si tienes titulación, trae la tarjeta o la app de tu agencia.",
+      "en": "Swimwear, a towel, reef-safe sunscreen and water. We provide everything else. If you're certified, bring your card or your agency's app."
+    }
+  },
+  {
+    "p": { "es": "¿Puedo volar después de bucear?", "en": "Can I fly after diving?" },
+    "r": {
+      "es": "Recomendamos esperar al menos 18 horas tras varias inmersiones y 12 tras un bautizo. Tenlo en cuenta al reservar tu último día en la isla.",
+      "en": "We recommend waiting at least 18 hours after multiple dives and 12 after a try dive. Keep it in mind when booking your last day on the island."
+    }
+  }
+]

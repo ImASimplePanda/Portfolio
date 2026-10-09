@@ -1,0 +1,496 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-07T00:00:00Z",
+  "title": "Design System: Bookit",
+  "extensions": {
+    "colorMeta": {
+      "paper": {
+        "role": "neutral",
+        "displayName": "Papel Frío",
+        "canonical": "oklch(97.9% 0.003 106.4)",
+        "tonalRamp": [
+          "#0B0B0A",
+          "#262625",
+          "#454543",
+          "#666664",
+          "#898987",
+          "#AEAEAC",
+          "#D1D1CF",
+          "#EEEEEC"
+        ]
+      },
+      "white": {
+        "role": "neutral",
+        "displayName": "Blanco Panel",
+        "canonical": "oklch(100.0% 0.000 89.9)",
+        "tonalRamp": [
+          "#0B0B0B",
+          "#262626",
+          "#454545",
+          "#666666",
+          "#898989",
+          "#AEAEAE",
+          "#D1D1D1",
+          "#EEEEEE"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Tinta",
+        "canonical": "oklch(20.8% 0.007 258.4)",
+        "tonalRamp": [
+          "#090B0E",
+          "#24272A",
+          "#434549",
+          "#64666A",
+          "#87898D",
+          "#ABAEB2",
+          "#CED1D5",
+          "#ECEFF3"
+        ]
+      },
+      "ink-2": {
+        "role": "neutral",
+        "displayName": "Tinta Media",
+        "canonical": "oklch(42.3% 0.013 261.8)",
+        "tonalRamp": [
+          "#080B11",
+          "#23272D",
+          "#41454C",
+          "#62666E",
+          "#858991",
+          "#A9AEB6",
+          "#CCD1DA",
+          "#EAEFF7"
+        ]
+      },
+      "ink-3": {
+        "role": "neutral",
+        "displayName": "Tinta Suave",
+        "canonical": "oklch(51.6% 0.012 261.8)",
+        "tonalRamp": [
+          "#080B10",
+          "#23272C",
+          "#41454C",
+          "#62666D",
+          "#858991",
+          "#AAAEB6",
+          "#CDD1D9",
+          "#EAEFF7"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Línea",
+        "canonical": "oklch(87.5% 0.007 106.5)",
+        "tonalRamp": [
+          "#0B0B08",
+          "#272723",
+          "#454541",
+          "#666662",
+          "#898985",
+          "#AEAEA9",
+          "#D1D1CC",
+          "#EFEFEA"
+        ]
+      },
+      "line-2": {
+        "role": "neutral",
+        "displayName": "Línea Clara",
+        "canonical": "oklch(94.2% 0.005 106.5)",
+        "tonalRamp": [
+          "#0B0B09",
+          "#272724",
+          "#454542",
+          "#666663",
+          "#898986",
+          "#AEAEAA",
+          "#D1D1CD",
+          "#EFEFEB"
+        ]
+      },
+      "mark": {
+        "role": "tertiary",
+        "displayName": "Amarillo Pendiente",
+        "canonical": "oklch(91.7% 0.155 98.0)",
+        "tonalRamp": [
+          "#100B00",
+          "#2E2600",
+          "#504502",
+          "#76660A",
+          "#9D891F",
+          "#C8AE02",
+          "#ECD146",
+          "#FFF0A6"
+        ]
+      },
+      "error": {
+        "role": "error",
+        "displayName": "Error",
+        "canonical": "oklch(49.4% 0.189 14.7)",
+        "tonalRamp": [
+          "#210003",
+          "#4D0215",
+          "#810D2B",
+          "#B91B42",
+          "#E44A64",
+          "#FC8490",
+          "#FFBDC1",
+          "#FEE9E9"
+        ]
+      },
+      "ok": {
+        "role": "success",
+        "displayName": "Correcto",
+        "canonical": "oklch(42.9% 0.073 165.9)",
+        "tonalRamp": [
+          "#001007",
+          "#002F20",
+          "#11513C",
+          "#38735C",
+          "#5C977F",
+          "#81BDA3",
+          "#A3E1C6",
+          "#C0FFE3"
+        ]
+      },
+      "c-narrativa": {
+        "role": "primary",
+        "displayName": "Petróleo Narrativa",
+        "canonical": "oklch(44.8% 0.067 215.2)",
+        "tonalRamp": [
+          "#000E14",
+          "#002C35",
+          "#054E5B",
+          "#32707E",
+          "#5794A3",
+          "#7CB9C9",
+          "#9EDDED",
+          "#D3F6FE"
+        ],
+        "onColor": "white"
+      },
+      "c-negra": {
+        "role": "primary",
+        "displayName": "Carbón Negra",
+        "canonical": "oklch(29.8% 0.011 271.0)",
+        "tonalRamp": [
+          "#090B10",
+          "#24262C",
+          "#43454B",
+          "#64666D",
+          "#868990",
+          "#ABAEB5",
+          "#CED1D9",
+          "#EBEEF6"
+        ],
+        "onColor": "white"
+      },
+      "c-ensayo": {
+        "role": "primary",
+        "displayName": "Cobalto Ensayo",
+        "canonical": "oklch(44.4% 0.185 266.3)",
+        "tonalRamp": [
+          "#020039",
+          "#07007E",
+          "#1833A6",
+          "#345ACE",
+          "#5580F8",
+          "#8AABFC",
+          "#BCD1FF",
+          "#E7EFFF"
+        ],
+        "onColor": "white"
+      },
+      "c-clasicos": {
+        "role": "primary",
+        "displayName": "Cereza Clásicos",
+        "canonical": "oklch(49.4% 0.189 14.7)",
+        "tonalRamp": [
+          "#210003",
+          "#4D0215",
+          "#810D2B",
+          "#B91B42",
+          "#E44A64",
+          "#FC8490",
+          "#FFBDC1",
+          "#FEE9E9"
+        ],
+        "onColor": "white"
+      },
+      "c-infantil": {
+        "role": "primary",
+        "displayName": "Yema Infantil",
+        "canonical": "oklch(81.4% 0.167 83.9)",
+        "tonalRamp": [
+          "#140900",
+          "#332300",
+          "#594102",
+          "#81600A",
+          "#AB821F",
+          "#DCA401",
+          "#FDC857",
+          "#FEEDCB"
+        ],
+        "onColor": "ink"
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Titular del héroe y título de ficha de libro."
+      },
+      "display-band": {
+        "displayName": "Display de franja",
+        "purpose": "Título de cabecera de página interior, en mayúsculas sobre franja."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Títulos de sección."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Títulos de tarjeta, línea de cesta, opción y precio."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Lectura y sinopsis."
+      },
+      "lede": {
+        "displayName": "Lede",
+        "purpose": "Entradilla bajo títulos de sección."
+      },
+      "ui": {
+        "displayName": "UI",
+        "purpose": "Botones, navegación, chips y herramientas."
+      },
+      "label-band": {
+        "displayName": "Etiqueta de franja",
+        "purpose": "Nombre de colección y cabeceras sobre franja de color; nunca sobre papel encima de un título."
+      },
+      "small": {
+        "displayName": "Small",
+        "purpose": "Etiquetas de campo, metadatos y avisos."
+      }
+    },
+    "shadows": [
+      {
+        "name": "cover-edge",
+        "value": "0 0 0 1px rgb(22 24 27 / 0.14)",
+        "purpose": "Perfil fino de la cubierta blanca sobre papel."
+      },
+      {
+        "name": "state-rule",
+        "value": "inset 0 -5px 0 var(--band)",
+        "purpose": "Hover de botón y foco de campo; 3-4px en navegación y chips."
+      },
+      {
+        "name": "side-spine",
+        "value": "inset 6px 0 0 var(--band)",
+        "purpose": "Opción seleccionada y fila de pedido."
+      },
+      {
+        "name": "band-ring",
+        "value": "0 0 0 3px var(--band)",
+        "purpose": "Hover de cubierta enlazada."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.23, 1, 0.32, 1)",
+        "purpose": "Curva por defecto para estados, entradas y desplazamientos."
+      },
+      {
+        "name": "ease-in-out",
+        "value": "cubic-bezier(0.77, 0, 0.175, 1)",
+        "purpose": "Retintado de franja al cambiar de colección y barra de carga."
+      },
+      {
+        "name": "ease-drawer",
+        "value": "cubic-bezier(0.32, 0.72, 0, 1)",
+        "purpose": "Menú lateral móvil (380ms)."
+      },
+      {
+        "name": "d-press",
+        "value": "120ms",
+        "purpose": "Pulsación."
+      },
+      {
+        "name": "d-ui",
+        "value": "200ms",
+        "purpose": "Cambios de estado de interfaz."
+      },
+      {
+        "name": "d-move",
+        "value": "320ms",
+        "purpose": "Desplazamientos y transiciones de cubierta."
+      },
+      {
+        "name": "d-tint",
+        "value": "520ms",
+        "purpose": "Retintado de --band / --on-band."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "compact",
+        "value": "480px"
+      },
+      {
+        "name": "cart-line",
+        "value": "560px"
+      },
+      {
+        "name": "mobile",
+        "value": "760px"
+      },
+      {
+        "name": "stack",
+        "value": "900px"
+      },
+      {
+        "name": "tools-label",
+        "value": "1023px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Botón primario",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Acción principal en tinta; la franja de la colección aparece en hover.",
+      "html": "<button class=\"ds-btn\">Añadir a la cesta</button>",
+      "css": ".ds-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:0 24px;border:2px solid var(--ink,#16181B);background:var(--ink,#16181B);color:var(--paper,#F8F8F6);font-family:\"Sofia Sans Condensed\",\"Arial Narrow\",sans-serif;font-weight:700;font-size:1.0625rem;letter-spacing:.01em;line-height:1;border-radius:0;cursor:pointer;transition:transform 120ms cubic-bezier(0.23,1,0.32,1),box-shadow 200ms cubic-bezier(0.23,1,0.32,1)}.ds-btn:hover{box-shadow:inset 0 -5px 0 var(--band,#1E5E6C)}.ds-btn:focus-visible{outline:3px solid #16181B;outline-offset:3px}.ds-btn:active{transform:scale(.97)}"
+    },
+    {
+      "name": "Botón papel",
+      "kind": "button",
+      "refersTo": "button-paper",
+      "description": "Botón claro para usar sobre franja de color.",
+      "html": "<div class=\"ds-band\"><button class=\"ds-btn-paper\">Apuntarme</button></div>",
+      "css": ".ds-band{background:#1E5E6C;padding:24px}.ds-btn-paper{min-height:52px;padding:0 24px;border:2px solid #FFFFFF;background:#F8F8F6;color:#16181B;font-family:\"Sofia Sans Condensed\",\"Arial Narrow\",sans-serif;font-weight:700;font-size:1.0625rem;line-height:1;border-radius:0;cursor:pointer;transition:box-shadow 200ms cubic-bezier(0.23,1,0.32,1)}.ds-btn-paper:hover{box-shadow:inset 0 -5px 0 #16181B}.ds-btn-paper:focus-visible{outline:3px solid #FFFFFF;outline-offset:3px}"
+    },
+    {
+      "name": "Botón contorno",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Acción secundaria; se rellena de tinta en hover.",
+      "html": "<button class=\"ds-btn-ghost\">Reservar</button>",
+      "css": ".ds-btn-ghost{min-height:52px;padding:0 24px;border:2px solid #16181B;background:transparent;color:#16181B;font-family:\"Sofia Sans Condensed\",\"Arial Narrow\",sans-serif;font-weight:700;font-size:1.0625rem;line-height:1;border-radius:0;cursor:pointer;transition:background-color 200ms cubic-bezier(0.23,1,0.32,1),color 200ms cubic-bezier(0.23,1,0.32,1)}.ds-btn-ghost:hover{background:#16181B;color:#F8F8F6}.ds-btn-ghost:focus-visible{outline:3px solid #16181B;outline-offset:3px}"
+    },
+    {
+      "name": "Campo",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Campo blanco con borde de tinta; el foco dibuja la franja de la colección en la base.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-field__label\">Busca por título o autor</span><input class=\"ds-input\" placeholder=\"Irene Vallejo, Reina roja…\"></label>",
+      "css": ".ds-field{display:grid;gap:8px;font-family:\"Sofia Sans\",Arial,sans-serif}.ds-field__label{font-weight:700;font-size:.9375rem;color:#16181B}.ds-input{min-height:52px;padding:12px 16px;border:2px solid #16181B;border-radius:0;background:#FFFFFF;color:#16181B;font:inherit;font-size:16px;caret-color:#1E5E6C;transition:box-shadow 200ms cubic-bezier(0.23,1,0.32,1)}.ds-input::placeholder{color:#64686F}.ds-input:focus{outline:none;box-shadow:inset 0 -5px 0 #1E5E6C}.ds-input:focus-visible{outline:3px solid #16181B;outline-offset:3px}"
+    },
+    {
+      "name": "Selector de colección",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Chips en contorno sobre la franja; el activo se invierte.",
+      "html": "<div class=\"ds-chips\"><button class=\"ds-chip\" aria-pressed=\"true\"><span class=\"ds-chip__sw\" style=\"background:#1E5E6C\"></span>Narrativa</button><button class=\"ds-chip\" aria-pressed=\"false\"><span class=\"ds-chip__sw\" style=\"background:#2B2D33\"></span>Negra</button><button class=\"ds-chip\" aria-pressed=\"false\"><span class=\"ds-chip__sw\" style=\"background:#2445B8\"></span>Ensayo</button></div>",
+      "css": ".ds-chips{display:flex;flex-wrap:wrap;gap:8px;background:#1E5E6C;padding:16px}.ds-chip{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border:2px solid #FFFFFF;background:transparent;color:#FFFFFF;font-family:\"Sofia Sans Condensed\",\"Arial Narrow\",sans-serif;font-weight:700;font-size:1.0625rem;border-radius:0;cursor:pointer;transition:background-color 200ms cubic-bezier(0.23,1,0.32,1),color 200ms cubic-bezier(0.23,1,0.32,1)}.ds-chip__sw{width:14px;height:14px;box-shadow:0 0 0 2px currentColor}.ds-chip[aria-pressed=\"true\"]{background:#FFFFFF;color:#1E5E6C}.ds-chip:hover:not([aria-pressed=\"true\"]){box-shadow:inset 0 -4px 0 #FFFFFF}.ds-chip:focus-visible{outline:3px solid #FFFFFF;outline-offset:3px}"
+    },
+    {
+      "name": "Cubierta",
+      "kind": "card",
+      "refersTo": "cover",
+      "description": "El módulo de tres franjas en 2:3, dibujado en CSS; firma del sistema.",
+      "html": "<a class=\"ds-cover\" href=\"#\"><span class=\"ds-cover__band\">Novela negra</span><span class=\"ds-cover__panel\"><span class=\"ds-cover__title\">Reina roja</span><span class=\"ds-cover__author\">Juan Gómez-Jurado</span></span><span class=\"ds-cover__band ds-cover__foot\"><span class=\"ds-cover__mark\"></span>Bookit</span></a>",
+      "css": ".ds-cover{--band:#2B2D33;--on:#FFFFFF;container-type:inline-size;display:grid;grid-template-rows:27% 1fr 17%;aspect-ratio:2/3;width:200px;background:#FFFFFF;color:#16181B;text-decoration:none;box-shadow:0 0 0 1px rgb(22 24 27 / .14);overflow:hidden;transition:transform 320ms cubic-bezier(0.23,1,0.32,1),box-shadow 200ms cubic-bezier(0.23,1,0.32,1)}.ds-cover:hover{transform:translateY(-6px);box-shadow:0 0 0 3px var(--band)}.ds-cover:focus-visible{outline:3px solid #16181B;outline-offset:3px}.ds-cover__band{display:flex;align-items:flex-end;padding:0 8cqi 5cqi;background:var(--band);color:var(--on);font-family:\"Sofia Sans Extra Condensed\",\"Arial Narrow\",sans-serif;font-weight:700;font-size:max(9px,7.4cqi);text-transform:uppercase;letter-spacing:.09em;line-height:1.1}.ds-cover__panel{display:flex;flex-direction:column;justify-content:center;gap:4cqi;padding:6cqi 8cqi;border-block:1.6cqi solid #FFFFFF;box-shadow:inset 0 .8cqi 0 var(--band),inset 0 -.8cqi 0 var(--band)}.ds-cover__title{font-family:\"Sofia Sans Condensed\",\"Arial Narrow\",sans-serif;font-weight:800;font-size:12.5cqi;line-height:.98;letter-spacing:-.01em}.ds-cover__author{font-family:\"Sofia Sans\",Arial,sans-serif;font-weight:500;font-size:max(9px,6.6cqi);line-height:1.2;color:#4A4E55}.ds-cover__foot{justify-content:center;align-items:center;gap:2.4cqi;padding:0;font-family:\"Sofia Sans Condensed\",\"Arial Narrow\",sans-serif;font-weight:900;font-size:max(9px,6.6cqi);text-transform:none;letter-spacing:-.01em}.ds-cover__mark{width:3.6cqi;height:5.4cqi;background:linear-gradient(var(--on) 0 30%,transparent 30% 70%,var(--on) 70%);box-shadow:0 0 0 .6cqi var(--on)}"
+    },
+    {
+      "name": "Cubierta fantasma",
+      "kind": "card",
+      "refersTo": "cover",
+      "description": "Preventa o agotado: las franjas existen pero aún no tienen tinta; se rellenan en hover.",
+      "html": "<a class=\"ds-ghost\" href=\"#\"><span class=\"ds-ghost__band\">Ensayo</span><span class=\"ds-ghost__panel\">El infinito en un junco</span><span class=\"ds-ghost__band ds-ghost__foot\">Bookit</span></a>",
+      "css": ".ds-ghost{--band:#2445B8;container-type:inline-size;display:grid;grid-template-rows:27% 1fr 17%;aspect-ratio:2/3;width:200px;background:transparent;color:#16181B;text-decoration:none;box-shadow:inset 0 0 0 max(2px,.7cqi) var(--band);transition:transform 320ms cubic-bezier(0.23,1,0.32,1)}.ds-ghost:hover{transform:translateY(-6px)}.ds-ghost:hover .ds-ghost__band{background:var(--band);color:#FFFFFF}.ds-ghost:focus-visible{outline:3px solid #16181B;outline-offset:3px}.ds-ghost__band{display:flex;align-items:flex-end;padding:0 8cqi 5cqi;font-family:\"Sofia Sans Extra Condensed\",\"Arial Narrow\",sans-serif;font-weight:700;font-size:7.4cqi;text-transform:uppercase;letter-spacing:.09em;box-shadow:inset 0 calc(-1 * max(2px,.7cqi)) 0 var(--band);transition:background-color 320ms cubic-bezier(0.23,1,0.32,1),color 320ms cubic-bezier(0.23,1,0.32,1)}.ds-ghost__panel{display:flex;align-items:center;padding:6cqi 8cqi;font-family:\"Sofia Sans Condensed\",\"Arial Narrow\",sans-serif;font-weight:800;font-size:12.5cqi;line-height:.98}.ds-ghost__foot{justify-content:center;align-items:center;padding:0;font-family:\"Sofia Sans Condensed\",\"Arial Narrow\",sans-serif;font-weight:900;font-size:6.6cqi;text-transform:none;letter-spacing:-.01em;box-shadow:inset 0 max(2px,.7cqi) 0 var(--band)}"
+    },
+    {
+      "name": "Cabecera",
+      "kind": "nav",
+      "refersTo": "masthead",
+      "description": "La franja superior de la cubierta: logo, navegación con subrayado creciente y herramientas que se invierten.",
+      "html": "<header class=\"ds-mast\"><a class=\"ds-logo\" href=\"#\"><span class=\"ds-logo__mark\"></span>Bookit</a><nav><a class=\"ds-nav\" href=\"#\" aria-current=\"page\">Catálogo</a><a class=\"ds-nav\" href=\"#\">Preventa</a></nav><a class=\"ds-tool\" href=\"#\">Cesta <span class=\"ds-count\">2</span></a></header>",
+      "css": ".ds-mast{display:flex;align-items:center;gap:32px;min-height:68px;padding:0 24px;background:#1E5E6C;color:#FFFFFF;font-family:\"Sofia Sans Condensed\",\"Arial Narrow\",sans-serif}.ds-mast nav{display:flex;gap:24px}.ds-logo{display:inline-flex;align-items:center;gap:8px;color:inherit;text-decoration:none;font-weight:900;font-size:1.875rem;letter-spacing:-.02em;line-height:1}.ds-logo__mark{width:18px;height:27px;background:linear-gradient(currentColor 0 32%,transparent 32% 68%,currentColor 68%);box-shadow:0 0 0 2px currentColor}.ds-nav{display:inline-flex;align-items:center;min-height:44px;color:inherit;font-weight:700;font-size:1.125rem;text-decoration:none;background:linear-gradient(currentColor,currentColor) left bottom/0 3px no-repeat;transition:background-size 200ms cubic-bezier(0.23,1,0.32,1)}.ds-nav[aria-current=\"page\"],.ds-nav:hover{background-size:100% 3px}.ds-nav:focus-visible,.ds-tool:focus-visible,.ds-logo:focus-visible{outline:3px solid #FFFFFF;outline-offset:3px}.ds-tool{margin-left:auto;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 12px;color:inherit;font-weight:700;font-size:1.0625rem;text-decoration:none;transition:background-color 200ms cubic-bezier(0.23,1,0.32,1),color 200ms cubic-bezier(0.23,1,0.32,1)}.ds-tool:hover{background:#FFFFFF;color:#1E5E6C}.ds-count{display:inline-grid;place-items:center;min-width:24px;height:24px;padding:0 6px;background:#FFFFFF;color:#1E5E6C;font-weight:800;font-size:.9375rem;font-variant-numeric:tabular-nums}.ds-tool:hover .ds-count{background:#1E5E6C;color:#FFFFFF}"
+    },
+    {
+      "name": "Marcador pendiente",
+      "kind": "custom",
+      "refersTo": "pending-mark",
+      "description": "Señala un dato real que el cliente aún no ha entregado.",
+      "html": "<p class=\"ds-p\">Horario: <mark class=\"ds-pend\">Pendiente: horario</mark></p>",
+      "css": ".ds-p{font-family:\"Sofia Sans\",Arial,sans-serif;font-size:1.0625rem;color:#16181B}.ds-pend{background:#FFE45C;color:#16181B;font-size:.875em;font-weight:600;padding:.05em .4em;outline:1px dashed #16181B;outline-offset:-1px;white-space:nowrap}"
+    }
+  ],
+  "narrative": {
+    "northStar": "La colección de bolsillo",
+    "overview": "Bookit se comporta como una colección editorial de bolsillo: cada pantalla es una cubierta construida con un solo módulo de tres franjas (franja de color de la colección / panel blanco con el título / franja de color). La cabecera es la franja superior, el pie es la franja inferior, y entre ambas el papel frío funciona como panel. Las cubiertas de los libros no son imágenes: son el mismo módulo dibujado en CSS, con el nombre de la colección arriba y la marca Bookit abajo.\n\nEl color pertenece a las colecciones, no a la interfaz. Hay cinco telas (narrativa, novela negra, ensayo, clásicos y poesía, infantil y juvenil) y una sola variable de franja (`--band` / `--on-band`) que se reasigna por `data-col`; elegir una colección retiñe todas las franjas de la página con una transición registrada. La tinta hace el resto: botones primarios, bordes de 2px, reglas de sección. Densidad media, tipografía generosa para un público amplio que incluye lectores mayores (WCAG 2.2 AA).\n\nRechaza explícitamente el tópico del sector: papel crema, serifa elegante y héroe de lomos en estantería.",
+    "keyCharacteristics": [
+      "Un módulo de tres franjas repetido a toda escala: cubierta, página, resguardo de pedido, pie.",
+      "Cinco colores de colección con texto sobre franja elegido para AA; nada de color decorativo fuera de ellos.",
+      "Esquinas rectas en todo; bordes de tinta de 2px; plano, sin sombras proyectadas en superficies.",
+      "Superfamilia Sofia Sans en tres anchos, alojada en el propio servidor.",
+      "Los estados se dibujan con franjas: subrayados inset de 3 a 6px en el color de la franja."
+    ],
+    "rules": [
+      {
+        "name": "The Tela Entera Rule",
+        "body": "Un color de colección solo aparece como franja completa (fondo de banda, regla inset, muestra cuadrada) con su `--on-band` correspondiente encima. Nunca como texto de color sobre papel, nunca en degradado, nunca a media opacidad.",
+        "section": "colors"
+      },
+      {
+        "name": "The Pareja Fija Rule",
+        "body": "Infantil lleva tinta encima; narrativa, negra, ensayo y clásicos llevan blanco. Una colección nueva entra con su pareja comprobada para AA antes de usarse.",
+        "section": "colors"
+      },
+      {
+        "name": "The Amarillo Reservado Rule",
+        "body": "El amarillo pendiente señala exclusivamente datos que el cliente aún no ha entregado. Nunca como acento ni resaltado editorial.",
+        "section": "colors"
+      },
+      {
+        "name": "The Tres Anchos Rule",
+        "body": "Ancho según función: extra condensado para lo que vive en una franja, condensado para títulos e interfaz, regular para leer. No se introducen otras familias.",
+        "section": "typography"
+      },
+      {
+        "name": "The Cifras Fijas Rule",
+        "body": "Precios, contador de cesta, cantidades y códigos usan `tabular-nums`.",
+        "section": "typography"
+      },
+      {
+        "name": "The Sin Sombra Proyectada Rule",
+        "body": "Ninguna superficie lleva sombra difusa desplazada. Las sombras del sistema son reglas inset o anillos sólidos, siempre en tinta o en el color de la franja.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Esquina Recta Rule",
+        "body": "`border-radius` es siempre 0. Una esquina redondeada rompe la ilusión de papel cortado.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "**Do** construir cada superficie nueva con el módulo de tres franjas: franja de color, panel blanco o papel, franja de color.",
+      "**Do** pintar el color solo a través de `--band` / `--on-band` y `data-col`, para que el cambio de colección retiña la pantalla entera.",
+      "**Do** usar bordes de tinta de 2px y reglas inset en el color de franja para separar y marcar estados.",
+      "**Do** dibujar preventas y agotados como cubiertas fantasma (contorno sin relleno).",
+      "**Do** mantener objetivos táctiles de 44px como mínimo y campos de 52px.",
+      "**Do** marcar cualquier dato real que falte con el marcador pendiente, nunca con texto inventado."
+    ],
+    "donts": [
+      "**Don't** redondear esquinas; el radio es siempre 0.",
+      "**Don't** usar sombras difusas desplazadas para elevar superficies.",
+      "**Don't** usar papel crema, serifas ni un héroe de lomos en estantería: es el tópico que este sistema rechaza.",
+      "**Don't** poner texto de color de colección sobre papel, ni mezclar dos colecciones en la misma franja.",
+      "**Don't** introducir familias tipográficas fuera de la superfamilia Sofia Sans.",
+      "**Don't** usar el amarillo pendiente como acento."
+    ]
+  }
+}
