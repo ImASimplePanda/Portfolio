@@ -1,0 +1,104 @@
+[
+  {
+    "id": "mandala-1",
+    "tipo": "mandala",
+    "w": 400,
+    "h": 400
+  },
+  {
+    "id": "mandala-2",
+    "tipo": "mandala",
+    "w": 400,
+    "h": 400
+  },
+  {
+    "id": "mandala-3",
+    "tipo": "mandala",
+    "w": 400,
+    "h": 400
+  },
+  {
+    "id": "mandala-4",
+    "tipo": "mandala",
+    "w": 400,
+    "h": 400
+  },
+  {
+    "id": "mandala-5",
+    "tipo": "mandala",
+    "w": 400,
+    "h": 400
+  },
+  {
+    "id": "mandala-6",
+    "tipo": "mandala",
+    "w": 400,
+    "h": 400
+  },
+  {
+    "id": "geometria-1",
+    "tipo": "geometria",
+    "w": 400,
+    "h": 400
+  },
+  {
+    "id": "geometria-2",
+    "tipo": "geometria",
+    "w": 400,
+    "h": 400
+  },
+  {
+    "id": "geometria-3",
+    "tipo": "geometria",
+    "w": 400,
+    "h": 400
+  },
+  {
+    "id": "luna-1",
+    "tipo": "luna",
+    "w": 400,
+    "h": 400
+  },
+  {
+    "id": "luna-2",
+    "tipo": "luna",
+    "w": 400,
+    "h": 400
+  },
+  {
+    "id": "luna-3",
+    "tipo": "luna",
+    "w": 400,
+    "h": 400
+  },
+  {
+    "id": "polilla-1",
+    "tipo": "polilla",
+    "w": 400,
+    "h": 400
+  },
+  {
+    "id": "polilla-2",
+    "tipo": "polilla",
+    "w": 400,
+    "h": 400
+  },
+  {
+    "id": "daga-1",
+    "tipo": "daga",
+    "w": 300,
+    "h": 500
+  },
+  {
+    "id": "daga-2",
+    "tipo": "daga",
+    "w": 300,
+    "h": 500
+  },
+  {
+    "id": "ojo-1",
+    "tipo": "ojo",
+    "w": 400,
+    "h": 420
+  }
+]

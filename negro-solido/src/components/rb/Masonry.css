@@ -1,0 +1,30 @@
+.list {
+  position: relative;
+  width: 100%;
+  min-height: 320px;
+}
+
+.item-wrapper {
+  position: absolute;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+  border-radius: var(--radio, 2px);
+}
+
+.item-wrapper > .item-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: inherit;
+  will-change: transform;
+}
+
+.item-wrapper img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

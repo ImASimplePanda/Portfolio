@@ -1,0 +1,32 @@
+{
+  "_nota": "DATOS DE DEMOSTRACIÓN: todo es inventado. Sustitúyelo antes de publicar y pon demo a false.",
+  "demo": true,
+  "nombre": "Negro Sólido",
+  "dominio": "https://negrosolido.es",
+  "claim": "Tatuajes en negro, dibujados para tu cuerpo.",
+  "intro": "Blackwork, dotwork y geometría en Triana, Las Palmas de Gran Canaria. Diseño propio, una pieza cada vez.",
+  "direccion": {
+    "calle": "Calle Viera y Clavijo, 00",
+    "cp": "35002",
+    "ciudad": "Las Palmas de Gran Canaria",
+    "lat": 28.1066,
+    "lon": -15.4167
+  },
+  "horario": "Martes a sábado, de 11:00 a 20:00. Solo con cita.",
+  "telefono": "+34 928 000 000",
+  "whatsapp": "34600000000",
+  "whatsappVisible": "+34 600 00 00 00",
+  "email": "citas@negrosolido.es",
+  "instagram": "https://www.instagram.com/",
+  "instagramHandle": "@negrosolido.tattoo",
+  "titular": {
+    "razonSocial": "Negro Sólido Tattoo S.L.",
+    "cif": "B00000000",
+    "domicilio": "Calle Viera y Clavijo, 00, 35002 Las Palmas de Gran Canaria",
+    "registro": "Registro Mercantil de Las Palmas, tomo 0000, folio 00, hoja GC-00000",
+    "sanitario": "Autorización sanitaria del Servicio Canario de la Salud n.º 00/0000",
+    "emailLegal": "privacidad@negrosolido.es"
+  },
+  "senal": 50,
+  "precioMinimo": 70
+}

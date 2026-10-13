@@ -1,0 +1,22 @@
+:root{--negro:#0d0c0c;--hueso:#ebe8e2;--suave:#b3ada5;--tenue:#8f8981;--linea:rgba(235,232,226,.14);--rojo:#ff4127;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--negro);color:var(--hueso);font:400 1.0625rem/1.65 system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-underline-offset:.2em}a:hover{text-decoration-color:var(--rojo)}
+:focus-visible{outline:2px solid var(--rojo);outline-offset:3px}
+.cab{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px clamp(16px,4vw,56px);border-bottom:1px solid var(--linea)}
+.cab a{font-weight:800;text-transform:uppercase;letter-spacing:.02em;text-decoration:none}
+.cab .volver{font-weight:500;text-transform:none;letter-spacing:0;color:var(--suave);padding:10px 0}
+main{max-width:780px;margin:0 auto;padding:64px clamp(16px,4vw,56px) 96px}
+h1{font-size:clamp(2.4rem,7vw,4rem);line-height:.95;text-transform:uppercase;letter-spacing:-.01em;margin:0 0 24px}
+h2{font-size:1.35rem;text-transform:uppercase;margin:44px 0 12px}
+p,li{color:var(--suave)}strong{color:var(--hueso)}
+ul{padding-left:20px}li+li{margin-top:8px}
+.fecha{font:500 .75rem/1.4 ui-monospace,monospace;text-transform:uppercase;letter-spacing:.06em;color:var(--tenue)}
+.demo{padding:12px 16px;background:#ffd23f;color:#1d1600;font-weight:600}
+dl{border-top:1px solid var(--linea);margin:18px 0}
+dl div{display:grid;grid-template-columns:180px 1fr;gap:16px;padding:12px 0;border-bottom:1px solid var(--linea)}
+dt{font:500 .72rem/1.6 ui-monospace,monospace;text-transform:uppercase;letter-spacing:.08em;color:var(--tenue)}dd{margin:0}
+@media (max-width:560px){dl div{grid-template-columns:1fr;gap:2px}}
+.p404{min-height:100svh;display:flex;flex-direction:column;justify-content:center}
+.p404 .num{font:800 clamp(5rem,22vw,12rem)/.85 system-ui,sans-serif;color:var(--rojo);margin:0 0 12px}
+.boton{display:inline-flex;align-items:center;min-height:52px;padding:0 26px;background:var(--rojo);color:#140605;font-weight:650;text-decoration:none}

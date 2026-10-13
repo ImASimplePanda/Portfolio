@@ -1,0 +1,116 @@
+@import 'tailwindcss';
+
+/* Surco: el gris frío de una funda interior, la tinta del vinilo y el azul de una galleta. */
+@theme {
+  --color-funda: #eceeed;
+  --color-papel: #f8f9f8;
+  --color-carton: #d2d6d5;
+  --color-linea: #c3c8c7;
+  --color-tinta: #16181a;
+  --color-gris: #565b60;
+  --color-cobalto: #2440e6;
+  --color-cobalto-hondo: #1a2fb0;
+  --color-cobalto-claro: #dfe4ff;
+  --color-alerta: #b42318;
+  --color-alerta-claro: #fde8e6;
+  --color-ok: #1f6f43;
+
+  --font-display: 'Anybody Variable', 'Arial Narrow', sans-serif;
+  --font-sans: 'Familjen Grotesk Variable', system-ui, sans-serif;
+
+  --ease-salida: cubic-bezier(0.16, 1, 0.3, 1);
+  --radius-funda: 3px;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 88px;
+  }
+  body {
+    @apply bg-funda text-tinta font-sans antialiased;
+    font-size: 1.0625rem;
+    line-height: 1.55;
+    -webkit-tap-highlight-color: transparent;
+  }
+  h1, h2, h3 {
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-cobalto);
+    outline-offset: 3px;
+  }
+  ::selection {
+    background: var(--color-cobalto);
+    color: white;
+  }
+  input, select, textarea, button {
+    font: inherit;
+    color: inherit;
+  }
+}
+
+@layer components {
+  /* Rótulos de sello: Anybody con la anchura como herramienta expresiva */
+  .rotulo {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-stretch: 72%;
+    letter-spacing: -0.01em;
+    line-height: 0.92;
+  }
+  .rotulo-ancho {
+    font-family: var(--font-display);
+    font-weight: 850;
+    font-stretch: 150%;
+    letter-spacing: -0.02em;
+    line-height: 0.9;
+  }
+  .boton {
+    @apply inline-flex items-center justify-center gap-2 min-h-12 px-6 rounded-full bg-cobalto text-white font-semibold
+      transition-[background-color,transform] duration-200 select-none;
+    touch-action: manipulation;
+  }
+  .boton:hover { @apply bg-cobalto-hondo; }
+  .boton:active { transform: scale(0.97); }
+  .boton[disabled] { @apply opacity-50 cursor-not-allowed; transform: none; }
+  .boton-linea {
+    @apply inline-flex items-center justify-center gap-2 min-h-12 px-6 rounded-full border border-tinta/25 font-semibold
+      transition-[border-color,background-color,transform] duration-200 select-none;
+  }
+  .boton-linea:hover { @apply border-tinta bg-papel; }
+  .boton-linea:active { transform: scale(0.97); }
+  .campo {
+    @apply w-full min-h-12 px-4 py-3 rounded-[10px] bg-papel border border-linea text-base
+      transition-[border-color,box-shadow] duration-150;
+  }
+  .campo:focus-visible { @apply outline-none border-cobalto; box-shadow: 0 0 0 3px rgb(36 64 230 / 0.2); }
+  .campo[aria-invalid='true'] { @apply border-alerta; }
+  .etiqueta { @apply block text-sm font-semibold mb-1.5; }
+  .error-campo { @apply mt-1.5 text-sm text-alerta; }
+}
+
+/* Movimiento reducido: todo se ve y se lee, nada gira */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@keyframes girar { to { transform: rotate(360deg); } }
+.girando { animation: girar 1.8s linear infinite; }
+.girando-lento { animation: girar 6s linear infinite; }
+
+/* Texto que gira en la galleta del vinilo (CircularText de React Bits, a la medida del disco) */
+.circular-text.galleta { width: 100%; height: 100%; color: #fff; cursor: default; }
+.circular-text.galleta span { font-size: 9px; font-weight: 650; letter-spacing: 0.04em; }
+
+/* El disco de la tarjeta gira mientras asoma de la funda */
+.group:hover .disco-tarjeta > g,
+.group:focus-within .disco-tarjeta > g { animation: girar 2.4s linear infinite; }
