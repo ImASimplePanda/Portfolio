@@ -1,0 +1,85 @@
+@import 'tailwindcss';
+
+/* Latón: el gris del acero sin pintar, la tinta del plano y el amarillo del latón de soldar */
+@theme {
+  --color-acero: #d3d6d1;
+  --color-acero-claro: #e4e6e2;
+  --color-papel: #f1f2ee;
+  --color-tinta: #1a1e21;
+  --color-grafito: #4b5257;
+  --color-laton: #7d5714;
+  --color-laton-vivo: #b98a2f;
+  --color-laton-claro: #ead9b0;
+  --color-pavonado: #1e2830;
+  --color-alerta: #a3321f;
+
+  --font-rotulo: 'Big Shoulders Display Variable', 'Arial Narrow', sans-serif;
+  --font-sans: 'Schibsted Grotesk Variable', system-ui, sans-serif;
+
+  --ease-salida: cubic-bezier(0.22, 1, 0.36, 1);
+  --radius-pieza: 3px;
+}
+
+@layer base {
+  html {
+    background: var(--color-acero);
+    color: var(--color-tinta);
+    font-family: var(--font-sans);
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+  body { min-height: 100dvh; font-size: 1.0625rem; line-height: 1.55; }
+  ::selection { background: var(--color-laton-claro); }
+  :focus-visible { outline: 2px solid var(--color-laton); outline-offset: 3px; border-radius: 2px; }
+  h1, h2, h3 { text-wrap: balance; }
+  p { text-wrap: pretty; }
+  button, [role='button'], summary, label { -webkit-tap-highlight-color: transparent; }
+  input, select, textarea { font-size: max(16px, 1em); }
+}
+
+@layer components {
+  .rotulo { font-family: var(--font-rotulo); font-weight: 800; line-height: 0.88; letter-spacing: -0.005em; }
+  .numeros { font-variant-numeric: lining-nums; }
+
+  .boton {
+    display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+    min-height: 2.875rem; padding: 0.7rem 1.25rem; border-radius: var(--radius-pieza);
+    background: var(--color-tinta); color: var(--color-papel); font-weight: 600; line-height: 1.1;
+    transition: background-color 160ms, transform 160ms var(--ease-salida);
+  }
+  .boton:hover { background: var(--color-pavonado); }
+  .boton:active { transform: scale(0.97); }
+  .boton:disabled { opacity: 0.55; cursor: not-allowed; transform: none; }
+  .boton-laton { background: var(--color-laton-vivo); color: var(--color-tinta); }
+  .boton-laton:hover { background: #c99a3e; }
+  .boton-linea { background: transparent; color: var(--color-tinta); box-shadow: inset 0 0 0 1.5px currentColor; }
+  .boton-linea:hover { background: rgb(26 30 33 / 0.06); }
+
+  .campo {
+    width: 100%; min-height: 2.875rem; padding: 0.6rem 0.8rem; border-radius: var(--radius-pieza);
+    background: var(--color-papel); border: 1.5px solid #9ea4a2; color: var(--color-tinta);
+  }
+  .campo:focus { outline: none; border-color: var(--color-laton); box-shadow: 0 0 0 3px rgb(185 138 47 / 0.3); }
+  .campo[aria-invalid='true'] { border-color: var(--color-alerta); }
+  .etiqueta { display: block; font-weight: 600; font-size: 0.95rem; margin-bottom: 0.35rem; }
+  .error-campo { color: var(--color-alerta); font-size: 0.9rem; margin-top: 0.3rem; }
+
+  /* Opción del configurador: radio nativo oculto, la tarjeta entera es la etiqueta */
+  .opcion { position: relative; display: block; cursor: pointer; border-radius: var(--radius-pieza);
+    background: var(--color-papel); box-shadow: inset 0 0 0 1.5px #c2c6c3; padding: 0.8rem 0.95rem;
+    transition: box-shadow 140ms, background-color 140ms; }
+  .opcion:hover { box-shadow: inset 0 0 0 1.5px var(--color-grafito); }
+  .opcion:has(input:checked) { box-shadow: inset 0 0 0 2px var(--color-tinta); background: #fff; }
+  .opcion:has(input:focus-visible) { outline: 2px solid var(--color-laton); outline-offset: 2px; }
+  .opcion input { position: absolute; opacity: 0; pointer-events: none; }
+}
+
+/* Plano: el trazo se dibuja una vez al cargar la portada */
+@keyframes trazar { from { stroke-dashoffset: var(--largo); } to { stroke-dashoffset: 0; } }
+@keyframes aparecer { from { opacity: 0; } to { opacity: 1; } }
+.plano-trazado .trazo { stroke-dasharray: var(--largo); animation: trazar 1.6s var(--ease-salida) both; animation-delay: var(--retraso, 0s); }
+.plano-trazado .cota { animation: aparecer 0.6s ease both; animation-delay: calc(var(--retraso, 0s) + 1.1s); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-delay: 0s !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}

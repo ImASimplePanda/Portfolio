@@ -1,0 +1,77 @@
+{
+  "modelos": [
+    {
+      "id": "alisio",
+      "nombre": "Alisio",
+      "tipo": "Carretera",
+      "resumen": "Para rodar rápido y muchas horas. Geometría de resistencia: estable en las bajadas de Artenara y cómoda a la quinta hora.",
+      "geometria": { "anguloDireccion": 72.5, "anguloSillin": 73.5, "vainas": 410, "caidaPedalier": 70, "horquilla": 370, "avance": 45, "neumatico": 30, "manillar": "carretera", "stackExtra": 0, "reachExtra": 0 },
+      "cuadro": { "acero": 165000, "titanio": 320000 },
+      "peso": { "acero": 2.05, "titanio": 1.55 },
+      "pasoRueda": "Hasta 32 mm"
+    },
+    {
+      "id": "jable",
+      "nombre": "Jable",
+      "tipo": "Gravel",
+      "resumen": "Pistas de tierra, asfalto roto y alforjas. Pasa rueda de 45 mm y lleva anclajes para todo lo que quieras cargar.",
+      "geometria": { "anguloDireccion": 71, "anguloSillin": 73, "vainas": 430, "caidaPedalier": 75, "horquilla": 395, "avance": 50, "neumatico": 45, "manillar": "gravel", "stackExtra": 25, "reachExtra": -8 },
+      "cuadro": { "acero": 175000, "titanio": 335000 },
+      "peso": { "acero": 2.25, "titanio": 1.7 },
+      "pasoRueda": "Hasta 50 mm"
+    },
+    {
+      "id": "calima",
+      "nombre": "Calima",
+      "tipo": "Urbana",
+      "resumen": "Para ir a trabajar todos los días, con lluvia o sin ella. Postura erguida, guardabarros, luz con dinamo y casi sin mantenimiento.",
+      "geometria": { "anguloDireccion": 70, "anguloSillin": 72, "vainas": 445, "caidaPedalier": 68, "horquilla": 400, "avance": 48, "neumatico": 38, "manillar": "recto", "stackExtra": 70, "reachExtra": -20 },
+      "cuadro": { "acero": 125000, "titanio": 260000 },
+      "peso": { "acero": 2.3, "titanio": 1.75 },
+      "pasoRueda": "Hasta 42 mm con guardabarros"
+    }
+  ],
+  "materiales": [
+    { "id": "acero", "nombre": "Acero", "detalle": "Tubos Columbus Spirit unidos con soldadura de latón. Cómodo, reparable y para toda la vida.", "plazo": 8 },
+    { "id": "titanio", "nombre": "Titanio", "detalle": "Tubos 3Al-2,5V soldados con TIG en atmósfera de argón. No se oxida y no hace falta pintarlo.", "plazo": 12 }
+  ],
+  "acabados": [
+    { "id": "tabaiba", "nombre": "Verde tabaiba", "hex": "#5f7a4e", "tipo": "liso", "precio": 0 },
+    { "id": "atlantico", "nombre": "Azul atlántico", "hex": "#1f4e79", "tipo": "liso", "precio": 0 },
+    { "id": "almagre", "nombre": "Rojo almagre", "hex": "#9c3b2a", "tipo": "liso", "precio": 0 },
+    { "id": "jable", "nombre": "Ocre jable", "hex": "#c08a3e", "tipo": "liso", "precio": 0 },
+    { "id": "calima", "nombre": "Blanco calima", "hex": "#e8e2d4", "tipo": "liso", "precio": 0 },
+    { "id": "picon", "nombre": "Negro picón", "hex": "#26272a", "tipo": "liso", "precio": 0 },
+    { "id": "volcan", "nombre": "Gris volcán metalizado", "hex": "#6b6f75", "tipo": "metal", "precio": 18000 },
+    { "id": "charco", "nombre": "Turquesa charco metalizado", "hex": "#2a8a8a", "tipo": "metal", "precio": 18000 },
+    { "id": "visto", "nombre": "Acero visto barnizado", "hex": "#8d9093", "tipo": "crudo", "precio": 25000, "materiales": ["acero"] },
+    { "id": "cepillado", "nombre": "Titanio cepillado", "hex": "#a9aaa6", "tipo": "titanio", "precio": 0, "materiales": ["titanio"] },
+    { "id": "anodizado", "nombre": "Titanio con logos anodizados", "hex": "#a9aaa6", "tipo": "titanio", "precio": 22000, "materiales": ["titanio"] }
+  ],
+  "transmisiones": [
+    { "id": "105", "nombre": "Shimano 105 Di2, 2×12", "detalle": "Electrónico, cambios precisos durante años.", "precio": 145000, "peso": 2.75, "modelos": ["alisio", "jable"] },
+    { "id": "ultegra", "nombre": "Shimano Ultegra Di2, 2×12", "detalle": "Más ligero y con mejores frenos.", "precio": 235000, "peso": 2.5, "modelos": ["alisio"] },
+    { "id": "rival", "nombre": "SRAM Rival XPLR AXS, 1×13", "detalle": "Un solo plato, inalámbrico, desarrollos amplios para subir con carga.", "precio": 150000, "peso": 2.85, "modelos": ["jable"] },
+    { "id": "grx", "nombre": "Shimano GRX mecánico, 1×12", "detalle": "Mecánico de cable: se arregla en cualquier taller.", "precio": 95000, "peso": 2.9, "modelos": ["jable"] },
+    { "id": "alfine", "nombre": "Shimano Alfine, 11 velocidades en el buje", "detalle": "Cambias parado en el semáforo. Cadena protegida y casi sin mantenimiento.", "precio": 72000, "peso": 3.4, "modelos": ["calima"] },
+    { "id": "single", "nombre": "Una velocidad con correa Gates", "detalle": "Sin cambios, sin grasa en el pantalón y sin ruido.", "precio": 48000, "peso": 2.3, "modelos": ["calima"] }
+  ],
+  "ruedas": [
+    { "id": "aluminio", "nombre": "Llantas de aluminio montadas a mano", "detalle": "Bujes DT Swiss 350 y radios Sapim. Se centran y se reparan sin problema.", "precio": 52000, "peso": 1.75, "perfil": 22, "modelos": ["alisio", "jable"] },
+    { "id": "carbono", "nombre": "Llantas de carbono de 45 mm", "detalle": "Más rápidas con viento lateral moderado y 350 g más ligeras.", "precio": 145000, "peso": 1.4, "perfil": 45, "modelos": ["alisio", "jable"] },
+    { "id": "dinamo", "nombre": "Aluminio con buje dinamo SON", "detalle": "La rueda delantera alimenta las luces. Nunca más pilas.", "precio": 68000, "peso": 2.1, "perfil": 22, "modelos": ["calima", "jable"] }
+  ],
+  "cintas": [
+    { "id": "negro", "nombre": "Negro", "hex": "#1d1d1f" },
+    { "id": "miel", "nombre": "Cuero miel", "hex": "#a8692e" },
+    { "id": "blanco", "nombre": "Blanco", "hex": "#ecebe6" }
+  ],
+  "extras": [
+    { "id": "guardabarros", "nombre": "Guardabarros de aluminio", "precio": 12000, "peso": 0.55, "modelos": ["calima", "jable", "alisio"] },
+    { "id": "portabultos", "nombre": "Portabultos delantero soldado al cuadro", "precio": 21000, "peso": 0.6, "modelos": ["calima", "jable"] },
+    { "id": "anclajes", "nombre": "Anclajes extra para bidones y bolsas", "precio": 6000, "peso": 0.05, "modelos": ["jable", "alisio"] },
+    { "id": "sillin", "nombre": "Sillín Brooks de cuero", "precio": 14000, "peso": 0.25, "modelos": ["calima", "jable", "alisio"] }
+  ],
+  "medicion": { "precio": 9000, "descuentaSiCompras": true },
+  "senal": 0.3
+}
