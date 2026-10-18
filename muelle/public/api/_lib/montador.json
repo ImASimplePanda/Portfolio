@@ -1,0 +1,41 @@
+{
+  "formatos": [
+    { "id": "60", "nombre": "60 %", "teclas": 62, "precio": 9900 },
+    { "id": "65", "nombre": "65 %", "teclas": 69, "precio": 11900 },
+    { "id": "75", "nombre": "75 %", "teclas": 83, "precio": 13900 },
+    { "id": "tkl", "nombre": "TKL", "teclas": 88, "precio": 15900 }
+  ],
+  "carcasas": [
+    { "id": "aluminio", "nombre": "Aluminio anodizado", "detalle": "Mecanizada en una sola pieza. Pesada, fría y con un sonido limpio.", "precio": 6000,
+      "colores": [
+        { "id": "grafito", "nombre": "Grafito", "hex": "#3a3a3f" },
+        { "id": "plata", "nombre": "Plata", "hex": "#c9cacc" },
+        { "id": "ciruela", "nombre": "Ciruela", "hex": "#4a2d52" },
+        { "id": "salvia", "nombre": "Salvia", "hex": "#8fa38a" },
+        { "id": "arena", "nombre": "Arena", "hex": "#d8c8a8" }
+      ] },
+    { "id": "policarbonato", "nombre": "Policarbonato translúcido", "detalle": "Deja pasar la luz y apaga los agudos. Sonido más redondo.", "precio": 2500,
+      "colores": [
+        { "id": "hielo", "nombre": "Hielo", "hex": "#e8eef2" },
+        { "id": "humo", "nombre": "Humo", "hex": "#6d6a70" },
+        { "id": "ambar", "nombre": "Ámbar", "hex": "#e0a64b" }
+      ] },
+    { "id": "madera", "nombre": "Nogal macizo", "detalle": "Tallada a mano. Cálida al tacto y con el sonido más grave de todos.", "precio": 9000,
+      "colores": [
+        { "id": "nogal", "nombre": "Nogal", "hex": "#6b4630" }
+      ] }
+  ],
+  "placas": [
+    { "id": "aluminio", "nombre": "Aluminio", "detalle": "Firme y equilibrada. La elección segura.", "precio": 0 },
+    { "id": "laton", "nombre": "Latón", "detalle": "La más rígida: sonido agudo y metálico, tecleo muy firme.", "precio": 2800 },
+    { "id": "policarbonato", "nombre": "Policarbonato", "detalle": "Flexible: cada tecla cede un poco y el sonido se vuelve grave.", "precio": 900 },
+    { "id": "fr4", "nombre": "FR4", "detalle": "Fibra de vidrio: entre el aluminio y el policarbonato.", "precio": 900 }
+  ],
+  "extras": [
+    { "id": "lubricado", "nombre": "Lubricado a mano de los interruptores", "detalle": "Cada interruptor abierto, lubricado y cerrado. Más suave y sin chirridos.", "precioPorTecla": 40 },
+    { "id": "estabilizadores", "nombre": "Estabilizadores ajustados", "detalle": "Espaciadora, Intro y Mayús sin traqueteo.", "precio": 1800 },
+    { "id": "cable", "nombre": "Cable en espiral a juego", "detalle": "USB-C, con conector de aviación y del color de tus teclas.", "precio": 3500 }
+  ],
+  "montaje": { "precio": 2500, "dias": 5 },
+  "packInterruptores": 10
+}

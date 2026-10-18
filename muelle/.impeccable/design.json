@@ -1,0 +1,402 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-16T14:22:36.631Z",
+  "title": "Design System: Muelle",
+  "extensions": {
+    "colorMeta": {
+      "mascara": {
+        "role": "neutral",
+        "displayName": "Máscara de soldadura",
+        "canonical": "#3a2257",
+        "tonalRamp": [
+          "#110a1a",
+          "#1d112c",
+          "#29183d",
+          "#331e4d",
+          "#3a2257",
+          "#756489",
+          "#a69cb3",
+          "#d8d3dd"
+        ]
+      },
+      "mascara-honda": {
+        "role": "neutral",
+        "displayName": "Máscara sin cobre",
+        "canonical": "#2c1943",
+        "tonalRamp": [
+          "#0d0814",
+          "#160d22",
+          "#1f122f",
+          "#27163b",
+          "#2c1943",
+          "#6b5e7b",
+          "#a098aa",
+          "#d5d1d9"
+        ]
+      },
+      "mascara-alta": {
+        "role": "neutral",
+        "displayName": "Plano de masa",
+        "canonical": "#4a2d6b",
+        "tonalRamp": [
+          "#160e20",
+          "#251736",
+          "#341f4b",
+          "#41285e",
+          "#4a2d6b",
+          "#806c97",
+          "#aea1bc",
+          "#dbd5e1"
+        ]
+      },
+      "mascara-borde": {
+        "role": "neutral",
+        "displayName": "Contorno serigrafiado apagado",
+        "canonical": "#6d4b94",
+        "tonalRamp": [
+          "#21172c",
+          "#37264a",
+          "#4c3568",
+          "#604282",
+          "#6d4b94",
+          "#9981b4",
+          "#bdaecf",
+          "#e2dbea"
+        ]
+      },
+      "serigrafia": {
+        "role": "neutral",
+        "displayName": "Serigrafía",
+        "canonical": "#f1ecf7",
+        "tonalRamp": [
+          "#48474a",
+          "#79767c",
+          "#a9a5ad",
+          "#d4d0d9",
+          "#f1ecf7",
+          "#f5f2f9",
+          "#f9f6fb",
+          "#fcfbfd"
+        ]
+      },
+      "serigrafia-tenue": {
+        "role": "neutral",
+        "displayName": "Serigrafía tenue",
+        "canonical": "#d3c7e3",
+        "tonalRamp": [
+          "#3f3c44",
+          "#6a6472",
+          "#948b9f",
+          "#baafc8",
+          "#d3c7e3",
+          "#e0d8eb",
+          "#ebe6f2",
+          "#f6f4f9"
+        ]
+      },
+      "cobre": {
+        "role": "primary",
+        "displayName": "Cobre ENIG",
+        "canonical": "#d9a94e",
+        "tonalRamp": [
+          "#413317",
+          "#6d5527",
+          "#987637",
+          "#bf9545",
+          "#d9a94e",
+          "#e4c383",
+          "#eed8af",
+          "#f7eedc"
+        ]
+      },
+      "cobre-vivo": {
+        "role": "primary",
+        "displayName": "Cobre encendido",
+        "canonical": "#f0c36a",
+        "tonalRamp": [
+          "#483b20",
+          "#786235",
+          "#a8894a",
+          "#d3ac5d",
+          "#f0c36a",
+          "#f5d597",
+          "#f8e4bc",
+          "#fcf3e1"
+        ]
+      },
+      "cobre-hondo": {
+        "role": "primary",
+        "displayName": "Cobre oxidado",
+        "canonical": "#9c7330",
+        "tonalRamp": [
+          "#2f230e",
+          "#4e3a18",
+          "#6d5122",
+          "#89652a",
+          "#9c7330",
+          "#ba9d6e",
+          "#d2c0a2",
+          "#ebe3d6"
+        ]
+      },
+      "fr4": {
+        "role": "neutral",
+        "displayName": "Canto FR4",
+        "canonical": "#e9dfc4",
+        "tonalRamp": [
+          "#46433b",
+          "#757062",
+          "#a39c89",
+          "#cdc4ac",
+          "#e9dfc4",
+          "#f0e9d6",
+          "#f5f1e4",
+          "#fbf9f3"
+        ]
+      },
+      "alerta": {
+        "role": "status",
+        "displayName": "Alerta",
+        "canonical": "#ff8a7a",
+        "tonalRamp": [
+          "#4d2925",
+          "#80453d",
+          "#b36155",
+          "#e0796b",
+          "#ff8a7a",
+          "#ffada2",
+          "#ffcac3",
+          "#ffe8e4"
+        ]
+      },
+      "ok": {
+        "role": "status",
+        "displayName": "Correcto",
+        "canonical": "#8fe3a8",
+        "tonalRamp": [
+          "#2b4432",
+          "#487254",
+          "#649f76",
+          "#7ec894",
+          "#8fe3a8",
+          "#b1ebc2",
+          "#cdf2d8",
+          "#e9f9ee"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Serigrafía display",
+        "purpose": "Titular de portada y h1 de catálogo y ficha."
+      },
+      "headline": {
+        "displayName": "Serigrafía de sección",
+        "purpose": "Todos los h2 de sección."
+      },
+      "title": {
+        "displayName": "Título",
+        "purpose": "Estaciones del montador y bloques internos."
+      },
+      "body": {
+        "displayName": "Texto",
+        "purpose": "Prosa explicativa en medidas de 46–64ch."
+      },
+      "label": {
+        "displayName": "Designador",
+        "purpose": "SW1, U1, J1 y revisión de placa, en serigrafía tenue."
+      }
+    },
+    "shadows": [
+      {
+        "name": "contorno-serigrafiado",
+        "value": "inset 0 0 0 1px #6d4b94",
+        "purpose": "Límite de planos, huellas y paneles; 1.5px en campos y botones de contorno."
+      },
+      {
+        "name": "contorno-cobre",
+        "value": "inset 0 0 0 2px #d9a94e",
+        "purpose": "Selección y foco de campo."
+      },
+      {
+        "name": "apoyo-pad",
+        "value": "0 4px 14px -8px rgb(0 0 0 / 0.55)",
+        "purpose": "Bajo el pad de cobre."
+      },
+      {
+        "name": "apoyo-panel",
+        "value": "0 20px 40px -24px rgb(0 0 0 / 0.7)",
+        "purpose": "Paneles de placa y canto de portada."
+      },
+      {
+        "name": "brillo-pista",
+        "value": "drop-shadow(0 0 6px rgb(240 195 106 / 0.8))",
+        "purpose": "Solo la pista viva que destella con una pulsación."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-salida",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Transiciones de estado de pads y destello de pista."
+      },
+      {
+        "name": "estado",
+        "value": "140ms",
+        "purpose": "Hover y pulsación de pads, campos y opciones."
+      },
+      {
+        "name": "destello",
+        "value": "420ms",
+        "purpose": "La pista viva se apaga tras cada pulsación."
+      },
+      {
+        "name": "muelle-isla",
+        "value": "spring, bounce 0.35, 0.45s",
+        "purpose": "La isla de la cesta crece para contar un aviso."
+      },
+      {
+        "name": "dibujo-pista",
+        "value": "anime.js draw, inOutQuad, sincronizado con el scroll",
+        "purpose": "Las pistas se trazan al entrar en pantalla."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      },
+      {
+        "name": "2xl",
+        "value": "1536px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Pad de cobre",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "La única acción principal de cada vista.",
+      "html": "<button class=\"ds-pad\">Monta el tuyo <svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14\"/><path d=\"m12 5 7 7-7 7\"/></svg></button>",
+      "css": ".ds-pad{display:inline-flex;align-items:center;gap:.55rem;min-height:2.875rem;padding:.7rem 1.3rem;border:0;border-radius:var(--radius-pad,4px);background:var(--color-cobre,#d9a94e);color:var(--color-mascara-honda,#2c1943);font-family:\"Chakra Petch\",\"Arial Narrow\",sans-serif;font-weight:600;letter-spacing:.02em;line-height:1;box-shadow:0 4px 14px -8px rgb(0 0 0/.55);transition:transform 140ms cubic-bezier(.16,1,.3,1),background-color 140ms;cursor:pointer}.ds-pad:hover{background:var(--color-cobre-vivo,#f0c36a)}.ds-pad:active{transform:translateY(1px)}.ds-pad:focus-visible{outline:2px solid #f0c36a;outline-offset:3px}"
+    },
+    {
+      "name": "Pad de contorno",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Acciones secundarias.",
+      "html": "<button class=\"ds-pad-linea\">Ver la tienda</button>",
+      "css": ".ds-pad-linea{display:inline-flex;align-items:center;min-height:2.875rem;padding:.7rem 1.2rem;border:0;border-radius:4px;background:transparent;color:#f1ecf7;font-family:\"Chakra Petch\",\"Arial Narrow\",sans-serif;font-weight:600;line-height:1;box-shadow:inset 0 0 0 1.5px #6d4b94;transition:box-shadow 140ms,background-color 140ms;cursor:pointer}.ds-pad-linea:hover{box-shadow:inset 0 0 0 1.5px #d3c7e3;background:rgb(255 255 255/.03)}.ds-pad-linea:focus-visible{outline:2px solid #f0c36a;outline-offset:3px}"
+    },
+    {
+      "name": "Campo",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Campo de texto sobre máscara honda con foco de cobre.",
+      "html": "<label class=\"ds-etiqueta\">Código postal<input class=\"ds-campo\" placeholder=\"46001\"></label>",
+      "css": ".ds-etiqueta{display:block;font-family:\"Hanken Grotesk Variable\",system-ui,sans-serif;font-weight:600;font-size:.95rem;color:#f1ecf7}.ds-campo{display:block;margin-top:.35rem;width:100%;min-height:2.875rem;padding:.6rem .8rem;border:0;border-radius:4px;background:#2c1943;color:#f1ecf7;font:inherit;font-weight:400;caret-color:#f0c36a;box-shadow:inset 0 0 0 1.5px #6d4b94;transition:box-shadow 140ms}.ds-campo:focus{outline:none;box-shadow:inset 0 0 0 2px #d9a94e}.ds-campo[aria-invalid=true]{box-shadow:inset 0 0 0 2px #ff8a7a}"
+    },
+    {
+      "name": "Navegación",
+      "kind": "nav",
+      "refersTo": "",
+      "description": "Enlaces de cabecera: tenues, serigrafía al pasar, cobre encendido el activo.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#\" class=\"activo\">Tienda</a><a href=\"#\">Interruptores</a><a href=\"#\">Teclas</a><a href=\"#\">Monta el tuyo</a></nav>",
+      "css": ".ds-nav{display:flex;align-items:center;gap:.25rem;height:68px;padding:0 1rem;background:rgb(58 34 87/.9);border-bottom:1px solid rgb(109 75 148/.7);font-family:\"Hanken Grotesk Variable\",system-ui,sans-serif}.ds-nav a{padding:.625rem .75rem;font-size:.95rem;font-weight:500;color:#d3c7e3;text-decoration:none;transition:color 140ms}.ds-nav a:hover{color:#f1ecf7}.ds-nav a.activo{color:#f0c36a}.ds-nav a:focus-visible{outline:2px solid #f0c36a;outline-offset:3px;border-radius:3px}"
+    },
+    {
+      "name": "Tarjeta huella",
+      "kind": "card",
+      "refersTo": "card-huella",
+      "description": "Producto como huella de componente con silueta serigrafiada y designador.",
+      "html": "<article class=\"ds-huella\"><div class=\"ds-huella-cuerpo\"><span class=\"ds-silueta\"></span><span class=\"ds-designador\">SW4</span></div><div class=\"ds-huella-pie\"><h3>Bergamota</h3><p class=\"ds-precio\">5,90 €</p></div><p class=\"ds-detalle\">Táctil, 62 g, pack de 10</p></article>",
+      "css": ".ds-huella{width:260px;font-family:\"Hanken Grotesk Variable\",system-ui,sans-serif;color:#f1ecf7}.ds-huella-cuerpo{position:relative;aspect-ratio:4/3;border-radius:4px;background:#2c1943;box-shadow:inset 0 0 0 1px #6d4b94;transition:box-shadow 140ms}.ds-huella:hover .ds-huella-cuerpo{box-shadow:inset 0 0 0 1.5px #d9a94e}.ds-silueta{position:absolute;inset:10px;border:1px dashed #6d4b94;border-radius:3px}.ds-designador{position:absolute;left:16px;top:12px;font-family:\"Chakra Petch\",\"Arial Narrow\",sans-serif;font-weight:600;font-size:.8125rem;letter-spacing:.06em;color:#d3c7e3}.ds-huella-pie{display:flex;justify-content:space-between;gap:.75rem;margin-top:.75rem}.ds-huella h3{margin:0;font-family:\"Chakra Petch\",\"Arial Narrow\",sans-serif;font-weight:600;font-size:1.25rem;line-height:1.2}.ds-precio{margin:0;font-weight:600;color:#f0c36a;font-variant-numeric:tabular-nums}.ds-detalle{margin:.125rem 0 0;font-size:.875rem;color:#d3c7e3}"
+    },
+    {
+      "name": "Panel de placa",
+      "kind": "card",
+      "refersTo": "panel-placa",
+      "description": "Plano de masa con esquinas de 14px y un taladro en cada esquina.",
+      "html": "<div class=\"ds-panel\"><span class=\"ds-taladro\" style=\"left:12px;top:12px\"></span><span class=\"ds-taladro\" style=\"right:12px;top:12px\"></span><span class=\"ds-taladro\" style=\"left:12px;bottom:12px\"></span><span class=\"ds-taladro\" style=\"right:12px;bottom:12px\"></span><p>Desglose del montaje</p></div>",
+      "css": ".ds-panel{position:relative;padding:40px;border-radius:14px;background:#4a2d6b;box-shadow:inset 0 0 0 1px #6d4b94,0 20px 40px -24px rgb(0 0 0/.7);color:#f1ecf7;font-family:\"Chakra Petch\",\"Arial Narrow\",sans-serif;font-weight:600}.ds-taladro{position:absolute;width:16px;height:16px;border-radius:50%;background:radial-gradient(circle,#2c1943 0 52%,#d9a94e 53% 92%,#9c7330 93%)}"
+    },
+    {
+      "name": "Isla de la cesta",
+      "kind": "custom",
+      "refersTo": "isla-cesta",
+      "description": "Píldora de cobre con las unidades; crece con un muelle al avisar.",
+      "html": "<button class=\"ds-isla\"><svg width=\"19\" height=\"19\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M16 10a4 4 0 0 1-8 0\"/><path d=\"M3.103 6.034h17.794\"/><path d=\"M3.4 5.467a2 2 0 0 0-.4 1.2V20a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6.667a2 2 0 0 0-.4-1.2l-2-2.667A2 2 0 0 0 17 2H7a2 2 0 0 0-1.6.8z\"/></svg><span>2</span></button>",
+      "css": ".ds-isla{display:flex;align-items:center;gap:.625rem;height:44px;padding:0 1rem 0 .875rem;border:0;border-radius:999px;background:#d9a94e;color:#2c1943;font-family:\"Hanken Grotesk Variable\",system-ui,sans-serif;font-weight:600;font-variant-numeric:tabular-nums;cursor:pointer;transition:background-color 140ms}.ds-isla:hover{background:#f0c36a}.ds-isla:focus-visible{outline:2px solid #f0c36a;outline-offset:3px}"
+    },
+    {
+      "name": "Separador de pista",
+      "kind": "custom",
+      "refersTo": "",
+      "description": "Pista de cobre con quiebro a 45° y una vía en cada extremo.",
+      "html": "<svg class=\"ds-separador\" viewBox=\"0 0 400 24\" aria-hidden=\"true\"><path d=\"M6 5.5 H270 L284.5 20 H394\" fill=\"none\" stroke=\"#d9a94e\" stroke-width=\"3\" stroke-linejoin=\"round\"/><circle cx=\"6\" cy=\"5.5\" r=\"5.5\" fill=\"#d9a94e\"/><circle cx=\"6\" cy=\"5.5\" r=\"2.5\" fill=\"#3a2257\"/><circle cx=\"394\" cy=\"20\" r=\"5.5\" fill=\"#d9a94e\"/><circle cx=\"394\" cy=\"20\" r=\"2.5\" fill=\"#3a2257\"/></svg>",
+      "css": ".ds-separador{display:block;width:100%;max-width:520px;height:24px;overflow:visible}"
+    }
+  ],
+  "narrative": {
+    "northStar": "La placa del teclado",
+    "overview": "La tienda entera es una PCB morada que se recorre. El fondo es máscara de soldadura mate; todo lo escrito es serigrafía blanca rota; el cobre con baño de oro (ENIG) marca pistas, vías, pads y la única acción principal de cada vista. Las piezas se numeran con designadores reales (SW1…SW7, U1, J1) y los paneles llevan taladros de montaje con anillo dorado en las esquinas. Nada es decoración ajena a la placa: si un elemento no existiría en una PCB, no entra.\n\nLa densidad es de ficha técnica cómoda: titulares serigrafiados grandes arriba, explicación en prosa corta y datos exactos con cifras tabulares debajo. El movimiento pertenece al circuito: las pistas se dibujan al entrar en pantalla y la pista del interruptor elegido destella con cada pulsación. Rechaza la tienda de producto sobre blanco y el negro gamer con luces RGB.",
+    "keyCharacteristics": [
+      "Fondo morado de máscara en tres profundidades, nunca blanco ni negro.",
+      "Un solo acento: cobre, racionado a la acción principal, pistas, vías y precios.",
+      "Rotulación en Chakra Petch 600 como serigrafía; texto corrido en Hanken Grotesk.",
+      "Contornos dibujados con sombra interior de 1–1.5px, no con bordes ni elevación.",
+      "Designadores reales y taladros como sistema de numeración y de esquinas."
+    ],
+    "rules": [
+      {
+        "name": "The Un Solo Cobre Rule",
+        "body": "Cada vista tiene una única acción en pad de cobre; las demás son pads de contorno. El cobre restante es circuito (pistas, vías, taladros) o dato (precio), nunca relleno decorativo.",
+        "section": "colors"
+      },
+      {
+        "name": "The FR4 Rule",
+        "body": "El crema de fibra se reserva para el canto de la placa y para declarar que la tienda es una demo. No es un fondo de sección.",
+        "section": "colors"
+      },
+      {
+        "name": "The Serigrafía Rule",
+        "body": "Toda rotulación (titulares, botones, logotipo, designadores) va en Chakra Petch 600; nunca otro peso ni otra display. Las cifras de precio, stock y medidas llevan cifras tabulares.",
+        "section": "typography"
+      },
+      {
+        "name": "The Designador Rule",
+        "body": "Un designador numera una pieza que existe (un interruptor, el teclado, un conector), en su huella y en orden. No se usa como antetítulo encima de un titular.",
+        "section": "typography"
+      },
+      {
+        "name": "The Contorno Interior Rule",
+        "body": "Los límites se dibujan con sombra interior, no con `border` ni elevación. El cobre en el contorno significa selección o foco, nada más.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do usar un único pad de cobre por vista y pads de contorno para todo lo demás.",
+      "Do dibujar límites con contorno interior de 1–1.5px en mascara-borde y reservar el contorno cobre para selección y foco.",
+      "Do numerar piezas reales con designadores (SW, U, J) en su huella, en orden.",
+      "Do separar secciones con la pista a 45° y poner taladros en las esquinas de los paneles de placa.",
+      "Do mostrar precios, stock y medidas con cifras tabulares; precios en cobre encendido.",
+      "Do respetar el movimiento reducido: pistas ya dibujadas y sin destello."
+    ],
+    "donts": [
+      "Don't usar fondos blancos ni negro gamer con luces RGB; la superficie es siempre máscara morada.",
+      "Don't usar el cobre como relleno de sección ni como degradado decorativo.",
+      "Don't usar el crema FR4 fuera del canto de placa y de los avisos de demostración.",
+      "Don't poner un designador o una etiqueta pequeña encima de un titular a modo de antetítulo.",
+      "Don't usar Chakra Petch en otro peso que 600 ni otra fuente display."
+    ]
+  }
+}

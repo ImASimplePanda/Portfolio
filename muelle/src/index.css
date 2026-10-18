@@ -1,0 +1,178 @@
+@import 'tailwindcss';
+@source '../public/index.php';
+
+@custom-variant dark (&:is(.dark *));
+
+/* Muelle: la tienda es la placa del teclado. Máscara de soldadura morada, cobre con baño de oro
+   para pistas, pads y la única acción principal, y serigrafía blanca para todo lo escrito. */
+@theme {
+  --color-mascara: #3a2257;        /* máscara de soldadura: el fondo */
+  --color-mascara-honda: #2c1943;  /* zonas sin cobre debajo */
+  --color-mascara-alta: #4a2d6b;   /* planos de masa, tarjetas */
+  --color-mascara-borde: #6d4b94;  /* contornos serigrafiados apagados */
+  --color-serigrafia: #f1ecf7;     /* texto principal */
+  --color-serigrafia-tenue: #d3c7e3; /* texto secundario sobre morado */
+  --color-cobre: #d9a94e;          /* ENIG: pistas, pads, acción principal */
+  --color-cobre-vivo: #f0c36a;
+  --color-cobre-hondo: #9c7330;
+  --color-fr4: #e9dfc4;            /* el canto de la placa (fibra de vidrio) */
+  --color-alerta: #ff8a7a;
+  --color-ok: #8fe3a8;
+
+  /* Para los componentes de shadcn */
+  --color-background: var(--color-mascara);
+  --color-foreground: var(--color-serigrafia);
+  --color-secondary: var(--color-mascara-alta);
+  --color-muted-foreground: var(--color-serigrafia-tenue);
+  --color-ring: var(--color-cobre);
+
+  --font-display: 'Chakra Petch', 'Arial Narrow', sans-serif;
+  --font-sans: 'Hanken Grotesk Variable', system-ui, sans-serif;
+
+  --ease-salida: cubic-bezier(0.16, 1, 0.3, 1);
+  --radius-pad: 4px;
+  --radius-placa: 14px;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 88px;
+    color-scheme: dark;
+    scrollbar-color: var(--color-mascara-borde) var(--color-mascara-honda);
+  }
+  body {
+    @apply bg-mascara text-serigrafia font-sans antialiased;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    -webkit-tap-highlight-color: transparent;
+  }
+  h1, h2, h3 { text-wrap: balance; }
+  p { text-wrap: pretty; }
+  :focus-visible { outline: 2px solid var(--color-cobre-vivo); outline-offset: 3px; border-radius: 3px; }
+  ::selection { background: var(--color-cobre); color: var(--color-mascara-honda); }
+  input, select, textarea, button { font: inherit; color: inherit; }
+  input::placeholder, textarea::placeholder { color: color-mix(in oklab, var(--color-serigrafia-tenue) 80%, transparent); }
+  a { text-underline-offset: 4px; }
+  input, textarea { caret-color: var(--color-cobre-vivo); }
+}
+
+@layer components {
+  /* Rotulación serigrafiada */
+  .serigrafia { font-family: var(--font-display); font-weight: 600; letter-spacing: 0.01em; line-height: 0.98; }
+  .designador { font-family: var(--font-display); font-weight: 600; font-size: 0.8125rem; letter-spacing: 0.06em; color: var(--color-serigrafia-tenue); }
+  .numeros { font-variant-numeric: tabular-nums lining-nums; }
+
+  /* Pads de cobre: la acción principal es un pad dorado; las secundarias, un contorno serigrafiado */
+  .pad {
+    position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 0.55rem;
+    min-height: 2.875rem; padding: 0.7rem 1.3rem; border-radius: var(--radius-pad);
+    background: var(--color-cobre);
+    color: var(--color-mascara-honda); font-family: var(--font-display); font-weight: 600; letter-spacing: 0.02em; line-height: 1;
+    box-shadow: 0 4px 14px -8px rgb(0 0 0 / 0.55);
+    transition: transform 140ms var(--ease-salida), background-color 140ms;
+  }
+  .pad:hover { background: var(--color-cobre-vivo); }
+  .pad:active { transform: translateY(1px); }
+  .pad:disabled { filter: grayscale(0.7) brightness(0.8); cursor: not-allowed; transform: none; }
+  .pad-linea {
+    display: inline-flex; align-items: center; justify-content: center; gap: 0.55rem;
+    min-height: 2.875rem; padding: 0.7rem 1.2rem; border-radius: var(--radius-pad);
+    color: var(--color-serigrafia); font-family: var(--font-display); font-weight: 600; line-height: 1;
+    box-shadow: inset 0 0 0 1.5px var(--color-mascara-borde); transition: box-shadow 140ms, background-color 140ms;
+  }
+  .pad-linea:hover { box-shadow: inset 0 0 0 1.5px var(--color-serigrafia-tenue); background: rgb(255 255 255 / 0.03); }
+
+  /* Plano de masa: la superficie elevada de una tarjeta o panel, con su contorno de serigrafía */
+  .plano { background: var(--color-mascara-alta); border-radius: var(--radius-pad); box-shadow: inset 0 0 0 1px var(--color-mascara-borde); }
+
+  .campo {
+    width: 100%; min-height: 2.875rem; padding: 0.6rem 0.8rem; border-radius: var(--radius-pad);
+    background: var(--color-mascara-honda); color: var(--color-serigrafia);
+    box-shadow: inset 0 0 0 1.5px var(--color-mascara-borde); transition: box-shadow 140ms;
+  }
+  .campo:focus { outline: none; box-shadow: inset 0 0 0 2px var(--color-cobre); }
+  .campo[aria-invalid='true'] { box-shadow: inset 0 0 0 2px var(--color-alerta); }
+  .etiqueta { display: block; font-weight: 600; font-size: 0.95rem; margin-bottom: 0.35rem; }
+  .error-campo { color: var(--color-alerta); font-size: 0.9rem; margin-top: 0.3rem; }
+
+  /* Opción del montador: el radio nativo oculto, la huella entera es la etiqueta */
+  .huella-opcion {
+    position: relative; display: block; cursor: pointer; border-radius: var(--radius-pad); padding: 0.85rem 1rem;
+    background: var(--color-mascara-honda); box-shadow: inset 0 0 0 1.5px var(--color-mascara-borde);
+    transition: box-shadow 140ms, background-color 140ms;
+  }
+  .huella-opcion:hover { box-shadow: inset 0 0 0 1.5px var(--color-serigrafia-tenue); }
+  .huella-opcion:has(input:checked) { box-shadow: inset 0 0 0 2px var(--color-cobre); background: color-mix(in oklab, var(--color-mascara-alta) 80%, var(--color-cobre) 6%); }
+  .huella-opcion:has(input:focus-visible) { outline: 2px solid var(--color-cobre-vivo); outline-offset: 2px; }
+  .huella-opcion:has(input:disabled) { opacity: 0.5; cursor: not-allowed; }
+  .huella-opcion input { position: absolute; opacity: 0; pointer-events: none; }
+
+  /* Textura de la máscara: el brillo mate y el plano de masa rayado que se ve bajo la máscara */
+  .textura-placa {
+    background-color: var(--color-mascara);
+    background-image:
+      radial-gradient(circle at 1px 1px, rgb(255 255 255 / 0.035) 1px, transparent 1.4px),
+      linear-gradient(135deg, rgb(255 255 255 / 0.02), transparent 40%);
+    background-size: 14px 14px, 100% 100%;
+  }
+}
+
+@keyframes pista { to { stroke-dashoffset: 0; } }
+@keyframes latido { 0%, 100% { opacity: 0.55; } 50% { opacity: 1; } }
+@keyframes destello { from { opacity: 0.95; } to { opacity: 0; } }
+.pista-viva { animation: destello 420ms cubic-bezier(0.16, 1, 0.3, 1) both; filter: drop-shadow(0 0 6px rgb(240 195 106 / 0.8)); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}
+
+@theme inline {
+  --animate-marquee: marquee var(--duration) infinite linear;
+  --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(calc(-100% - var(--gap))); }
+  }
+  @keyframes marquee-vertical {
+    from { transform: translateY(0); }
+    to { transform: translateY(calc(-100% - var(--gap))); }
+  }
+}
+
+/* ── Movimiento ──────────────────────────────────────────────────────────
+   Curva de salida rápida (ease-out-expo) para lo que entra; solo transform, opacity y trazos. */
+@keyframes subir { from { opacity: 0; transform: translateY(18px); } }
+@keyframes subir-palabra { from { transform: translateY(108%); } }
+@keyframes placa-entra { from { opacity: 0; transform: scale(0.975); } }
+@keyframes electron { from { stroke-dashoffset: -0.8; opacity: 1; } 85% { opacity: 1; } to { stroke-dashoffset: 0.25; opacity: 0; } }
+@keyframes trazar { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+
+.entra { animation: subir 760ms cubic-bezier(0.16, 1, 0.3, 1) both; animation-delay: calc(var(--d, 0) * 1ms); }
+.entra-placa { animation: placa-entra 900ms cubic-bezier(0.16, 1, 0.3, 1) both; animation-delay: calc(var(--d, 0) * 1ms); }
+.palabra { display: inline-block; overflow: clip; overflow-clip-margin: 0.12em; vertical-align: top; }
+.palabra > span { display: inline-block; animation: subir-palabra 820ms cubic-bezier(0.16, 1, 0.3, 1) both; animation-delay: calc(var(--d, 0) * 1ms); }
+.traza-dibuja { stroke-dasharray: 1; stroke-dashoffset: 1; animation: trazar 520ms cubic-bezier(0.65, 0, 0.35, 1) forwards; animation-delay: calc(var(--d, 0) * 1ms); }
+.electron { stroke-dasharray: 0.2 1.4; animation: electron 360ms cubic-bezier(0.4, 0, 0.6, 1) both; filter: drop-shadow(0 0 5px rgb(240 195 106 / 0.95)); }
+
+/* Al hacer scroll, tarjetas y titulares suben al entrar (animación ligada al scroll, sin JavaScript) */
+@supports (animation-timeline: view()) {
+  .revela, main section h2 { animation: subir linear both; animation-timeline: view(); animation-range: entry 0% entry 70%; }
+}
+
+/* Vía que vuela a la cesta al añadir */
+.via-volando { position: fixed; z-index: 60; width: 18px; height: 18px; border-radius: 9999px; pointer-events: none; background: var(--color-cobre-vivo);
+  box-shadow: inset 0 0 0 5px var(--color-cobre), 0 0 14px rgb(240 195 106 / 0.8); }
+.via-volando::after { content: ''; position: absolute; inset: 6px; border-radius: inherit; background: var(--color-mascara-honda); }
+
+/* Transición entre páginas: la cabecera se queda quieta; la página sale rápido y la nueva sube */
+.cabecera { view-transition-name: cabecera; }
+::view-transition-old(root) { animation: 140ms ease-in both desvanecer; }
+::view-transition-new(root) { animation: 420ms cubic-bezier(0.16, 1, 0.3, 1) 60ms both subir; }
+@keyframes desvanecer { to { opacity: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .entra, .entra-placa, .palabra > span, .traza-dibuja, .electron, .revela, main section h2 { animation: none !important; }
+  .traza-dibuja { stroke-dashoffset: 0; }
+  ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
+}

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "new-york",
+  "rsc": false,
+  "tsx": false,
+  "tailwind": { "config": "", "css": "src/index.css", "baseColor": "neutral", "cssVariables": true, "prefix": "" },
+  "aliases": { "components": "@/componentes", "utils": "@/lib/utils", "ui": "@/componentes/ui", "lib": "@/lib", "hooks": "@/hooks" },
+  "iconLibrary": "lucide",
+  "registries": {
+    "@magicui": "https://magicui.design/r/{name}.json",
+    "@smoothui": "https://smoothui.dev/r/{style}/{name}.json",
+    "@unlumen-ui": "https://ui.unlumen.com/r/{name}.json"
+  }
+}
