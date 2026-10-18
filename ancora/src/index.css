@@ -1,0 +1,74 @@
+@import 'tailwindcss';
+
+/* Áncora: un estudio de fotografía de relojería. Fondo carbón sacado de los bordes del propio
+   vídeo, acero para el texto, azul medianoche de la esfera y un solo rojo: la punta del segundero. */
+@theme {
+  --color-noche: #111215;
+  --color-carbon: #1a1b1e;
+  --color-grafito: #24262b;
+  --color-linea: #34373e;
+  --color-acero: #d4d7dc;
+  --color-acero-tenue: #9298a2;
+  --color-medianoche: #22355e;
+  --color-medianoche-viva: #4a6aa8;
+  --color-aguja: #d23a2e;
+
+  --font-display: 'Bodoni Moda', 'Didot', serif;
+  --font-sans: 'Schibsted Grotesk Variable', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-soft: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-in: cubic-bezier(0.7, 0, 0.84, 0);
+}
+
+html { background: var(--color-noche); color-scheme: dark; }
+body {
+  background: var(--color-noche);
+  color: var(--color-acero);
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+::selection { background: var(--color-medianoche); color: #fff; }
+:focus-visible { outline: 2px solid var(--color-acero); outline-offset: 3px; border-radius: 2px; }
+
+.titular { font-family: var(--font-display); font-weight: 500; line-height: 0.98; letter-spacing: -0.015em; }
+.titular em { font-style: italic; font-weight: 400; }
+/* Rótulo técnico: como la gravura del fondo de una caja */
+.grabado { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-acero-tenue); }
+.cifra { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+
+/* Botones: chapa de acero cepillado y su versión en línea */
+.boton {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem;
+  min-height: 3.25rem; padding: 0 1.6rem; border-radius: 999px;
+  background: var(--color-acero); color: var(--color-noche); font-weight: 600; letter-spacing: 0.01em;
+  transition: background-color 200ms var(--ease-out), transform 200ms var(--ease-out);
+}
+.boton:hover { background: #fff; }
+.boton:active { transform: scale(0.98); }
+.boton-linea {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem;
+  min-height: 3.25rem; padding: 0 1.4rem; border-radius: 999px;
+  box-shadow: inset 0 0 0 1px var(--color-linea); color: var(--color-acero); font-weight: 500;
+  transition: box-shadow 200ms var(--ease-out), color 200ms var(--ease-out);
+}
+.boton-linea:hover { box-shadow: inset 0 0 0 1px var(--color-acero-tenue); color: #fff; }
+
+/* Rótulos del recorrido: posición fija, el scroll solo gobierna la opacidad */
+.rotulo { opacity: var(--op, 0); transform: translateY(calc((1 - var(--op, 0)) * 10px)); visibility: var(--vis, hidden); }
+
+/* Revelado al entrar en pantalla (IntersectionObserver añade .dentro) */
+.revela { opacity: 0; transform: translateY(16px); transition: opacity 800ms var(--ease-out), transform 800ms var(--ease-out); transition-delay: calc(var(--i, 0) * 80ms); }
+.revela.dentro { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+  .revela { opacity: 1; transform: none; }
+  .rotulo { transform: none; }
+}
+
+@keyframes bajar { 0% { transform: translateY(-100%); } 100% { transform: translateY(300%); } }
